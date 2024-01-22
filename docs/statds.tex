@@ -1,0 +1,653 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{latex/krantz}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage[portuguese]{babel}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[bf,singlelinecheck=off]{caption}
+
+\usepackage{Alegreya}
+\usepackage[scale=.7]{sourcecodepro}
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+\renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\usepackage{hyperref}
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\ifxetex
+  \usepackage{letltxmacro}
+  \setlength{\XeTeXLinkMargin}{1pt}
+  \LetLtxMacro\SavedIncludeGraphics\includegraphics
+  \def\includegraphics#1#{% #1 catches optional stuff (star/opt. arg.)
+    \IncludeGraphicsAux{#1}%
+  }%
+  \newcommand*{\IncludeGraphicsAux}[2]{%
+    \XeTeXLinkBox{%
+      \SavedIncludeGraphics#1{#2}%
+    }%
+  }%
+\fi
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\makeatletter
+\@ifundefined{Shaded}{
+}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+\makeatother
+
+\newenvironment{rmdblock}[1]
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{kframe}
+  \item
+  }
+  {
+  \end{kframe}
+  \end{itemize}
+  }
+\newenvironment{rmdnote}
+  {\begin{rmdblock}{note}}
+  {\end{rmdblock}}
+\newenvironment{rmdcaution}
+  {\begin{rmdblock}{caution}}
+  {\end{rmdblock}}
+\newenvironment{rmdimportant}
+  {\begin{rmdblock}{important}}
+  {\end{rmdblock}}
+\newenvironment{rmdtip}
+  {\begin{rmdblock}{tip}}
+  {\end{rmdblock}}
+\newenvironment{rmdwarning}
+  {\begin{rmdblock}{warning}}
+  {\end{rmdblock}}
+
+\usepackage{makeidx}
+\makeindex
+
+\urlstyle{tt}
+
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\frontmatter
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Estatística e Ciência de Dados},
+  pdfauthor={Jeidsan A. da C. Pereira},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Estatística e Ciência de Dados}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Notas e solução dos exercícios}
+\author{Jeidsan A. da C. Pereira}
+\date{22 de janeiro de 2024}
+
+\begin{document}
+\maketitle
+
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage
+\thispagestyle{empty}
+\begin{center}
+\end{center}
+
+\setlength{\abovedisplayskip}{-5pt}
+\setlength{\abovedisplayshortskip}{-5pt}
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{prefuxe1cio}{%
+\chapter*{Prefácio}\label{prefuxe1cio}}
+\addcontentsline{toc}{chapter}{Prefácio}
+
+Esta página contém notas e solução para os exercícios propostos no livro \textbf{Estatística e Ciência de Dados}, de autoria de Pedro Alberto Morettin e Júlio da Motta Singer, publicado pela LTC em 2022 \citep{MorettinSinger2022}.
+
+É importante destacar que trata-se de um produto não oficial, as anotações e soluções de exercícios aqui apresentadas são de cunho pessoal e não possuem qualquer revisão ou análise por parte dos autores da obra ou da editora. Dessa forma e por se tratar de um produto construído durante o processo de aprendizagem, o conteúdo pode conter erros, tanto no texto em si, como na lógica utilizada para solução dos exercícios.
+
+Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\href{mailto:jeidsan.pereira@gmail.com}{\nolinkurl{jeidsan.pereira@gmail.com}}}.
+
+\hypertarget{penduxeancias}{%
+\section*{Pendências}\label{penduxeancias}}
+\addcontentsline{toc}{section}{Pendências}
+
+\begin{itemize}
+\tightlist
+\item
+\end{itemize}
+
+\mainmatter
+
+\hypertarget{estatuxedstica-ciuxeancia-de-dados-e-megadados}{%
+\chapter{Estatística, Ciência de Dados e Megadados}\label{estatuxedstica-ciuxeancia-de-dados-e-megadados}}
+
+\hypertarget{introduuxe7uxe3o}{%
+\section{Introdução}\label{introduuxe7uxe3o}}
+
+\hypertarget{aprendizado-com-estatuxedstica}{%
+\section{Aprendizado com estatística}\label{aprendizado-com-estatuxedstica}}
+
+\hypertarget{aprendizado-automuxe1tico}{%
+\section{Aprendizado automático}\label{aprendizado-automuxe1tico}}
+
+\hypertarget{uma-cronologia-do-desenvolvimento-da-estatuxedstica}{%
+\section{Uma cronologia do desenvolvimento da estatística}\label{uma-cronologia-do-desenvolvimento-da-estatuxedstica}}
+
+\hypertarget{notauxe7uxe3o-e-tipos-de-dados}{%
+\section{Notação e tipos de dados}\label{notauxe7uxe3o-e-tipos-de-dados}}
+
+\hypertarget{paradigmas-para-o-aprendizado-com-estatuxedstica}{%
+\section{Paradigmas para o aprendizado com estatística}\label{paradigmas-para-o-aprendizado-com-estatuxedstica}}
+
+\hypertarget{este-livro}{%
+\section{Este livro}\label{este-livro}}
+
+\hypertarget{conjuntos-de-dados}{%
+\section{Conjuntos de dados}\label{conjuntos-de-dados}}
+
+\hypertarget{notas-do-capuxedtulo}{%
+\section{Notas do capítulo}\label{notas-do-capuxedtulo}}
+
+\hypertarget{part-anuxe1lise-exploratuxf3ria-de-dados}{%
+\part{Análise Exploratória de Dados}\label{part-anuxe1lise-exploratuxf3ria-de-dados}}
+
+\hypertarget{preparauxe7uxe3o-dos-dados}{%
+\chapter{Preparação dos dados}\label{preparauxe7uxe3o-dos-dados}}
+
+\hypertarget{considerauxe7uxf5es-preliminares}{%
+\section{Considerações preliminares}\label{considerauxe7uxf5es-preliminares}}
+
+\hypertarget{planilhas-de-dados}{%
+\section{Planilhas de dados}\label{planilhas-de-dados}}
+
+\hypertarget{contruuxe7uxe3o-de-tabelas}{%
+\section{Contrução de tabelas}\label{contruuxe7uxe3o-de-tabelas}}
+
+\hypertarget{construuxe7uxe3o-de-gruxe1ficos}{%
+\section{Construção de gráficos}\label{construuxe7uxe3o-de-gruxe1ficos}}
+
+\hypertarget{notas-dde-capuxedtulo}{%
+\section{Notas dde capítulo}\label{notas-dde-capuxedtulo}}
+
+\hypertarget{exercuxedcios}{%
+\section{Exercícios}\label{exercuxedcios}}
+
+\hypertarget{anuxe1lise-de-dados-de-uma-variuxe1vel}{%
+\chapter{Análise de dados de uma variável}\label{anuxe1lise-de-dados-de-uma-variuxe1vel}}
+
+\hypertarget{introduuxe7uxe3o-1}{%
+\section{Introdução}\label{introduuxe7uxe3o-1}}
+
+\hypertarget{distribuiuxe7uxe3o-de-frequuxeancias}{%
+\section{Distribuição de frequências}\label{distribuiuxe7uxe3o-de-frequuxeancias}}
+
+\hypertarget{medidas-resumo}{%
+\section{Medidas resumo}\label{medidas-resumo}}
+
+\hypertarget{boxplots}{%
+\section{\texorpdfstring{\emph{Boxplots}}{Boxplots}}\label{boxplots}}
+
+\hypertarget{modelos-probabiluxedsticos}{%
+\section{Modelos probabilísticos}\label{modelos-probabiluxedsticos}}
+
+\hypertarget{dados-amostrais}{%
+\section{Dados amostrais}\label{dados-amostrais}}
+
+\hypertarget{gruxe1ficos-qq}{%
+\section{Gráficos QQ}\label{gruxe1ficos-qq}}
+
+\hypertarget{desvio-padruxe3o-e-erro-padruxe3o}{%
+\section{Desvio padrão e erro padrão}\label{desvio-padruxe3o-e-erro-padruxe3o}}
+
+\hypertarget{intervalo-de-confianuxe7a-e-tamanho-da-amostra}{%
+\section{Intervalo de confiança e tamanho da amostra}\label{intervalo-de-confianuxe7a-e-tamanho-da-amostra}}
+
+\hypertarget{transformauxe7uxe3o-de-variuxe1veis}{%
+\section{Transformação de variáveis}\label{transformauxe7uxe3o-de-variuxe1veis}}
+
+\hypertarget{notas-de-capuxedtulo}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo}}
+
+\hypertarget{exercuxedcios-1}{%
+\section{Exercícios}\label{exercuxedcios-1}}
+
+\hypertarget{anuxe1lise-de-dados-de-duas-variuxe1veis}{%
+\chapter{Análise de dados de duas variáveis}\label{anuxe1lise-de-dados-de-duas-variuxe1veis}}
+
+\hypertarget{introduuxe7uxe3o-2}{%
+\section{Introdução}\label{introduuxe7uxe3o-2}}
+
+\hypertarget{duas-variuxe1veis-qualitativas}{%
+\section{Duas variáveis qualitativas}\label{duas-variuxe1veis-qualitativas}}
+
+\hypertarget{duas-variuxe1veis-quantitativas}{%
+\section{Duas variáveis quantitativas}\label{duas-variuxe1veis-quantitativas}}
+
+\hypertarget{uma-variuxe1vel-qualitativa-e-outra-quantitativa}{%
+\section{Uma variável qualitativa e outra quantitativa}\label{uma-variuxe1vel-qualitativa-e-outra-quantitativa}}
+
+\hypertarget{notas-de-capuxedtulo-1}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-1}}
+
+\hypertarget{exercuxedcios-2}{%
+\section{Exercícios}\label{exercuxedcios-2}}
+
+\hypertarget{anuxe1lise-de-dados-de-vuxe1rias-variuxe1veis}{%
+\chapter{Análise de dados de várias variáveis}\label{anuxe1lise-de-dados-de-vuxe1rias-variuxe1veis}}
+
+\hypertarget{introduuxe7uxe3o-3}{%
+\section{Introdução}\label{introduuxe7uxe3o-3}}
+
+\hypertarget{gruxe1ficos-para-truxeas-variuxe1veis}{%
+\section{Gráficos para três variáveis}\label{gruxe1ficos-para-truxeas-variuxe1veis}}
+
+\hypertarget{gruxe1ficos-para-quatro-ou-mais-variuxe1veis}{%
+\section{Gráficos para quatro ou mais variáveis}\label{gruxe1ficos-para-quatro-ou-mais-variuxe1veis}}
+
+\hypertarget{medidas-resumo-multivariadas}{%
+\section{Medidas resumo multivariadas}\label{medidas-resumo-multivariadas}}
+
+\hypertarget{tabelas-de-continguxeancia-de-muxfaltiplas-entradas}{%
+\section{Tabelas de contingência de múltiplas entradas}\label{tabelas-de-continguxeancia-de-muxfaltiplas-entradas}}
+
+\hypertarget{notas-de-capuxedtulo-2}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-2}}
+
+\hypertarget{exercuxedcios-3}{%
+\section{Exercícios}\label{exercuxedcios-3}}
+
+\hypertarget{anuxe1lise-de-regressuxe3o}{%
+\chapter{Análise de Regressão}\label{anuxe1lise-de-regressuxe3o}}
+
+\hypertarget{introduuxe7uxe3o-4}{%
+\section{Introdução}\label{introduuxe7uxe3o-4}}
+
+\hypertarget{regressuxe3o-linear-simples}{%
+\section{Regressão linear simples}\label{regressuxe3o-linear-simples}}
+
+\hypertarget{regressuxe3o-linear-muxfaltipla}{%
+\section{Regressão linear múltipla}\label{regressuxe3o-linear-muxfaltipla}}
+
+\hypertarget{regressuxe3o-para-dados-longitudinais}{%
+\section{Regressão para dados longitudinais}\label{regressuxe3o-para-dados-longitudinais}}
+
+\hypertarget{regressuxe3o-loguxedstica}{%
+\section{Regressão logística}\label{regressuxe3o-loguxedstica}}
+
+\hypertarget{notas-de-capuxedtulo-3}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-3}}
+
+\hypertarget{exercuxedcios-4}{%
+\section{Exercícios}\label{exercuxedcios-4}}
+
+\hypertarget{anuxe1lise-de-sobrevivuxeancia}{%
+\chapter{Análise de Sobrevivência}\label{anuxe1lise-de-sobrevivuxeancia}}
+
+\hypertarget{introduuxe7uxe3o-5}{%
+\section{Introdução}\label{introduuxe7uxe3o-5}}
+
+\hypertarget{estimauxe7uxe3o-da-funuxe7uxe3o-de-sobrevivuxeancia}{%
+\section{Estimação da função de sobrevivência}\label{estimauxe7uxe3o-da-funuxe7uxe3o-de-sobrevivuxeancia}}
+
+\hypertarget{comparauxe7uxe3o-de-curvas-de-sobrevivuxeancia}{%
+\section{Comparação de curvas de sobrevivência}\label{comparauxe7uxe3o-de-curvas-de-sobrevivuxeancia}}
+
+\hypertarget{regressuxe3o-para-dados-de-sobrevivuxeancia}{%
+\section{Regressão para dados de sobrevivência}\label{regressuxe3o-para-dados-de-sobrevivuxeancia}}
+
+\hypertarget{notas-de-capuxedtulo-4}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-4}}
+
+\hypertarget{exercuxedcios-5}{%
+\section{Exercícios}\label{exercuxedcios-5}}
+
+\hypertarget{part-aprendizado-supervisionado}{%
+\part{Aprendizado Supervisionado}\label{part-aprendizado-supervisionado}}
+
+\hypertarget{regularizauxe7uxe3o-e-modelos-aditivos-generalizados}{%
+\chapter{Regularização e Modelos Aditivos Generalizados}\label{regularizauxe7uxe3o-e-modelos-aditivos-generalizados}}
+
+\hypertarget{introduuxe7uxe3o-6}{%
+\section{Introdução}\label{introduuxe7uxe3o-6}}
+
+\hypertarget{regularizauxe7uxe3o}{%
+\section{Regularização}\label{regularizauxe7uxe3o}}
+
+\hypertarget{modelos-aditivos-generalizados-gam}{%
+\section{Modelos aditivos generalizados (GAM)}\label{modelos-aditivos-generalizados-gam}}
+
+\hypertarget{notas-de-capuxedtulo-5}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-5}}
+
+\hypertarget{exercuxedcios-6}{%
+\section{Exercícios}\label{exercuxedcios-6}}
+
+\hypertarget{classificauxe7uxe3o-por-meio-de-tuxe9cnicas-cluxe1ssicas}{%
+\chapter{Classificação por meio de técnicas clássicas}\label{classificauxe7uxe3o-por-meio-de-tuxe9cnicas-cluxe1ssicas}}
+
+\hypertarget{introduuxe7uxe3o-7}{%
+\section{Introdução}\label{introduuxe7uxe3o-7}}
+
+\hypertarget{classificauxe7uxe3o-por-regressuxe3o-loguxedstica}{%
+\section{Classificação por regressão logística}\label{classificauxe7uxe3o-por-regressuxe3o-loguxedstica}}
+
+\hypertarget{anuxe1lise-discriminante-linear}{%
+\section{Análise discriminante linear}\label{anuxe1lise-discriminante-linear}}
+
+\hypertarget{classificador-do-vizinho-mais-pruxf3ximo}{%
+\section{Classificador do vizinho mais próximo}\label{classificador-do-vizinho-mais-pruxf3ximo}}
+
+\hypertarget{algumas-extensuxf5es}{%
+\section{Algumas extensões}\label{algumas-extensuxf5es}}
+
+\hypertarget{notas-de-capuxedtulo-6}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-6}}
+
+\hypertarget{exercuxedcios-7}{%
+\section{Exercícios}\label{exercuxedcios-7}}
+
+\hypertarget{algoritmos-de-suporte-vetorial}{%
+\chapter{Algoritmos de Suporte Vetorial}\label{algoritmos-de-suporte-vetorial}}
+
+\hypertarget{introduuxe7uxe3o-8}{%
+\section{Introdução}\label{introduuxe7uxe3o-8}}
+
+\hypertarget{fundamentauxe7uxe3o-dos-algoritmos-de-suporte-vetorial}{%
+\section{Fundamentação dos algoritmos de suporte vetorial}\label{fundamentauxe7uxe3o-dos-algoritmos-de-suporte-vetorial}}
+
+\hypertarget{classificador-de-margem-muxe1xima}{%
+\section{Classificador de margem máxima}\label{classificador-de-margem-muxe1xima}}
+
+\hypertarget{classificador-de-margem-flexuxedvel}{%
+\section{Classificador de margem flexível}\label{classificador-de-margem-flexuxedvel}}
+
+\hypertarget{classificador-de-margem-nuxe3o-linear}{%
+\section{Classificador de margem não linear}\label{classificador-de-margem-nuxe3o-linear}}
+
+\hypertarget{regressuxe3o-por-algoritmos-de-suporte-vetorial}{%
+\section{Regressão por algoritmos de suporte vetorial}\label{regressuxe3o-por-algoritmos-de-suporte-vetorial}}
+
+\hypertarget{notas-de-capuxedtulo-7}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-7}}
+
+\hypertarget{exercuxedcios-8}{%
+\section{Exercícios}\label{exercuxedcios-8}}
+
+\hypertarget{uxe1rvores-e-florestas}{%
+\chapter{Árvores e Florestas}\label{uxe1rvores-e-florestas}}
+
+\hypertarget{introduuxe7uxe3o-9}{%
+\section{Introdução}\label{introduuxe7uxe3o-9}}
+
+\hypertarget{classificauxe7uxe3o-por-uxe1rvores}{%
+\section{Classificação por árvores}\label{classificauxe7uxe3o-por-uxe1rvores}}
+
+\hypertarget{bagging-boosting-e-florestas}{%
+\section{\texorpdfstring{\emph{Bagging}, \emph{boosting} e florestas}{Bagging, boosting e florestas}}\label{bagging-boosting-e-florestas}}
+
+\hypertarget{uxe1rvores-para-regressuxe3o}{%
+\section{Árvores para regressão}\label{uxe1rvores-para-regressuxe3o}}
+
+\hypertarget{notas-de-capuxedtulo-8}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-8}}
+
+\hypertarget{exercuxedcios-9}{%
+\section{Exercícios}\label{exercuxedcios-9}}
+
+\hypertarget{redes-neurais}{%
+\chapter{Redes neurais}\label{redes-neurais}}
+
+\hypertarget{introduuxe7uxe3o-10}{%
+\section{Introdução}\label{introduuxe7uxe3o-10}}
+
+\hypertarget{perceptron}{%
+\section{\texorpdfstring{\emph{Perceptron}}{Perceptron}}\label{perceptron}}
+
+\hypertarget{redes-com-camadas-ocultas}{%
+\section{Redes com camadas ocultas}\label{redes-com-camadas-ocultas}}
+
+\hypertarget{o-algoritmo-de-retropropagauxe7uxe3o-backpropagation}{%
+\section{\texorpdfstring{O algoritmo de retropropagação (\emph{backpropagation})}{O algoritmo de retropropagação (backpropagation)}}\label{o-algoritmo-de-retropropagauxe7uxe3o-backpropagation}}
+
+\hypertarget{aprendizado-profundo-deep-learning}{%
+\section{\texorpdfstring{Aprendizado profundo (\emph{Deep learning})}{Aprendizado profundo (Deep learning)}}\label{aprendizado-profundo-deep-learning}}
+
+\hypertarget{notas-de-capuxedtulo-9}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-9}}
+
+\hypertarget{exercuxedcios-10}{%
+\section{Exercícios}\label{exercuxedcios-10}}
+
+\hypertarget{part-aprendizado-nuxe3o-supervisionado}{%
+\part{Aprendizado não Supervisionado}\label{part-aprendizado-nuxe3o-supervisionado}}
+
+\hypertarget{anuxe1lise-de-agrupamentos}{%
+\chapter{Análise de Agrupamentos}\label{anuxe1lise-de-agrupamentos}}
+
+\hypertarget{introduuxe7uxe3o-11}{%
+\section{Introdução}\label{introduuxe7uxe3o-11}}
+
+\hypertarget{estratuxe9gias-de-agrupamento}{%
+\section{Estratégias de agrupamento}\label{estratuxe9gias-de-agrupamento}}
+
+\hypertarget{algoritmos-hieruxe1rquicos}{%
+\section{Algoritmos hierárquicos}\label{algoritmos-hieruxe1rquicos}}
+
+\hypertarget{algoritmos-de-partiuxe7uxe3o-k-muxe9dias}{%
+\section{Algoritmos de partição: K-médias}\label{algoritmos-de-partiuxe7uxe3o-k-muxe9dias}}
+
+\hypertarget{notas-de-capuxedtulo-10}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-10}}
+
+\hypertarget{exercuxedcios-11}{%
+\section{Exercícios}\label{exercuxedcios-11}}
+
+\hypertarget{reduuxe7uxe3o-de-dimensionalidade}{%
+\chapter{Redução de dimensionalidade}\label{reduuxe7uxe3o-de-dimensionalidade}}
+
+\hypertarget{introduuxe7uxe3o-12}{%
+\section{Introdução}\label{introduuxe7uxe3o-12}}
+
+\hypertarget{anuxe1lise-de-componentes-principais}{%
+\section{Análise de Componentes Principais}\label{anuxe1lise-de-componentes-principais}}
+
+\hypertarget{anuxe1lise-fatorial}{%
+\section{Análise fatorial}\label{anuxe1lise-fatorial}}
+
+\hypertarget{anuxe1lise-de-componentes-independentes}{%
+\section{Análise de componentes independentes}\label{anuxe1lise-de-componentes-independentes}}
+
+\hypertarget{notas-de-capuxedtulo-11}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-11}}
+
+\hypertarget{exercuxedcios-12}{%
+\section{Exercícios}\label{exercuxedcios-12}}
+
+\backmatter
+
+\hypertarget{appendix-apuxeandices}{%
+\appendix \addcontentsline{toc}{chapter}{\appendixname}}
+
+
+\hypertarget{otimizauxe7uxe3o-numuxe9rica}{%
+\chapter{Otimização numérica}\label{otimizauxe7uxe3o-numuxe9rica}}
+
+\hypertarget{introduuxe7uxe3o-13}{%
+\section{Introdução}\label{introduuxe7uxe3o-13}}
+
+\hypertarget{o-muxe9todo-de-newton-raphson}{%
+\section{O método de Newton-Raphson}\label{o-muxe9todo-de-newton-raphson}}
+
+\hypertarget{o-muxe9todo-scoring}{%
+\section{O método scoring}\label{o-muxe9todo-scoring}}
+
+\hypertarget{o-muxe9todo-de-gauss-newton}{%
+\section{O método de Gauss-Newton}\label{o-muxe9todo-de-gauss-newton}}
+
+\hypertarget{muxe9todos-quase-newton}{%
+\section{Métodos Quase-Newton}\label{muxe9todos-quase-newton}}
+
+\hypertarget{aspectos-computacionais}{%
+\section{Aspectos computacionais}\label{aspectos-computacionais}}
+
+\hypertarget{notas-de-capuxedtulo-12}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-12}}
+
+\hypertarget{exercuxedcios-13}{%
+\section{Exercícios}\label{exercuxedcios-13}}
+
+\hypertarget{nouxe7uxf5es-de-simulauxe7uxe3o}{%
+\chapter{Noções de simulação}\label{nouxe7uxf5es-de-simulauxe7uxe3o}}
+
+\hypertarget{introduuxe7uxe3o-14}{%
+\section{Introdução}\label{introduuxe7uxe3o-14}}
+
+\hypertarget{muxe9todo-monte-carlo}{%
+\section{Método Monte Carlo}\label{muxe9todo-monte-carlo}}
+
+\hypertarget{simulauxe7uxe3o-de-variuxe1veis-discretas}{%
+\section{Simulação de variáveis discretas}\label{simulauxe7uxe3o-de-variuxe1veis-discretas}}
+
+\hypertarget{simulauxe7uxe3o-de-variuxe1veis-contuxednuas}{%
+\section{Simulação de variáveis contínuas}\label{simulauxe7uxe3o-de-variuxe1veis-contuxednuas}}
+
+\hypertarget{simulauxe7uxe3o-de-vetores-aleatuxf3rios}{%
+\section{Simulação de vetores aleatórios}\label{simulauxe7uxe3o-de-vetores-aleatuxf3rios}}
+
+\hypertarget{muxe9todos-de-reamostragem}{%
+\section{Métodos de reamostragem}\label{muxe9todos-de-reamostragem}}
+
+\hypertarget{notas-de-capuxedtulo-13}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-13}}
+
+\hypertarget{exercuxedcios-14}{%
+\section{Exercícios}\label{exercuxedcios-14}}
+
+\hypertarget{algoritmos-para-dados-aumentados}{%
+\chapter{Algoritmos para dados aumentados}\label{algoritmos-para-dados-aumentados}}
+
+\hypertarget{introduuxe7uxe3o-15}{%
+\section{Introdução}\label{introduuxe7uxe3o-15}}
+
+\hypertarget{o-algoritmo-em}{%
+\section{O algoritmo EM}\label{o-algoritmo-em}}
+
+\hypertarget{o-algoritmo-em-monte-carlo}{%
+\section{O algoritmo EM Monte Carlo}\label{o-algoritmo-em-monte-carlo}}
+
+\hypertarget{cuxe1lculo-de-erros-padruxf5es}{%
+\section{Cálculo de erros padrões}\label{cuxe1lculo-de-erros-padruxf5es}}
+
+\hypertarget{o-algoritmo-para-dados-aumentados}{%
+\section{O algoritmo para dados aumentados}\label{o-algoritmo-para-dados-aumentados}}
+
+\hypertarget{exercuxedcios-15}{%
+\section{Exercícios}\label{exercuxedcios-15}}
+
+  \bibliography{latex/book.bib,latex/packages.bib}
+
+\printindex
+
+\end{document}

@@ -1,0 +1,15 @@
+# (PART) Análise Exploratória de Dados {-}
+
+# Preparação dos dados
+
+## Considerações preliminares
+
+## Planilhas de dados
+
+## Contrução de tabelas
+
+## Construção de gráficos
+
+## Notas dde capítulo
+
+## Exercícios

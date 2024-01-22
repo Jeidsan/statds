@@ -1,0 +1,43 @@
+book_filename: "statds"
+output_dir: "docs"
+delete_merged_file: true
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabela '
+    eq: 'Equação '
+    thm: 'Teorema '
+    lem: 'Lema '
+    cor: 'Corolário '
+    prp: 'Proposição '
+    cnj: 'Conjectura '
+    def: 'Definição '
+    exm: 'Exemplo '
+    exr: 'Exercício '
+    hyp: 'Hipótese '
+    proof: 'Prova'
+    remark: 'Observação'
+    solution: 'Solução'
+  ui:
+    chapter_name: 'Capítulo '
+    appendix_name: 'Apêndice '
+rmd_files:
+  - 'index.Rmd'
+  - 'chapters/01-estatistica-ciencia-de-dados-e-megadados.Rmd'
+  - 'chapters/02-preparacao-dos-dados.Rmd'
+  - 'chapters/03-analise-de-dados-de-uma-variavel.Rmd'
+  - 'chapters/04-analise-de-dados-de-duas-variaveis.Rmd'
+  - 'chapters/05-analise-de-dados-de-varias-variaveis.Rmd'
+  - 'chapters/06-analise-de-regressao.Rmd'
+  - 'chapters/07-analise-de-sobrevivencia.Rmd'
+  - 'chapters/08-regularizacao-e-modelos-aditivos-generalizados.Rmd'
+  - 'chapters/09-classificacao-por-meio-de-tecnicas-classicas.Rmd'
+  - 'chapters/10-algoritmos-de-suporte-vetorial.Rmd'
+  - 'chapters/11-arvores-e-florestas.Rmd'
+  - 'chapters/12-redes-neurais.Rmd'
+  - 'chapters/13-analise-de-agrupamentos.Rmd'
+  - 'chapters/14-reducao-de-dimensionalidade.Rmd'
+  - 'chapters/15-referencias.Rmd'
+  - 'chapters/16-otimizacao-numerica.Rmd'
+  - 'chapters/17-nocoes-de-simulacao.Rmd'
+  - 'chapters/18-algoritmos-para-dados-aumentados.Rmd'

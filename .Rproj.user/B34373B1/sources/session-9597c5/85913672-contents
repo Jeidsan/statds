@@ -1,0 +1,787 @@
+\mainmatter
+
+# (PART) Explorar {-}
+
+# Visualização de dados com `ggplot2`
+
+Para a correta execução dos códigos desse capítulo, utilizaremos algumas configurações específicas.
+
+Inicialmente, precisaremos carregar o pacote `nycflights13`, que contém os dados de todos os voos da cidade de Nova York em 2013.
+
+```{r}
+library(nycflights13)
+library(gridExtra)
+```
+
+## Introdução
+
+Não temos exercícios nesta seção.
+
+## Primeiros passos
+
+### Exercício 1.2.1 {- #exr1-2-1}
+
+:::{.enunciado}
+Execute `ggplot(data=mpg);`. O que você vê?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data=mpg) +
+    tema
+```
+
+É exibido um quadro em branco. Este quadro contém o sistema de coordenadas sobre o qual serão desenhados os grpaficos que pretendemos exibir.
+:::
+
+### Exercício 1.2.2 {- #exr1-2-2}
+
+::: {.enumciado}
+Quantas linhas existem em `mtcars`? Quantas colunas?
+:::
+
+:::{.solution}
+```{r}
+dim(mtcars)
+```
+
+R.: Existem 32 linhas e 11 colunas.
+:::
+
+### Exercício 1.2.3 {- #exr1-2-3}
+
+::: {.enunciado}
+O que a variável `drv` descreve?
+:::
+
+:::{.solution}
+
+Executamos o comando `?mpg` no console no R e a página de ajuda foi aberta. Nela encontramos o significado de cada variável do conjunto de dados.
+
+A varíável descreve o tipo de tração dos carros analisados, onde `f` significa tração dianteira, `r` significa tração traseira e `4` significa tração nas quatro rodas.
+:::
+
+### Exercício 1.2.4 {- #ex1-2-4}
+
+::: {.enunciado}
+Faça um gráfico de dispersão de `hwy` _versus_ `cyl`.
+:::
+
+::: {.solution}
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = hwy, y = cyl)) +
+    tema
+```
+:::
+
+### Exercício 1.2.5 {- #exr1-2-5}
+
+::: {.enunciado}
+O que acontece se você fizer um gráfico de dispersão de `class` _versus_ `drv`? Por que esse gráfico não é útil?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = drv, y = class)) +
+    tema
+```
+
+Apesar de serem exibidos dados no gráfico, nenhuma informação substancial é extraída, uma vez que o tipo de tração não está (a princípio) relacionado com a categoria do carro. Outro fator que torno o gráfico pouco informativo é que há, por exemplo, diversas SUVs com tração nas 4 rodas, contudo os valores ficam sobrepostos no gráfico, não dando dimensão do quanto de dados temos.
+
+Abaixo seguem duas opções de como trazer mais informação ao gráfico:
+
+- a primeira opção adiciona um ruído aos dados (`position = jitter` ou `geom_jitter()`) de modo que não haja sobreposição;
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = drv, y = class), position = "jitter") +
+    tema
+```
+
+- a segunda opção, bem mais avançada, adiciona uma estética de `size` considerando a quantidade de registros.
+
+```{r}
+mpg %>%
+    group_by(class, drv) %>%
+    summarize(count = n()) %>%
+    ggplot(mapping = aes(x = drv, y = class, size = count)) +
+        geom_point() +
+        tema
+```
+:::
+
+## Mapeamentos estéticos
+
+### Exercício 1.3.1 {- #exr1-3-1}
+
+::: {.enunciado}
+O que há de errado com este código? Por que os pontos não estão azuis?
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy, color = "blue")) +
+    tema
+```
+:::
+
+:::{.solution}
+
+Ao invés de atribuir uma cor aos elementos de `geom_point`, o atributo `color` foi passado como uma estética. O gráfico deveria ser construído da seguinte maneira:
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy), color = "blue") +
+    tema
+```
+:::
+
+### Exercício 1.3.2 {- #exr1-3-2}
+
+::: {.enunciado}
+Quais variáveis em `mpg` são categóricas? Quais variáveis são contínuas? Como você pode ver essa informação quando executa `mpg`?
+:::
+
+:::{.solution}
+
+Usando `?mpg` vemos que as variáveis categóricas são: `manufacturer`, `model`, `trans`, `drv`, `fl` e `class`. As variáveis contínuas são: `displ`, `cty`, `hwy`.
+:::
+
+### Exercício 1.3.3 {- #exr1-3-3}
+
+::: {.enunciado}
+Mapeie uma variável contínua para `color`, `size` e `shape`. Como essas estéticas se comportam de maneira diferente para variáveis categóricas e contínuas?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy, color = displ)) +
+    tema
+```
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy, size = displ)) +
+    tema
+```
+
+```{r error=TRUE}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy, shape = displ)) +
+    tema
+```
+
+Quando possível, a biblioteca _ggplot_ apesenta a estética em um gradiente, como em color e size. Porém, nem sempre isso é possível, como vemos em `shape`, que só pode ser utilizada com variáveis discretas ou categóricas.
+:::
+
+### Exercício 1.3.4 {- #exr1-3-4}
+
+::: {.enunciado}
+O que acontece se você mapear a mesma variável a várias estéticas?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy, size = class, color = class, shape = class)) +
+    tema
+```
+
+Os valores da variável serão representados de modo a atender todas as estéticas simultaneamente, por exemplo, no gráfico acima é dada uma cor, um formato e um tamanho específicos para cada classe de veículo. Os veículos de dois lugares são exibidos como um disco rosa pequeno.
+:::
+
+### Exercício 1.3.5 {- #exr1-3-5}
+
+::: {.enunciado}
+O que a estética `stroke` faz? com que formas ela trabalha?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy, stroke = displ)) +
+    tema
+```
+
+A estética `stroke` controla a espessura do ponto ou elemento a ser representado.
+:::
+
+### Exercício 1.3.6 {- #exr1-3-6}
+
+::: {.enunciado}
+O que acontece se você mapear uma estética a algo diferente de um nome de variável, como `aes(color = displ < 5)`?
+:::
+
+::: {.solution}
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy, color = displ < 5)) +
+    tema
+```
+
+A expressão é avaliada para cada um dos valores da variável e o resultado é utilizado para plotagem da estética no gráfico.
+:::
+
+## Problemas comuns
+
+Não temos exercícios nessa seção.
+
+## Facetas
+
+### Exercício 1.5.1 {- #exr1-5-1}
+
+::: {.enunciado}
+O que acontece se você criar facetas em uma variável contínua?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy)) +
+    facet_wrap(. ~ displ) +
+    tema
+```
+
+O _ggplot_ se encarrega de dividir o conjunto em classes e toma o ponto médio de cada classe para realizar a quebra em facetas.
+:::
+
+### Exercício 1.5.2 {- #exr1-5-2}
+
+::: {.enunciado}
+O que significam as célula em branco em um gráfico com `facet_grid(drv ~ cyl)`? Como elas se relacionam a este gráfico?
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy)) +
+    facet_grid(drv ~ cyl) +
+    tema
+```
+:::
+
+:::{.solution}
+Significa que para aquela combinação de variáveis, não há nenhum valor observado. Por exemplo, não há nenhum veículo com 5 cilindros e tração nas quatro rodas.
+:::
+
+### Exercício 1.5.3 {- #exr1-5-3}
+
+::: {.enunciado}
+Que gráficos o código a seguir faz? O que `.` faz?
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy)) +
+    facet_grid(drv ~ .) +
+    tema
+```
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(mapping = aes(x = displ, y = hwy)) +
+    facet_grid(. ~ cyl) +
+    tema
+```
+:::
+
+:::{.solution}
+São gerados os gráficos de dispersão segregados pelas variáveis `drv` e `cyl`, respectivamente. O `.` indica que não queremos considerar nenhuma segregação naquela dimensão do _grid_ (linha ou coluna).
+:::
+
+### Exercício 1.5.4 {- #exr1-5-4}
+
+::: {.enunciado}
+Pegue o primeiro gráfico em facetas dessa seção.
+
+```{r}
+ggplot(data = mpg) +
+    geom_point(data = transform(mpg, class = NULL), mapping = aes(x = displ, y = hwy), color = "gray80") +
+    geom_point(mapping = aes(x = displ, y = hwy)) +
+    facet_wrap(~ class, nrow = 2) +
+    tema
+```
+
+Quais são as vantagens de usar facetas, em vez de estética de cor? Quais são as desvantagens? Como o equilíbrio poderia mudar se você tivesse um conjunto de dados maior?
+:::
+
+:::{.solution}
+A principal vantagem no uso de facetas é que fica mais fácil analisar os dados quando eles estão separados em seu próprio contexto, contudo visualizá-los assim dificulta a comparação entre grupos.
+:::
+
+### Exercício 1.5.5 {- #exr1-5-5}
+
+::: {.enunciado}
+Leia `?facet_wrap`. O que `nrow` faz? o que `ncol` faz? Quais outras opções controlam o layout de paineis individuais? Por que `facet_grid()` não tem variáveis `nrow`e `ncol`?
+:::
+
+:::{.solution}
+```
+?facet_wrap
+```
+
+Os atributos `ncol` e `nrow` são utilizados pelo `facet_wrap` para determinar o número de colunas ou linhas (respectivamente) nas quais serão distribuídos os gráficos segregados. Esses atributos não figuram em `facet_grid` pelo fato deste já organizar as facetas retangularmente.
+:::
+
+### Exercício 1.5.6 {- #exr1-5-6}
+
+::: {.enunciado}
+Ao usar `facet_grid()` você normalmente deveria colocar a variável com níveis mais singulares nas colunas. Por quê?
+:::
+
+:::{.solution}
+Para melhor aproveitamento do espaço em tela.
+:::
+
+## Objetos geométricos
+
+### Exercício 1.6.1 {- #exr1-6-1}
+
+::: {.enunciado}
+Que _geom_ você usaria para desenhar um gráfico de linha? Um diagrama de caixas (_boxplot_)? Um histograma? Um gráfico de área?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+    geom_line() +
+    tema
+```
+
+```{r}
+ggplot(data = mpg) +
+    geom_boxplot(mapping = aes(y = hwy, x = class)) +
+    tema
+```
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = hwy)) +
+    geom_histogram() +
+    tema
+```
+
+```{r}
+ggplot(data = economics, mapping = aes(x = date, y = unemploy)) +
+    geom_area() +
+    tema
+```
+
+Podem ser utilizados, respectivamente as _geoms_: _line_, _boxplot_, _histogram_ e _area_.
+:::
+
+### Exercício 1.6.2 {- #exr1-6-2}
+
+::: {.enunciado}
+Execute este código em sua cabeça e preveja como será o resultado. Depois execute o código no R e confira suas previsões:
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) +
+    geom_point() +
+    geom_smooth(se = FALSE) +
+    tema
+```
+:::
+
+:::{.solution}
+O gráfico bateu com a expectativa.
+:::
+
+### Exercício 1.6.3 {- #exr1-6-3}
+
+::: {.enunciado}
+O que o `show.legend = FALSE` faz? O que acontece se você removê-lo? Por que você acha que usei isso anteriormente no capítulo?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) +
+    geom_point(show.legend = FALSE) +
+    geom_smooth(se = FALSE, show.legend = FALSE) +
+    tema
+```
+
+Ele indica que, para a camada à qual se aplica, não serão geradas as legendas de identificação.
+:::
+
+### Exercício 1.6.4 {- #exr1-6-4}
+
+::: {.enunciado}
+O que o argumento `se` para `geom_smooth` faz?
+:::
+
+:::{.solution}
+```
+?geom_smooth
+```
+
+Esse argumento indica se o intervalo de confiança utilizado no processo de suavização da linha deve ou não ser exibido no gráfico.
+:::
+
+### Exercício 1.6.5 {- #exr1-6-5}
+
+::: {.enunciado}
+Esses dois gráficos serão diferentes? Por quê/por que não?
+
+```
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+    geom_point() +
+    geom_smooth() +
+    tema
+    
+ggplot() + 
+    geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) +
+    geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy)) +
+    tema
+```
+:::
+
+:::{.solution}
+Os gráficos serão iguais. Ao informar os parâmetros `data` e `mapping` na função `ggplot` essas atributos serão considerados como globais, sendo utilizado em todos as camadas do gráfico, a menos que alguma das camadas os sobrescreva. No segundo gráfico, não são definidos parâmetros globais, porém, o mesmo parâmetro é passado para ambas as camadas, sendo assim, a única diferença é o código estar duplicado. 
+:::
+
+### Exercício 1.6.6 {- #exr1-6-6}
+
+::: {.enunciado}
+Recrie o código R necessário para gerar os seguintes gráficos:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+a <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point() +
+        geom_smooth(se = FALSE) +
+        tema
+
+b <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point() +
+        geom_smooth(mapping = aes(group = drv), se = FALSE) +
+        tema
+
+c <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) +
+        geom_point() +
+        geom_smooth(se = FALSE) +
+        tema
+
+d <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point(mapping = aes(color = drv)) +
+        geom_smooth(se = FALSE) +
+        tema
+
+e <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point(mapping = aes(color = drv)) +
+        geom_smooth(mapping = aes(linetype = drv), se = FALSE) +
+        tema
+
+f <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy, fill = drv)) +
+        geom_point(color = "white", shape = 21, size = 3, stroke = 2) +
+        tema
+
+grid.arrange(a, b, c, d, e, f, nrow = 3)
+```
+:::
+
+:::{.solution}
+```
+a <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point() +
+        geom_smooth(se = FALSE) +
+        tema
+
+b <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point() +
+        geom_smooth(mapping = aes(group = drv), se = FALSE) +
+        tema
+
+c <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) +
+        geom_point() +
+        geom_smooth(se = FALSE) +
+        tema
+
+d <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point(mapping = aes(color = drv)) +
+        geom_smooth(se = FALSE) +
+        tema
+
+e <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+        geom_point(mapping = aes(color = drv)) +
+        geom_smooth(mapping = aes(linetype = drv), se = FALSE) +
+        tema
+
+f <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy, fill = drv)) +
+        geom_point(color = "white", shape = 21, size = 3, stroke = 2) +
+        tema
+```
+:::
+
+## Transformações estatísticas
+
+### Exercício 1.7.1 {- #exr1-7-1}
+
+::: {.enunciado}
+Qual é o `geom` padrão associado ao `stat_summary()`? Como você poderia reescrever o gráfico anterior usando essa função `geom`, em vez da função `stat`?
+:::
+
+:::{.solution}
+```
+?stat_summary
+```
+
+```{r}
+ggplot(data = diamonds) +
+    stat_summary(
+        mapping = aes(x = cut, y = depth),
+        fun.min = min,
+        fun.max = max,
+        fun = median
+    ) +
+    tema
+```
+
+A `geom` associada é a `geom_pointrange` e o gráfico poderia ser reescrito da seguinte maneira.
+:::
+
+### Exercício 1.7.2 {- #exr1-7-2}
+
+::: {.enunciado}
+O que `geom_col()` faz? Qual é a diferença entre ele e `geom_bar()`?
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = diamonds, mapping = aes(x = cut)) +
+    geom_bar() +
+    tema
+```
+
+```{r}
+ggplot(data = diamonds, mapping = aes(x = cut, y = carat)) +
+    geom_col() +
+    tema
+```
+
+Enquanto no `geom_bar` a altura das barras representa uma transformação estatística relacionada às observações (como `count`, por exemplo), no `geom_col` podemos exibir o acumulado (soma) de uma variável para cada categoria exibida.
+:::
+
+### Exercício 1.7.3 {- #exr1-7-3}
+
+::: {.enunciado}
+A maioria dos `geoms` e `stats` vem em pares, que são quase sempre usados juntos. Leia a documentação e faça uma lista de todos os pares. O que eles têm em comum?
+:::
+
+:::{.solution}
+| #  | Geom             | Stat              |
+|:--:|:----------------:|:-----------------:|
+| 01 | Blank            | Identity          |
+| 02 | Curve            | Identity          |
+| 03 | Segment          | Identity          |
+| 04 | Path             | Identity          |
+| 05 | Line             | Identity          |
+| 06 | Step             | Identity          |
+| 07 | Poligon          | Identity          |
+| 08 | Raster           | Identity          |
+| 09 | Rect             | Identity          |
+| 10 | Tile             | Identity          |
+| 11 | Ribbon           | Identity          |
+| 12 | Area             | Identity          |
+| 13 | Align            | ?                 |
+| 14 | ABLine           | ?                 |
+| 15 | HLine            | ?                 |
+| 16 | Density          | Density           |
+| 17 | DotPlot          | ?                 |
+| 18 | Freqpoly         | Bin               |
+| 19 | Histogram        | Bin               | 
+| 20 | Col              | Identity          |
+| 21 | Bar              | Count             |
+| 22 | Label            | Identity          |
+| 23 | Text             | Identity          |
+| 24 | Jitter           | Identity          |
+| 25 | Point            | Identity          |
+| 26 | Quantile         | Quantile          |
+| 27 | Rug              | Identity          |
+| 28 | Boxplot          | Boxplot           |
+| 29 | Violin           | YDensity          |
+| 30 | Count            | Sum               |
+| 31 | Bin 2D           | Bin 2D            |
+| 32 | Density 2D       | Density 2D        |
+| 33 | Hex              | Bin Hex           |
+| 34 | Cross Bar        | Identity          |
+| 35 | Error Bar        | Identity          |
+| 36 | Line Range       | Identity          |
+| 37 | Point Range      | Identity          |
+| 38 | Map              | Identity          |
+| 39 | Contour          | Contour           |
+| 40 | Contour Filled   | Contour Filled    |
+:::
+
+### Exercício 1.7.4 {- #exr1-7-4}
+
+::: {.enunciado}
+Quais variáveis `stat_smooth()` calcula? Quais parâmetros controlam seu comportamento?
+:::
+
+:::{.solution}
+```
+?stat_smooth
+```
+
+
+:::
+
+### Exercício 1.7.5 {- #exr1-7-5}
+
+::: {.enunciado}
+Em nosso gráfico de barra de _proportion_, precisamos configurar `group = 1`. Por quê? Em outras palavras, qual é o problema com esses dois gráficos?
+
+```{r}
+ggplot(data = diamonds) +
+    geom_bar(mapping = aes(x = cut, y = after_stat(prop), group = 1)) +
+    tema
+```
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = diamonds) +
+    geom_bar(mapping = aes(
+        x = cut, 
+        fill = color, 
+        y = after_stat(prop), 
+        group = color
+    )) +
+    tema
+```
+
+Quando estamos trabalhando com proporções (ou estátisticas em geral), é importante destacar para o `ggplot` qual agrupamento ele deve considerar, caso contrário ele irá considerar um único grupo e dará uma impressão incorreta ao gráfico. No primeiro exemplo, foi utilizado `group = 1` (e, na verdade, poderia ser qualquer valor) apenas para indicar que deveria ser realizado um agrupamento.
+:::
+
+## Ajustes de posição
+
+### Exercício 1.8.1 {- #exr1-8-1}
+
+::: {.enunciado}
+Qual é o problema com este gráfico? Como você poderia melhorá-lo?
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+    geom_point() +
+    tema
+```
+:::
+
+:::{.solution}
+Há pontos sobrepostos. Uma melhoria poderia ser usar `geom_jitter` em lugar de `geom_point`.
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+    geom_jitter() +
+    tema
+```
+:::
+
+### Exercício 1.8.2 {- #exr1-8-2}
+
+::: {.enunciado}
+Quais parâmetros para `geom_jitter` controlam a quantidade de oscilação?
+:::
+
+:::{.solution}
+Conforme a documentação disposta em `?geom_jitter`, são utilizados os parâmetros `width` e `height`.
+:::
+
+### Exercício 1.8.3 {- #exr1-8-3}
+
+::: {.enunciado}
+Compare o contraste entre `geom_jitter` e `geom_count`.
+:::
+
+:::{.solution}
+```{r}
+a <- ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+      geom_jitter() +
+      tema
+
+b <- ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+      geom_count(show.legend = FALSE) +
+      tema
+
+grid.arrange(a, b, nrow = 2)
+```
+
+Para contornar o problema da sobreposição de pontos, `geom_jitter` adiciona um pequeno ruído aleatório aos dados, enquanto o `geom_count` contabiliza os pontos sobrepostos e altera o tamanho dos pontos conforme a quantidade.
+:::
+
+### Exercício 1.8.4 {- #exr1-8-4}
+
+::: {.enunciado}
+Qual é o ajuste de posição padrão para `geom_boxplot()`? Crie uma visualização do conjunto de dados `mpg` que demonstre isso.
+:::
+
+:::{.solution}
+Conforme pode ser visto em `?geom_boxplot`, a `position` padrão é a `dodge2`.
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
+    geom_boxplot() +
+    tema
+```
+:::
+
+## Sistemas de coordenadas
+
+### Exercício 1.9.1 {- #exr1-9-1}
+
+::: {.enunciado}
+Transforme um gráfico de barras empilhadas em um gráfico de pizza usando `coord_polar()`.
+:::
+
+:::{.solution}
+```{r}
+ggplot(data = diamonds, mapping = aes(x = cut, fill = cut)) +
+    geom_bar(show.legend = FALSE, width = 1) +
+    coord_polar() +
+    labs(x = NULL, y = NULL) +
+    theme(aspect.ratio = 1) +
+    tema
+```
+
+:::
+
+### Exercício 1.9.2 {- #exr1-9-2}
+
+::: {.enunciado}
+O que `labs()` faz? Leia a documentação.
+:::
+
+:::{.solution}
+Usando o comando `?labs`, vimos que esta função é utilizada para definir labels do gráfico, como título, subtítulo, títulos de eixos, etc.
+:::
+
+### Exercício 1.9.3 {- #exr1-9-3}
+
+::: {.enunciado}
+Qual é a diferença entre `coord_quickmap()` e `coord_map()`?
+:::
+
+:::{.solution}
+Usando o comando `?coord_map`, notamos que a diferença é que enquanto `coord_map()` não preserva linhas retas, sendo assim, mais custoso computacionalmente, o `coord_quickmap()` o faz.
+:::
+
+### Exercício 1.9.4 {- #exr1-9-4}
+
+::: {.enunciado}
+O que o gráfico a seguir lhe diz sobre a relação entre `mpg` de cidade e estrada? Por que `coord_fixed()` é importante? O que `geom_abline()` faz?
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+    geom_point() +
+    geom_abline() +
+    coord_fixed(ratio = 1, xlim = c(5, 45), ylim = c(5, 45)) +
+    tema
+```
+:::
+
+:::{.solution}
+O gráfico mostra a relação entre a eficiência na cidade e na estrada. O `coord_fixed()` força que seja mantida uma proporção entre os eixos x e y, isto é, garante que uma unidade no eixo y corresponda a um número determinado de unidades no eixo x. A razão padrão é 1. Já o `geom_abline()` define uma linha de referência diagonal ao gráfico, no nosso caso, a linha é a reta dada por $y - x = 0$.
+:::
+
+## A gramática em camadas de gráficos
+
+Não temos exercícios nesta seção.

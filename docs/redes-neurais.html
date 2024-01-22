@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 12 Redes neurais | Estatística e Ciência de Dados</title>
+  <meta name="description" content="Esta página contém notas e solução para os exercícios propostos no livro Estatística e Ciência de Dados, de autoria de Pedro Alberto Morettin e Júlio da Motta Singer, publicado pela LTC em 2022." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 12 Redes neurais | Estatística e Ciência de Dados" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://www.jeidsan.com.br/statds/images/cover.png" />
+  <meta property="og:description" content="Esta página contém notas e solução para os exercícios propostos no livro Estatística e Ciência de Dados, de autoria de Pedro Alberto Morettin e Júlio da Motta Singer, publicado pela LTC em 2022." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 12 Redes neurais | Estatística e Ciência de Dados" />
+  
+  <meta name="twitter:description" content="Esta página contém notas e solução para os exercícios propostos no livro Estatística e Ciência de Dados, de autoria de Pedro Alberto Morettin e Júlio da Motta Singer, publicado pela LTC em 2022." />
+  <meta name="twitter:image" content="https://www.jeidsan.com.br/statds/images/cover.png" />
+
+<meta name="author" content="Jeidsan A. da C. Pereira" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="árvores-e-florestas.html"/>
+<link rel="next" href="análise-de-agrupamentos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 1em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estatística e Ciência de Dados: Notas e Soluções dos Exercícios</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pendências"><i class="fa fa-check"></i>Pendências</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html"><i class="fa fa-check"></i><b>1</b> Estatística, Ciência de Dados e Megadados</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#introdução"><i class="fa fa-check"></i><b>1.1</b> Introdução</a></li>
+<li class="chapter" data-level="1.2" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#aprendizado-com-estatística"><i class="fa fa-check"></i><b>1.2</b> Aprendizado com estatística</a></li>
+<li class="chapter" data-level="1.3" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#aprendizado-automático"><i class="fa fa-check"></i><b>1.3</b> Aprendizado automático</a></li>
+<li class="chapter" data-level="1.4" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#uma-cronologia-do-desenvolvimento-da-estatística"><i class="fa fa-check"></i><b>1.4</b> Uma cronologia do desenvolvimento da estatística</a></li>
+<li class="chapter" data-level="1.5" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#notação-e-tipos-de-dados"><i class="fa fa-check"></i><b>1.5</b> Notação e tipos de dados</a></li>
+<li class="chapter" data-level="1.6" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#paradigmas-para-o-aprendizado-com-estatística"><i class="fa fa-check"></i><b>1.6</b> Paradigmas para o aprendizado com estatística</a></li>
+<li class="chapter" data-level="1.7" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#este-livro"><i class="fa fa-check"></i><b>1.7</b> Este livro</a></li>
+<li class="chapter" data-level="1.8" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#conjuntos-de-dados"><i class="fa fa-check"></i><b>1.8</b> Conjuntos de dados</a></li>
+<li class="chapter" data-level="1.9" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html#notas-do-capítulo"><i class="fa fa-check"></i><b>1.9</b> Notas do capítulo</a></li>
+</ul></li>
+<li class="part"><span><b>I Análise Exploratória de Dados</b></span></li>
+<li class="chapter" data-level="2" data-path="preparação-dos-dados.html"><a href="preparação-dos-dados.html"><i class="fa fa-check"></i><b>2</b> Preparação dos dados</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="preparação-dos-dados.html"><a href="preparação-dos-dados.html#considerações-preliminares"><i class="fa fa-check"></i><b>2.1</b> Considerações preliminares</a></li>
+<li class="chapter" data-level="2.2" data-path="preparação-dos-dados.html"><a href="preparação-dos-dados.html#planilhas-de-dados"><i class="fa fa-check"></i><b>2.2</b> Planilhas de dados</a></li>
+<li class="chapter" data-level="2.3" data-path="preparação-dos-dados.html"><a href="preparação-dos-dados.html#contrução-de-tabelas"><i class="fa fa-check"></i><b>2.3</b> Contrução de tabelas</a></li>
+<li class="chapter" data-level="2.4" data-path="preparação-dos-dados.html"><a href="preparação-dos-dados.html#construção-de-gráficos"><i class="fa fa-check"></i><b>2.4</b> Construção de gráficos</a></li>
+<li class="chapter" data-level="2.5" data-path="preparação-dos-dados.html"><a href="preparação-dos-dados.html#notas-dde-capítulo"><i class="fa fa-check"></i><b>2.5</b> Notas dde capítulo</a></li>
+<li class="chapter" data-level="2.6" data-path="preparação-dos-dados.html"><a href="preparação-dos-dados.html#exercícios"><i class="fa fa-check"></i><b>2.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html"><i class="fa fa-check"></i><b>3</b> Análise de dados de uma variável</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#introdução-1"><i class="fa fa-check"></i><b>3.1</b> Introdução</a></li>
+<li class="chapter" data-level="3.2" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#distribuição-de-frequências"><i class="fa fa-check"></i><b>3.2</b> Distribuição de frequências</a></li>
+<li class="chapter" data-level="3.3" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#medidas-resumo"><i class="fa fa-check"></i><b>3.3</b> Medidas resumo</a></li>
+<li class="chapter" data-level="3.4" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#boxplots"><i class="fa fa-check"></i><b>3.4</b> <em>Boxplots</em></a></li>
+<li class="chapter" data-level="3.5" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#modelos-probabilísticos"><i class="fa fa-check"></i><b>3.5</b> Modelos probabilísticos</a></li>
+<li class="chapter" data-level="3.6" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#dados-amostrais"><i class="fa fa-check"></i><b>3.6</b> Dados amostrais</a></li>
+<li class="chapter" data-level="3.7" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#gráficos-qq"><i class="fa fa-check"></i><b>3.7</b> Gráficos QQ</a></li>
+<li class="chapter" data-level="3.8" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#desvio-padrão-e-erro-padrão"><i class="fa fa-check"></i><b>3.8</b> Desvio padrão e erro padrão</a></li>
+<li class="chapter" data-level="3.9" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#intervalo-de-confiança-e-tamanho-da-amostra"><i class="fa fa-check"></i><b>3.9</b> Intervalo de confiança e tamanho da amostra</a></li>
+<li class="chapter" data-level="3.10" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#transformação-de-variáveis"><i class="fa fa-check"></i><b>3.10</b> Transformação de variáveis</a></li>
+<li class="chapter" data-level="3.11" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#notas-de-capítulo"><i class="fa fa-check"></i><b>3.11</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="3.12" data-path="análise-de-dados-de-uma-variável.html"><a href="análise-de-dados-de-uma-variável.html#exercícios-1"><i class="fa fa-check"></i><b>3.12</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html"><i class="fa fa-check"></i><b>4</b> Análise de dados de duas variáveis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#introdução-2"><i class="fa fa-check"></i><b>4.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.2" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#duas-variáveis-qualitativas"><i class="fa fa-check"></i><b>4.2</b> Duas variáveis qualitativas</a></li>
+<li class="chapter" data-level="4.3" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#duas-variáveis-quantitativas"><i class="fa fa-check"></i><b>4.3</b> Duas variáveis quantitativas</a></li>
+<li class="chapter" data-level="4.4" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#uma-variável-qualitativa-e-outra-quantitativa"><i class="fa fa-check"></i><b>4.4</b> Uma variável qualitativa e outra quantitativa</a></li>
+<li class="chapter" data-level="4.5" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#notas-de-capítulo-1"><i class="fa fa-check"></i><b>4.5</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="4.6" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#exercícios-2"><i class="fa fa-check"></i><b>4.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html"><i class="fa fa-check"></i><b>5</b> Análise de dados de várias variáveis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html#introdução-3"><i class="fa fa-check"></i><b>5.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.2" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html#gráficos-para-três-variáveis"><i class="fa fa-check"></i><b>5.2</b> Gráficos para três variáveis</a></li>
+<li class="chapter" data-level="5.3" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html#gráficos-para-quatro-ou-mais-variáveis"><i class="fa fa-check"></i><b>5.3</b> Gráficos para quatro ou mais variáveis</a></li>
+<li class="chapter" data-level="5.4" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html#medidas-resumo-multivariadas"><i class="fa fa-check"></i><b>5.4</b> Medidas resumo multivariadas</a></li>
+<li class="chapter" data-level="5.5" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html#tabelas-de-contingência-de-múltiplas-entradas"><i class="fa fa-check"></i><b>5.5</b> Tabelas de contingência de múltiplas entradas</a></li>
+<li class="chapter" data-level="5.6" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html#notas-de-capítulo-2"><i class="fa fa-check"></i><b>5.6</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="5.7" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html#exercícios-3"><i class="fa fa-check"></i><b>5.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html"><i class="fa fa-check"></i><b>6</b> Análise de Regressão</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html#introdução-4"><i class="fa fa-check"></i><b>6.1</b> Introdução</a></li>
+<li class="chapter" data-level="6.2" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html#regressão-linear-simples"><i class="fa fa-check"></i><b>6.2</b> Regressão linear simples</a></li>
+<li class="chapter" data-level="6.3" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html#regressão-linear-múltipla"><i class="fa fa-check"></i><b>6.3</b> Regressão linear múltipla</a></li>
+<li class="chapter" data-level="6.4" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html#regressão-para-dados-longitudinais"><i class="fa fa-check"></i><b>6.4</b> Regressão para dados longitudinais</a></li>
+<li class="chapter" data-level="6.5" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html#regressão-logística"><i class="fa fa-check"></i><b>6.5</b> Regressão logística</a></li>
+<li class="chapter" data-level="6.6" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html#notas-de-capítulo-3"><i class="fa fa-check"></i><b>6.6</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="6.7" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html#exercícios-4"><i class="fa fa-check"></i><b>6.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="análise-de-sobrevivência.html"><a href="análise-de-sobrevivência.html"><i class="fa fa-check"></i><b>7</b> Análise de Sobrevivência</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="análise-de-sobrevivência.html"><a href="análise-de-sobrevivência.html#introdução-5"><i class="fa fa-check"></i><b>7.1</b> Introdução</a></li>
+<li class="chapter" data-level="7.2" data-path="análise-de-sobrevivência.html"><a href="análise-de-sobrevivência.html#estimação-da-função-de-sobrevivência"><i class="fa fa-check"></i><b>7.2</b> Estimação da função de sobrevivência</a></li>
+<li class="chapter" data-level="7.3" data-path="análise-de-sobrevivência.html"><a href="análise-de-sobrevivência.html#comparação-de-curvas-de-sobrevivência"><i class="fa fa-check"></i><b>7.3</b> Comparação de curvas de sobrevivência</a></li>
+<li class="chapter" data-level="7.4" data-path="análise-de-sobrevivência.html"><a href="análise-de-sobrevivência.html#regressão-para-dados-de-sobrevivência"><i class="fa fa-check"></i><b>7.4</b> Regressão para dados de sobrevivência</a></li>
+<li class="chapter" data-level="7.5" data-path="análise-de-sobrevivência.html"><a href="análise-de-sobrevivência.html#notas-de-capítulo-4"><i class="fa fa-check"></i><b>7.5</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="7.6" data-path="análise-de-sobrevivência.html"><a href="análise-de-sobrevivência.html#exercícios-5"><i class="fa fa-check"></i><b>7.6</b> Exercícios</a></li>
+</ul></li>
+<li class="part"><span><b>II Aprendizado Supervisionado</b></span></li>
+<li class="chapter" data-level="8" data-path="regularização-e-modelos-aditivos-generalizados.html"><a href="regularização-e-modelos-aditivos-generalizados.html"><i class="fa fa-check"></i><b>8</b> Regularização e Modelos Aditivos Generalizados</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="regularização-e-modelos-aditivos-generalizados.html"><a href="regularização-e-modelos-aditivos-generalizados.html#introdução-6"><i class="fa fa-check"></i><b>8.1</b> Introdução</a></li>
+<li class="chapter" data-level="8.2" data-path="regularização-e-modelos-aditivos-generalizados.html"><a href="regularização-e-modelos-aditivos-generalizados.html#regularização"><i class="fa fa-check"></i><b>8.2</b> Regularização</a></li>
+<li class="chapter" data-level="8.3" data-path="regularização-e-modelos-aditivos-generalizados.html"><a href="regularização-e-modelos-aditivos-generalizados.html#modelos-aditivos-generalizados-gam"><i class="fa fa-check"></i><b>8.3</b> Modelos aditivos generalizados (GAM)</a></li>
+<li class="chapter" data-level="8.4" data-path="regularização-e-modelos-aditivos-generalizados.html"><a href="regularização-e-modelos-aditivos-generalizados.html#notas-de-capítulo-5"><i class="fa fa-check"></i><b>8.4</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="8.5" data-path="regularização-e-modelos-aditivos-generalizados.html"><a href="regularização-e-modelos-aditivos-generalizados.html#exercícios-6"><i class="fa fa-check"></i><b>8.5</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html"><i class="fa fa-check"></i><b>9</b> Classificação por meio de técnicas clássicas</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html#introdução-7"><i class="fa fa-check"></i><b>9.1</b> Introdução</a></li>
+<li class="chapter" data-level="9.2" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html#classificação-por-regressão-logística"><i class="fa fa-check"></i><b>9.2</b> Classificação por regressão logística</a></li>
+<li class="chapter" data-level="9.3" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html#análise-discriminante-linear"><i class="fa fa-check"></i><b>9.3</b> Análise discriminante linear</a></li>
+<li class="chapter" data-level="9.4" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html#classificador-do-vizinho-mais-próximo"><i class="fa fa-check"></i><b>9.4</b> Classificador do vizinho mais próximo</a></li>
+<li class="chapter" data-level="9.5" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html#algumas-extensões"><i class="fa fa-check"></i><b>9.5</b> Algumas extensões</a></li>
+<li class="chapter" data-level="9.6" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html#notas-de-capítulo-6"><i class="fa fa-check"></i><b>9.6</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="9.7" data-path="classificação-por-meio-de-técnicas-clássicas.html"><a href="classificação-por-meio-de-técnicas-clássicas.html#exercícios-7"><i class="fa fa-check"></i><b>9.7</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html"><i class="fa fa-check"></i><b>10</b> Algoritmos de Suporte Vetorial</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#introdução-8"><i class="fa fa-check"></i><b>10.1</b> Introdução</a></li>
+<li class="chapter" data-level="10.2" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#fundamentação-dos-algoritmos-de-suporte-vetorial"><i class="fa fa-check"></i><b>10.2</b> Fundamentação dos algoritmos de suporte vetorial</a></li>
+<li class="chapter" data-level="10.3" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#classificador-de-margem-máxima"><i class="fa fa-check"></i><b>10.3</b> Classificador de margem máxima</a></li>
+<li class="chapter" data-level="10.4" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#classificador-de-margem-flexível"><i class="fa fa-check"></i><b>10.4</b> Classificador de margem flexível</a></li>
+<li class="chapter" data-level="10.5" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#classificador-de-margem-não-linear"><i class="fa fa-check"></i><b>10.5</b> Classificador de margem não linear</a></li>
+<li class="chapter" data-level="10.6" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#regressão-por-algoritmos-de-suporte-vetorial"><i class="fa fa-check"></i><b>10.6</b> Regressão por algoritmos de suporte vetorial</a></li>
+<li class="chapter" data-level="10.7" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#notas-de-capítulo-7"><i class="fa fa-check"></i><b>10.7</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="10.8" data-path="algoritmos-de-suporte-vetorial.html"><a href="algoritmos-de-suporte-vetorial.html#exercícios-8"><i class="fa fa-check"></i><b>10.8</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="árvores-e-florestas.html"><a href="árvores-e-florestas.html"><i class="fa fa-check"></i><b>11</b> Árvores e Florestas</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="árvores-e-florestas.html"><a href="árvores-e-florestas.html#introdução-9"><i class="fa fa-check"></i><b>11.1</b> Introdução</a></li>
+<li class="chapter" data-level="11.2" data-path="árvores-e-florestas.html"><a href="árvores-e-florestas.html#classificação-por-árvores"><i class="fa fa-check"></i><b>11.2</b> Classificação por árvores</a></li>
+<li class="chapter" data-level="11.3" data-path="árvores-e-florestas.html"><a href="árvores-e-florestas.html#bagging-boosting-e-florestas"><i class="fa fa-check"></i><b>11.3</b> <em>Bagging</em>, <em>boosting</em> e florestas</a></li>
+<li class="chapter" data-level="11.4" data-path="árvores-e-florestas.html"><a href="árvores-e-florestas.html#árvores-para-regressão"><i class="fa fa-check"></i><b>11.4</b> Árvores para regressão</a></li>
+<li class="chapter" data-level="11.5" data-path="árvores-e-florestas.html"><a href="árvores-e-florestas.html#notas-de-capítulo-8"><i class="fa fa-check"></i><b>11.5</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="11.6" data-path="árvores-e-florestas.html"><a href="árvores-e-florestas.html#exercícios-9"><i class="fa fa-check"></i><b>11.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="redes-neurais.html"><a href="redes-neurais.html"><i class="fa fa-check"></i><b>12</b> Redes neurais</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="redes-neurais.html"><a href="redes-neurais.html#introdução-10"><i class="fa fa-check"></i><b>12.1</b> Introdução</a></li>
+<li class="chapter" data-level="12.2" data-path="redes-neurais.html"><a href="redes-neurais.html#perceptron"><i class="fa fa-check"></i><b>12.2</b> <em>Perceptron</em></a></li>
+<li class="chapter" data-level="12.3" data-path="redes-neurais.html"><a href="redes-neurais.html#redes-com-camadas-ocultas"><i class="fa fa-check"></i><b>12.3</b> Redes com camadas ocultas</a></li>
+<li class="chapter" data-level="12.4" data-path="redes-neurais.html"><a href="redes-neurais.html#o-algoritmo-de-retropropagação-backpropagation"><i class="fa fa-check"></i><b>12.4</b> O algoritmo de retropropagação (<em>backpropagation</em>)</a></li>
+<li class="chapter" data-level="12.5" data-path="redes-neurais.html"><a href="redes-neurais.html#aprendizado-profundo-deep-learning"><i class="fa fa-check"></i><b>12.5</b> Aprendizado profundo (<em>Deep learning</em>)</a></li>
+<li class="chapter" data-level="12.6" data-path="redes-neurais.html"><a href="redes-neurais.html#notas-de-capítulo-9"><i class="fa fa-check"></i><b>12.6</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="12.7" data-path="redes-neurais.html"><a href="redes-neurais.html#exercícios-10"><i class="fa fa-check"></i><b>12.7</b> Exercícios</a></li>
+</ul></li>
+<li class="part"><span><b>III Aprendizado não Supervisionado</b></span></li>
+<li class="chapter" data-level="13" data-path="análise-de-agrupamentos.html"><a href="análise-de-agrupamentos.html"><i class="fa fa-check"></i><b>13</b> Análise de Agrupamentos</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="análise-de-agrupamentos.html"><a href="análise-de-agrupamentos.html#introdução-11"><i class="fa fa-check"></i><b>13.1</b> Introdução</a></li>
+<li class="chapter" data-level="13.2" data-path="análise-de-agrupamentos.html"><a href="análise-de-agrupamentos.html#estratégias-de-agrupamento"><i class="fa fa-check"></i><b>13.2</b> Estratégias de agrupamento</a></li>
+<li class="chapter" data-level="13.3" data-path="análise-de-agrupamentos.html"><a href="análise-de-agrupamentos.html#algoritmos-hierárquicos"><i class="fa fa-check"></i><b>13.3</b> Algoritmos hierárquicos</a></li>
+<li class="chapter" data-level="13.4" data-path="análise-de-agrupamentos.html"><a href="análise-de-agrupamentos.html#algoritmos-de-partição-k-médias"><i class="fa fa-check"></i><b>13.4</b> Algoritmos de partição: K-médias</a></li>
+<li class="chapter" data-level="13.5" data-path="análise-de-agrupamentos.html"><a href="análise-de-agrupamentos.html#notas-de-capítulo-10"><i class="fa fa-check"></i><b>13.5</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="13.6" data-path="análise-de-agrupamentos.html"><a href="análise-de-agrupamentos.html#exercícios-11"><i class="fa fa-check"></i><b>13.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="redução-de-dimensionalidade.html"><a href="redução-de-dimensionalidade.html"><i class="fa fa-check"></i><b>14</b> Redução de dimensionalidade</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="redução-de-dimensionalidade.html"><a href="redução-de-dimensionalidade.html#introdução-12"><i class="fa fa-check"></i><b>14.1</b> Introdução</a></li>
+<li class="chapter" data-level="14.2" data-path="redução-de-dimensionalidade.html"><a href="redução-de-dimensionalidade.html#análise-de-componentes-principais"><i class="fa fa-check"></i><b>14.2</b> Análise de Componentes Principais</a></li>
+<li class="chapter" data-level="14.3" data-path="redução-de-dimensionalidade.html"><a href="redução-de-dimensionalidade.html#análise-fatorial"><i class="fa fa-check"></i><b>14.3</b> Análise fatorial</a></li>
+<li class="chapter" data-level="14.4" data-path="redução-de-dimensionalidade.html"><a href="redução-de-dimensionalidade.html#análise-de-componentes-independentes"><i class="fa fa-check"></i><b>14.4</b> Análise de componentes independentes</a></li>
+<li class="chapter" data-level="14.5" data-path="redução-de-dimensionalidade.html"><a href="redução-de-dimensionalidade.html#notas-de-capítulo-11"><i class="fa fa-check"></i><b>14.5</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="14.6" data-path="redução-de-dimensionalidade.html"><a href="redução-de-dimensionalidade.html#exercícios-12"><i class="fa fa-check"></i><b>14.6</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+<li class="appendix"><span><b>Apêndices</b></span></li>
+<li class="chapter" data-level="A" data-path="otimização-numérica.html"><a href="otimização-numérica.html"><i class="fa fa-check"></i><b>A</b> Otimização numérica</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="otimização-numérica.html"><a href="otimização-numérica.html#introdução-13"><i class="fa fa-check"></i><b>A.1</b> Introdução</a></li>
+<li class="chapter" data-level="A.2" data-path="otimização-numérica.html"><a href="otimização-numérica.html#o-método-de-newton-raphson"><i class="fa fa-check"></i><b>A.2</b> O método de Newton-Raphson</a></li>
+<li class="chapter" data-level="A.3" data-path="otimização-numérica.html"><a href="otimização-numérica.html#o-método-scoring"><i class="fa fa-check"></i><b>A.3</b> O método scoring</a></li>
+<li class="chapter" data-level="A.4" data-path="otimização-numérica.html"><a href="otimização-numérica.html#o-método-de-gauss-newton"><i class="fa fa-check"></i><b>A.4</b> O método de Gauss-Newton</a></li>
+<li class="chapter" data-level="A.5" data-path="otimização-numérica.html"><a href="otimização-numérica.html#métodos-quase-newton"><i class="fa fa-check"></i><b>A.5</b> Métodos Quase-Newton</a></li>
+<li class="chapter" data-level="A.6" data-path="otimização-numérica.html"><a href="otimização-numérica.html#aspectos-computacionais"><i class="fa fa-check"></i><b>A.6</b> Aspectos computacionais</a></li>
+<li class="chapter" data-level="A.7" data-path="otimização-numérica.html"><a href="otimização-numérica.html#notas-de-capítulo-12"><i class="fa fa-check"></i><b>A.7</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="A.8" data-path="otimização-numérica.html"><a href="otimização-numérica.html#exercícios-13"><i class="fa fa-check"></i><b>A.8</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html"><i class="fa fa-check"></i><b>B</b> Noções de simulação</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#introdução-14"><i class="fa fa-check"></i><b>B.1</b> Introdução</a></li>
+<li class="chapter" data-level="B.2" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#método-monte-carlo"><i class="fa fa-check"></i><b>B.2</b> Método Monte Carlo</a></li>
+<li class="chapter" data-level="B.3" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#simulação-de-variáveis-discretas"><i class="fa fa-check"></i><b>B.3</b> Simulação de variáveis discretas</a></li>
+<li class="chapter" data-level="B.4" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#simulação-de-variáveis-contínuas"><i class="fa fa-check"></i><b>B.4</b> Simulação de variáveis contínuas</a></li>
+<li class="chapter" data-level="B.5" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#simulação-de-vetores-aleatórios"><i class="fa fa-check"></i><b>B.5</b> Simulação de vetores aleatórios</a></li>
+<li class="chapter" data-level="B.6" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#métodos-de-reamostragem"><i class="fa fa-check"></i><b>B.6</b> Métodos de reamostragem</a></li>
+<li class="chapter" data-level="B.7" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#notas-de-capítulo-13"><i class="fa fa-check"></i><b>B.7</b> Notas de capítulo</a></li>
+<li class="chapter" data-level="B.8" data-path="noções-de-simulação.html"><a href="noções-de-simulação.html#exercícios-14"><i class="fa fa-check"></i><b>B.8</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="algoritmos-para-dados-aumentados.html"><a href="algoritmos-para-dados-aumentados.html"><i class="fa fa-check"></i><b>C</b> Algoritmos para dados aumentados</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="algoritmos-para-dados-aumentados.html"><a href="algoritmos-para-dados-aumentados.html#introdução-15"><i class="fa fa-check"></i><b>C.1</b> Introdução</a></li>
+<li class="chapter" data-level="C.2" data-path="algoritmos-para-dados-aumentados.html"><a href="algoritmos-para-dados-aumentados.html#o-algoritmo-em"><i class="fa fa-check"></i><b>C.2</b> O algoritmo EM</a></li>
+<li class="chapter" data-level="C.3" data-path="algoritmos-para-dados-aumentados.html"><a href="algoritmos-para-dados-aumentados.html#o-algoritmo-em-monte-carlo"><i class="fa fa-check"></i><b>C.3</b> O algoritmo EM Monte Carlo</a></li>
+<li class="chapter" data-level="C.4" data-path="algoritmos-para-dados-aumentados.html"><a href="algoritmos-para-dados-aumentados.html#cálculo-de-erros-padrões"><i class="fa fa-check"></i><b>C.4</b> Cálculo de erros padrões</a></li>
+<li class="chapter" data-level="C.5" data-path="algoritmos-para-dados-aumentados.html"><a href="algoritmos-para-dados-aumentados.html#o-algoritmo-para-dados-aumentados"><i class="fa fa-check"></i><b>C.5</b> O algoritmo para dados aumentados</a></li>
+<li class="chapter" data-level="C.6" data-path="algoritmos-para-dados-aumentados.html"><a href="algoritmos-para-dados-aumentados.html#exercícios-15"><i class="fa fa-check"></i><b>C.6</b> Exercícios</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estatística e Ciência de Dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="redes-neurais" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Capítulo 12</span> Redes neurais<a href="redes-neurais.html#redes-neurais" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introdução-10" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Introdução<a href="redes-neurais.html#introdução-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="perceptron" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> <em>Perceptron</em><a href="redes-neurais.html#perceptron" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="redes-com-camadas-ocultas" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Redes com camadas ocultas<a href="redes-neurais.html#redes-com-camadas-ocultas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="o-algoritmo-de-retropropagação-backpropagation" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> O algoritmo de retropropagação (<em>backpropagation</em>)<a href="redes-neurais.html#o-algoritmo-de-retropropagação-backpropagation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="aprendizado-profundo-deep-learning" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Aprendizado profundo (<em>Deep learning</em>)<a href="redes-neurais.html#aprendizado-profundo-deep-learning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="notas-de-capítulo-9" class="section level2 hasAnchor" number="12.6">
+<h2><span class="header-section-number">12.6</span> Notas de capítulo<a href="redes-neurais.html#notas-de-capítulo-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="exercícios-10" class="section level2 hasAnchor" number="12.7">
+<h2><span class="header-section-number">12.7</span> Exercícios<a href="redes-neurais.html#exercícios-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="árvores-e-florestas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="análise-de-agrupamentos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": true,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["statds.pdf", "statds.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+</body>
+
+</html>
