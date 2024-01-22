@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.22)  22 JAN 2024 11:54
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.22)  22 JAN 2024 12:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2948,48 +2948,48 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [36
 
 ]
-Underfull \vbox (badness 10000) detected at line 575
+Underfull \vbox (badness 10000) detected at line 573
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 575
+Overfull \hbox (336.25pt too wide) detected at line 573
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 575
+Underfull \vbox (badness 10000) detected at line 573
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 575
+Overfull \hbox (336.25pt too wide) detected at line 573
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 575
+Underfull \vbox (badness 10000) detected at line 573
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 575
+Overfull \hbox (336.25pt too wide) detected at line 573
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 575
+Underfull \vbox (badness 10000) detected at line 573
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 575
+Overfull \hbox (336.25pt too wide) detected at line 573
 []
  []
 
+Ap\^endice A.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
 [37
-
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3031,41 +3031,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [38
 
 ]
-Underfull \vbox (badness 10000) detected at line 602
+Underfull \vbox (badness 10000) detected at line 600
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 602
+Overfull \hbox (336.25pt too wide) detected at line 600
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 602
+Underfull \vbox (badness 10000) detected at line 600
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 602
+Overfull \hbox (336.25pt too wide) detected at line 600
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 602
+Underfull \vbox (badness 10000) detected at line 600
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 602
+Overfull \hbox (336.25pt too wide) detected at line 600
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 602
+Underfull \vbox (badness 10000) detected at line 600
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 602
+Overfull \hbox (336.25pt too wide) detected at line 600
 []
  []
 
+Ap\^endice B.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -3113,42 +3114,43 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [40
 
 ]
-Underfull \vbox (badness 10000) detected at line 629
+Underfull \vbox (badness 10000) detected at line 627
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 629
+Overfull \hbox (336.25pt too wide) detected at line 627
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 629
+Underfull \vbox (badness 10000) detected at line 627
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 629
+Overfull \hbox (336.25pt too wide) detected at line 627
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 629
+Underfull \vbox (badness 10000) detected at line 627
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 629
+Overfull \hbox (336.25pt too wide) detected at line 627
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 629
+Underfull \vbox (badness 10000) detected at line 627
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 629
+Overfull \hbox (336.25pt too wide) detected at line 627
 []
  []
 
-(./statds.bbl
+Ap\^endice C.
+
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
@@ -3194,7 +3196,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [42
 
-]
+] (./statds.bbl
 Underfull \vbox (badness 10000) detected at line 1
  []
 
@@ -3242,17 +3244,18 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [43
 
+
 ] (./statds.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `statds.out' has not changed.
-(rerunfilecheck)             Checksum: 4CB6B6AEF8C515B0FFAA6F1C22B83830;25523.
+(rerunfilecheck)             Checksum: 7970991EF4A413668F75D9779878F5E1;25397.
  ) 
 Here is how much of TeX's memory you used:
  20594 strings out of 476805
- 390331 string characters out of 5801669
+ 390328 string characters out of 5801669
  1931191 words of memory out of 5000000
  42239 multiletter control sequences out of 15000+600000
  563927 words of font info for 129 fonts, out of 8000000 for 9000
