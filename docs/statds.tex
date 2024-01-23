@@ -182,6 +182,23 @@
 \author{Jeidsan A. da C. Pereira}
 \date{22 de janeiro de 2024}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{lemma}{Lema}[chapter]
+\newtheorem{corollary}{Corolário}[chapter]
+\newtheorem{proposition}{Proposição}[chapter]
+\newtheorem{conjecture}{Conjectura}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Exemplo}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercício}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hipótese}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Observação}
+\newtheorem*{solution}{Solução}
 \begin{document}
 \maketitle
 
@@ -226,29 +243,73 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{introduuxe7uxe3o}{%
 \section{Introdução}\label{introduuxe7uxe3o}}
 
+\begin{quote}
+Atualmente, os termos \emph{Data Science} (\textbf{Ciência de Dados}) e \emph{Big Data} (\textbf{Megadadas}) são utilizados em profusão como se envolvessem conceitos novos, distintos daqueles com que os estatísticos lidam há cerca de dois séculos \citep[p.~1]{MorettinSinger2022}.
+\end{quote}
+
 \hypertarget{aprendizado-com-estatuxedstica}{%
 \section{Aprendizado com estatística}\label{aprendizado-com-estatuxedstica}}
+
+\begin{quote}
+O \textbf{aprendizado supervisionado} está relacionado com metodologia desenvolvida essencialmente para \textbf{previsão} e \textbf{classificação}. No âmbito da previsão, o objetivo é utilizar \textbf{variáveis preditivas} (sexo, classe social, renda, por exemplo) observadas em várias \textbf{unidades} (clientes de um banco, por exemplo) para ``advinhar'' valores de uma \textbf{variável resposta numérica} (saldo médio, por exemplo) de novas unidades. O problema de classificação consiste em qual categoria de uma \textbf{variável resposta qualitativa} (bons e maus pagadores, por exemplo) as novas unidades são classificadas \citep[p.~3]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+No \textbf{aprendizado não supervisionado}, dispomos apenas um conjunto de dados, sem distinção entre preditoras e respostas, e o objetivo é descrever \textbf{associações} e \textbf{padrões} entre essas variáveis e \textbf{agrupá-las} com o objetivo de identificar características comuns e conjuntos de unidades de investigação ou desenvolver métodos para combiná-las e assim \textbf{reduzir sua dimensionalidade} \citep[p.~3]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+Além de aprendizado supervisionado e não supervisionado, podemos acrescentar um terceiro tipo, denominado \textbf{aprendizado com reforço} (\emph{reinforcement learning}), segundo o qual um algoritmo ``aprende'' a realizar determinadas tarefas por meio de repetições com o fim de maximizar um prêmio sujeito a um valor máximo \citep[p.~3]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+Embora tanto o aprendizado supervisionado quanto o aprendizado com reforço utilizem um mapeamento entre entradas (\emph{inputs}) e saídas (\emph{outputs}), no primeiro caso a retroalimentação (\emph{feedback}) fornecida ao algoritmo é um conjunto de ações corretas necessárias para a realização de uma tarefa; no aprendizado com reforço, por outro lado, a retroalimentação é baseada num sistema com prêmios e punições como indicativos de ações corretas ou incorretas \citep[p.~3]{MorettinSinger2022}.
+\end{quote}
 
 \hypertarget{aprendizado-automuxe1tico}{%
 \section{Aprendizado automático}\label{aprendizado-automuxe1tico}}
 
+Jordan \citep[2019 \emph{apud}][p.~4]{MorettinSinger2022} distingue três tipos de inteligência articifial: i) inteligência artificial imitativa humana; ii) aumento de inteligência; e iii) infraestrutura inteligente.
+
+\begin{quote}
+De modo informal, a inteligência artificial está relacionada com um esforço para automatizar tarefas intelectuais usualmente realizadas por seres humanos (Chollet, 2018) e consequentemente, intimamente ligada ao desenvolvimento da computação (ou programação de computadores) \citep[p.~4]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+Convém ressaltar que o objetivo do aprendizado automático não é o mesmo daquele consi- derado na análise de regressão usual, em que se pretende entender como cada variável preditora Ro está associada com a variável resposta. O objetivo do aprendizado automático é selecionar o mo- delo que produz melhores previsões, mesmo que as variáveis selecionadas com essa finalidade não sejam aquelas consideradas numa análise padrão \citep[p.~5]{MorettinSinger2022}.
+\end{quote}
+
 \hypertarget{uma-cronologia-do-desenvolvimento-da-estatuxedstica}{%
 \section{Uma cronologia do desenvolvimento da estatística}\label{uma-cronologia-do-desenvolvimento-da-estatuxedstica}}
+
+Sem notas para esta seção.
 
 \hypertarget{notauxe7uxe3o-e-tipos-de-dados}{%
 \section{Notação e tipos de dados}\label{notauxe7uxe3o-e-tipos-de-dados}}
 
+Sem notas para esta seção.
+
 \hypertarget{paradigmas-para-o-aprendizado-com-estatuxedstica}{%
 \section{Paradigmas para o aprendizado com estatística}\label{paradigmas-para-o-aprendizado-com-estatuxedstica}}
+
+Sem notas para esta seção.
 
 \hypertarget{este-livro}{%
 \section{Este livro}\label{este-livro}}
 
+\begin{quote}
+Independentemente do volume de dados disponíveis para análise, Ciência de Dados é uma atividade multidisciplinar que envolve: i) um problema a ser resolvido com questões claramente especificadas; ii) um conjunto de dados (seja ele volumoso ou não); iii) os meios para sua obtenção; iv) sua organização; v) a especificação do problema original em termos das variáveis desse conjunto de dados; vi) a descrição e resumo dos dados à luz do problema a ser resolvido; vii) a escolha das técnicas estatísticas apropriadas para a resolução desse problema; viii) os algoritmos computacionais necessários para a implementação dessas técnicas; ix) a apresentação dos resultados \citep[p.~11]{MorettinSinger2022}.
+\end{quote}
+
 \hypertarget{conjuntos-de-dados}{%
 \section{Conjuntos de dados}\label{conjuntos-de-dados}}
 
+Sem notas para esta seção.
+
 \hypertarget{notas-do-capuxedtulo}{%
 \section{Notas do capítulo}\label{notas-do-capuxedtulo}}
+
+Sem notas para esta seção.
 
 \hypertarget{part-anuxe1lise-exploratuxf3ria-de-dados}{%
 \part{Análise Exploratória de Dados}\label{part-anuxe1lise-exploratuxf3ria-de-dados}}
@@ -259,20 +320,153 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{considerauxe7uxf5es-preliminares}{%
 \section{Considerações preliminares}\label{considerauxe7uxf5es-preliminares}}
 
+\begin{quote}
+O ramo da Estatística conhecido como \textbf{Análise Exploratória de Dados} se ocupa da organização e resumo dos dados de uma amostra ou, eventualmente, de toda a população e o ramo conhecido como \textbf{Inferência Estatística} se refere ao processo de se tirar conclusães sobre uma população com base em uma amostra dela \citep[p.~21]{MorettinSinger2022}.
+\end{quote}
+
 \hypertarget{planilhas-de-dados}{%
 \section{Planilhas de dados}\label{planilhas-de-dados}}
+
+Sem notas para esta seção.
 
 \hypertarget{contruuxe7uxe3o-de-tabelas}{%
 \section{Contrução de tabelas}\label{contruuxe7uxe3o-de-tabelas}}
 
+Sem notas para esta seção.
+
 \hypertarget{construuxe7uxe3o-de-gruxe1ficos}{%
 \section{Construção de gráficos}\label{construuxe7uxe3o-de-gruxe1ficos}}
 
-\hypertarget{notas-dde-capuxedtulo}{%
-\section{Notas dde capítulo}\label{notas-dde-capuxedtulo}}
+Sem notas para esta seção.
+
+\hypertarget{notas-de-capuxedtulo}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo}}
+
+Sem notas para esta seção.
 
 \hypertarget{exercuxedcios}{%
 \section{Exercícios}\label{exercuxedcios}}
+
+\hypertarget{exr2-1}{%
+\subsection*{Exercício 2.1}\label{exr2-1}}
+\addcontentsline{toc}{subsection}{Exercício 2.1}
+
+O objetivo de um estudo da Faculdade de Medicina da USP foi avaliar a associação entre a quantidade de morfina administrada a pacientes com dores intensas provenientes de lesões medulares ou radiculares e a dosagem dessa substância em seus cabelos. Três medidas foram realizadas em cada paciente, a primeira logo após o início do tratamento e as demais após 30 e 60 dias. Detalhes podem ser obtidos no documento disponível no arquivo morfina.doc.
+
+A planilha morfina.xls, disponível no arquivo morfina foi entregue ao estatístico para análise e contém resumos de características demográficas além dos dados do estudo.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Com base nessa planilha, apresente um dicionário com a especificação das variáveis segundo as indicações da Seção 2.2 e construa a planilha correspondente.
+\item
+  Com as informações disponíveis, construa tabelas para as variáveis sexo, raça, grau de instrução e tipo de lesão segundo as sugestões da Seção 2.3.
+\end{enumerate}
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-2}{%
+\subsection*{Exercício 2.2}\label{exr2-2}}
+\addcontentsline{toc}{subsection}{Exercício 2.2}
+
+A Figura 2.6 foi extraída de um estudo sobre atitudes de profissionais de saúde com rela- ção a cuidados com infecção hospitalar. Critique-a e reformule-a para facilitar sua leitura, lembrando que a comparação de maior interesse é entre as diferentes categorias profissionais.
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-3}{%
+\subsection*{Exercício 2.3}\label{exr2-3}}
+\addcontentsline{toc}{subsection}{Exercício 2.3}
+
+Utilize as sugestões para construção de planilhas apresentadas na Seção 2.2 com a finalidade de preparar os dados do arquivo empresa para análise estatística.
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-4}{%
+\subsection*{Exercício 2.4}\label{exr2-4}}
+\addcontentsline{toc}{subsection}{Exercício 2.4}
+
+Num estudo planejado para avaliar o consumo médio de combustível de veículos em dife- rentes velocidades foram utilizados 4 automóveis da marca A e 3 automóveis da marca B selecionados ao acaso das respectivas linhas de produção. O consumo (em\textasciitilde L/km) de cada um dos 7 automóveis foi observado em 3 velocidades diferentes (40 km/h, 80 km/h e 110\textasciitilde km/h) Delineie uma planilha apropriada para a coleta e análise estatística dos dados, rotulando-a adequadamente.
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-5}{%
+\subsection*{Exercício 2.5}\label{exr2-5}}
+\addcontentsline{toc}{subsection}{Exercício 2.5}
+
+Utilizando os dados do arquivo enforco, prepare uma planilha Excel num formato conve niente para análise pelo R. Inclua apenas as variáveis Idade, Altura, Peso, Frequência cardiaca e VO2 no repouso além do quociente VE/VCO2, as correspondentes porcentagens relativa mente ao máximo, o quociente VO2/FC no pico do exercício e data do óbito. Importe a pla nilha Excel que você criou utilizando comandos R e obtenha as características do arquivo importado (número de casos, número de observações omissas etc.)
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-6}{%
+\subsection*{Exercício 2.6}\label{exr2-6}}
+\addcontentsline{toc}{subsection}{Exercício 2.6}
+
+A Figura 2.7 contém uma planilha encaminhada pelos investigadores responsáveis por um estudo sobre AIDS para análise estatistica. Organize-a de forma a permitir sua análise por meio de um pacote computacional como o R.
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-7}{%
+\subsection*{Exercício 2.7}\label{exr2-7}}
+\addcontentsline{toc}{subsection}{Exercício 2.7}
+
+A planilha apresentada na Figura 2.8 contém dados de um estudo em que o limiar auditivo foi avaliado nas orelhas direita (OD) e esquerda (OE) de 13 pacientes em 3 ocasiões (Limiar, Teste 1 e Teste 2). Reformate-a segundo as recomendações da Seção 2.2, indicando claramente
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  a definição das variáveis.
+\item
+  os rótulos para as colunas da planilha.
+\end{enumerate}
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-8}{%
+\subsection*{Exercício 2.8}\label{exr2-8}}
+\addcontentsline{toc}{subsection}{Exercício 2.8}
+
+A planilha disponível no arquivo cidades contém informações demográficas de 3554 8 municípios brasileiros.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Importe-a para permitir a análise por meio do software R, indicando os problemas encontrados nesse processo além de sua solução.
+\item
+  Use o comando summary para obter um resumo das variáveis do arquivo.
+\item
+  Classifique cada variável como numérica ou alfanumérica e indique o número de observações omissas de cada uma delas.
+\end{enumerate}
+
+\begin{solution}
+x
+\end{solution}
+
+\hypertarget{exr2-9}{%
+\subsection*{Exercício 2.9}\label{exr2-9}}
+\addcontentsline{toc}{subsection}{Exercício 2.9}
+
+Preencha a ficha de inscrição do Centro de Estatistica Aplicada (www.ime.usp.br/-cea) com as informações de um estudo em que você está envolvido.
+
+\begin{solution}
+x
+\end{solution}
 
 \hypertarget{anuxe1lise-de-dados-de-uma-variuxe1vel}{%
 \chapter{Análise de dados de uma variável}\label{anuxe1lise-de-dados-de-uma-variuxe1vel}}
@@ -307,8 +501,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{transformauxe7uxe3o-de-variuxe1veis}{%
 \section{Transformação de variáveis}\label{transformauxe7uxe3o-de-variuxe1veis}}
 
-\hypertarget{notas-de-capuxedtulo}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo}}
+\hypertarget{notas-de-capuxedtulo-1}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-1}}
 
 \hypertarget{exercuxedcios-1}{%
 \section{Exercícios}\label{exercuxedcios-1}}
@@ -328,8 +522,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{uma-variuxe1vel-qualitativa-e-outra-quantitativa}{%
 \section{Uma variável qualitativa e outra quantitativa}\label{uma-variuxe1vel-qualitativa-e-outra-quantitativa}}
 
-\hypertarget{notas-de-capuxedtulo-1}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-1}}
+\hypertarget{notas-de-capuxedtulo-2}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-2}}
 
 \hypertarget{exercuxedcios-2}{%
 \section{Exercícios}\label{exercuxedcios-2}}
@@ -352,8 +546,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{tabelas-de-continguxeancia-de-muxfaltiplas-entradas}{%
 \section{Tabelas de contingência de múltiplas entradas}\label{tabelas-de-continguxeancia-de-muxfaltiplas-entradas}}
 
-\hypertarget{notas-de-capuxedtulo-2}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-2}}
+\hypertarget{notas-de-capuxedtulo-3}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-3}}
 
 \hypertarget{exercuxedcios-3}{%
 \section{Exercícios}\label{exercuxedcios-3}}
@@ -376,8 +570,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{regressuxe3o-loguxedstica}{%
 \section{Regressão logística}\label{regressuxe3o-loguxedstica}}
 
-\hypertarget{notas-de-capuxedtulo-3}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-3}}
+\hypertarget{notas-de-capuxedtulo-4}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-4}}
 
 \hypertarget{exercuxedcios-4}{%
 \section{Exercícios}\label{exercuxedcios-4}}
@@ -397,8 +591,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{regressuxe3o-para-dados-de-sobrevivuxeancia}{%
 \section{Regressão para dados de sobrevivência}\label{regressuxe3o-para-dados-de-sobrevivuxeancia}}
 
-\hypertarget{notas-de-capuxedtulo-4}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-4}}
+\hypertarget{notas-de-capuxedtulo-5}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-5}}
 
 \hypertarget{exercuxedcios-5}{%
 \section{Exercícios}\label{exercuxedcios-5}}
@@ -418,8 +612,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{modelos-aditivos-generalizados-gam}{%
 \section{Modelos aditivos generalizados (GAM)}\label{modelos-aditivos-generalizados-gam}}
 
-\hypertarget{notas-de-capuxedtulo-5}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-5}}
+\hypertarget{notas-de-capuxedtulo-6}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-6}}
 
 \hypertarget{exercuxedcios-6}{%
 \section{Exercícios}\label{exercuxedcios-6}}
@@ -442,8 +636,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{algumas-extensuxf5es}{%
 \section{Algumas extensões}\label{algumas-extensuxf5es}}
 
-\hypertarget{notas-de-capuxedtulo-6}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-6}}
+\hypertarget{notas-de-capuxedtulo-7}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-7}}
 
 \hypertarget{exercuxedcios-7}{%
 \section{Exercícios}\label{exercuxedcios-7}}
@@ -469,8 +663,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{regressuxe3o-por-algoritmos-de-suporte-vetorial}{%
 \section{Regressão por algoritmos de suporte vetorial}\label{regressuxe3o-por-algoritmos-de-suporte-vetorial}}
 
-\hypertarget{notas-de-capuxedtulo-7}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-7}}
+\hypertarget{notas-de-capuxedtulo-8}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-8}}
 
 \hypertarget{exercuxedcios-8}{%
 \section{Exercícios}\label{exercuxedcios-8}}
@@ -490,8 +684,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{uxe1rvores-para-regressuxe3o}{%
 \section{Árvores para regressão}\label{uxe1rvores-para-regressuxe3o}}
 
-\hypertarget{notas-de-capuxedtulo-8}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-8}}
+\hypertarget{notas-de-capuxedtulo-9}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-9}}
 
 \hypertarget{exercuxedcios-9}{%
 \section{Exercícios}\label{exercuxedcios-9}}
@@ -514,8 +708,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{aprendizado-profundo-deep-learning}{%
 \section{\texorpdfstring{Aprendizado profundo (\emph{Deep learning})}{Aprendizado profundo (Deep learning)}}\label{aprendizado-profundo-deep-learning}}
 
-\hypertarget{notas-de-capuxedtulo-9}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-9}}
+\hypertarget{notas-de-capuxedtulo-10}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-10}}
 
 \hypertarget{exercuxedcios-10}{%
 \section{Exercícios}\label{exercuxedcios-10}}
@@ -538,8 +732,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{algoritmos-de-partiuxe7uxe3o-k-muxe9dias}{%
 \section{Algoritmos de partição: K-médias}\label{algoritmos-de-partiuxe7uxe3o-k-muxe9dias}}
 
-\hypertarget{notas-de-capuxedtulo-10}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-10}}
+\hypertarget{notas-de-capuxedtulo-11}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-11}}
 
 \hypertarget{exercuxedcios-11}{%
 \section{Exercícios}\label{exercuxedcios-11}}
@@ -559,8 +753,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{anuxe1lise-de-componentes-independentes}{%
 \section{Análise de componentes independentes}\label{anuxe1lise-de-componentes-independentes}}
 
-\hypertarget{notas-de-capuxedtulo-11}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-11}}
+\hypertarget{notas-de-capuxedtulo-12}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-12}}
 
 \hypertarget{exercuxedcios-12}{%
 \section{Exercícios}\label{exercuxedcios-12}}
@@ -590,8 +784,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{aspectos-computacionais}{%
 \section{Aspectos computacionais}\label{aspectos-computacionais}}
 
-\hypertarget{notas-de-capuxedtulo-12}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-12}}
+\hypertarget{notas-de-capuxedtulo-13}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-13}}
 
 \hypertarget{exercuxedcios-13}{%
 \section{Exercícios}\label{exercuxedcios-13}}
@@ -617,8 +811,8 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail \emph{\h
 \hypertarget{muxe9todos-de-reamostragem}{%
 \section{Métodos de reamostragem}\label{muxe9todos-de-reamostragem}}
 
-\hypertarget{notas-de-capuxedtulo-13}{%
-\section{Notas de capítulo}\label{notas-de-capuxedtulo-13}}
+\hypertarget{notas-de-capuxedtulo-14}{%
+\section{Notas de capítulo}\label{notas-de-capuxedtulo-14}}
 
 \hypertarget{exercuxedcios-14}{%
 \section{Exercícios}\label{exercuxedcios-14}}
