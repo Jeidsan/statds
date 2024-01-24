@@ -1,0 +1,20 @@
+﻿id,grupo,diagnostico,dst,mac,peso,tempo_peso
+2847111D,1,0,,pilula,11,37
+3034048F,1,0.5,,pilula,,
+3244701J,1,1,,condon,,
+2943791B,1,0,,não,8,39
+3000327F,1,4,condiloma/sífilis,não,9,39
+3232893D,1,1,,diu,3,39
+3028772E,1,3,,não,3,38
+3240047G,1,0,,pilula,9,38
+3017222G,1,,HPV,condon,,
+3015834J,1,2,,condon,14,40
+3173611E,2,0.4,abcesso ovariano,condon,15,40
+3296159D,2,0,,condon,,
+3147820D1,2,2,,,4,37
+3274750K,2,3,,condon,8,38
+3274447H,2,0,sífilis com 3 meses,condon,,
+2960066D,2,5,,,13,36
+3235727J,2,7,,condon,-2,38
+3264897E,2,0,condiloma/sífilis,condon,0,
+3044120J,2,5,HPV,,3,39

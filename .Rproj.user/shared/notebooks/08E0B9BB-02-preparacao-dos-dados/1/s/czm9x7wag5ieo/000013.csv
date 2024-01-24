@@ -1,0 +1,4 @@
+"0","cidades <- readxl::read_xls(paste0(data_dir, ""cidades.xls""), NA = c('-'))
+"
+"2","Erro: '=' inesperado em ""cidades <- readxl::read_xls(paste0(data_dir, ""cidades.xls""), NA =""
+"

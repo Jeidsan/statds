@@ -1,0 +1,4 @@
+"0","cidades <- read_csv(paste0(data_dir, ""cidades.xls""))[:-2]
+"
+"2","Erro: ':' inesperado em ""cidades <- read_csv(paste0(data_dir, ""cidades.xls""))[:""
+"

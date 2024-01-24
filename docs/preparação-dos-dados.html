@@ -53,6 +53,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -338,24 +402,367 @@ div.csl-indent {
 <div id="exr2-1" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 2.1<a href="preparação-dos-dados.html#exr2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>O objetivo de um estudo da Faculdade de Medicina da USP foi avaliar a associação entre a quantidade de morfina administrada a pacientes com dores intensas provenientes de lesões medulares ou radiculares e a dosagem dessa substância em seus cabelos. Três medidas foram realizadas em cada paciente, a primeira logo após o início do tratamento e as demais após 30 e 60 dias. Detalhes podem ser obtidos no documento disponível no arquivo morfina.doc.</p>
-<p>A planilha morfina.xls, disponível no arquivo morfina foi entregue ao estatístico para análise e contém resumos de características demográficas além dos dados do estudo.</p>
+<p>O objetivo de um estudo da Faculdade de Medicina da USP foi avaliar a associação entre a quantidade de morfina administrada a pacientes com dores intensas provenientes de lesões medulares ou radiculares e a dosagem dessa substância em seus cabelos. Três medidas foram realizadas em cada paciente, a primeira logo após o início do tratamento e as demais após 30 e 60 dias. Detalhes podem ser obtidos no documento disponível no arquivo <code>morfina.doc</code>.</p>
+<p>A planilha <code>morfina.xls</code>, disponível no arquivo morfina foi entregue ao estatístico para análise e contém resumos de características demográficas além dos dados do estudo.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Com base nessa planilha, apresente um dicionário com a especificação das variáveis segundo as indicações da Seção 2.2 e construa a planilha correspondente.</li>
 <li>Com as informações disponíveis, construa tabelas para as variáveis sexo, raça, grau de instrução e tipo de lesão segundo as sugestões da Seção 2.3.</li>
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-1" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-1" class="solution"><em>Solução</em>. </span>Utilizando o arquivo <code>morfina.doc</code> chegamos à seguinte solução para o item <code>a</code>:</p>
+<table>
+<caption><strong>Tabela 2.1:</strong> Dicionários para as variáveis do estudo <code>morfina.doc</code> <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></caption>
+<colgroup>
+<col width="14%" />
+<col width="63%" />
+<col width="21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Rótulo</th>
+<th align="left">Variável</th>
+<th align="left">Unidade de medida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">Identificação do paciente</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">data</td>
+<td align="left">Data de avaliação do paciente</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">idade</td>
+<td align="left">Idade do paciente</td>
+<td align="left">anos</td>
+</tr>
+<tr class="even">
+<td align="left">sexo</td>
+<td align="left">Sexo do paciente</td>
+<td align="left">1 - masculino <br />2 - feminino</td>
+</tr>
+<tr class="odd">
+<td align="left">raça</td>
+<td align="left">Raça e/ou etnia do paciente</td>
+<td align="left">1 - pardo <br />2 - negro <br />3 - branco <br />4 - indígena <br />5 - amarelo</td>
+</tr>
+<tr class="even">
+<td align="left">religião</td>
+<td align="left">Religião do paciente</td>
+<td align="left">1 - catolico <br />2 - sem religião <br />3 - evangélico <br />4 - espírita <br />5 - judeu <br />6 - outra</td>
+</tr>
+<tr class="odd">
+<td align="left">peso</td>
+<td align="left">Peso do paciente</td>
+<td align="left">quilogramas (kg)</td>
+</tr>
+<tr class="even">
+<td align="left">altura</td>
+<td align="left">Altura do paciente</td>
+<td align="left">metros (m)</td>
+</tr>
+<tr class="odd">
+<td align="left">instrução</td>
+<td align="left">Grau de instrução do paciente</td>
+<td align="left">1 - Analfabeto <br />2 - Alfabetizado <br />3 - Ens. Fundamental <br />4 - Ens. Médio <br />5 - Ens. Superior</td>
+</tr>
+<tr class="even">
+<td align="left">enfermidade</td>
+<td align="left">Enfermidade primária do paciente</td>
+<td align="left">1 - Lesão medular <br />2 - Lesão radicular <br />3 - Trauma <br />4 - FAF <br />5 - Pós cirúrgico</td>
+</tr>
+<tr class="odd">
+<td align="left">tipo</td>
+<td align="left">Tipo de cabelo do paciente</td>
+<td align="left">1 - Natural <br />2 - Artificial</td>
+</tr>
+<tr class="even">
+<td align="left">cor</td>
+<td align="left">Cor do cabelo do paciente</td>
+<td align="left">1 - Marrom <br />2 - Vermelho <br />3 - Preto <br />4 - Louro <br />5 - Cinza <br />6 - Branco <br />7 - Outro</td>
+</tr>
+<tr class="odd">
+<td align="left">forma</td>
+<td align="left">Forma do cabelo do paciente</td>
+<td align="left">1 - Caucasiana <br />2 - Asiática <br />3 - Negróide <br />4 - Outra</td>
+</tr>
+<tr class="even">
+<td align="left">medicamentos</td>
+<td align="left">Medicamentos em uso pelo paciente</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">composicao</td>
+<td align="left">Composição da solução do reservatório</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ampola</td>
+<td align="left">Número da ampola de morfina</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">sf</td>
+<td align="left">Quantidade de soro fisiológico para diluição</td>
+<td align="left">mililitros (ml)</td>
+</tr>
+<tr class="even">
+<td align="left">concentracao</td>
+<td align="left">Concentração da solução</td>
+<td align="left">percentual (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">disp_prop</td>
+<td align="left">Número de disparos proposto por dia</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">disp_real</td>
+<td align="left">Número de disparos realizados por dia</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">vol_desprez</td>
+<td align="left">Quantidade de solução desprezada no reservatório</td>
+<td align="left">mililitros (ml)</td>
+</tr>
+<tr class="even">
+<td align="left">con_desp</td>
+<td align="left">Concentração da solução desprezada no reservatório</td>
+<td align="left">percentual (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">obstrucao</td>
+<td align="left">Ocorrência de obstrução no cateter</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="even">
+<td align="left">infeccao</td>
+<td align="left">Ocorrência de infecção do sistema</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="odd">
+<td align="left">nausea</td>
+<td align="left">Ocorrência de nausea como efeito colateral</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="even">
+<td align="left">sonolencia</td>
+<td align="left">Ocorrência de sonolência como efeito colateral</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="odd">
+<td align="left">constipação</td>
+<td align="left">Ocorrência de constipação como efeito colateral</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="even">
+<td align="left">tontura</td>
+<td align="left">Ocorrência de tontura como efeito colateral</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="odd">
+<td align="left">prurido</td>
+<td align="left">Ocorrência de prurido como efeito colateral</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="even">
+<td align="left">retencao</td>
+<td align="left">Ocorrência de retenção urinária como efeito colateral</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="odd">
+<td align="left">outros</td>
+<td align="left">Ocorrência de outros efeitos colaterais</td>
+<td align="left">1 - Sim <br />2 - Não</td>
+</tr>
+<tr class="even">
+<td align="left">d0</td>
+<td align="left">Dose inicial de morfina</td>
+<td align="left">miligrama (mg)</td>
+</tr>
+<tr class="odd">
+<td align="left">d30</td>
+<td align="left">Dose de morfina após 30 dias</td>
+<td align="left">miligrama (mg)</td>
+</tr>
+<tr class="even">
+<td align="left">d60</td>
+<td align="left">Dose de morfina após 60 dias</td>
+<td align="left">miligrama (mg)</td>
+</tr>
+<tr class="odd">
+<td align="left">t0</td>
+<td align="left">Quantidade inicial de morfina no cabelo</td>
+<td align="left">miligrama (mg)</td>
+</tr>
+<tr class="even">
+<td align="left">t30</td>
+<td align="left">Quantidade de morfina no cabelo após 30 dias</td>
+<td align="left">miligrama (mg)</td>
+</tr>
+<tr class="odd">
+<td align="left">t60</td>
+<td align="left">Quantidade de morfina no cabelo após 60 dias</td>
+<td align="left">miligrama (mg)</td>
+</tr>
+</tbody>
+</table>
+<p>Para o item <code>b</code>, como teremos quatro tabelas distintas e os dados não estão cruzados, optamos por incluir o rótulo da primeira coluna no título do gráfico, a fim de não termos títulos repetidos. Temos o seguinte:</p>
+<table>
+<caption><strong>Tabela 2.2:</strong> Distribuição dos pacientes conforme o sexo</caption>
+<thead>
+<tr class="header">
+<th align="left">Sexo</th>
+<th align="center">Número de pacientes</th>
+<th align="center">Percentual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Masculino</td>
+<td align="center">19</td>
+<td align="center">54</td>
+</tr>
+<tr class="even">
+<td align="left">Feminino</td>
+<td align="center">16</td>
+<td align="center">46</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Total</strong></td>
+<td align="center"><strong>35</strong></td>
+<td align="center"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><strong>Tabela 2.3:</strong> Distribuição dos pacientes conforme raça/etnia</caption>
+<thead>
+<tr class="header">
+<th align="left">Raça</th>
+<th align="center">Número de pacientes</th>
+<th align="center">Percentual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pardo</td>
+<td align="center">20</td>
+<td align="center">57</td>
+</tr>
+<tr class="even">
+<td align="left">Branco</td>
+<td align="center">13</td>
+<td align="center">37</td>
+</tr>
+<tr class="odd">
+<td align="left">Negro</td>
+<td align="center">2</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Total</strong></td>
+<td align="center"><strong>35</strong></td>
+<td align="center"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><strong>Tabela 2.4:</strong> Distribuição dos pacientes conforme o grau de instrução</caption>
+<thead>
+<tr class="header">
+<th align="left">Grau de Instrução</th>
+<th align="center">Número de pacientes</th>
+<th align="center">Percentual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ensino Fundamental</td>
+<td align="center">25</td>
+<td align="center">71</td>
+</tr>
+<tr class="even">
+<td align="left">Ensino Médio</td>
+<td align="center">9</td>
+<td align="center">26</td>
+</tr>
+<tr class="odd">
+<td align="left">Ensino Superior</td>
+<td align="center">1</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Total</strong></td>
+<td align="center"><strong>35</strong></td>
+<td align="center"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><strong>Tabela 2.5:</strong> Distribuição dos pacientes conforme o tipo de lesão</caption>
+<thead>
+<tr class="header">
+<th align="left">Tipo de lesão</th>
+<th align="center">Número de pacientes</th>
+<th align="center">Percentual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Medular</td>
+<td align="center">10</td>
+<td align="center">29</td>
+</tr>
+<tr class="even">
+<td align="left">Radicular</td>
+<td align="center">25</td>
+<td align="center">71</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Total</strong></td>
+<td align="center"><strong>35</strong></td>
+<td align="center"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exr2-2" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 2.2<a href="preparação-dos-dados.html#exr2-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>A Figura 2.6 foi extraída de um estudo sobre atitudes de profissionais de saúde com rela- ção a cuidados com infecção hospitalar. Critique-a e reformule-a para facilitar sua leitura, lembrando que a comparação de maior interesse é entre as diferentes categorias profissionais.</p>
+<p>A Figura 2.6 foi extraída de um estudo sobre atitudes de profissionais de saúde com relação a cuidados com infecção hospitalar. Critique-a e reformule-a para facilitar sua leitura, lembrando que a comparação de maior interesse é entre as diferentes categorias profissionais.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-2" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-2" class="solution"><em>Solução</em>. </span></p>
+<table>
+<caption><strong>Tabela 2.6:</strong> ABC</caption>
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exr2-3" class="section level3 unnumbered hasAnchor">
@@ -364,34 +771,379 @@ div.csl-indent {
 <p>Utilize as sugestões para construção de planilhas apresentadas na Seção 2.2 com a finalidade de preparar os dados do arquivo empresa para análise estatística.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-3" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-3" class="solution"><em>Solução</em>. </span>Vamos iniciar construindo um dicionário para os dados</p>
+<table>
+<caption><strong>Tabela 2.7:</strong> Dicionário de dados para a planilha <code>empresa.xls</code></caption>
+<colgroup>
+<col width="12%" />
+<col width="46%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Rótulo</th>
+<th align="left">Descrição</th>
+<th align="left">Unidade de medida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">Identificador ddo funcionário</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">estado</td>
+<td align="left">Estado civil do funcionário</td>
+<td align="left">1 - Solteiro <br />2 - Casado</td>
+</tr>
+<tr class="odd">
+<td align="left">instrucao</td>
+<td align="left">Grau de instrução do funcionário</td>
+<td align="left">1 - Ensino Fundamental <br />2 - Ensino Médio <br />3 - Ensino Superior</td>
+</tr>
+<tr class="even">
+<td align="left">filhos</td>
+<td align="left">Número de filhos do funcionário</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">salario</td>
+<td align="left">Salário do funcionário</td>
+<td align="left">salário mínimo</td>
+</tr>
+<tr class="even">
+<td align="left">anos</td>
+<td align="left">Idade do funcionário</td>
+<td align="left">anos</td>
+</tr>
+<tr class="odd">
+<td align="left">meses</td>
+<td align="left">Fração da idade do funcionário</td>
+<td align="left">meses</td>
+</tr>
+<tr class="even">
+<td align="left">regiao</td>
+<td align="left">Região de procedência do funcionário</td>
+<td align="left">1 - Interior<br />2 - Capital <br />3 - Outra</td>
+</tr>
+</tbody>
+</table>
+<p>Com o dicionário de dados em mãos, podemos atualizar a planilha:</p>
+<table>
+<caption><strong>Tabela 2.8:</strong> Dados de funcionários de uma empresa (parte)</caption>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>estado</th>
+<th>instrucao</th>
+<th>filhos</th>
+<th>salario</th>
+<th>anos</th>
+<th>meses</th>
+<th>regiao</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>4.00</td>
+<td>26</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>4.56</td>
+<td>32</td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>5.25</td>
+<td>36</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td></td>
+<td>5.73</td>
+<td>20</td>
+<td>10</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>6.26</td>
+<td>40</td>
+<td>7</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>6.66</td>
+<td>28</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>6.86</td>
+<td>41</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>7.39</td>
+<td>43</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>7.59</td>
+<td>34</td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>1</td>
+<td>2</td>
+<td></td>
+<td>7.44</td>
+<td>23</td>
+<td>6</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exr2-4" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 2.4<a href="preparação-dos-dados.html#exr2-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Num estudo planejado para avaliar o consumo médio de combustível de veículos em dife- rentes velocidades foram utilizados 4 automóveis da marca A e 3 automóveis da marca B selecionados ao acaso das respectivas linhas de produção. O consumo (em~L/km) de cada um dos 7 automóveis foi observado em 3 velocidades diferentes (40 km/h, 80 km/h e 110~km/h) Delineie uma planilha apropriada para a coleta e análise estatística dos dados, rotulando-a adequadamente.</p>
+<p>Num estudo planejado para avaliar o consumo médio de combustível de veículos em diferentes velocidades foram utilizados 4 automóveis da marca A e 3 automóveis da marca B selecionados ao acaso das respectivas linhas de produção. O consumo (em L/km) de cada um dos 7 automóveis foi observado em 3 velocidades diferentes (40 km/h, 80 km/h e 110km/h) Delineie uma planilha apropriada para a coleta e análise estatística dos dados, rotulando-a adequadamente.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-4" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-4" class="solution"><em>Solução</em>. </span>Vamos começar construindo um dicionário de dados para a planilha:</p>
+<table>
+<caption><strong>Tabela 2.9:</strong> Dicionário para as variáveis do estudo sobre consumo de combustível</caption>
+<thead>
+<tr class="header">
+<th align="left">Rótulo</th>
+<th align="left">Descrição</th>
+<th align="left">Unidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">Identificador do veículo</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">marca</td>
+<td align="left">Marca fabricante do veículo</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">modelo</td>
+<td align="left">Modelo do veículo</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">consumo40</td>
+<td align="left">Consumo de combustível a 40 km/h</td>
+<td align="left">L/km</td>
+</tr>
+<tr class="odd">
+<td align="left">consumo80</td>
+<td align="left">Consumo de combustível a 80 km/h</td>
+<td align="left">L/km</td>
+</tr>
+<tr class="even">
+<td align="left">consumo110</td>
+<td align="left">Consumo de combustível a 110 km/h</td>
+<td align="left">L/km</td>
+</tr>
+</tbody>
+</table>
+<p>Agora vamos montar uma planilha (fictícia) seguindo a padronização definida acima:</p>
+<table>
+<caption><strong>Tabela 2.10:</strong> Planilha de dados para estudo sobre consumo de combustível</caption>
+<thead>
+<tr class="header">
+<th align="center">id</th>
+<th align="left">marca</th>
+<th align="left">modelo</th>
+<th align="right">consumo40</th>
+<th align="right">consumo80</th>
+<th align="right">consumo110</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="left">A</td>
+<td align="left">XPTO 1</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="left">A</td>
+<td align="left">XPTO 2</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="left">A</td>
+<td align="left">XPTO 3</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="left">A</td>
+<td align="left">XPTO 4</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="left">B</td>
+<td align="left">XYZ 1</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="left">B</td>
+<td align="left">XYZ 2</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="left">B</td>
+<td align="left">XYZ 3</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exr2-5" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 2.5<a href="preparação-dos-dados.html#exr2-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Utilizando os dados do arquivo enforco, prepare uma planilha Excel num formato conve niente para análise pelo R. Inclua apenas as variáveis Idade, Altura, Peso, Frequência cardiaca e VO2 no repouso além do quociente VE/VCO2, as correspondentes porcentagens relativa mente ao máximo, o quociente VO2/FC no pico do exercício e data do óbito. Importe a pla nilha Excel que você criou utilizando comandos R e obtenha as características do arquivo importado (número de casos, número de observações omissas etc.)</p>
+<p>Utilizando os dados do arquivo <code>enforco.xls</code>, prepare uma planilha Excel num formato conveniente para análise pelo <code>R</code>. Inclua apenas as variáveis <code>Idade</code>, <code>Altura</code>, <code>Peso</code>, <code>Frequência cardiaca</code> e <code>VO2</code> no repouso além do quociente <code>VE/VCO2</code>, as correspondentes porcentagens relativamente ao máximo, o quociente <code>VO2/FC</code> no pico do exercício e <code>data do óbito</code>. Importe a planilha Excel que você criou utilizando comandos <code>R</code> e obtenha as características do arquivo importado (número de casos, número de observações omissas etc.)</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-5" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-5" class="solution"><em>Solução</em>. </span>Conforme especificação enunciada, criamos o arquivo <code>esforco.csv</code> que poderá ser carregado da seguinte maneira:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="preparação-dos-dados.html#cb1-1" tabindex="-1"></a>(esforco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;esforco.csv&quot;</span>)))</span></code></pre></div>
+<pre><code>## Rows: 127 Columns: 8
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): obito
+## dbl (7): id, idade, altura, peso, fc_repouso, vo2_repouco, ve_vo2_pico
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre><code>## # A tibble: 127 × 8
+##       id idade altura  peso fc_repouso vo2_repouco ve_vo2_pico obito     
+##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;     
+##  1     1    38    149    54         89         5.9        65.6 26/07/1991
+##  2     2    49    167    80         69         3.4        37.3 30/07/1995
+##  3     3    65    153    56         82         3          59.7 21/08/1993
+##  4     4    52    175    78         89         3.8        52.4 14/11/1992
+##  5     5    52    157    59         82         3.2        48.8 30/07/1994
+##  6     6    58    150    62         75         3.8        54.1 Não       
+##  7     7    24    155    42         89         3.5       102.  17/10/1991
+##  8     8    39    149    55         91         3.9        67.8 31/08/1992
+##  9     9    48    160    77        101         2.5        59.5 Não       
+## 10    10    50    171    81        120         3          47.8 Não       
+## # ℹ 117 more rows</code></pre>
+<p>Temos 127 casos e 8 variáveis.</p>
 </div>
 </div>
 <div id="exr2-6" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 2.6<a href="preparação-dos-dados.html#exr2-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>A Figura 2.7 contém uma planilha encaminhada pelos investigadores responsáveis por um estudo sobre AIDS para análise estatistica. Organize-a de forma a permitir sua análise por meio de um pacote computacional como o R.</p>
+<p>A Figura 2.7 contém uma planilha encaminhada pelos investigadores responsáveis por um estudo sobre AIDS para análise estatistica. Organize-a de forma a permitir sua análise por meio de um pacote computacional como o <code>R</code>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-6" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-6" class="solution"><em>Solução</em>. </span>Os dados foram reorganizados no arquivo <code>aids.csv</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="preparação-dos-dados.html#cb4-1" tabindex="-1"></a>(aids <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;aids.csv&quot;</span>)))</span></code></pre></div>
+<pre><code>## Rows: 19 Columns: 7
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (3): id, dst, mac
+## dbl (4): grupo, diagnostico, peso, tempo_peso
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre><code>## # A tibble: 19 × 7
+##    id        grupo diagnostico dst                 mac     peso tempo_peso
+##    &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+##  1 2847111D      1         0   &lt;NA&gt;                pilula    11         37
+##  2 3034048F      1         0.5 &lt;NA&gt;                pilula    NA         NA
+##  3 3244701J      1         1   &lt;NA&gt;                condon    NA         NA
+##  4 2943791B      1         0   &lt;NA&gt;                não        8         39
+##  5 3000327F      1         4   condiloma/sífilis   não        9         39
+##  6 3232893D      1         1   &lt;NA&gt;                diu        3         39
+##  7 3028772E      1         3   &lt;NA&gt;                não        3         38
+##  8 3240047G      1         0   &lt;NA&gt;                pilula     9         38
+##  9 3017222G      1        NA   HPV                 condon    NA         NA
+## 10 3015834J      1         2   &lt;NA&gt;                condon    14         40
+## 11 3173611E      2         0.4 abcesso ovariano    condon    15         40
+## 12 3296159D      2         0   &lt;NA&gt;                condon    NA         NA
+## 13 3147820D1     2         2   &lt;NA&gt;                &lt;NA&gt;       4         37
+## 14 3274750K      2         3   &lt;NA&gt;                condon     8         38
+## 15 3274447H      2         0   sífilis com 3 meses condon    NA         NA
+## 16 2960066D      2         5   &lt;NA&gt;                &lt;NA&gt;      13         36
+## 17 3235727J      2         7   &lt;NA&gt;                condon    -2         38
+## 18 3264897E      2         0   condiloma/sífilis   condon     0         NA
+## 19 3044120J      2         5   HPV                 &lt;NA&gt;       3         39</code></pre>
+<p>Uma possível melhoria seria a transformação das variáveis <code>grupo</code> e <code>mac</code> em fatores.</p>
 </div>
 </div>
 <div id="exr2-7" class="section level3 unnumbered hasAnchor">
@@ -404,30 +1156,363 @@ div.csl-indent {
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-7" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-7" class="solution"><em>Solução</em>. </span>Precisamos inicialmente definir um dicionário para as variáveis e, na sequência, refatorar a planilha.</p>
+<table style="width:100%;">
+<caption><strong>Tabela 2.11:</strong> Dicionário de dados para o estudo sobre limiar auditivo <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></caption>
+<colgroup>
+<col width="8%" />
+<col width="69%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Rótulo</th>
+<th align="left">Descrição da variável</th>
+<th align="left">Unidade de medida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">Identificador do paciente</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">od0</td>
+<td align="left">Limiar auditivo da orelha direita no início do estudo</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">oe0</td>
+<td align="left">Limiar auditivo da orelha esquerda no início do estudo</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">od1</td>
+<td align="left">Limiar auditivo da orelha direita no primeiro teste</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">oe1</td>
+<td align="left">Limiar auditivo da orelha esquerda no primeiro teste</td>
+<td align="left">%</td>
+</tr>
+<tr class="even">
+<td align="left">od2</td>
+<td align="left">Limiar auditivo da orelha direita no segundo teste</td>
+<td align="left">%</td>
+</tr>
+<tr class="odd">
+<td align="left">oe2</td>
+<td align="left">Limiar auditivo da orelha esquerda no segundo teste</td>
+<td align="left">%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><strong>Tabela 2.12:</strong> Limiar auditivo de pacientes observados em 3 ocasiões</caption>
+<thead>
+<tr class="header">
+<th align="center">id</th>
+<th align="center">od0</th>
+<th align="center">oe0</th>
+<th align="center">od1</th>
+<th align="center">oe1</th>
+<th align="center">od2</th>
+<th align="center">oe2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">50.00</td>
+<td align="center">50.00</td>
+<td align="center">50.00</td>
+<td align="center">50.00</td>
+<td align="center">80.00</td>
+<td align="center">80.00</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">41.00</td>
+<td align="center">40.00</td>
+<td align="center">45.00</td>
+<td align="center">50.00</td>
+<td align="center">68.00</td>
+<td align="center">80.00</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">41.25</td>
+<td align="center">41.25</td>
+<td align="center">45.00</td>
+<td align="center">45.00</td>
+<td align="center">64.00</td>
+<td align="center">72.00</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">45.00</td>
+<td align="center">43.75</td>
+<td align="center">60.00</td>
+<td align="center">50.00</td>
+<td align="center">76.00</td>
+<td align="center">88.00</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">51.25</td>
+<td align="center">47.50</td>
+<td align="center">50.00</td>
+<td align="center">50.00</td>
+<td align="center">80.00</td>
+<td align="center">80.00</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">45.00</td>
+<td align="center">52.50</td>
+<td align="center">50.00</td>
+<td align="center">50.00</td>
+<td align="center">84.00</td>
+<td align="center">96.00</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">52.50</td>
+<td align="center">50.00</td>
+<td align="center">55.00</td>
+<td align="center">45.00</td>
+<td align="center">40.00</td>
+<td align="center">28.00</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">42.15</td>
+<td align="center">48.75</td>
+<td align="center">50.00</td>
+<td align="center">50.00</td>
+<td align="center">80.00</td>
+<td align="center">76.00</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">50.00</td>
+<td align="center">48.75</td>
+<td align="center">50.00</td>
+<td align="center">50.00</td>
+<td align="center">72.00</td>
+<td align="center">80.00</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">47.50</td>
+<td align="center">46.25</td>
+<td align="center">55.00</td>
+<td align="center">60.00</td>
+<td align="center">84.00</td>
+<td align="center">84.00</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">55.00</td>
+<td align="center">56.25</td>
+<td align="center">40.00</td>
+<td align="center">35.00</td>
+<td align="center">80.00</td>
+<td align="center">84.00</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">46.25</td>
+<td align="center">46.25</td>
+<td align="center">45.00</td>
+<td align="center">45.00</td>
+<td align="center">72.00</td>
+<td align="center">84.00</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">50.00</td>
+<td align="center">47.50</td>
+<td align="center">40.00</td>
+<td align="center">50.00</td>
+<td align="center">76.00</td>
+<td align="center">76.00</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exr2-8" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 2.8<a href="preparação-dos-dados.html#exr2-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>A planilha disponível no arquivo cidades contém informações demográficas de 3554 8 municípios brasileiros.</p>
+<p>A planilha disponível no arquivo <code>cidades.xls</code> contém informações demográficas de 3554 municípios brasileiros.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Importe-a para permitir a análise por meio do software R, indicando os problemas encontrados nesse processo além de sua solução.</li>
-<li>Use o comando summary para obter um resumo das variáveis do arquivo.</li>
+<li>Importe-a para permitir a análise por meio do software <code>R</code>, indicando os problemas encontrados nesse processo além de sua solução.</li>
+<li>Use o comando <code>summary</code> para obter um resumo das variáveis do arquivo.</li>
 <li>Classifique cada variável como numérica ou alfanumérica e indique o número de observações omissas de cada uma delas.</li>
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-8" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-8" class="solution"><em>Solução</em>. </span>Ao tentar realizar a leitura utilizando a função <code>read_csv</code> que já conhecemos, obteríamos um erro devido a planilha conter formatações.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="preparação-dos-dados.html#cb7-1" tabindex="-1"></a>cidades <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;cidades.xls&quot;</span>))</span></code></pre></div>
+<pre><code>## Error in vroom_(file, delim = delim %||% col_types$delim, col_names = col_names, : cadeia de caracteres com nul incluso: &#39;\xd0\xcf\021\u0871\032\xe1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0;\0\003\0\xfe\xff\t\0\006\0\0\0\0\0\0\0\0\0\0\0\f\0\0\0\x86\005\0\0\0\0\0\0\0\020\0\0\x83\005\0\0\001\0\0\0\xfe\xff\xff\xff\0\0\0\0\0\0\0\0\x80\0\0\0\x81\0\0\0\x82\0\0\0\x83\0\0\0\x84\0\0\0\x85\0\0\0\x86\0\0\0\x87\0\0\0\x88\0\0\0\x89\0\0\0\x8a\0\0\0\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\</code></pre>
+<p>Podemos limpar a formatação da planilha e tentar a importação novamente ou utilizar a função <code>read_xls</code> do pacore <strong>readxl</strong>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="preparação-dos-dados.html#cb9-1" tabindex="-1"></a>cidades <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;cidades.xls&quot;</span>), <span class="at">na =</span> <span class="st">&#39;-&#39;</span>)</span></code></pre></div>
+<p>Note que, como os valores faltantes na planilha estão indicado com um hífem, utilizamos o argumeno <code>na = '-'</code> para convertelos automaticamente para <code>NA</code>. Note também que as últimas duas linhas do data frame <code>cidades</code> contém os totalizadores e não observações. Vamos removê-las!</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="preparação-dos-dados.html#cb10-1" tabindex="-1"></a>cidades <span class="ot">&lt;-</span> <span class="fu">head</span>(cidades, <span class="sc">-</span><span class="dv">2</span>)</span></code></pre></div>
+<p>Note que o rótulo das variáveis está em maiúsculo, vamos colocá-los em minústuco com a ajuda da função <code>str_to_lower()</code> do pacore <strong>stringr</strong>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="preparação-dos-dados.html#cb11-1" tabindex="-1"></a><span class="fu">colnames</span>(cidades) <span class="ot">&lt;-</span> <span class="fu">str_to_lower</span>(<span class="fu">colnames</span>(cidades))</span></code></pre></div>
+<p>Podemos agora ver que temos 17 variáveis e 3554 unidades de análise. Um resumo das variáveis do conjunto de dados é mostrado pelo comando <code>summary</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="preparação-dos-dados.html#cb12-1" tabindex="-1"></a><span class="fu">summary</span>(cidades)</span></code></pre></div>
+<pre><code>##     munic                uf                código         poptot        
+##  Length:3554        Length:3554        Min.   :1001   Min.   :     795  
+##  Class :character   Class :character   1st Qu.:1889   1st Qu.:    7995  
+##  Mode  :character   Mode  :character   Median :3720   Median :   15632  
+##                                        Mean   :3440   Mean   :   43650  
+##                                        3rd Qu.:4609   3rd Qu.:   30655  
+##                                        Max.   :5497   Max.   :10406166  
+##                                                                         
+##     cres_pop           popurb            pibtot             cres_pib      
+##  Min.   :-13.330   Min.   :    423   Min.   :     0.90   Min.   : 0.0000  
+##  1st Qu.:  0.020   1st Qu.:   4388   1st Qu.:    13.48   1st Qu.: 0.6936  
+##  Median :  1.145   Median :   9232   Median :    26.79   Median : 1.0372  
+##  Mean   :  1.283   Mean   :  36908   Mean   :   177.93   Mean   : 1.1607  
+##  3rd Qu.:  2.310   3rd Qu.:  20732   3rd Qu.:    66.80   3rd Qu.: 1.4493  
+##  Max.   : 23.630   Max.   :9785640   Max.   :105906.65   Max.   :24.6598  
+##                                      NA&#39;s   :14          NA&#39;s   :14       
+##      grau1             grau2            superior          11oumais      
+##  Min.   :    469   Min.   :     47   Min.   :      0   Min.   :     37  
+##  1st Qu.:   4738   1st Qu.:    495   1st Qu.:     75   1st Qu.:    407  
+##  Median :   8491   Median :    950   Median :    178   Median :    786  
+##  Mean   :  22833   Mean   :   5060   Mean   :   2064   Mean   :   5407  
+##  3rd Qu.:  16057   3rd Qu.:   2272   3rd Qu.:    522   3rd Qu.:   1963  
+##  Max.   :5322497   Max.   :1606381   Max.   :1076916   Max.   :2142313  
+##  NA&#39;s   :13        NA&#39;s   :13        NA&#39;s   :13        NA&#39;s   :13       
+##     empregad          microemp            peqemp             medemp        
+##  Min.   :     10   Min.   :     3.0   Min.   :    0.00   Min.   :   0.000  
+##  1st Qu.:    414   1st Qu.:    94.0   1st Qu.:    1.00   1st Qu.:   1.000  
+##  Median :    926   Median :   207.0   Median :    3.00   Median :   1.000  
+##  Mean   :   7778   Mean   :   916.9   Mean   :   36.69   Mean   :   6.929  
+##  3rd Qu.:   2743   3rd Qu.:   503.0   3rd Qu.:   13.00   3rd Qu.:   2.000  
+##  Max.   :3986021   Max.   :377600.0   Max.   :18494.00   Max.   :3198.000  
+##  NA&#39;s   :14        NA&#39;s   :14         NA&#39;s   :14         NA&#39;s   :14        
+##      graenp       
+##  Min.   :  0.000  
+##  1st Qu.:  0.000  
+##  Median :  0.000  
+##  Mean   :  1.341  
+##  3rd Qu.:  1.000  
+##  Max.   :568.000  
+##  NA&#39;s   :14</code></pre>
+<p>Esse comando também nos permite perceber os tipos de cada uma das variáveis e se as mesmas contém valores faltantes. Essas informações estão resumidas na Tabela 2.13.</p>
+<table>
+<caption><strong>Tabela 2.13:</strong> Resumo das observações da tabela <code>cidades.xls</code></caption>
+<thead>
+<tr class="header">
+<th align="left">Variável</th>
+<th align="center">Tipo</th>
+<th align="center">Número de <br/>observações <br />faltantes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">munic</td>
+<td align="center">Alfanumérica</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="left">uf</td>
+<td align="center">Alfanumérica</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="left">codigo</td>
+<td align="center">Numérica</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="left">poptot</td>
+<td align="center">Numérica</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="left">cres_pop</td>
+<td align="center">Numérica</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="left">popurb</td>
+<td align="center">Numérica</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="left">pibtot</td>
+<td align="center">Numérica</td>
+<td align="center">14</td>
+</tr>
+<tr class="even">
+<td align="left">cres_pib</td>
+<td align="center">Numérica</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="left">grau1</td>
+<td align="center">Numérica</td>
+<td align="center">13</td>
+</tr>
+<tr class="even">
+<td align="left">grau2</td>
+<td align="center">Numérica</td>
+<td align="center">13</td>
+</tr>
+<tr class="odd">
+<td align="left">superior</td>
+<td align="center">Numérica</td>
+<td align="center">13</td>
+</tr>
+<tr class="even">
+<td align="left">11oumais</td>
+<td align="center">Numérica</td>
+<td align="center">13</td>
+</tr>
+<tr class="odd">
+<td align="left">empregad</td>
+<td align="center">Numérica</td>
+<td align="center">14</td>
+</tr>
+<tr class="even">
+<td align="left">microemp</td>
+<td align="center">Numérica</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="left">peqemp</td>
+<td align="center">Numérica</td>
+<td align="center">14</td>
+</tr>
+<tr class="even">
+<td align="left">medemp</td>
+<td align="center">Numérica</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="left">graemp</td>
+<td align="center">Numérica</td>
+<td align="center">14</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exr2-9" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 2.9<a href="preparação-dos-dados.html#exr2-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Preencha a ficha de inscrição do Centro de Estatistica Aplicada (www.ime.usp.br/-cea) com as informações de um estudo em que você está envolvido.</p>
+<p>Preencha a ficha de inscrição do Centro de Estatistica Aplicada <a href="http://www.ime.usp.br/-cea">www.ime.usp.br/-cea</a> com as informações de um estudo em que você está envolvido.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-9" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-9" class="solution"><em>Solução</em>. </span>Não se aplica.</p>
 </div>
 
 </div>
@@ -438,6 +1523,13 @@ div.csl-indent {
 <div id="ref-MorettinSinger2022" class="csl-entry">
 MORETTIN, P. A.; SINGER, J. DA M. <strong>Estatística e Ciência de Dados</strong>. Rio de Janeiro: LTC, 2022.
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Trata-se de uma versão inicial para o dicionário de dados. O mesmo será revisado posteriormente para se adequar à especificação do documento <code>morfina.doc</code>.<a href="preparação-dos-dados.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Como consideramos o limite de detecção como sendo 0.05, foram utilizadas duas casas decimais para representar os limites auditivos observados.<a href="preparação-dos-dados.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -493,8 +1585,9 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 },
+"toc_depth": 3,
 "info": false
 });
 });
