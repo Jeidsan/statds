@@ -1048,35 +1048,173 @@ Não se aplica.
 \hypertarget{introduuxe7uxe3o-1}{%
 \section{Introdução}\label{introduuxe7uxe3o-1}}
 
+\begin{quote}
+A ideia de uma análise descritiva de dados é tentar responder as seguintes questões:
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\tightlist
+\item
+  Qual a frequência com que cada valor (ou intervalo de valores) aparece no conjunto de dados ou seja, qual a distribuição de frequências dos dados?
+\item
+  Quais são alguns valores típicos do conjunto de dados, como mínimo e máximo?
+\item
+  Qual seria um valor para representar a posição (ou localização) central do conjunto de dados?
+\item
+  Qual seria uma medida da variabilidade ou dispersão dos dados?
+\item
+  Existem valores atípicos ou discrepantes (outliers) no conjunto de dados?
+\item
+  A distribuição de frequências dos dados pode ser considerada simétrica?
+\end{enumerate}
+
+\citep[p.~37]{MorettinSinger2022}
+\end{quote}
+
 \hypertarget{distribuiuxe7uxe3o-de-frequuxeancias}{%
 \section{Distribuição de frequências}\label{distribuiuxe7uxe3o-de-frequuxeancias}}
+
+Sem notas para esta seção.
 
 \hypertarget{medidas-resumo}{%
 \section{Medidas resumo}\label{medidas-resumo}}
 
+\begin{quote}
+Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\), \(\overline{x}(\alpha)\), é definida como a média do conjunto de dados obtido após a eliminação das 100\% primeiras observações ordenadas e das 100\% últimas observações ordenadas do conjunto original {[}\ldots{]}. Para \(\alpha = 0,25\) obtemos a chamada \textbf{meia média}. \citep[p.~47]{MorettinSinger2022}.
+\end{quote}
+
+Dado um número natural \(k \geq 2\) e um conjunto \(X = \{x_{1}, \cdots, x_{n}\}\) com \(n \in \mathbb{N}\), o \(k\)-ésimo \textbf{momento centrado} de X é dado por \citep[p.~50]{MorettinSinger2022}:
+
+\[m_{k} = \frac{1}{n}\sum_{i = 1}^{n}(x_{i} - \overline{x})^{k}\]
+
+\begin{quote}
+Dentre as medidas de assimetria, as mais comuns são:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  o coeficiente de assimetria de Fisher-Pearson: \[g_{1} = \frac{m_{3}}{m_{2}^{(3/2)}}\]
+\item
+  o coeficiente de assimetria de Fisher-Pearson ajustado: \[\frac{\sqrt{n (n - 1)}}{n - 2} g_{1}\]
+  \citep[p.~50]{MorettinSinger2022}
+\end{enumerate}
+\end{quote}
+
+\begin{quote}
+As principais propriedades desses coeficientes são
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\tightlist
+\item
+  seu sinal reflete a direção da assimetria (sinal negativo corresponde a assimetria à direita e sinal positivo corresponde a assimetria à esquerda);
+\item
+  comparam a assimetria dos dados com aquela da distribuição normal, que é simétrica,
+\item
+  valores mais afastados do zero indicam maiores magnitudes de assimetria e consequente- mente, maior afastamento da distribuição normal;
+\item
+  a estatística indicada em (3.15) tem um ajuste para o tamanho amostral;
+\item
+  esse ajuste tem pequeno impacto em grandes amostras.
+  \citep[p.~51]{MorettinSinger2022}
+\end{enumerate}
+\end{quote}
+
+\begin{quote}
+Outro coeficiente de assimetria mais intuitivo é o chamado \textbf{coeficiente de assimetria de Pearson 2}, estimado por \[Sk_{2} = \frac{3 \cdot [ x - med(x_{1}, \cdots, x_{n})]}{S}\] \citep[p.~51]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+Seja \(X\) uma variável aleatória qualquer, com média \(\mu\) e variância \(\sigma^{2}\). A \textbf{curtose} de \(X\) é definida por \[K(X) = E \left[ \frac{(X - \mu)^{4}}{\sigma^{4}} \right]\] \citep[p.~53]{MorettinSinger2022}
+\end{quote}
+
 \hypertarget{boxplots}{%
 \section{\texorpdfstring{\emph{Boxplots}}{Boxplots}}\label{boxplots}}
+
+Sem notas para esta seção.
 
 \hypertarget{modelos-probabiluxedsticos}{%
 \section{Modelos probabilísticos}\label{modelos-probabiluxedsticos}}
 
+Sem notas para esta seção.
+
 \hypertarget{dados-amostrais}{%
 \section{Dados amostrais}\label{dados-amostrais}}
+
+Sem notas para esta seção.
 
 \hypertarget{gruxe1ficos-qq}{%
 \section{Gráficos QQ}\label{gruxe1ficos-qq}}
 
+\begin{quote}
+Uma das questões fundamentais na especificação de um modelo para inferência estatística é a escolha de um modelo probabilístico para representar a distribuição (desconhecida) da variável de interesse na população. Uma possível estratégia para isso é examinar o histograma dos dados amostrais e compará-lo com histogramas teóricos associados a modelos probabilísticos candidatos. Alternativamente, os gráficos QQ (QQ plots) também podem ser utilizados com essa finalidade \citep[p.~59]{MorettinSinger2022}.
+\end{quote}
+
 \hypertarget{desvio-padruxe3o-e-erro-padruxe3o}{%
 \section{Desvio padrão e erro padrão}\label{desvio-padruxe3o-e-erro-padruxe3o}}
+
+Sem notas para esta seção.
 
 \hypertarget{intervalo-de-confianuxe7a-e-tamanho-da-amostra}{%
 \section{Intervalo de confiança e tamanho da amostra}\label{intervalo-de-confianuxe7a-e-tamanho-da-amostra}}
 
+\begin{quote}
+{[}\ldots{]} \textbf{margem de erro}, que, essencialmente, é uma medida de nossa incerteza na extrapolação dos resultados obtidos para a população de onde assumimos que foi obtida \citep[p.~65]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+A margem de erro depende do processo amostral, do desvio padrão amostral \(S\), do tamanho da amostra \(n\) e é dado por \(me = \frac{kS}{\sqrt{n}}\) em que \(k\) é uma constante que depende do modelo probabilístico adotado e da confiança com que pretendemos fazer a inferência \citep[p.~65]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+Especificamente no caso da estimação da média (populacional) \(\mu\) de uma variável \(X\), a pergunta seria \emph{Qual é o tamanho da amostra necessário para que a estimativa} \(\overline{X}\) \emph{da média} \(\mu\) \emph{tenha uma precisão} \(\varepsilon\)\emph{?} A resposta pode ser obtida da expressão (3.21), fazendo \(\varepsilon = \frac{1,96 \cdot S}{\sqrt{n}}\) \citep[p.~66]{MorettinSinger2022}.
+\end{quote}
+
 \hypertarget{transformauxe7uxe3o-de-variuxe1veis}{%
 \section{Transformação de variáveis}\label{transformauxe7uxe3o-de-variuxe1veis}}
 
+\begin{quote}
+Se quisermos utilizar os procedimentos talhados para análise de dados com distribuição normal em situações nas quais a distribuição dos dados amostrais é sabidamente assimétrica, pode-se considerar uma transformação das observações com a finalidade de se obter uma distribuição ``mais simétrica'' e portanto, mais próxima da distribuição normal. Uma transformação bastante usada com esse propósito é
+
+\[
+x^{(p)} =
+\begin{cases}
+x^{p}, & se \ p > 0 \\
+log(x), & se \ p = 0 \\
+-x^{p}, & se \ p < 0
+\end{cases}
+\]
+
+Essa transformação com \(0 < p < 1\) apropriada para distribuições assimétricas à direita, pois valores grandes decrescem de \(x\) decrescem mais relativamente a valores pequenos. Para distribuições assimétricas à esquerda, basta tomar \(p > 1\). Normalmente, consideramos valores de \(p\) na sequência
+
+\[\cdots, -3, -2, -1, -1/2, -1/3, -1/4, 0, 1/4, 1/3, 1/2, 1, 2, 3, \cdots\]
+
+e para cada um deles construímos gráficos apropriados (histogramas, boxplots) com os dados originais transformados, com a finalidade de escolher o valor mais adequado para \(p\). Hinkley (1977) sugere que para cada valor de \(p\) na sequência acima se calcule a média, a mediana e um estimador de escala (esvio padrão ou algum estimador robusto) e então se escolha o valor que minimiza
+
+\[d_{p} = \frac{média - mediana}{medida \ de \ escala}\]
+
+\citep[p.~67]{MorettinSinger2022}.
+\end{quote}
+
+\begin{quote}
+A transformação (3.23) {[}acima{]} é um caso particular das \textbf{transformações de Box-Cox} que são da forma
+
+\[
+g(x) = 
+\begin{cases}
+\frac{(x^{p} - 1)}{p}, & se \ p \neq 0 \\
+log(x), & se \ p = 0
+\end{cases}
+\]
+
+\citep[p.~69]{MorettinSinger2022}.
+\end{quote}
+
 \hypertarget{notas-de-capuxedtulo-1}{%
 \section{Notas de capítulo}\label{notas-de-capuxedtulo-1}}
+
+Sem notas para esta seção.
 
 \hypertarget{exercuxedcios-1}{%
 \section{Exercícios}\label{exercuxedcios-1}}

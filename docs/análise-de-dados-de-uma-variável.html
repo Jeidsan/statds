@@ -377,40 +377,133 @@ div.csl-indent {
 <h1><span class="header-section-number">Capítulo 3</span> Análise de dados de uma variável<a href="análise-de-dados-de-uma-variável.html#análise-de-dados-de-uma-variável" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introdução-1" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Introdução<a href="análise-de-dados-de-uma-variável.html#introdução-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>A ideia de uma análise descritiva de dados é tentar responder as seguintes questões:</p>
+<ol style="list-style-type: lower-roman">
+<li>Qual a frequência com que cada valor (ou intervalo de valores) aparece no conjunto de dados ou seja, qual a distribuição de frequências dos dados?</li>
+<li>Quais são alguns valores típicos do conjunto de dados, como mínimo e máximo?</li>
+<li>Qual seria um valor para representar a posição (ou localização) central do conjunto de dados?</li>
+<li>Qual seria uma medida da variabilidade ou dispersão dos dados?</li>
+<li>Existem valores atípicos ou discrepantes (outliers) no conjunto de dados?</li>
+<li>A distribuição de frequências dos dados pode ser considerada simétrica?</li>
+</ol>
+<p><span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 37</a>)</span></p>
+</blockquote>
 </div>
 <div id="distribuição-de-frequências" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Distribuição de frequências<a href="análise-de-dados-de-uma-variável.html#distribuição-de-frequências" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sem notas para esta seção.</p>
 </div>
 <div id="medidas-resumo" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Medidas resumo<a href="análise-de-dados-de-uma-variável.html#medidas-resumo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Dado um número <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>, a <strong>média aparada</strong> de ordem <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\overline{x}(\alpha)\)</span>, é definida como a média do conjunto de dados obtido após a eliminação das 100% primeiras observações ordenadas e das 100% últimas observações ordenadas do conjunto original […]. Para <span class="math inline">\(\alpha = 0,25\)</span> obtemos a chamada <strong>meia média</strong>. <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 47</a>)</span>.</p>
+</blockquote>
+<p>Dado um número natural <span class="math inline">\(k \geq 2\)</span> e um conjunto <span class="math inline">\(X = \{x_{1}, \cdots, x_{n}\}\)</span> com <span class="math inline">\(n \in \mathbb{N}\)</span>, o <span class="math inline">\(k\)</span>-ésimo <strong>momento centrado</strong> de X é dado por <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 50</a>)</span>:</p>
+<p><span class="math display">\[m_{k} = \frac{1}{n}\sum_{i = 1}^{n}(x_{i} - \overline{x})^{k}\]</span></p>
+<blockquote>
+<p>Dentre as medidas de assimetria, as mais comuns são:</p>
+<ol style="list-style-type: lower-alpha">
+<li>o coeficiente de assimetria de Fisher-Pearson: <span class="math display">\[g_{1} = \frac{m_{3}}{m_{2}^{(3/2)}}\]</span></li>
+<li>o coeficiente de assimetria de Fisher-Pearson ajustado: <span class="math display">\[\frac{\sqrt{n (n - 1)}}{n - 2} g_{1}\]</span>
+<span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 50</a>)</span></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>As principais propriedades desses coeficientes são</p>
+<ol style="list-style-type: lower-roman">
+<li>seu sinal reflete a direção da assimetria (sinal negativo corresponde a assimetria à direita e sinal positivo corresponde a assimetria à esquerda);</li>
+<li>comparam a assimetria dos dados com aquela da distribuição normal, que é simétrica,</li>
+<li>valores mais afastados do zero indicam maiores magnitudes de assimetria e consequente- mente, maior afastamento da distribuição normal;</li>
+<li>a estatística indicada em (3.15) tem um ajuste para o tamanho amostral;</li>
+<li>esse ajuste tem pequeno impacto em grandes amostras.
+<span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 51</a>)</span></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Outro coeficiente de assimetria mais intuitivo é o chamado <strong>coeficiente de assimetria de Pearson 2</strong>, estimado por <span class="math display">\[Sk_{2} = \frac{3 \cdot [ x - med(x_{1}, \cdots, x_{n})]}{S}\]</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 51</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Seja <span class="math inline">\(X\)</span> uma variável aleatória qualquer, com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^{2}\)</span>. A <strong>curtose</strong> de <span class="math inline">\(X\)</span> é definida por <span class="math display">\[K(X) = E \left[ \frac{(X - \mu)^{4}}{\sigma^{4}} \right]\]</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 53</a>)</span></p>
+</blockquote>
 </div>
 <div id="boxplots" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> <em>Boxplots</em><a href="análise-de-dados-de-uma-variável.html#boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sem notas para esta seção.</p>
 </div>
 <div id="modelos-probabilísticos" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Modelos probabilísticos<a href="análise-de-dados-de-uma-variável.html#modelos-probabilísticos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sem notas para esta seção.</p>
 </div>
 <div id="dados-amostrais" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Dados amostrais<a href="análise-de-dados-de-uma-variável.html#dados-amostrais" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sem notas para esta seção.</p>
 </div>
 <div id="gráficos-qq" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Gráficos QQ<a href="análise-de-dados-de-uma-variável.html#gráficos-qq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Uma das questões fundamentais na especificação de um modelo para inferência estatística é a escolha de um modelo probabilístico para representar a distribuição (desconhecida) da variável de interesse na população. Uma possível estratégia para isso é examinar o histograma dos dados amostrais e compará-lo com histogramas teóricos associados a modelos probabilísticos candidatos. Alternativamente, os gráficos QQ (QQ plots) também podem ser utilizados com essa finalidade <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 59</a>)</span>.</p>
+</blockquote>
 </div>
 <div id="desvio-padrão-e-erro-padrão" class="section level2 hasAnchor" number="3.8">
 <h2><span class="header-section-number">3.8</span> Desvio padrão e erro padrão<a href="análise-de-dados-de-uma-variável.html#desvio-padrão-e-erro-padrão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sem notas para esta seção.</p>
 </div>
 <div id="intervalo-de-confiança-e-tamanho-da-amostra" class="section level2 hasAnchor" number="3.9">
 <h2><span class="header-section-number">3.9</span> Intervalo de confiança e tamanho da amostra<a href="análise-de-dados-de-uma-variável.html#intervalo-de-confiança-e-tamanho-da-amostra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>[…] <strong>margem de erro</strong>, que, essencialmente, é uma medida de nossa incerteza na extrapolação dos resultados obtidos para a população de onde assumimos que foi obtida <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 65</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>A margem de erro depende do processo amostral, do desvio padrão amostral <span class="math inline">\(S\)</span>, do tamanho da amostra <span class="math inline">\(n\)</span> e é dado por <span class="math inline">\(me = \frac{kS}{\sqrt{n}}\)</span> em que <span class="math inline">\(k\)</span> é uma constante que depende do modelo probabilístico adotado e da confiança com que pretendemos fazer a inferência <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 65</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Especificamente no caso da estimação da média (populacional) <span class="math inline">\(\mu\)</span> de uma variável <span class="math inline">\(X\)</span>, a pergunta seria <em>Qual é o tamanho da amostra necessário para que a estimativa</em> <span class="math inline">\(\overline{X}\)</span> <em>da média</em> <span class="math inline">\(\mu\)</span> <em>tenha uma precisão</em> <span class="math inline">\(\varepsilon\)</span><em>?</em> A resposta pode ser obtida da expressão (3.21), fazendo <span class="math inline">\(\varepsilon = \frac{1,96 \cdot S}{\sqrt{n}}\)</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 66</a>)</span>.</p>
+</blockquote>
 </div>
 <div id="transformação-de-variáveis" class="section level2 hasAnchor" number="3.10">
 <h2><span class="header-section-number">3.10</span> Transformação de variáveis<a href="análise-de-dados-de-uma-variável.html#transformação-de-variáveis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Se quisermos utilizar os procedimentos talhados para análise de dados com distribuição normal em situações nas quais a distribuição dos dados amostrais é sabidamente assimétrica, pode-se considerar uma transformação das observações com a finalidade de se obter uma distribuição “mais simétrica” e portanto, mais próxima da distribuição normal. Uma transformação bastante usada com esse propósito é</p>
+<p><span class="math display">\[
+x^{(p)} =
+\begin{cases}
+x^{p}, &amp; se \ p &gt; 0 \\
+log(x), &amp; se \ p = 0 \\
+-x^{p}, &amp; se \ p &lt; 0
+\end{cases}
+\]</span></p>
+<p>Essa transformação com <span class="math inline">\(0 &lt; p &lt; 1\)</span> apropriada para distribuições assimétricas à direita, pois valores grandes decrescem de <span class="math inline">\(x\)</span> decrescem mais relativamente a valores pequenos. Para distribuições assimétricas à esquerda, basta tomar <span class="math inline">\(p &gt; 1\)</span>. Normalmente, consideramos valores de <span class="math inline">\(p\)</span> na sequência</p>
+<p><span class="math display">\[\cdots, -3, -2, -1, -1/2, -1/3, -1/4, 0, 1/4, 1/3, 1/2, 1, 2, 3, \cdots\]</span></p>
+<p>e para cada um deles construímos gráficos apropriados (histogramas, boxplots) com os dados originais transformados, com a finalidade de escolher o valor mais adequado para <span class="math inline">\(p\)</span>. Hinkley (1977) sugere que para cada valor de <span class="math inline">\(p\)</span> na sequência acima se calcule a média, a mediana e um estimador de escala (esvio padrão ou algum estimador robusto) e então se escolha o valor que minimiza</p>
+<p><span class="math display">\[d_{p} = \frac{média - mediana}{medida \ de \ escala}\]</span></p>
+<p><span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 67</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>A transformação (3.23) [acima] é um caso particular das <strong>transformações de Box-Cox</strong> que são da forma</p>
+<p><span class="math display">\[
+g(x) =
+\begin{cases}
+\frac{(x^{p} - 1)}{p}, &amp; se \ p \neq 0 \\
+log(x), &amp; se \ p = 0
+\end{cases}
+\]</span></p>
+<p><span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 69</a>)</span>.</p>
+</blockquote>
 </div>
 <div id="notas-de-capítulo-1" class="section level2 hasAnchor" number="3.11">
 <h2><span class="header-section-number">3.11</span> Notas de capítulo<a href="análise-de-dados-de-uma-variável.html#notas-de-capítulo-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sem notas para esta seção.</p>
 </div>
 <div id="exercícios-1" class="section level2 hasAnchor" number="3.12">
 <h2><span class="header-section-number">3.12</span> Exercícios<a href="análise-de-dados-de-uma-variável.html#exercícios-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
+</div>
+</div>
+<h3>Referências<a href="referências.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-MorettinSinger2022" class="csl-entry">
+MORETTIN, P. A.; SINGER, J. DA M. <strong>Estatística e Ciência de Dados</strong>. Rio de Janeiro: LTC, 2022.
 </div>
 </div>
             </section>
@@ -475,6 +568,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
