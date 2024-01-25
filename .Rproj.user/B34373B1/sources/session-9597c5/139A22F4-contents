@@ -1,0 +1,356 @@
+# (PART) Análise Exploratória de Dados {-}
+
+# Preparação dos dados
+
+## Considerações preliminares
+
+> O ramo da Estatística conhecido como **Análise Exploratória de Dados** se ocupa da organização e resumo dos dados de uma amostra ou, eventualmente, de toda a população e o ramo conhecido como **Inferência Estatística** se refere ao processo de se tirar conclusães sobre uma população com base em uma amostra dela [@MorettinSinger2022, p. 21].
+
+## Planilhas de dados
+
+Sem notas para esta seção.
+
+## Contrução de tabelas
+
+Sem notas para esta seção.
+
+## Construção de gráficos
+
+Sem notas para esta seção.
+
+## Notas de capítulo
+
+Sem notas para esta seção.
+
+## Exercícios
+
+### Exercício 2.1 {- #exr2-1}
+
+::: {.enunciado}
+O objetivo de um estudo da Faculdade de Medicina da USP foi avaliar a associação entre a quantidade de morfina administrada a pacientes com dores intensas provenientes de lesões medulares ou radiculares e a dosagem dessa substância em seus cabelos. Três medidas foram realizadas em cada paciente, a primeira logo após o início do tratamento e as demais após 30 e 60 dias. Detalhes podem ser obtidos no documento disponível no arquivo `morfina.doc`. 
+
+A planilha `morfina.xls`, disponível no arquivo morfina foi entregue ao estatístico para análise e contém resumos de características demográficas além dos dados do estudo.
+
+a) Com base nessa planilha, apresente um dicionário com a especificação das variáveis segundo as indicações da Seção 2.2 e construa a planilha correspondente. 
+b) Com as informações disponíveis, construa tabelas para as variáveis sexo, raça, grau de instrução e tipo de lesão segundo as sugestões da Seção 2.3.
+:::
+
+:::{.solution}
+Utilizando o arquivo `morfina.doc` chegamos à seguinte solução para o item `a`:
+
+Rótulo       | Variável                                              | Unidade de medida
+:------------|:------------------------------------------------------|:------------------
+id           | Identificação do paciente                             | 
+data         | Data de avaliação do paciente                         |
+idade        | Idade do paciente                                     | anos
+sexo         | Sexo do paciente                                      | 1 - masculino <br />2 - feminino
+raça         | Raça e/ou etnia do paciente                           | 1 - pardo <br />2 - negro <br />3 - branco <br />4 - indígena <br />5 - amarelo
+religião     | Religião do paciente                                  | 1 - catolico <br />2 - sem religião <br />3 - evangélico <br />4 - espírita <br />5 - judeu <br />6 - outra
+peso         | Peso do paciente                                      | quilogramas (kg)
+altura       | Altura do paciente                                    | metros (m)
+instrução    | Grau de instrução do paciente                         | 1 - Analfabeto <br />2 - Alfabetizado <br />3 - Ens. Fundamental <br />4 - Ens. Médio <br />5 - Ens. Superior
+enfermidade  | Enfermidade primária do paciente                      | 1 - Lesão medular <br />2 - Lesão radicular <br />3 - Trauma <br />4 - FAF <br />5 - Pós cirúrgico
+tipo         | Tipo de cabelo do paciente                            | 1 - Natural <br />2 - Artificial
+cor          | Cor do cabelo do paciente                             | 1 - Marrom <br />2 - Vermelho <br />3 - Preto <br />4 - Louro <br />5 - Cinza <br />6 - Branco <br />7 - Outro
+forma        | Forma do cabelo do paciente                           | 1 - Caucasiana <br />2 - Asiática <br />3 - Negróide <br />4 - Outra
+medicamentos | Medicamentos em uso pelo paciente                     |
+composicao   | Composição da solução do reservatório                 |
+ampola       | Número da ampola de morfina                           |
+sf           | Quantidade de soro fisiológico para diluição          | mililitros (ml)
+concentracao | Concentração da solução                               | percentual (%)
+disp_prop    | Número de disparos proposto por dia                   |
+disp_real    | Número de disparos realizados por dia                 |
+vol_desprez  | Quantidade de solução desprezada no reservatório      | mililitros (ml)
+con_desp     | Concentração da solução desprezada no reservatório    | percentual (%)
+obstrucao    | Ocorrência de obstrução no cateter                    | 1 - Sim <br />2 - Não
+infeccao     | Ocorrência de infecção do sistema                     | 1 - Sim <br />2 - Não
+nausea       | Ocorrência de nausea como efeito colateral            | 1 - Sim <br />2 - Não
+sonolencia   | Ocorrência de sonolência como efeito colateral        | 1 - Sim <br />2 - Não
+constipação  | Ocorrência de constipação como efeito colateral       | 1 - Sim <br />2 - Não
+tontura      | Ocorrência de tontura como efeito colateral           | 1 - Sim <br />2 - Não
+prurido      | Ocorrência de prurido como efeito colateral           | 1 - Sim <br />2 - Não
+retencao     | Ocorrência de retenção urinária como efeito colateral | 1 - Sim <br />2 - Não
+outros       | Ocorrência de outros efeitos colaterais               | 1 - Sim <br />2 - Não
+d0           | Dose inicial de morfina                               | miligrama (mg)
+d30          | Dose de morfina após 30 dias                          | miligrama (mg)
+d60          | Dose de morfina após 60 dias                          | miligrama (mg)
+t0           | Quantidade inicial de morfina no cabelo               | miligrama (mg)
+t30          | Quantidade de morfina no cabelo após 30 dias          | miligrama (mg)
+t60          | Quantidade de morfina no cabelo após 60 dias          | miligrama (mg)
+: **Tabela 2.1:** Dicionários para as variáveis do estudo `morfina.doc` [^morfina1]
+
+[^morfina1]: Trata-se de uma versão inicial para o dicionário de dados. O mesmo será revisado posteriormente para se adequar à especificação do documento `morfina.doc`.
+
+Para o item `b`, como teremos quatro tabelas distintas e os dados não estão cruzados, optamos por incluir o rótulo da primeira coluna no título do gráfico, a fim de não termos títulos repetidos. Temos o seguinte:
+
+Sexo      | Número de pacientes  | Percentual (%)
+:---------|:--------------------:|:--------------:
+Masculino | 19                   | 54
+Feminino  | 16                   | 46
+**Total** | **35**               | **100**
+: **Tabela 2.2:** Distribuição dos pacientes conforme o sexo
+
+Raça      | Número de pacientes | Percentual (%)
+:---------|:-------------------:|:--------------:
+Pardo     | 20                  | 57
+Branco    | 13                  | 37
+Negro     | 2                   | 6
+**Total** | **35**              | **100**
+: **Tabela 2.3:** Distribuição dos pacientes conforme raça/etnia
+
+
+Grau de Instrução  | Número de pacientes | Percentual (%)
+:------------------|:-------------------:|:--------------:
+Ensino Fundamental | 25                  | 71
+Ensino Médio       | 9                   | 26
+Ensino Superior    | 1                   | 3
+**Total**          | **35**              | **100**
+: **Tabela 2.4:** Distribuição dos pacientes conforme o grau de instrução
+
+Tipo de lesão  | Número de pacientes | Percentual (%)
+:--------------|:-------------------:|:--------------:
+Medular        | 10                  | 29
+Radicular      | 25                  | 71
+**Total**      | **35**              | **100**
+: **Tabela 2.5:** Distribuição dos pacientes conforme o tipo de lesão
+
+:::
+
+### Exercício 2.2 {- #exr2-2}
+
+::: {.enunciado}
+A Figura 2.6 foi extraída de um estudo sobre atitudes de profissionais de saúde com relação a cuidados com infecção hospitalar. Critique-a e reformule-a para facilitar sua leitura, lembrando que a comparação de maior interesse é entre as diferentes categorias profissionais.
+:::
+
+:::{.solution}
+A  | B | C
+---|---|---
+A  | B | C
+A  | B | C
+: **Tabela 2.6:** ABC
+:::
+
+### Exercício 2.3 {- #exr2-3}
+
+::: {.enunciado}
+Utilize as sugestões para construção de planilhas apresentadas na Seção 2.2 com a finalidade de preparar os dados do arquivo empresa para análise estatística.
+:::
+
+:::{.solution}
+Vamos iniciar construindo um dicionário para os dados
+
+Rótulo    | Descrição                            | Unidade de medida
+:---------|:-------------------------------------|:---------------------------------
+id        | Identificador ddo funcionário        |
+estado    | Estado civil do funcionário          | 1 - Solteiro <br />2 - Casado
+instrucao | Grau de instrução do funcionário     | 1 - Ensino Fundamental <br />2 - Ensino Médio <br />3 - Ensino Superior
+filhos    | Número de filhos do funcionário      |
+salario   | Salário do funcionário               | salário mínimo
+anos      | Idade do funcionário                 | anos
+meses     | Fração da idade do funcionário       | meses
+regiao    | Região de procedência do funcionário | 1 - Interior<br />2 - Capital <br />3 - Outra
+: **Tabela 2.7:** Dicionário de dados para a planilha `empresa.xls`
+
+
+Com o dicionário de dados em mãos, podemos atualizar a planilha:
+
+id | estado | instrucao | filhos | salario | anos | meses | regiao
+---|--------|-----------|--------|---------|------|-------|-------
+1  | 1      | 1         |        | 4.00    | 26   | 3     | 1
+2  | 2      | 1         | 1      | 4.56    | 32   | 10    | 2
+3  | 2      | 1         | 2      | 5.25    | 36   | 5     | 2
+4  | 1      | 2         |        | 5.73    | 20   | 10    | 3
+5  | 1      | 1         |        | 6.26    | 40   | 7     | 3
+6  | 2      | 1         | 0      | 6.66    | 28   | 0     | 1
+7  | 1      | 1         |        | 6.86    | 41   | 0     | 1
+8  | 1      | 1         |        | 7.39    | 43   | 4     | 2
+9  | 2      | 2         | 1      | 7.59    | 34   | 10    | 2
+10 | 1      | 2         |        | 7.44    | 23   | 6     | 3
+: **Tabela 2.8:** Dados de funcionários de uma empresa (parte)
+
+:::
+
+### Exercício 2.4 {- #exr2-4}
+
+::: {.enunciado}
+Num estudo planejado para avaliar o consumo médio de combustível de veículos em diferentes velocidades foram utilizados 4 automóveis da marca A e 3 automóveis da marca B selecionados ao acaso das respectivas linhas de produção. O consumo (em L/km) de cada um dos 7 automóveis foi observado em 3 velocidades diferentes (40 km/h, 80 km/h e 110km/h) Delineie uma planilha apropriada para a coleta e análise estatística dos dados, rotulando-a adequadamente.
+:::
+
+:::{.solution}
+Vamos começar construindo um dicionário de dados para a planilha:
+
+Rótulo     | Descrição                         | Unidade
+:----------|:----------------------------------|:-------
+id         | Identificador do veículo          |
+marca      | Marca fabricante do veículo       | 
+modelo     | Modelo do veículo                 |
+consumo40  | Consumo de combustível a 40 km/h  | L/km
+consumo80  | Consumo de combustível a 80 km/h  | L/km
+consumo110 | Consumo de combustível a 110 km/h | L/km
+: **Tabela 2.9:** Dicionário para as variáveis do estudo sobre consumo de combustível
+
+Agora vamos montar uma planilha (fictícia) seguindo a padronização definida acima:
+
+id   | marca | modelo | consumo40 | consumo80 | consumo110
+:---:|:------|:-------|----------:|----------:|-----------:
+1    | A     | XPTO 1 |           |           |
+2    | A     | XPTO 2 |           |           |
+3    | A     | XPTO 3 |           |           |
+4    | A     | XPTO 4 |           |           |
+5    | B     | XYZ 1  |           |           |
+6    | B     | XYZ 2  |           |           |
+7    | B     | XYZ 3  |           |           |
+: **Tabela 2.10:** Planilha de dados para estudo sobre consumo de combustível
+:::
+
+### Exercício 2.5 {- #exr2-5}
+
+::: {.enunciado}
+Utilizando os dados do arquivo `enforco.xls`, prepare uma planilha Excel num formato conveniente para análise pelo `R`. Inclua apenas as variáveis `Idade`, `Altura`, `Peso`, `Frequência cardiaca` e `VO2` no repouso além do quociente `VE/VCO2`, as correspondentes porcentagens relativamente ao máximo, o quociente `VO2/FC` no pico do exercício e `data do óbito`. Importe a planilha Excel que você criou utilizando comandos `R` e obtenha as características do arquivo importado (número de casos, número de observações omissas etc.)
+:::
+
+:::{.solution}
+Conforme especificação enunciada, criamos o arquivo `esforco.csv` que poderá ser carregado da seguinte maneira:
+
+```{r}
+(esforco <- read_csv(paste0(data_dir, "esforco.csv")))
+```
+
+Temos `r nrow(esforco)` casos e `r ncol(esforco)` variáveis.
+
+:::
+
+### Exercício 2.6 {- #exr2-6}
+
+::: {.enunciado}
+A Figura 2.7 contém uma planilha encaminhada pelos investigadores responsáveis por um estudo sobre AIDS para análise estatistica. Organize-a de forma a permitir sua análise por meio de um pacote computacional como o `R`. 
+:::
+
+:::{.solution}
+Os dados foram reorganizados no arquivo `aids.csv`.
+
+```{r}
+(aids <- read_csv(paste0(data_dir, "aids.csv")))
+```
+
+Uma possível melhoria seria a transformação das variáveis `grupo` e `mac` em fatores.
+:::
+
+### Exercício 2.7 {- #exr2-7}
+
+::: {.enunciado}
+A planilha apresentada na Figura 2.8 contém dados de um estudo em que o limiar auditivo foi avaliado nas orelhas direita (OD) e esquerda (OE) de 13 pacientes em 3 ocasiões (Limiar, Teste 1 e Teste 2). Reformate-a segundo as recomendações da Seção 2.2, indicando claramente
+
+a) a definição das variáveis.
+b) os rótulos para as colunas da planilha.
+:::
+
+:::{.solution}
+Precisamos inicialmente definir um dicionário para as variáveis e, na sequência, refatorar a planilha.
+
+Rótulo | Descrição da variável                                  | Unidade de medida
+:------|:-------------------------------------------------------|:-----------------
+id     | Identificador do paciente                              |
+od0    | Limiar auditivo da orelha direita no início do estudo  | %
+oe0    | Limiar auditivo da orelha esquerda no início do estudo | %
+od1    | Limiar auditivo da orelha direita no primeiro teste    | %
+oe1    | Limiar auditivo da orelha esquerda no primeiro teste   | %
+od2    | Limiar auditivo da orelha direita no segundo teste     | %
+oe2    | Limiar auditivo da orelha esquerda no segundo teste    | %
+: **Tabela 2.11:** Dicionário de dados para o estudo sobre limiar auditivo [^auditivo1]
+
+[^auditivo1]: Como consideramos o limite de detecção como sendo 0.05, foram utilizadas duas casas decimais para representar os limites auditivos observados.
+
+
+id   | od0   | oe0   | od1   | oe1   | od2   | oe2
+:---:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
+1    | 50.00 | 50.00 | 50.00 | 50.00 | 80.00 | 80.00
+2    | 41.00 | 40.00 | 45.00 | 50.00 | 68.00 | 80.00
+3    | 41.25 | 41.25 | 45.00 | 45.00 | 64.00 | 72.00
+4    | 45.00 | 43.75 | 60.00 | 50.00 | 76.00 | 88.00
+5    | 51.25 | 47.50 | 50.00 | 50.00 | 80.00 | 80.00
+6    | 45.00 | 52.50 | 50.00 | 50.00 | 84.00 | 96.00
+7    | 52.50 | 50.00 | 55.00 | 45.00 | 40.00 | 28.00
+8    | 42.15 | 48.75 | 50.00 | 50.00 | 80.00 | 76.00
+9    | 50.00 | 48.75 | 50.00 | 50.00 | 72.00 | 80.00
+10   | 47.50 | 46.25 | 55.00 | 60.00 | 84.00 | 84.00
+11   | 55.00 | 56.25 | 40.00 | 35.00 | 80.00 | 84.00
+12   | 46.25 | 46.25 | 45.00 | 45.00 | 72.00 | 84.00
+13   | 50.00 | 47.50 | 40.00 | 50.00 | 76.00 | 76.00
+: **Tabela 2.12:** Limiar auditivo de pacientes observados em 3 ocasiões
+:::
+
+### Exercício 2.8 {- #exr2-8}
+
+::: {.enunciado}
+A planilha disponível no arquivo `cidades.xls` contém informações demográficas de 3554 municípios brasileiros.
+
+a) Importe-a para permitir a análise por meio do software `R`, indicando os problemas encontrados nesse processo além de sua solução. 
+b) Use o comando `summary` para obter um resumo das variáveis do arquivo.
+c) Classifique cada variável como numérica ou alfanumérica e indique o número de observações omissas de cada uma delas.
+:::
+
+:::{.solution}
+Ao tentar realizar a leitura utilizando a função `read_csv` que já conhecemos, obteríamos um erro devido a planilha conter formatações.
+
+```{r, error=TRUE}
+cidades <- read_csv(paste0(data_dir, "cidades.xls"))
+```
+Podemos limpar a formatação da planilha e tentar a importação novamente ou utilizar a função `read_xls` do pacore **readxl**. 
+
+```{r}
+cidades <- readxl::read_xls(paste0(data_dir, "cidades.xls"), na = '-')
+```
+
+Note que, como os valores faltantes na planilha estão indicado com um hífem, utilizamos o argumeno `na = '-'` para convertelos automaticamente para `NA`. Note também que as últimas duas linhas do data frame `cidades` contém os totalizadores e não observações. Vamos removê-las!
+
+```{r}
+cidades <- head(cidades, -2)
+```
+
+Note que o rótulo das variáveis está em maiúsculo, vamos colocá-los em minústuco com a ajuda da função `str_to_lower()` do pacore **stringr**:
+
+```{r}
+colnames(cidades) <- str_to_lower(colnames(cidades))
+```
+
+Podemos agora ver que temos `r ncol(cidades)` variáveis e `r nrow(cidades)` unidades de análise. Um resumo das variáveis do conjunto de dados é mostrado pelo comando `summary`:
+
+```{r}
+summary(cidades)
+```
+
+Esse comando também nos permite perceber os tipos de cada uma das variáveis e se as mesmas contém valores faltantes. Essas informações estão resumidas na Tabela 2.13.
+ 
+Variável | Tipo         | Número de <br/>observações <br />faltantes
+:--------|:------------:|:-------------------------------------------:
+munic    | Alfanumérica | 0
+uf       | Alfanumérica | 0
+codigo   | Numérica     | 0
+poptot   | Numérica     | 0
+cres_pop | Numérica     | 0
+popurb   | Numérica     | 0
+pibtot   | Numérica     | 14
+cres_pib | Numérica     | 14
+grau1    | Numérica     | 13
+grau2    | Numérica     | 13
+superior | Numérica     | 13
+11oumais | Numérica     | 13
+empregad | Numérica     | 14
+microemp | Numérica     | 14
+peqemp   | Numérica     | 14
+medemp   | Numérica     | 14
+graemp   | Numérica     | 14
+: **Tabela 2.13:** Resumo das observações da tabela `cidades.xls`
+
+:::
+
+### Exercício 2.9 {- #exr2-9}
+
+::: {.enunciado}
+Preencha a ficha de inscrição do Centro de Estatistica Aplicada [www.ime.usp.br/-cea](http://www.ime.usp.br/-cea) com as informações de um estudo em que você está envolvido.
+:::
+
+:::{.solution}
+Não se aplica.
+:::
