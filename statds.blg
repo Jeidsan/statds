@@ -4,44 +4,44 @@ The top-level auxiliary file: statds.aux
 The style file: plainnat.bst
 Database file #1: latex/book.bib
 Database file #2: latex/packages.bib
-You've used 1 entry,
+You've used 2 entries,
             2773 wiz_defined-function locations,
-            600 strings with 4995 characters,
-and the built_in function-call counts, 394 in all, are:
-= -- 29
-> -- 21
+            613 strings with 5553 characters,
+and the built_in function-call counts, 1080 in all, are:
+= -- 89
+> -- 78
 < -- 1
-+ -- 7
-- -- 6
-* -- 26
-:= -- 68
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 4
-chr.to.int$ -- 1
-cite$ -- 2
-duplicate$ -- 20
-empty$ -- 33
-format.name$ -- 9
-if$ -- 77
++ -- 26
+- -- 24
+* -- 98
+:= -- 180
+add.period$ -- 9
+call.type$ -- 2
+change.case$ -- 13
+chr.to.int$ -- 2
+cite$ -- 4
+duplicate$ -- 41
+empty$ -- 74
+format.name$ -- 28
+if$ -- 215
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 12
+missing$ -- 3
+newline$ -- 21
+num.names$ -- 8
+pop$ -- 25
 preamble$ -- 1
-purify$ -- 4
+purify$ -- 12
 quote$ -- 0
-skip$ -- 16
+skip$ -- 33
 stack$ -- 0
-substring$ -- 2
-swap$ -- 1
+substring$ -- 25
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 6
+type$ -- 17
 warning$ -- 0
-while$ -- 3
+while$ -- 7
 width$ -- 0
-write$ -- 20
+write$ -- 39

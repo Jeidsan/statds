@@ -3,12 +3,15 @@
         {
             "author": [
                 {
-                    "dropping-particle": "da",
-                    "family": "Motta Singer",
-                    "given": "Pedro Alberto Morettin; Julio"
+                    "family": "Morettin",
+                    "given": "Pedro Alberto"
+                },
+                {
+                    "family": "Singer",
+                    "given": "Julio da Motta"
                 }
             ],
-            "id": "MoretinSinger2022",
+            "id": "MorettinSinger2022",
             "issued": {
                 "date-parts": [
                     [
@@ -20,6 +23,54 @@
             "publisher-place": "Rio de Janeiro",
             "title": "Estatística e ciência de dados",
             "type": "book"
+        },
+        {
+            "DOI": "10.1590/S0066-782X2007000100012",
+            "ISSN": "0066-782X",
+            "URL": "https://doi.org/10.1590/S0066-782X2007000100012",
+            "author": [
+                {
+                    "dropping-particle": "de",
+                    "family": "Carvalho",
+                    "given": "Tales"
+                },
+                {
+                    "family": "Curi",
+                    "given": "Ana Luiza Hallal"
+                },
+                {
+                    "family": "Andrade",
+                    "given": "Dalton Francisco"
+                },
+                {
+                    "family": "Singer",
+                    "given": "Julio da Motta"
+                },
+                {
+                    "family": "Benetti",
+                    "given": "Magnus"
+                },
+                {
+                    "family": "Mansur",
+                    "given": "Alfredo José"
+                }
+            ],
+            "container-title": "Arquivos Brasileiros de Cardiologia",
+            "id": "CarvalhoEtAl2007",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2007,
+                        1
+                    ]
+                ]
+            },
+            "page": "72-78",
+            "publisher": "Sociedade Brasileira de Cardiologia - SBC",
+            "title": "Reabilitação cardiovascular de portadores de cardiopatia isquêmica submetidos a tratamento clínico, angioplastia coronariana transluminal percutânea e revascularização cirúrgica do miocárdio",
+            "type": "article-journal",
+            "volume": "88"
         },
         {
             "URL": "https://www.R-project.org/",

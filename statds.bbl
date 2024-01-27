@@ -1,9 +1,17 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{2}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Carvalho et~al.(2007)Carvalho, Curi, Andrade, Singer, Benetti, and Mansur]{CarvalhoEtAl2007}
+Tales~de Carvalho, Ana Luiza~Hallal Curi, Dalton~Francisco Andrade, Julio da~Motta Singer, Magnus Benetti, and Alfredo~José Mansur.
+\newblock Reabilitação cardiovascular de portadores de cardiopatia isquêmica submetidos a tratamento clínico, angioplastia coronariana transluminal percutânea e revascularização cirúrgica do miocárdio.
+\newblock \emph{Arquivos Brasileiros de Cardiologia}, 88\penalty0 (1):\penalty0 72–78, Jan 2007.
+\newblock ISSN 0066-782X.
+\newblock \doi{10.1590/S0066-782X2007000100012}.
+\newblock URL \url{https://doi.org/10.1590/S0066-782X2007000100012}.
 
 \bibitem[Morettin and Singer(2022)]{MorettinSinger2022}
 Pedro~Alberto Morettin and Julio da~Motta Singer.
