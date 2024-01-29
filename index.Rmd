@@ -19,6 +19,8 @@ link-citations: yes
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(knitr)
+library(e1071)
+library(gridExtra)
 
 data_dir <- paste0(getwd(), "/data/")
 
@@ -61,4 +63,5 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail *jeidsan
 ## Pendências {-}
 
 - [Exercício 2.2](#exr2-2);
-- 
+- Revisar item b do [Exercício 3.2](#exr3-2);
+-

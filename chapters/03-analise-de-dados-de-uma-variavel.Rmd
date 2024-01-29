@@ -690,22 +690,670 @@ rehabcardio %>%
 ::: {.enunciado}
 Considere os dados do arquivo `antracose.xls`.
 
-a) Construa uma tabela com as medidas de posição e dispersão estudadas para as variáveis desse arquivo 
+a) Construa uma tabela com as medidas de posição e dispersão estudadas para as variáveis desse arquivo.
 b) Construa histogramas e boxplots para essas variáveis e verifique que transformação é necessária para tornar mais simétricas aquelas em que a simetria pode ser questionada. 
 :::
 
 :::{.solution}
-x
+Vamos começar carregando o arquivo.
+
+```{r}
+antracose <- readxl::read_xls(paste0(data_dir, "antracose.xls"))
+```
+
+#### Construa uma tabela com as medidas de posição e dispersão estudadas para as variáveis desse arquivo {-}
+
+A Tabela 3.5 apresenta as medidas de posição e dispersão dos dados.
+
+```{r}
+resumo <- antracose %>%
+            map(summ) %>%
+            as.data.frame() %>%
+            t()
+
+colnames(resumo) <- c("Quantidade de observações", "Mínimo", "Máximo", "Média", "Desvio padrão", "Mediana", "Distância interquartil")
+
+resumo %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.5:** Medidas de resumo para algumas variáveis de `antracose.xls`",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+#### Construa histogramas e boxplots para essas variáveis e verifique que transformação é necessária para tornar mais simétricas aquelas em que a simetria pode ser questionada {-}
+
+Para a variável `idade`, temos o seguinte:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = idade)) +
+    geom_histogram(
+      binwidth = 3,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.22: Distribuição da idade dos pacientes",
+      x = "Idade (anos)"
+    ) +
+    tema
+```
+
+
+```{r}
+antracose %>%
+  ggplot(aes(x = idade)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.23: Idade dos pacientes",
+      x = "Idade (anos)"
+    ) +
+    tema
+```
+Observando os gráficos, podemos perceber uma leve (muito leve) assimetria à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo (`r e1071::skewness(antracose$idade, type = 2)`), o que indica a leve assimetria.
+
+Entendemos que não seria necessário nenhuma transformação, uma vez que a assimetria é muito leve, porém se usarmos a transformação de Box-Cox, teremos o seguinte:
+
+```{r}
+p <- seq(-3,3, 1/10) # c(-3, -2, -1, -1/2, -1/3, -1/4, 0, 1/4, 1/3, 1/2, 1, 2, 3)
+
+transformar <- function(x, p) {
+  if(p > 0) {
+    x^p
+  } else if (p == 0) {
+    log(x)
+  } else {
+    -x^p
+  }
+}
+
+boxcox <- function(x, p) {
+  if(p == 0) {
+    log(x)
+  } else {
+    (((x ^ p) - 1) / p)
+  }
+}
+
+calcular_metrica <- function(x) {
+  x <- x[is.finite(x)]
+  (mean(x, na.rm = TRUE) - median(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)
+}
+
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$idade %>%
+                  transformar(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+Após a transformação, verificação que o valor que minimiza a nossa métrica de transformação é $p = -1$, que faz a transformação levar $x$ no seu simétrico $-x$. Isso corrobora com a nossa hipótese de que a função já é a mais simétrica possível (nos termos da nossa transformação). 
+
+Para a variável `tmunic`, temos:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = tmunic)) +
+    geom_histogram(
+      binwidth = 8,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.24: Distribuição da variável `tmunic`",
+      y = "Frequência"
+    ) +
+    tema
+```
+
+```{r}
+antracose %>%
+  ggplot(aes(x = tmunic)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.25: Distribuição da variável `tmunic`"
+    ) +
+    tema
+```
+Observando os gráficos, podemos perceber uma leve (muito leve) assimetria à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo (`r e1071::skewness(antracose$tmunic, type = 2)`), o que indica a leve assimetria.
+
+Podemos usar uma transformação para corrigir a assimetria dos dados:
+
+```{r}
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$tmunic %>%
+                  boxcox(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+Notamos que o melhor valor de $p$ é $-1/3$. Com isso, podemos realizar utilizar esta transformação.
+
+```{r}
+antracose$tmunic2 <- boxcox(antracose$tmunic, p[min_rank(dps)[1]])
+
+antracose %>%
+  ggplot(aes(x = tmunic2)) +
+    geom_histogram(
+      binwidth = 1,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.26: Distribuição da variável `tmunic2`",
+      y = "Frequência"
+    ) +
+    tema
+```
+Neste caso, a transformação não melhorou a simetria dos dados. Em vez disso, o coeficiente de assimetria saltou de `r e1071::skewness(antracose$tmunic, type = 2)` para `r e1071::skewness(antracose$tmunic2, type = 2)`.
+
+Para a variável `htransp`, temos:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = htransp)) +
+    geom_histogram(
+      binwidth = 0.5,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.27: Distribuição da variável `htransp`"
+    ) +
+    tema
+```
+
+
+```{r}
+antracose %>%
+  ggplot(aes(x = htransp)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.28: Distribuição da variável `htransp`"
+    ) +
+    tema
+```
+A variável contém uma forte assimetria a direita, conforme atesta também o coeficiente de simetria de Fisher-Pearson ajustado (`r e1071::skewness(antracose$htransp, type = 2)`).
+
+Vamos realizar uma transformação:
+
+```{r}
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$htransp %>%
+                  boxcox(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[i]]
+```
+Para os valores de $p$, o melhor ajuste se dá quando $p = 0.9$, vamos utilizá-lo então!
+
+```{r}
+antracose$htransp2 <- boxcox(antracose$htransp, p[min_rank(dps)[i]])
+
+antracose %>%
+  ggplot(aes(x = htransp2)) +
+    geom_histogram(
+      binwidth = .5,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.29: Distribuição da variável `log(htransp)`"
+    ) +
+    tema
+```
+Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. Vamos por exemplo, comparar os valores antes e depois da transformação.
+
+```{r}
+e1071::skewness(antracose$htransp, type = 2)
+e1071::skewness(antracose$htransp2, type = 2)
+```
+Vejamos agora a variável `cargatabag`:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = cargatabag)) +
+    geom_histogram(
+      binwidth = 15,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.30: Distribuição da variável `cargatabag`"
+    ) +
+    tema
+```
+
+
+```{r}
+antracose %>%
+  ggplot(aes(x = cargatabag)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.31: Distribuição da variável `cargatabag`"
+    ) +
+    tema
+```
+
+Temos uma distribuição fortemente assimétrica à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado nos indica um grau de assimetria na ordem de `r e1071::skewness(antracose$cargatabag, type = 2)`.
+
+Como a distribuição tem um formato exponencial, apostaremos que a transformação que leva $x$ em $log(x)$ seja suficiente para melhorar a distibuição dos dados.
+
+```{r}
+antracose %>%
+  ggplot(aes(log(cargatabag))) +
+    geom_histogram(
+      binwidth = .6,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 32: Distribuição da variável `cargatabag`"
+    ) +
+    tema
+```
+
+Continuamos com assimetria, desta vez à esquerda. Vamos realizar outras transformações e avaliar a nossa métrica.
+
+```{r}
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$htransp %>%
+                  boxcox(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+Notamos que para $p = 0.3$, nossa métrica é minimizada. 
+
+```{r}
+antracose$cargatabag2 <- transformar(antracose$cargatabag, p[min_rank(dps)[1]])
+
+antracose %>%
+  ggplot(aes(x = cargatabag2)) +
+    geom_histogram(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.33: Distribuição da variável `cargatabag`"
+    ) +
+    tema
+```
+
+Note que, os valores continuam concentrados no zero, mas os demais, se distribuem de forma mais simétrica do que antes. É importante destacar que, nem sempre será possível tornar simétrica uma distribuição. Neste caso, deveremos procurar técnicas que não dependam da simetria dos dados.
+
+Analisemos agora a variável `antracose`:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = antracose)) +
+    geom_histogram(
+      binwidth = .05,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.34: Distribuição da variável `antracose`"
+    ) +
+    tema
+```
+
+
+```{r}
+antracose %>%
+  ggplot(aes(x = antracose)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.35: Distribuição da variável `antracose`"
+    ) +
+    tema
+```
+
+Temos uma forte assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é `r e1071::skewness(antracose$antracose, type = 2)`. Vamos verificar se podemos usar uma transformação nos dados.
+
+```{r}
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$antracose %>%
+                  boxcox(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+O valor $p = 0.3$ minimiza a nossa medida de avaliação. Vamos agora plotar os dados transformados e avaliar novamente o coeficiente de assimetria.
+
+```{r}
+antracose$antracose2 <- boxcox(antracose$antracose, p[min_rank(dps)[1]])
+
+antracose %>%
+  ggplot(aes(x = antracose2)) +
+    geom_histogram(
+      binwidth = .3,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.36: Distribuição da variável `antracose`"
+    ) +
+    tema
+```
+
+Parece-nos que os dados se tornaram um pouco mais simétricos, mas nada muito significativo. Talvez valha a pena entender se a concentração dos valores em zero é uma medida real ou se apenas serve para simbolizar, por exemplo, um valor que não pode ser medido devido ao valor de outra variável.
+
+```{r}
+e1071::skewness(antracose$antracose, na.rm = TRUE, type = 2)
+e1071::skewness(antracose$antracose2, na.rm = TRUE, type = 2)
+```
+
+Para a variável `ses`, temos:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = ses)) +
+    geom_histogram(
+      binwidth = .2,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.37: Distribuição da variável `ses`"
+    ) +
+    tema
+```
+
+
+```{r}
+antracose %>%
+  ggplot(aes(x = ses)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.38: Distribuição da variável `ses`"
+    ) +
+    tema
+```
+
+Temos uma leve assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é `r e1071::skewness(antracose$antracose, na.rm = TRUE, type = 2)`. Vamos verificar se podemos usar uma transformação nos dados.
+
+```{r}
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$ses %>%
+                  boxcox(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+O valor $p = 0.4$ minimiza a nossa medida de avaliação. Vamos agora plotar os dados transformados e avaliar novamente o coeficiente de assimetria.
+
+```{r}
+antracose$ses2 <- boxcox(antracose$ses, p[min_rank(dps)[1]])
+
+antracose %>%
+  ggplot(aes(x = ses2)) +
+    geom_histogram(
+      binwidth = .6,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.39: Distribuição da variável `antracose`"
+    ) +
+    tema
+```
+
+Notamos que o histograma se tornou um pouco mais simétrico. Vamos avaliar os valores dos coeficientes de assimetria.
+
+
+```{r}
+e1071::skewness(antracose$ses, na.rm = TRUE, type = 2)
+e1071::skewness(antracose$ses2, na.rm = TRUE, type = 2)
+```
+
+De fato, a transformação da variável nos trouxe uma melhoria significativa na simetria dos dados. 
+
+Para a variável `densid`:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = densid)) +
+    geom_histogram(
+      binwidth = .003,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.40: Distribuição da variável `densid`"
+    ) +
+    tema
+```
+
+
+```{r}
+antracose %>%
+  ggplot(aes(x = densid)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.41: Distribuição da variável `densid`"
+    ) +
+    tema
+```
+
+A distribuição já nos parece bastante adequada, com coeficiente de assimetria `r e1071::skewness(antracose$densid, na.rm = TRUE, type = 2)`.
+
+```{r}
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$densid %>%
+                  boxcox(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+Para os diversos valores de $p$, o que minimiza a nossa métrica é justamente $p = 1$, que nos dá a transformação identidade. Em outras palavras, as transformações com as quais estamos trabalhando, não nos darão melhores resultados. 
+
+Por fim, vamos à variável `distmin`:
+
+```{r}
+antracose %>%
+  ggplot(aes(x = distmin)) +
+    geom_histogram(
+      binwidth = 190,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.42: Distribuição da variável `distmin`"
+    ) +
+    tema
+```
+
+
+```{r}
+antracose %>%
+  ggplot(aes(x = distmin)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.43: Distribuição da variável `distmin`"
+    ) +
+    tema
+```
+
+Temos uma forte assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é `r e1071::skewness(antracose$distmin, na.rm = TRUE, type = 2)`. Vamos verificar se podemos usar uma transformação nos dados.
+
+```{r}
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[[i]]  <- antracose$distmin %>%
+                  boxcox(p[i]) %>%
+                  calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+O valor $p = 0.2$ minimiza a nossa medida de avaliação. Vamos agora plotar os dados transformados e avaliar novamente o coeficiente de assimetria.
+
+```{r}
+antracose$distmin2 <- boxcox(antracose$antracose, p[min_rank(dps)[1]])
+
+antracose %>%
+  ggplot(aes(x = distmin2)) +
+    geom_histogram(
+      binwidth = 1,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.44: Distribuição da variável `antracose`"
+    ) +
+    tema
+```
+
+Notamos uma pequena melhora, porém ainda há uma concentração de dados em torno de um valor inicial. Analisemos o coef. de assimetria antes e depois da transformação.
+
+```{r}
+e1071::skewness(antracose$distmin, na.rm = TRUE, type = 2)
+e1071::skewness(antracose$distmin2, na.rm = TRUE, type = 2)
+```
 :::
 
 ### Exercício 3.3 {- #exr3-3}
 
 ::: {.enunciado}
-Considere as variáveis Peso e Altura de homens do conjunto de dados rehabcardio. Determine o número de classes para os histogramas correspondentes por meio de (3.26) e (3.27) e construa-os.
+Considere as variáveis `Peso` e `Altura` de homens do conjunto de dados rehabcardio. Determine o número de classes para os histogramas correspondentes por meio de (3.26) e (3.27) e construa-os.
 :::
 
 :::{.solution}
-x
+Inicialmente vamos filtrar o conjunto de dados original selecionando apenas os indivíduos do sexo masculino.
+
+```{r}
+rehabcardio_h <- rehabcardio %>%
+                    filter(Genero == "M")
+```
+
+Vamos agora definir as funções `freedman_diaconis` e `sturges` para calcular a amplitude das classes.
+
+```{r}
+freedman_diaconis <- function(x) {
+  s <- sd(x, na.rm = TRUE)
+  n <- length(x)
+  
+  1.349 * s * ((log(n) / n)^(1/3))
+}
+
+sturges <- function(x) {
+  r <- range(rehabcardio_h$Peso, na.rm = T)
+  w = r[2] - r[1]
+  n <- length(x)
+  
+  w / (1 + 3.322 * log(n))
+}
+```
+Com as funções definidas, podemos construir os histogramas usando essa amplitude de classes.
+
+
+```{r}
+rehabcardio_h %>%
+  ggplot(aes(Peso)) +
+    geom_histogram(
+      binwidth = freedman_diaconis(rehabcardio_h$Peso),
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.45: Distribuição do peso utilizando Freedman-Diaconis"
+    ) +
+    tema
+```
+
+```{r}
+rehabcardio_h %>%
+  ggplot(aes(Peso)) +
+    geom_histogram(
+      binwidth = sturges(rehabcardio_h$Peso),
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.46: Distribuição do peso utilizando Sturges"
+    ) +
+    tema
+```
+
+```{r}
+rehabcardio_h %>%
+  ggplot(aes(Altura)) +
+    geom_histogram(
+      binwidth = freedman_diaconis(rehabcardio_h$Altura),
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.47: Distribuição da altura utilizando Freedman-Diaconis"
+    ) +
+    tema
+```
+
+```{r}
+rehabcardio_h %>%
+  ggplot(aes(Altura)) +
+    geom_histogram(
+      binwidth = sturges(rehabcardio_h$Altura),
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.48: Distribuição da altura utilizando Sturges"
+    ) +
+    tema
+```
+
 :::
 
 ### Exercício 3.4 {- #exr3-4}

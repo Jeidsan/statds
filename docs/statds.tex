@@ -312,6 +312,8 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
 \item
   \protect\hyperlink{exr2-2}{Exercício 2.2};
 \item
+  Revisar item b do \protect\hyperlink{exr3-2}{Exercício 3.2};
+\item
 \end{itemize}
 
 \mainmatter
@@ -2358,23 +2360,1014 @@ Considere os dados do arquivo \texttt{antracose.xls}.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Construa uma tabela com as medidas de posição e dispersão estudadas para as variáveis desse arquivo
+  Construa uma tabela com as medidas de posição e dispersão estudadas para as variáveis desse arquivo.
 \item
   Construa histogramas e boxplots para essas variáveis e verifique que transformação é necessária para tornar mais simétricas aquelas em que a simetria pode ser questionada.
 \end{enumerate}
 
 \begin{solution}
-x
+
+Vamos começar carregando o arquivo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"antracose.xls"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{construa-uma-tabela-com-as-medidas-de-posiuxe7uxe3o-e-dispersuxe3o-estudadas-para-as-variuxe1veis-desse-arquivo}{%
+\subsubsection*{Construa uma tabela com as medidas de posição e dispersão estudadas para as variáveis desse arquivo}\label{construa-uma-tabela-com-as-medidas-de-posiuxe7uxe3o-e-dispersuxe3o-estudadas-para-as-variuxe1veis-desse-arquivo}}
+\addcontentsline{toc}{subsubsection}{Construa uma tabela com as medidas de posição e dispersão estudadas para as variáveis desse arquivo}
+
+A Tabela 3.5 apresenta as medidas de posição e dispersão dos dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resumo }\OtherTok{\textless{}{-}}\NormalTok{ antracose }\SpecialCharTok{\%\textgreater{}\%}
+            \FunctionTok{map}\NormalTok{(summ) }\SpecialCharTok{\%\textgreater{}\%}
+            \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+            \FunctionTok{t}\NormalTok{()}
+
+\FunctionTok{colnames}\NormalTok{(resumo) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Quantidade de observações"}\NormalTok{, }\StringTok{"Mínimo"}\NormalTok{, }\StringTok{"Máximo"}\NormalTok{, }\StringTok{"Média"}\NormalTok{, }\StringTok{"Desvio padrão"}\NormalTok{, }\StringTok{"Mediana"}\NormalTok{, }\StringTok{"Distância interquartil"}\NormalTok{)}
+
+\NormalTok{resumo }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.5:** Medidas de resumo para algumas variáveis de \textasciigrave{}antracose.xls\textasciigrave{}"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0991}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2432}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0721}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0811}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0721}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1351}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0811}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2162}}@{}}
+\caption{\textbf{Tabela 3.5:} Medidas de resumo para algumas variáveis de \texttt{antracose.xls}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Quantidade de observações
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Quantidade de observações
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+idade & 2452 & 19,00 & 110,00 & 68,43 & 15,14 & 69,00 & 23,00 \\
+tmunic & 2452 & 0,00 & 103,00 & 49,27 & 20,63 & 50,00 & 23,00 \\
+htransp & 2452 & 0,00 & 12,00 & 1,78 & 2,54 & 0,83 & 2,00 \\
+cargatabag & 2452 & 0,00 & 256,00 & 25,57 & 39,31 & 1,50 & 41,00 \\
+antracose & 2350 & 0,00 & 0,83 & 0,20 & 0,16 & 0,17 & 0,22 \\
+ses & 2452 & -1,00 & 1,00 & -0,24 & 0,36 & -0,31 & 0,47 \\
+densid & 2452 & 0,00 & 0,04 & 0,02 & 0,01 & 0,02 & 0,01 \\
+distmin & 2452 & 0,03 & 1964,02 & 170,67 & 190,87 & 114,12 & 180,71 \\
+\end{longtable}
+
+\hypertarget{construa-histogramas-e-boxplots-para-essas-variuxe1veis-e-verifique-que-transformauxe7uxe3o-uxe9-necessuxe1ria-para-tornar-mais-simuxe9tricas-aquelas-em-que-a-simetria-pode-ser-questionada}{%
+\subsubsection*{Construa histogramas e boxplots para essas variáveis e verifique que transformação é necessária para tornar mais simétricas aquelas em que a simetria pode ser questionada}\label{construa-histogramas-e-boxplots-para-essas-variuxe1veis-e-verifique-que-transformauxe7uxe3o-uxe9-necessuxe1ria-para-tornar-mais-simuxe9tricas-aquelas-em-que-a-simetria-pode-ser-questionada}}
+\addcontentsline{toc}{subsubsection}{Construa histogramas e boxplots para essas variáveis e verifique que transformação é necessária para tornar mais simétricas aquelas em que a simetria pode ser questionada}
+
+Para a variável \texttt{idade}, temos o seguinte:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ idade)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{3}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.22: Distribuição da idade dos pacientes"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Idade (anos)"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ idade)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.23: Idade dos pacientes"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Idade (anos)"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-41-1.pdf}
+Observando os gráficos, podemos perceber uma leve (muito leve) assimetria à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo (-0.1797772), o que indica a leve assimetria.
+
+Entendemos que não seria necessário nenhuma transformação, uma vez que a assimetria é muito leve, porém se usarmos a transformação de Box-Cox, teremos o seguinte:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{10}\NormalTok{) }\CommentTok{\# c({-}3, {-}2, {-}1, {-}1/2, {-}1/3, {-}1/4, 0, 1/4, 1/3, 1/2, 1, 2, 3)}
+
+\NormalTok{transformar }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, p) \{}
+  \ControlFlowTok{if}\NormalTok{(p }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{    x}\SpecialCharTok{\^{}}\NormalTok{p}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (p }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{log}\NormalTok{(x)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \SpecialCharTok{{-}}\NormalTok{x}\SpecialCharTok{\^{}}\NormalTok{p}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\NormalTok{boxcox }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, p) \{}
+  \ControlFlowTok{if}\NormalTok{(p }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{log}\NormalTok{(x)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    (((x }\SpecialCharTok{\^{}}\NormalTok{ p) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ p)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\NormalTok{calcular\_metrica }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\OtherTok{\textless{}{-}}\NormalTok{ x[}\FunctionTok{is.finite}\NormalTok{(x)]}
+\NormalTok{  (}\FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{{-}} \FunctionTok{median}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{/} \FunctionTok{sd}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{idade }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{transformar}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1
+\end{verbatim}
+
+Após a transformação, verificação que o valor que minimiza a nossa métrica de transformação é \(p = -1\), que faz a transformação levar \(x\) no seu simétrico \(-x\). Isso corrobora com a nossa hipótese de que a função já é a mais simétrica possível (nos termos da nossa transformação).
+
+Para a variável \texttt{tmunic}, temos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ tmunic)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{8}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.24: Distribuição da variável \textasciigrave{}tmunic\textasciigrave{}"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ tmunic)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.25: Distribuição da variável \textasciigrave{}tmunic\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-44-1.pdf}
+Observando os gráficos, podemos perceber uma leve (muito leve) assimetria à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo (-0.3960939), o que indica a leve assimetria.
+
+Podemos usar uma transformação para corrigir a assimetria dos dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{tmunic }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7
+\end{verbatim}
+
+Notamos que o melhor valor de \(p\) é \(-1/3\). Com isso, podemos realizar utilizar esta transformação.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose}\SpecialCharTok{$}\NormalTok{tmunic2 }\OtherTok{\textless{}{-}} \FunctionTok{boxcox}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{tmunic, p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]])}
+
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ tmunic2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{1}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.26: Distribuição da variável \textasciigrave{}tmunic2\textasciigrave{}"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-46-1.pdf}
+Neste caso, a transformação não melhorou a simetria dos dados. Em vez disso, o coeficiente de assimetria saltou de -0.3960939 para -0.9443456.
+
+Para a variável \texttt{htransp}, temos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ htransp)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \FloatTok{0.5}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.27: Distribuição da variável \textasciigrave{}htransp\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ htransp)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.28: Distribuição da variável \textasciigrave{}htransp\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-48-1.pdf}
+A variável contém uma forte assimetria a direita, conforme atesta também o coeficiente de simetria de Fisher-Pearson ajustado (2.0507871).
+
+Vamos realizar uma transformação:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{htransp }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[i]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9
+\end{verbatim}
+
+Para os valores de \(p\), o melhor ajuste se dá quando \(p = 0.9\), vamos utilizá-lo então!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose}\SpecialCharTok{$}\NormalTok{htransp2 }\OtherTok{\textless{}{-}} \FunctionTok{boxcox}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{htransp, p[}\FunctionTok{min\_rank}\NormalTok{(dps)[i]])}
+
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ htransp2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{5}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.29: Distribuição da variável \textasciigrave{}log(htransp)\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-50-1.pdf}
+Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. Vamos por exemplo, comparar os valores antes e depois da transformação.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{htransp, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.050787
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{htransp2, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.851695
+\end{verbatim}
+
+Vejamos agora a variável \texttt{cargatabag}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cargatabag)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{15}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.30: Distribuição da variável \textasciigrave{}cargatabag\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-52-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cargatabag)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.31: Distribuição da variável \textasciigrave{}cargatabag\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-53-1.pdf}
+
+Temos uma distribuição fortemente assimétrica à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado nos indica um grau de assimetria na ordem de 2.0334838.
+
+Como a distribuição tem um formato exponencial, apostaremos que a transformação que leva \(x\) em \(log(x)\) seja suficiente para melhorar a distibuição dos dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\FunctionTok{log}\NormalTok{(cargatabag))) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{6}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 32: Distribuição da variável \textasciigrave{}cargatabag\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1196 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-54-1.pdf}
+
+Continuamos com assimetria, desta vez à esquerda. Vamos realizar outras transformações e avaliar a nossa métrica.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{htransp }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3
+\end{verbatim}
+
+Notamos que para \(p = 0.3\), nossa métrica é minimizada.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose}\SpecialCharTok{$}\NormalTok{cargatabag2 }\OtherTok{\textless{}{-}} \FunctionTok{transformar}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{cargatabag, p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]])}
+
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cargatabag2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.33: Distribuição da variável \textasciigrave{}cargatabag\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-56-1.pdf}
+
+Note que, os valores continuam concentrados no zero, mas os demais, se distribuem de forma mais simétrica do que antes. É importante destacar que, nem sempre será possível tornar simétrica uma distribuição. Neste caso, deveremos procurar técnicas que não dependam da simetria dos dados.
+
+Analisemos agora a variável \texttt{antracose}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ antracose)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{05}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.34: Distribuição da variável \textasciigrave{}antracose\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 102 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-57-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ antracose)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.35: Distribuição da variável \textasciigrave{}antracose\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 102 rows containing non-finite values (`stat_boxplot()`).
+## Removed 102 rows containing non-finite values (`stat_boxplot()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-58-1.pdf}
+
+Temos uma forte assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é NA. Vamos verificar se podemos usar uma transformação nos dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3
+\end{verbatim}
+
+O valor \(p = 0.3\) minimiza a nossa medida de avaliação. Vamos agora plotar os dados transformados e avaliar novamente o coeficiente de assimetria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose}\SpecialCharTok{$}\NormalTok{antracose2 }\OtherTok{\textless{}{-}} \FunctionTok{boxcox}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{antracose, p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]])}
+
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ antracose2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{3}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.36: Distribuição da variável \textasciigrave{}antracose\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 102 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-60-1.pdf}
+
+Parece-nos que os dados se tornaram um pouco mais simétricos, mas nada muito significativo. Talvez valha a pena entender se a concentração dos valores em zero é uma medida real ou se apenas serve para simbolizar, por exemplo, um valor que não pode ser medido devido ao valor de outra variável.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{antracose, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9535379
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{antracose2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.9171354
+\end{verbatim}
+
+Para a variável \texttt{ses}, temos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ses)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{2}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.37: Distribuição da variável \textasciigrave{}ses\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-62-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ses)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.38: Distribuição da variável \textasciigrave{}ses\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-63-1.pdf}
+
+Temos uma leve assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é 0.9535379. Vamos verificar se podemos usar uma transformação nos dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{ses }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in log(x): NaNs produzidos
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4
+\end{verbatim}
+
+O valor \(p = 0.4\) minimiza a nossa medida de avaliação. Vamos agora plotar os dados transformados e avaliar novamente o coeficiente de assimetria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose}\SpecialCharTok{$}\NormalTok{ses2 }\OtherTok{\textless{}{-}} \FunctionTok{boxcox}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{ses, p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]])}
+
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ ses2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{6}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.39: Distribuição da variável \textasciigrave{}antracose\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1920 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-65-1.pdf}
+
+Notamos que o histograma se tornou um pouco mais simétrico. Vamos avaliar os valores dos coeficientes de assimetria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{ses, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9793336
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{ses2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.1564781
+\end{verbatim}
+
+De fato, a transformação da variável nos trouxe uma melhoria significativa na simetria dos dados.
+
+Para a variável \texttt{densid}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ densid)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =}\NormalTok{ .}\DecValTok{003}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.40: Distribuição da variável \textasciigrave{}densid\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-67-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ densid)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.41: Distribuição da variável \textasciigrave{}densid\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-68-1.pdf}
+
+A distribuição já nos parece bastante adequada, com coeficiente de assimetria -0.4460641.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{densid }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+Para os diversos valores de \(p\), o que minimiza a nossa métrica é justamente \(p = 1\), que nos dá a transformação identidade. Em outras palavras, as transformações com as quais estamos trabalhando, não nos darão melhores resultados.
+
+Por fim, vamos à variável \texttt{distmin}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distmin)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{190}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.42: Distribuição da variável \textasciigrave{}distmin\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-70-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distmin)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.43: Distribuição da variável \textasciigrave{}distmin\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-71-1.pdf}
+
+Temos uma forte assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é 2.9669771. Vamos verificar se podemos usar uma transformação nos dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[[i]]  }\OtherTok{\textless{}{-}}\NormalTok{ antracose}\SpecialCharTok{$}\NormalTok{distmin }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2
+\end{verbatim}
+
+O valor \(p = 0.2\) minimiza a nossa medida de avaliação. Vamos agora plotar os dados transformados e avaliar novamente o coeficiente de assimetria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{antracose}\SpecialCharTok{$}\NormalTok{distmin2 }\OtherTok{\textless{}{-}} \FunctionTok{boxcox}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{antracose, p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]])}
+
+\NormalTok{antracose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distmin2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{1}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.44: Distribuição da variável \textasciigrave{}antracose\textasciigrave{}"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 102 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-73-1.pdf}
+
+Notamos uma pequena melhora, porém ainda há uma concentração de dados em torno de um valor inicial. Analisemos o coef. de assimetria antes e depois da transformação.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{distmin, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.966977
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(antracose}\SpecialCharTok{$}\NormalTok{distmin2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.819497
+\end{verbatim}
+
 \end{solution}
 
 \hypertarget{exr3-3}{%
 \subsection*{Exercício 3.3}\label{exr3-3}}
 \addcontentsline{toc}{subsection}{Exercício 3.3}
 
-Considere as variáveis Peso e Altura de homens do conjunto de dados rehabcardio. Determine o número de classes para os histogramas correspondentes por meio de (3.26) e (3.27) e construa-os.
+Considere as variáveis \texttt{Peso} e \texttt{Altura} de homens do conjunto de dados rehabcardio. Determine o número de classes para os histogramas correspondentes por meio de (3.26) e (3.27) e construa-os.
 
 \begin{solution}
-x
+Inicialmente vamos filtrar o conjunto de dados original selecionando apenas os indivíduos do sexo masculino.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rehabcardio\_h }\OtherTok{\textless{}{-}}\NormalTok{ rehabcardio }\SpecialCharTok{\%\textgreater{}\%}
+                    \FunctionTok{filter}\NormalTok{(Genero }\SpecialCharTok{==} \StringTok{"M"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Vamos agora definir as funções \texttt{freedman\_diaconis} e \texttt{sturges} para calcular a amplitude das classes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{freedman\_diaconis }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  s }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x)}
+  
+  \FloatTok{1.349} \SpecialCharTok{*}\NormalTok{ s }\SpecialCharTok{*}\NormalTok{ ((}\FunctionTok{log}\NormalTok{(n) }\SpecialCharTok{/}\NormalTok{ n)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{3}\NormalTok{))}
+\NormalTok{\}}
+
+\NormalTok{sturges }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  r }\OtherTok{\textless{}{-}} \FunctionTok{range}\NormalTok{(rehabcardio\_h}\SpecialCharTok{$}\NormalTok{Peso, }\AttributeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{  w }\OtherTok{=}\NormalTok{ r[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{{-}}\NormalTok{ r[}\DecValTok{1}\NormalTok{]}
+\NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x)}
+  
+\NormalTok{  w }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+} \FloatTok{3.322} \SpecialCharTok{*} \FunctionTok{log}\NormalTok{(n))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Com as funções definidas, podemos construir os histogramas usando essa amplitude de classes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rehabcardio\_h }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Peso)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \FunctionTok{freedman\_diaconis}\NormalTok{(rehabcardio\_h}\SpecialCharTok{$}\NormalTok{Peso),}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.45: Distribuição do peso utilizando Freedman{-}Diaconis"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 5 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-77-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rehabcardio\_h }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Peso)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \FunctionTok{sturges}\NormalTok{(rehabcardio\_h}\SpecialCharTok{$}\NormalTok{Peso),}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.46: Distribuição do peso utilizando Sturges"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 5 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-78-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rehabcardio\_h }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Altura)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \FunctionTok{freedman\_diaconis}\NormalTok{(rehabcardio\_h}\SpecialCharTok{$}\NormalTok{Altura),}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.47: Distribuição da altura utilizando Freedman{-}Diaconis"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 6 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-79-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rehabcardio\_h }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Altura)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \FunctionTok{sturges}\NormalTok{(rehabcardio\_h}\SpecialCharTok{$}\NormalTok{Altura),}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.48: Distribuição da altura utilizando Sturges"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 6 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-80-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-4}{%
