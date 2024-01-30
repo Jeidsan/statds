@@ -1363,7 +1363,70 @@ Considere o arquivo `vento.xls`. Observe o valor atipico $61,1$, que na realidad
 :::
 
 :::{.solution}
-x
+Em primeiro lugar, carregamos o conjunto de dados:
+
+```{r}
+vento <- readxl::read_xls(paste0(data_dir, "vento.xls"))
+```
+
+Esboçaremos um gráfico mostrando a velocidade do vento a cada dia.
+
+```{r}
+vento %>%
+  ggplot(aes(t, vt)) +
+    geom_line() +
+    geom_point() +
+    labs(
+      title = "Figura 3.49: Velocidade do vento nos primeiros quinze dias de dezembro",
+      x = "Dia",
+      y = "Velocidade"
+    ) +
+    scale_x_continuous(breaks = seq(1, 15, 1)) +
+    tema
+```
+#### Medidas de posição {-}
+
+A média da amostra é `r mean(vento$vt)` e o desvio padrão é `r sd(vento$vt)`. Os quartis da amostras são apresentados abaixo:
+
+```{r}
+t1 <- data.frame(
+            `Mínimo` = min(vento$vt),
+            `Q1` = quantile(vento$vt, 0.25)[[1]],
+            `Mediana` = median(vento$vt),
+            `Q3` = quantile(vento$vt, 0.75)[[1]],
+            `Máximo` = max(vento$vt),
+            `Média` = mean(vento$vt),
+            `Desvio Padrão` = sd(vento$vt)
+          )
+
+vento2 <- vento %>% filter(vt < 60)
+
+t2 <- data.frame(
+            `Mínimo` = min(vento2$vt),
+            `Q1` = quantile(vento2$vt, 0.25)[[1]],
+            `Mediana` = median(vento2$vt),
+            `Q3` = quantile(vento2$vt, 0.75)[[1]],
+            `Máximo` = max(vento2$vt),
+            `Média` = mean(vento2$vt),
+            `Desvio Padrão` = sd(vento2$vt)
+          )
+
+resumo <- bind_rows(t1, t2, t1 - t2)
+row.names(resumo) <- c("Antes", "Depois", "Diferença")
+
+resumo %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.6:** Medidas de resumo para a velocidade do vento",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Notamos que após remoção do valor atípico, há uma diferença considerável tanto na média, como no desvio padrão. Este caiu pela metade.
+
 :::
 
 ### Exercício 3.5 {- #exr3-5}
@@ -1373,7 +1436,11 @@ Construa gráficos ramo-e-folhas e boxplot para os dados do [Exercício 4](#exr3
 :::
 
 :::{.solution}
-x
+Para a construção do diagrama de ramos e folhas, utilizamos a função `stem()`.
+
+```{r}
+stem(vento$vt, scale = 2, atom = 0.001)
+```
 :::
 
 ### Exercício 3.6 {- #exr3-6}
@@ -1383,7 +1450,49 @@ Transforme os dados do [Exercicio 4](#exr3-4) por meio de (3.23) com $p = 0, 1/4
 :::
 
 :::{.solution}
-x
+Vamos utilizar as funções `boxcox()` e `calcular_metrica()` criadas anteriomente.
+
+```{r}
+p <- c(0,1/4, 1/3, 1/2, 3/4)
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[i] <- vento$vt %>%
+              boxcox(p[i]) %>%
+              calcular_metrica()
+}
+
+p[min_rank(dps)[1]]
+```
+A melhor opção para a transformação é $p = 0$, logo a transformação é dada pela função `log`.
+
+```{r}
+vento %>%
+  ggplot(aes(t, boxcox(vt, 0))) +
+    geom_line() +
+    geom_point() +
+    labs(
+      title = "Figura 3.50: Velocidade do vento nos primeiros quinze dias de dezembro",
+      x = "Dia",
+      y = "Velocidade"
+    ) +
+    scale_x_continuous(breaks = seq(1, 15, 1)) +
+    tema
+```
+```{r}
+vento %>%
+  ggplot(aes(log(vt))) +
+    geom_histogram(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.51: Distribuição da velocidade do vento",
+      x = "Dia",
+      y = "Frequência"
+    ) +
+    scale_x_continuous(breaks = seq(1, 15, 1)) +
+    tema
+```
 :::
 
 ### Exercício 3.7 {- #exr3-7}

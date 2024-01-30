@@ -1,0 +1,19 @@
+"0","title: ""Estatística e Ciência de Dados""
+subtitle: ""Notas e solução dos exercícios""
+author: ""Jeidsan A. da C. Pereira""
+date: ""22 de janeiro de 2024""
+site: bookdown::bookdown_site
+documentclass: ""latex/krantz""
+bibliography: 
+  - latex/book.bib
+  - latex/packages.bib
+csl: ""latex/abnt.csl""
+url: ""https://www.jeidsan.com.br/statds""
+cover-image: ""images/cover.png""
+description: |
+  Esta página contém notas e solução para os exercícios propostos no livro **Estatística e Ciência de Dados**, de autoria de Pedro Alberto Morettin e Júlio da Motta Singer, publicado pela LTC em 2022.
+link-citations: yes
+---"
+"2","'""---""' n�o � reconhecido como um comando interno
+ou externo, um programa oper�vel ou um arquivo em lotes.
+"

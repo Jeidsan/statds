@@ -312,7 +312,7 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
 \item
   \protect\hyperlink{exr2-2}{Exercício 2.2};
 \item
-  Revisar item b do \protect\hyperlink{exr3-2}{Exercício 3.2};
+  Revisar estrutura do \protect\hyperlink{exr3-5}{Exercício 3.5};
 \item
 \end{itemize}
 
@@ -3377,7 +3377,132 @@ Com as funções definidas, podemos construir os histogramas usando essa amplitu
 Considere o arquivo \texttt{vento.xls}. Observe o valor atipico \(61,1\), que na realidade ocorreu devido a uma forte tempestade no dia 2 de dezembro. Calcule as medidas de posição e dispersão apresentadas na Seção 3.3. Quantifique o efeito do valor atipico indicado nessas medidas.
 
 \begin{solution}
-x
+Em primeiro lugar, carregamos o conjunto de dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vento }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"vento.xls"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Esboçaremos um gráfico mostrando a velocidade do vento a cada dia.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vento }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(t, vt)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.49: Velocidade do vento nos primeiros quinze dias de dezembro"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Dia"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Velocidade"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-82-1.pdf}
+\#\#\#\# Medidas de posição \{-\}
+
+A média da amostra é 18.4 e o desvio padrão é 13.525373. Os quartis da amostras são apresentados abaixo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t1 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+            \StringTok{\textasciigrave{}}\AttributeTok{Mínimo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{min}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Q1}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{quantile}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt, }\FloatTok{0.25}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+            \StringTok{\textasciigrave{}}\AttributeTok{Mediana}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{median}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Q3}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{quantile}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt, }\FloatTok{0.75}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+            \StringTok{\textasciigrave{}}\AttributeTok{Máximo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{max}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Média}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{mean}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Desvio Padrão}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{sd}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt)}
+\NormalTok{          )}
+
+\NormalTok{vento2 }\OtherTok{\textless{}{-}}\NormalTok{ vento }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(vt }\SpecialCharTok{\textless{}} \DecValTok{60}\NormalTok{)}
+
+\NormalTok{t2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+            \StringTok{\textasciigrave{}}\AttributeTok{Mínimo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{min}\NormalTok{(vento2}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Q1}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{quantile}\NormalTok{(vento2}\SpecialCharTok{$}\NormalTok{vt, }\FloatTok{0.25}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+            \StringTok{\textasciigrave{}}\AttributeTok{Mediana}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{median}\NormalTok{(vento2}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Q3}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{quantile}\NormalTok{(vento2}\SpecialCharTok{$}\NormalTok{vt, }\FloatTok{0.75}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+            \StringTok{\textasciigrave{}}\AttributeTok{Máximo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{max}\NormalTok{(vento2}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Média}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{mean}\NormalTok{(vento2}\SpecialCharTok{$}\NormalTok{vt),}
+            \StringTok{\textasciigrave{}}\AttributeTok{Desvio Padrão}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{sd}\NormalTok{(vento2}\SpecialCharTok{$}\NormalTok{vt)}
+\NormalTok{          )}
+
+\NormalTok{resumo }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(t1, t2, t1 }\SpecialCharTok{{-}}\NormalTok{ t2)}
+\FunctionTok{row.names}\NormalTok{(resumo) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Antes"}\NormalTok{, }\StringTok{"Depois"}\NormalTok{, }\StringTok{"Diferença"}\NormalTok{)}
+
+\NormalTok{resumo }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.6:** Medidas de resumo para a velocidade do vento"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1449}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1159}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0870}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1304}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0870}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1159}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1014}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2174}}@{}}
+\caption{\textbf{Tabela 3.6:} Medidas de resumo para a velocidade do vento}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio.Padrão
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio.Padrão
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Antes & 7,4 & 9,25 & 14,8 & 21,3 & 61,1 & 18,40 & 13,53 \\
+Depois & 7,4 & 8,33 & 13,9 & 20,4 & 27,8 & 15,35 & 6,84 \\
+Diferença & 0,0 & 0,92 & 0,9 & 0,9 & 33,3 & 3,05 & 6,69 \\
+\end{longtable}
+
+Notamos que após remoção do valor atípico, há uma diferença considerável tanto na média, como no desvio padrão. Este caiu pela metade.
 \end{solution}
 
 \hypertarget{exr3-5}{%
@@ -3387,7 +3512,28 @@ x
 Construa gráficos ramo-e-folhas e boxplot para os dados do \protect\hyperlink{exr3-4}{Exercício 4}.
 
 \begin{solution}
-x
+
+Para a construção do diagrama de ramos e folhas, utilizamos a função \texttt{stem()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stem}\NormalTok{(vento}\SpecialCharTok{$}\NormalTok{vt, }\AttributeTok{scale =} \DecValTok{2}\NormalTok{, }\AttributeTok{atom =} \FloatTok{0.001}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   0 | 7777
+##   1 | 1335
+##   2 | 000228
+##   3 | 
+##   4 | 
+##   5 | 
+##   6 | 1
+\end{verbatim}
+
 \end{solution}
 
 \hypertarget{exr3-6}{%
@@ -3397,7 +3543,69 @@ x
 Transforme os dados do \protect\hyperlink{exr3-4}{Exercicio 4} por meio de (3.23) com \(p = 0, 1/4, 1/3, 1/2, 3/4\) e escolha a melhor alternativa de acordo com a medida \(d_{p}\), dada em (3.24).
 
 \begin{solution}
-x
+Vamos utilizar as funções \texttt{boxcox()} e \texttt{calcular\_metrica()} criadas anteriomente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{3}\SpecialCharTok{/}\DecValTok{4}\NormalTok{)}
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[i] }\OtherTok{\textless{}{-}}\NormalTok{ vento}\SpecialCharTok{$}\NormalTok{vt }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+A melhor opção para a transformação é \(p = 0\), logo a transformação é dada pela função \texttt{log}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vento }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(t, }\FunctionTok{boxcox}\NormalTok{(vt, }\DecValTok{0}\NormalTok{))) }\SpecialCharTok{+}
+    \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.50: Velocidade do vento nos primeiros quinze dias de dezembro"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Dia"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Velocidade"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-86-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vento }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\FunctionTok{log}\NormalTok{(vt))) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.51: Distribuição da velocidade do vento"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Dia"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-87-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-7}{%

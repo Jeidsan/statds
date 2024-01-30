@@ -1,0 +1,7 @@
+"0","rehabcardio %>%
+  map(typeof) %>%
+  data.frame()
+"
+"2","Warning: não foi possível abrir o arquivo comprimido 'D:/GitHub/1. Livros/Estat�stica e Ci�ncia de Dados/statds/.Rproj.user/shared/notebooks/17F96D7F-03-analise-de-dados-de-uma-variavel/1/B34373B1355ee0a3/ch3efhd0ft4wo_t\_rs_rdf_3a644955cad.rdf', motivo provável 'Illegal byte sequence'"
+"2","Error in gzfile(file, ""wb"") : não é possível abrir a conexão
+"

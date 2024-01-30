@@ -1,0 +1,2 @@
+"0","rehabcardio_h <- rehabcardio %>%"
+"0","                    filter(Genero == ""M"")"
