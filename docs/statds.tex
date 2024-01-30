@@ -3612,10 +3612,161 @@ A melhor opção para a transformação é \(p = 0\), logo a transformação é 
 \subsection*{Exercício 3.7}\label{exr3-7}}
 \addcontentsline{toc}{subsection}{Exercício 3.7}
 
-Analise a variável Temperatura do arquivo \texttt{poluicao.xls}.
+Analise a variável \texttt{Temperatura} do arquivo \texttt{poluicao.xls}.
 
 \begin{solution}
-x
+Inicialmente carregaos os dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poluicao }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"poluicao.xls"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+E vamos verificar um resumo das variáveis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(poluicao)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      data                dia               CO               O3        
+##  Length:120         Min.   :  1.00   Min.   : 4.700   Min.   :  2.70  
+##  Class :character   1st Qu.: 30.75   1st Qu.: 6.300   1st Qu.: 34.40  
+##  Mode  :character   Median : 60.50   Median : 7.200   Median : 62.95  
+##                     Mean   : 60.50   Mean   : 7.464   Mean   : 76.33  
+##                     3rd Qu.: 90.25   3rd Qu.: 8.025   3rd Qu.:114.00  
+##                     Max.   :120.00   Max.   :12.500   Max.   :233.20  
+##       temp            umid      
+##  Min.   :12.30   Min.   :50.00  
+##  1st Qu.:16.00   1st Qu.:62.00  
+##  Median :17.70   Median :67.50  
+##  Mean   :17.22   Mean   :70.78  
+##  3rd Qu.:18.60   3rd Qu.:78.00  
+##  Max.   :21.00   Max.   :99.00
+\end{verbatim}
+
+Temos 120 observações, sendo que a temperatura é dada pela variável \texttt{temp} e tem média 17.2158333 e desvio padrão 1.7597267.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poluicao }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(dia, temp)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.52: Variação da temperatura nos primeiros 120 dias do ano"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Dia"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Temperatura"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-90-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poluicao }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(temp)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \FloatTok{0.75}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.53: Distribuição da temperatura"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Temperatura"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-91-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poluicao }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(temp)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.54: Distribuição da temperatura"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Temperatura"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-92-1.pdf}
+
+A distribuição tem uma leve assimetria à esquerda. O coeficiente de Assimetria de Fisher-Pearson Ajustado é -0.4253503
+
+Utilizaremos a transformação de Box-Cox para tentar melhorar a simetria dos dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{dps }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\FunctionTok{length}\NormalTok{(p))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(p)) \{}
+\NormalTok{  dps[i] }\OtherTok{\textless{}{-}}\NormalTok{ poluicao}\SpecialCharTok{$}\NormalTok{temp }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{boxcox}\NormalTok{(p[i]) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{calcular\_metrica}\NormalTok{()}
+\NormalTok{\}}
+
+\NormalTok{poluicao}\SpecialCharTok{$}\NormalTok{temp2 }\OtherTok{\textless{}{-}} \FunctionTok{boxcox}\NormalTok{(poluicao}\SpecialCharTok{$}\NormalTok{temp, p[}\FunctionTok{min\_rank}\NormalTok{(dps)[}\DecValTok{1}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+Comparando os coeficientes de assimetria antes e após a transformação:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(poluicao}\SpecialCharTok{$}\NormalTok{temp, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.4253503
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(poluicao}\SpecialCharTok{$}\NormalTok{temp2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.53657
+\end{verbatim}
+
+Notamos que a transformação não melhorou a assimetria do gráfico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{poluicao }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(temp2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{bins =} \DecValTok{10}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.55: Distribuição da temperatura"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Temperatura"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-95-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-8}{%
@@ -3625,14 +3776,105 @@ x
 Analise a variável \texttt{Salário\ de\ administradores}, disponível no arquivo \texttt{salarios.xls}.
 
 \begin{solution}
-x
+Carregando os dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salarios }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"salarios.xls"}\NormalTok{), }\AttributeTok{skip =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+O conjunto de dados contém valores de salários para quatro profissões (Profissional de Segurança, Mecânico, Administrador e Engenheiro Eletricista) em trinta cidades ao redor do mundo.
+
+Vamos fazer uma transformação nos dados para facilitar a visualização:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salario2 }\OtherTok{\textless{}{-}}\NormalTok{ salarios }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{gather}\NormalTok{(}\AttributeTok{key =} \StringTok{"Profissao"}\NormalTok{, }\AttributeTok{value =} \StringTok{"Salario"}\NormalTok{, }\SpecialCharTok{{-}}\StringTok{"Cidade"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Agora vamos visualizar os salários por profissão:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salario2 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Profissao) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Media =} \FunctionTok{mean}\NormalTok{(Salario)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Profissao, }\AttributeTok{y =}\NormalTok{ Media)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_col}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_label}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Profissao, }\AttributeTok{y =}\NormalTok{ Media, }\AttributeTok{label =} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(Media, }\DecValTok{2}\NormalTok{), }\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{, }\AttributeTok{big.mark =} \StringTok{"."}\NormalTok{))) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.56: Salário médio por profissão"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Profissão"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Salário"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-98-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salario2 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Profissao, Salario, }\AttributeTok{group =}\NormalTok{ Profissao)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}\NormalTok{,}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.57: Distribuição dos salários por profissão"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Profissão"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Salário"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-99-1.pdf}
+
+A média geral dos salários é 28.614,47 e o desvio padrão é 17.974,29.
+
+Agora vamos focar apenas nos administradores. A distribuição dos salários por cidade é mostrada no gráfico a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{order }\OtherTok{\textless{}{-}} \FunctionTok{arrange}\NormalTok{(salarios, Administrador)}\SpecialCharTok{$}\NormalTok{Cidade}
+
+\NormalTok{salarios }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Cidade, Administrador)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_col}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}\NormalTok{,}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{limits =}\NormalTok{ order) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.57: Distribuição dos salários por profissão"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Profissão"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Salário"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-100-1.pdf}
+
+A média salarial dos administradores é 42.496,33, o desvio padrão é 20.366,78 e a mediana é 42.510.
 \end{solution}
 
 \hypertarget{exr3-9}{%
 \subsection*{Exercício 3.9}\label{exr3-9}}
 \addcontentsline{toc}{subsection}{Exercício 3.9}
 
-Construa um gráfico ramo-e-folhas e um boxplot para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo precipitacao. manchas solares disponiveis no arquivo \texttt{manchas.xls}.
+Construa um gráfico ramo-e-folhas e um \emph{boxplot} para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo \texttt{precipitacao.xls}.
 
 \begin{solution}
 x

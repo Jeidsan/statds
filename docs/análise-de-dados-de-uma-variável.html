@@ -2378,10 +2378,97 @@ Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. 
 <div id="exr3-7" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 3.7<a href="análise-de-dados-de-uma-variável.html#exr3-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Analise a variável Temperatura do arquivo <code>poluicao.xls</code>.</p>
+<p>Analise a variável <code>Temperatura</code> do arquivo <code>poluicao.xls</code>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-16" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-16" class="solution"><em>Solução</em>. </span>Inicialmente carregaos os dados:</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="análise-de-dados-de-uma-variável.html#cb153-1" tabindex="-1"></a>poluicao <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;poluicao.xls&quot;</span>))</span></code></pre></div>
+<p>E vamos verificar um resumo das variáveis:</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="análise-de-dados-de-uma-variável.html#cb154-1" tabindex="-1"></a><span class="fu">summary</span>(poluicao)</span></code></pre></div>
+<pre><code>##      data                dia               CO               O3        
+##  Length:120         Min.   :  1.00   Min.   : 4.700   Min.   :  2.70  
+##  Class :character   1st Qu.: 30.75   1st Qu.: 6.300   1st Qu.: 34.40  
+##  Mode  :character   Median : 60.50   Median : 7.200   Median : 62.95  
+##                     Mean   : 60.50   Mean   : 7.464   Mean   : 76.33  
+##                     3rd Qu.: 90.25   3rd Qu.: 8.025   3rd Qu.:114.00  
+##                     Max.   :120.00   Max.   :12.500   Max.   :233.20  
+##       temp            umid      
+##  Min.   :12.30   Min.   :50.00  
+##  1st Qu.:16.00   1st Qu.:62.00  
+##  Median :17.70   Median :67.50  
+##  Mean   :17.22   Mean   :70.78  
+##  3rd Qu.:18.60   3rd Qu.:78.00  
+##  Max.   :21.00   Max.   :99.00</code></pre>
+<p>Temos 120 observações, sendo que a temperatura é dada pela variável <code>temp</code> e tem média 17.2158333 e desvio padrão 1.7597267.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="análise-de-dados-de-uma-variável.html#cb156-1" tabindex="-1"></a>poluicao <span class="sc">%&gt;%</span></span>
+<span id="cb156-2"><a href="análise-de-dados-de-uma-variável.html#cb156-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dia, temp)) <span class="sc">+</span></span>
+<span id="cb156-3"><a href="análise-de-dados-de-uma-variável.html#cb156-3" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb156-4"><a href="análise-de-dados-de-uma-variável.html#cb156-4" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb156-5"><a href="análise-de-dados-de-uma-variável.html#cb156-5" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.52: Variação da temperatura nos primeiros 120 dias do ano&quot;</span>,</span>
+<span id="cb156-6"><a href="análise-de-dados-de-uma-variável.html#cb156-6" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Dia&quot;</span>,</span>
+<span id="cb156-7"><a href="análise-de-dados-de-uma-variável.html#cb156-7" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Temperatura&quot;</span></span>
+<span id="cb156-8"><a href="análise-de-dados-de-uma-variável.html#cb156-8" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb156-9"><a href="análise-de-dados-de-uma-variável.html#cb156-9" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="análise-de-dados-de-uma-variável.html#cb157-1" tabindex="-1"></a>poluicao <span class="sc">%&gt;%</span></span>
+<span id="cb157-2"><a href="análise-de-dados-de-uma-variável.html#cb157-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(temp)) <span class="sc">+</span></span>
+<span id="cb157-3"><a href="análise-de-dados-de-uma-variável.html#cb157-3" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb157-4"><a href="análise-de-dados-de-uma-variável.html#cb157-4" tabindex="-1"></a>      <span class="at">binwidth =</span> <span class="fl">0.75</span>,</span>
+<span id="cb157-5"><a href="análise-de-dados-de-uma-variável.html#cb157-5" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb157-6"><a href="análise-de-dados-de-uma-variável.html#cb157-6" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb157-7"><a href="análise-de-dados-de-uma-variável.html#cb157-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb157-8"><a href="análise-de-dados-de-uma-variável.html#cb157-8" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb157-9"><a href="análise-de-dados-de-uma-variável.html#cb157-9" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.53: Distribuição da temperatura&quot;</span>,</span>
+<span id="cb157-10"><a href="análise-de-dados-de-uma-variável.html#cb157-10" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Temperatura&quot;</span>,</span>
+<span id="cb157-11"><a href="análise-de-dados-de-uma-variável.html#cb157-11" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Frequência&quot;</span></span>
+<span id="cb157-12"><a href="análise-de-dados-de-uma-variável.html#cb157-12" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb157-13"><a href="análise-de-dados-de-uma-variável.html#cb157-13" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="análise-de-dados-de-uma-variável.html#cb158-1" tabindex="-1"></a>poluicao <span class="sc">%&gt;%</span></span>
+<span id="cb158-2"><a href="análise-de-dados-de-uma-variável.html#cb158-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(temp)) <span class="sc">+</span></span>
+<span id="cb158-3"><a href="análise-de-dados-de-uma-variável.html#cb158-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb158-4"><a href="análise-de-dados-de-uma-variável.html#cb158-4" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb158-5"><a href="análise-de-dados-de-uma-variável.html#cb158-5" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb158-6"><a href="análise-de-dados-de-uma-variável.html#cb158-6" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb158-7"><a href="análise-de-dados-de-uma-variável.html#cb158-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb158-8"><a href="análise-de-dados-de-uma-variável.html#cb158-8" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb158-9"><a href="análise-de-dados-de-uma-variável.html#cb158-9" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.54: Distribuição da temperatura&quot;</span>,</span>
+<span id="cb158-10"><a href="análise-de-dados-de-uma-variável.html#cb158-10" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Temperatura&quot;</span></span>
+<span id="cb158-11"><a href="análise-de-dados-de-uma-variável.html#cb158-11" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb158-12"><a href="análise-de-dados-de-uma-variável.html#cb158-12" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p>A distribuição tem uma leve assimetria à esquerda. O coeficiente de Assimetria de Fisher-Pearson Ajustado é -0.4253503</p>
+<p>Utilizaremos a transformação de Box-Cox para tentar melhorar a simetria dos dados.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="análise-de-dados-de-uma-variável.html#cb159-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span>
+<span id="cb159-2"><a href="análise-de-dados-de-uma-variável.html#cb159-2" tabindex="-1"></a></span>
+<span id="cb159-3"><a href="análise-de-dados-de-uma-variável.html#cb159-3" tabindex="-1"></a>dps <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">length</span>(p))</span>
+<span id="cb159-4"><a href="análise-de-dados-de-uma-variável.html#cb159-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(p)) {</span>
+<span id="cb159-5"><a href="análise-de-dados-de-uma-variável.html#cb159-5" tabindex="-1"></a>  dps[i] <span class="ot">&lt;-</span> poluicao<span class="sc">$</span>temp <span class="sc">%&gt;%</span></span>
+<span id="cb159-6"><a href="análise-de-dados-de-uma-variável.html#cb159-6" tabindex="-1"></a>                <span class="fu">boxcox</span>(p[i]) <span class="sc">%&gt;%</span></span>
+<span id="cb159-7"><a href="análise-de-dados-de-uma-variável.html#cb159-7" tabindex="-1"></a>                <span class="fu">calcular_metrica</span>()</span>
+<span id="cb159-8"><a href="análise-de-dados-de-uma-variável.html#cb159-8" tabindex="-1"></a>}</span>
+<span id="cb159-9"><a href="análise-de-dados-de-uma-variável.html#cb159-9" tabindex="-1"></a></span>
+<span id="cb159-10"><a href="análise-de-dados-de-uma-variável.html#cb159-10" tabindex="-1"></a>poluicao<span class="sc">$</span>temp2 <span class="ot">&lt;-</span> <span class="fu">boxcox</span>(poluicao<span class="sc">$</span>temp, p[<span class="fu">min_rank</span>(dps)[<span class="dv">1</span>]])</span></code></pre></div>
+<p>Comparando os coeficientes de assimetria antes e após a transformação:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="análise-de-dados-de-uma-variável.html#cb160-1" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(poluicao<span class="sc">$</span>temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] -0.4253503</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="análise-de-dados-de-uma-variável.html#cb162-1" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(poluicao<span class="sc">$</span>temp2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] -1.53657</code></pre>
+<p>Notamos que a transformação não melhorou a assimetria do gráfico.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="análise-de-dados-de-uma-variável.html#cb164-1" tabindex="-1"></a>poluicao <span class="sc">%&gt;%</span></span>
+<span id="cb164-2"><a href="análise-de-dados-de-uma-variável.html#cb164-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(temp2)) <span class="sc">+</span></span>
+<span id="cb164-3"><a href="análise-de-dados-de-uma-variável.html#cb164-3" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb164-4"><a href="análise-de-dados-de-uma-variável.html#cb164-4" tabindex="-1"></a>      <span class="at">bins =</span> <span class="dv">10</span>,</span>
+<span id="cb164-5"><a href="análise-de-dados-de-uma-variável.html#cb164-5" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb164-6"><a href="análise-de-dados-de-uma-variável.html#cb164-6" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb164-7"><a href="análise-de-dados-de-uma-variável.html#cb164-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb164-8"><a href="análise-de-dados-de-uma-variável.html#cb164-8" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb164-9"><a href="análise-de-dados-de-uma-variável.html#cb164-9" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.55: Distribuição da temperatura&quot;</span>,</span>
+<span id="cb164-10"><a href="análise-de-dados-de-uma-variável.html#cb164-10" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Temperatura&quot;</span>,</span>
+<span id="cb164-11"><a href="análise-de-dados-de-uma-variável.html#cb164-11" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Frequência&quot;</span></span>
+<span id="cb164-12"><a href="análise-de-dados-de-uma-variável.html#cb164-12" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb164-13"><a href="análise-de-dados-de-uma-variável.html#cb164-13" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 </div>
 </div>
 <div id="exr3-8" class="section level3 unnumbered hasAnchor">
@@ -2390,13 +2477,70 @@ Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. 
 <p>Analise a variável <code>Salário de administradores</code>, disponível no arquivo <code>salarios.xls</code>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-17" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-17" class="solution"><em>Solução</em>. </span>Carregando os dados:</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="análise-de-dados-de-uma-variável.html#cb165-1" tabindex="-1"></a>salarios <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;salarios.xls&quot;</span>), <span class="at">skip =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p>O conjunto de dados contém valores de salários para quatro profissões (Profissional de Segurança, Mecânico, Administrador e Engenheiro Eletricista) em trinta cidades ao redor do mundo.</p>
+<p>Vamos fazer uma transformação nos dados para facilitar a visualização:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="análise-de-dados-de-uma-variável.html#cb166-1" tabindex="-1"></a>salario2 <span class="ot">&lt;-</span> salarios <span class="sc">%&gt;%</span></span>
+<span id="cb166-2"><a href="análise-de-dados-de-uma-variável.html#cb166-2" tabindex="-1"></a>              <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;Profissao&quot;</span>, <span class="at">value =</span> <span class="st">&quot;Salario&quot;</span>, <span class="sc">-</span><span class="st">&quot;Cidade&quot;</span>)</span></code></pre></div>
+<p>Agora vamos visualizar os salários por profissão:</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="análise-de-dados-de-uma-variável.html#cb167-1" tabindex="-1"></a>salario2 <span class="sc">%&gt;%</span></span>
+<span id="cb167-2"><a href="análise-de-dados-de-uma-variável.html#cb167-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Profissao) <span class="sc">%&gt;%</span></span>
+<span id="cb167-3"><a href="análise-de-dados-de-uma-variável.html#cb167-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb167-4"><a href="análise-de-dados-de-uma-variável.html#cb167-4" tabindex="-1"></a>    <span class="at">Media =</span> <span class="fu">mean</span>(Salario)</span>
+<span id="cb167-5"><a href="análise-de-dados-de-uma-variável.html#cb167-5" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb167-6"><a href="análise-de-dados-de-uma-variável.html#cb167-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Profissao, <span class="at">y =</span> Media)) <span class="sc">+</span></span>
+<span id="cb167-7"><a href="análise-de-dados-de-uma-variável.html#cb167-7" tabindex="-1"></a>    <span class="fu">geom_col</span>(</span>
+<span id="cb167-8"><a href="análise-de-dados-de-uma-variável.html#cb167-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb167-9"><a href="análise-de-dados-de-uma-variável.html#cb167-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb167-10"><a href="análise-de-dados-de-uma-variável.html#cb167-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb167-11"><a href="análise-de-dados-de-uma-variável.html#cb167-11" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">x =</span> Profissao, <span class="at">y =</span> Media, <span class="at">label =</span> <span class="fu">format</span>(<span class="fu">round</span>(Media, <span class="dv">2</span>), <span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="at">big.mark =</span> <span class="st">&quot;.&quot;</span>))) <span class="sc">+</span></span>
+<span id="cb167-12"><a href="análise-de-dados-de-uma-variável.html#cb167-12" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb167-13"><a href="análise-de-dados-de-uma-variável.html#cb167-13" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.56: Salário médio por profissão&quot;</span>,</span>
+<span id="cb167-14"><a href="análise-de-dados-de-uma-variável.html#cb167-14" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Profissão&quot;</span>,</span>
+<span id="cb167-15"><a href="análise-de-dados-de-uma-variável.html#cb167-15" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Salário&quot;</span></span>
+<span id="cb167-16"><a href="análise-de-dados-de-uma-variável.html#cb167-16" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb167-17"><a href="análise-de-dados-de-uma-variável.html#cb167-17" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="análise-de-dados-de-uma-variável.html#cb168-1" tabindex="-1"></a>salario2 <span class="sc">%&gt;%</span></span>
+<span id="cb168-2"><a href="análise-de-dados-de-uma-variável.html#cb168-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Profissao, Salario, <span class="at">group =</span> Profissao)) <span class="sc">+</span></span>
+<span id="cb168-3"><a href="análise-de-dados-de-uma-variável.html#cb168-3" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb168-4"><a href="análise-de-dados-de-uma-variável.html#cb168-4" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb168-5"><a href="análise-de-dados-de-uma-variável.html#cb168-5" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>,</span>
+<span id="cb168-6"><a href="análise-de-dados-de-uma-variável.html#cb168-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb168-7"><a href="análise-de-dados-de-uma-variável.html#cb168-7" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb168-8"><a href="análise-de-dados-de-uma-variável.html#cb168-8" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.57: Distribuição dos salários por profissão&quot;</span>,</span>
+<span id="cb168-9"><a href="análise-de-dados-de-uma-variável.html#cb168-9" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Profissão&quot;</span>,</span>
+<span id="cb168-10"><a href="análise-de-dados-de-uma-variável.html#cb168-10" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Salário&quot;</span></span>
+<span id="cb168-11"><a href="análise-de-dados-de-uma-variável.html#cb168-11" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb168-12"><a href="análise-de-dados-de-uma-variável.html#cb168-12" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p>A média geral dos salários é 28.614,47 e o desvio padrão é 17.974,29.</p>
+<p>Agora vamos focar apenas nos administradores. A distribuição dos salários por cidade é mostrada no gráfico a seguir:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="análise-de-dados-de-uma-variável.html#cb169-1" tabindex="-1"></a>order <span class="ot">&lt;-</span> <span class="fu">arrange</span>(salarios, Administrador)<span class="sc">$</span>Cidade</span>
+<span id="cb169-2"><a href="análise-de-dados-de-uma-variável.html#cb169-2" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="análise-de-dados-de-uma-variável.html#cb169-3" tabindex="-1"></a>salarios <span class="sc">%&gt;%</span></span>
+<span id="cb169-4"><a href="análise-de-dados-de-uma-variável.html#cb169-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Cidade, Administrador)) <span class="sc">+</span></span>
+<span id="cb169-5"><a href="análise-de-dados-de-uma-variável.html#cb169-5" tabindex="-1"></a>    <span class="fu">geom_col</span>(</span>
+<span id="cb169-6"><a href="análise-de-dados-de-uma-variável.html#cb169-6" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb169-7"><a href="análise-de-dados-de-uma-variável.html#cb169-7" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>,</span>
+<span id="cb169-8"><a href="análise-de-dados-de-uma-variável.html#cb169-8" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb169-9"><a href="análise-de-dados-de-uma-variável.html#cb169-9" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb169-10"><a href="análise-de-dados-de-uma-variável.html#cb169-10" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> order) <span class="sc">+</span></span>
+<span id="cb169-11"><a href="análise-de-dados-de-uma-variável.html#cb169-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb169-12"><a href="análise-de-dados-de-uma-variável.html#cb169-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.57: Distribuição dos salários por profissão&quot;</span>,</span>
+<span id="cb169-13"><a href="análise-de-dados-de-uma-variável.html#cb169-13" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Profissão&quot;</span>,</span>
+<span id="cb169-14"><a href="análise-de-dados-de-uma-variável.html#cb169-14" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Salário&quot;</span></span>
+<span id="cb169-15"><a href="análise-de-dados-de-uma-variável.html#cb169-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb169-16"><a href="análise-de-dados-de-uma-variável.html#cb169-16" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p>A média salarial dos administradores é 42.496,33, o desvio padrão é 20.366,78 e a mediana é 42.510.</p>
 </div>
 </div>
 <div id="exr3-9" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 3.9<a href="análise-de-dados-de-uma-variável.html#exr3-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Construa um gráfico ramo-e-folhas e um boxplot para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo precipitacao. manchas solares disponiveis no arquivo <code>manchas.xls</code>.</p>
+<p>Construa um gráfico ramo-e-folhas e um <em>boxplot</em> para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo <code>precipitacao.xls</code>.</p>
 </div>
 <div class="solution">
 <p><span id="unlabeled-div-18" class="solution"><em>Solução</em>. </span>x</p>

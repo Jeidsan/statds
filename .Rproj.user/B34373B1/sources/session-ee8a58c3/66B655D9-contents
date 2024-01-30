@@ -1502,7 +1502,103 @@ Analise a variável `Temperatura` do arquivo `poluicao.xls`.
 :::
 
 :::{.solution}
-x
+
+Inicialmente carregaos os dados:
+
+```{r}
+poluicao <- readxl::read_xls(paste0(data_dir, "poluicao.xls"))
+```
+
+E vamos verificar um resumo das variáveis:
+
+```{r}
+summary(poluicao)
+```
+Temos 120 observações, sendo que a temperatura é dada pela variável `temp` e tem média `r mean(poluicao$temp)` e desvio padrão `r sd(poluicao$temp)`.
+
+```{r}
+poluicao %>%
+  ggplot(aes(dia, temp)) +
+    geom_point() +
+    labs(
+      title = "Figura 3.52: Variação da temperatura nos primeiros 120 dias do ano",
+      x = "Dia",
+      y = "Temperatura"
+    ) +
+    tema
+```
+
+```{r}
+poluicao %>%
+  ggplot(aes(temp)) +
+    geom_histogram(
+      binwidth = 0.75,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.53: Distribuição da temperatura",
+      x = "Temperatura",
+      y = "Frequência"
+    ) +
+    tema
+```
+
+```{r}
+poluicao %>%
+  ggplot(aes(temp)) +
+    stat_boxplot(geom = "errorbar", width = 0.2) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.54: Distribuição da temperatura",
+      x = "Temperatura"
+    ) +
+    tema
+```
+
+A distribuição tem uma leve assimetria à esquerda. O coeficiente de Assimetria de Fisher-Pearson Ajustado é `r e1071::skewness(poluicao$temp, type = 2)`
+
+Utilizaremos a transformação de Box-Cox para tentar melhorar a simetria dos dados.
+
+```{r}
+p <- seq(-3, 3, 1/10)
+
+dps <- vector("double", length(p))
+for (i in seq_along(p)) {
+  dps[i] <- poluicao$temp %>%
+                boxcox(p[i]) %>%
+                calcular_metrica()
+}
+
+poluicao$temp2 <- boxcox(poluicao$temp, p[min_rank(dps)[1]])
+```
+
+Comparando os coeficientes de assimetria antes e após a transformação:
+
+```{r}
+e1071::skewness(poluicao$temp, na.rm = TRUE, type = 2)
+e1071::skewness(poluicao$temp2, na.rm = TRUE, type = 2)
+```
+Notamos que a transformação não melhorou a assimetria do gráfico.
+
+```{r}
+poluicao %>%
+  ggplot(aes(temp2)) +
+    geom_histogram(
+      bins = 10,
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.55: Distribuição da temperatura",
+      x = "Temperatura",
+      y = "Frequência"
+    ) +
+    tema
+```
 :::
 
 ### Exercício 3.8 {- #exr3-8}
@@ -1512,13 +1608,91 @@ Analise a variável `Salário de administradores`, disponível no arquivo `salar
 :::
 
 :::{.solution}
-x
+Carregando os dados:
+
+```{r}
+salarios <- readxl::read_xls(paste0(data_dir, "salarios.xls"), skip = 4)
+```
+
+O conjunto de dados contém valores de salários para quatro profissões (Profissional de Segurança, Mecânico, Administrador e Engenheiro Eletricista) em trinta cidades ao redor do mundo. 
+
+Vamos fazer uma transformação nos dados para facilitar a visualização:
+
+```{r}
+salario2 <- salarios %>%
+              gather(key = "Profissao", value = "Salario", -"Cidade")
+```
+
+Agora vamos visualizar os salários por profissão:
+
+```{r}
+salario2 %>%
+  group_by(Profissao) %>%
+  summarise(
+    Media = mean(Salario)
+  ) %>%
+  ggplot(aes(x = Profissao, y = Media)) +
+    geom_col(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    geom_label(aes(x = Profissao, y = Media, label = format(round(Media, 2), decimal.mark = ",", big.mark = "."))) +
+    labs(
+      title = "Figura 3.56: Salário médio por profissão",
+      x = "Profissão",
+      y = "Salário"
+    ) +
+    tema
+```
+
+
+```{r}
+salario2 %>%
+  ggplot(aes(Profissao, Salario, group = Profissao)) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30",
+    ) +
+    labs(
+      title = "Figura 3.57: Distribuição dos salários por profissão",
+      x = "Profissão",
+      y = "Salário"
+    ) +
+    tema
+```
+
+A média geral dos salários é `r format(round(mean(salario2$Salario), 2), decimal.mark = ",", big.mark = ".")` e o desvio padrão é `r format(round(sd(salario2$Salario), 2), decimal.mark = ",", big.mark = ".")`.
+
+Agora vamos focar apenas nos administradores. A distribuição dos salários por cidade é mostrada no gráfico a seguir:
+
+```{r}
+order <- arrange(salarios, Administrador)$Cidade
+
+salarios %>%
+  ggplot(aes(Cidade, Administrador)) +
+    geom_col(
+      fill = "grey", 
+      color = "grey30",
+    ) +
+    coord_flip() +
+    scale_x_discrete(limits = order) +
+    labs(
+      title = "Figura 3.57: Distribuição dos salários por profissão",
+      x = "Profissão",
+      y = "Salário"
+    ) +
+    tema
+    
+```
+
+A média salarial dos administradores é `r format(round(mean(salarios$Administrador), 2), decimal.mark = ",", big.mark = ".")`, o desvio padrão é `r format(round(sd(salarios$Administrador), 2), decimal.mark = ",", big.mark = ".")` e a mediana é `r format(round(median(salarios$Administrador), 2), decimal.mark = ",", big.mark = ".")`.
+
 :::
 
 ### Exercício 3.9 {- #exr3-9}
 
 ::: {.enunciado}
-Construa um gráfico ramo-e-folhas e um boxplot para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo precipitacao. manchas solares disponiveis no arquivo `manchas.xls`.
+Construa um gráfico ramo-e-folhas e um *boxplot* para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo `precipitacao.xls`.
 :::
 
 :::{.solution}
