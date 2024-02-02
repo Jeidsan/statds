@@ -3404,7 +3404,10 @@ Esboçaremos um gráfico mostrando a velocidade do vento a cada dia.
 \end{Shaded}
 
 \includegraphics{statds_files/figure-latex/unnamed-chunk-82-1.pdf}
-\#\#\#\# Medidas de posição \{-\}
+
+\hypertarget{medidas-de-posiuxe7uxe3o}{%
+\subsubsection*{Medidas de posição}\label{medidas-de-posiuxe7uxe3o}}
+\addcontentsline{toc}{subsubsection}{Medidas de posição}
 
 A média da amostra é 18.4 e o desvio padrão é 13.525373. Os quartis da amostras são apresentados abaixo:
 
@@ -3857,7 +3860,7 @@ Agora vamos focar apenas nos administradores. A distribuição dos salários por
     \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
     \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{limits =}\NormalTok{ order) }\SpecialCharTok{+}
     \FunctionTok{labs}\NormalTok{(}
-      \AttributeTok{title =} \StringTok{"Figura 3.57: Distribuição dos salários por profissão"}\NormalTok{,}
+      \AttributeTok{title =} \StringTok{"Figura 3.58: Distribuição dos salários por profissão"}\NormalTok{,}
       \AttributeTok{x =} \StringTok{"Profissão"}\NormalTok{,}
       \AttributeTok{y =} \StringTok{"Salário"}
 \NormalTok{    ) }\SpecialCharTok{+}
@@ -3877,7 +3880,123 @@ A média salarial dos administradores é 42.496,33, o desvio padrão é 20.366,7
 Construa um gráfico ramo-e-folhas e um \emph{boxplot} para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo \texttt{precipitacao.xls}.
 
 \begin{solution}
-x
+
+Carregamos os dados com a função \texttt{readxls} do pacote \textbf{readxl}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{precipitacao }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir,}\StringTok{"precipitacao.xls"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `Ano` -> `Ano...1`
+## * `Chuva` -> `Chuva...2`
+## * `Ano` -> `Ano...3`
+## * `Chuva` -> `Chuva...4`
+## * `Ano` -> `Ano...5`
+## * `Chuva` -> `Chuva...6`
+## * `Ano` -> `Ano...7`
+## * `Chuva` -> `Chuva...8`
+\end{verbatim}
+
+Como os dados estão mal organizados na planilha, precisamos fazer um ajuste.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}}\NormalTok{ precipitacao }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{1}\NormalTok{, Chuva...}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{b }\OtherTok{\textless{}{-}}\NormalTok{ precipitacao }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{3}\NormalTok{, Chuva...}\DecValTok{4}\NormalTok{)}
+
+\NormalTok{c }\OtherTok{\textless{}{-}}\NormalTok{ precipitacao }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{5}\NormalTok{, Chuva...}\DecValTok{6}\NormalTok{)}
+
+\NormalTok{d }\OtherTok{\textless{}{-}}\NormalTok{ precipitacao }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{7}\NormalTok{, Chuva...}\DecValTok{8}\NormalTok{)}
+
+\NormalTok{precipitacao }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(a, b, c, d) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## New names:
+## New names:
+## New names:
+## * `Ano...1` -> `Ano`
+## * `Chuva...2` -> `Chuva`
+\end{verbatim}
+
+Utilizamos a função \texttt{stem()} para construir o diagrama de ramos e folhas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stem}\NormalTok{(precipitacao}\SpecialCharTok{$}\NormalTok{Chuva)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   The decimal point is 2 digit(s) to the right of the |
+## 
+##    4 | 7
+##    5 | 003
+##    6 | 06
+##    7 | 045889
+##    8 | 12335688
+##    9 | 24468
+##   10 | 00123445578999
+##   11 | 0113444599
+##   12 | 0123334566799
+##   13 | 011223667889
+##   14 | 02233555667799
+##   15 | 111345577899
+##   16 | 0336
+##   17 | 1223345578
+##   18 | 1144556689
+##   19 | 114
+##   20 | 035689
+##   21 | 044
+##   22 | 6
+##   23 | 38
+##   24 | 135689
+##   25 | 011
+##   26 | 
+##   27 | 
+##   28 | 4
+\end{verbatim}
+
+Utilizamos \textbf{ggplot2} para construir o boxplot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{precipitacao }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Chuva)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}\AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}\NormalTok{,}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.59: Precipitação atmosférica em Fortaleza{-}CE"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Chuva"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-104-1.pdf}
+Salvamos o conjunto de dados para futuras análises:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(precipitacao, }\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"precipitacao.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
 \end{solution}
 
 \hypertarget{exr3-10}{%
@@ -3887,17 +4006,109 @@ x
 Construa gráficos de quantis e de simetria para os dados de arquivo manchas solares disponíveis no arquivo \texttt{manchas.xls}.
 
 \begin{solution}
-x
+Carregamos os dados com \textbf{readxl}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{manchas }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"manchas.xls"}\NormalTok{), }\AttributeTok{skip =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `Ano` -> `Ano...1`
+## * `Número` -> `Número...2`
+## * `Ano` -> `Ano...3`
+## * `Número` -> `Número...4`
+## * `Ano` -> `Ano...5`
+## * `Número` -> `Número...6`
+## * `Ano` -> `Ano...7`
+## * `Número` -> `Número...8`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}}\NormalTok{ manchas }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{1}\NormalTok{, Número...}\DecValTok{2}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}}\NormalTok{ manchas }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{3}\NormalTok{, Número...}\DecValTok{4}\NormalTok{)}
+\NormalTok{c }\OtherTok{\textless{}{-}}\NormalTok{ manchas }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{5}\NormalTok{, Número...}\DecValTok{6}\NormalTok{)}
+\NormalTok{d }\OtherTok{\textless{}{-}}\NormalTok{ manchas }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(Ano...}\DecValTok{7}\NormalTok{, Número...}\DecValTok{8}\NormalTok{)}
+
+\NormalTok{manchas }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(a, b, c, d) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## New names:
+## New names:
+## New names:
+## * `Ano...1` -> `Ano`
+## * `Número...2` -> `Número`
+\end{verbatim}
+
+Agora vamos construir o gráfico que quantis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.02}\NormalTok{)}
+\NormalTok{q }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(manchas}\SpecialCharTok{$}\NormalTok{Número, p)}
+
+\FunctionTok{data.frame}\NormalTok{(p, q) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(p, q)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{xintercept =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.60: Quantis para o número de manchas solares"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"p"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Quantis amostrais"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-107-1.pdf}
+
+Para o gráfico de simetria (dispersão), temos o seguinte:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{manchas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_symmetry}\NormalTok{(manchas}\SpecialCharTok{$}\NormalTok{Número) }\SpecialCharTok{+}
+    \FunctionTok{geom\_abline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{), }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.61: Gráfico de simetria para o número de manchas solares"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Dispersão inferior"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Dispersão superior"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-108-1.pdf}
+Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que pode ser verificado com o Coef. de Assimetria de Fisher-Pearson Ajustado 0.8596009.
 \end{solution}
 
 \hypertarget{exr3-11}{%
 \subsection*{Exercício 3.11}\label{exr3-11}}
 \addcontentsline{toc}{subsection}{Exercício 3.11}
 
-Uma outra medida de assimetria é \[ A = \frac{(Q_{3} - Q_{2}) - (Q_{2} - Q_{1})}{Q_{3} - Q_{1}},\] que é iual a zero no caso de distribuições simétricas. Calcule-a para os dados do \protect\hyperlink{exr3-4}{Exercício 4}.
+Uma outra medida de assimetria é \[ A = \frac{(Q_{3} - Q_{2}) - (Q_{2} - Q_{1})}{Q_{3} - Q_{1}},\] que é iual a zero no caso de distribuições simétricas. Calcule-a para os dados do \protect\hyperlink{exr3-4}{Exercício 3.4}.
 
 \begin{solution}
-x
+Primeiro vamos definir uma função para calcular a medida.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{assimetria }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  q }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(x, }\FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+  
+\NormalTok{  ((q[[}\DecValTok{3}\NormalTok{]] }\SpecialCharTok{{-}}\NormalTok{ q[[}\DecValTok{2}\NormalTok{]]) }\SpecialCharTok{{-}}\NormalTok{ (q[[}\DecValTok{2}\NormalTok{]] }\SpecialCharTok{{-}}\NormalTok{ q[[}\DecValTok{1}\NormalTok{]]))}\SpecialCharTok{/}\NormalTok{(q[[}\DecValTok{3}\NormalTok{]] }\SpecialCharTok{{-}}\NormalTok{ q[[}\DecValTok{1}\NormalTok{]])}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Usando essa função, temos que o coeficiente de assimetria para a variável \texttt{vt} do conjunto \texttt{vento.xls} é de 0.0788382.
 \end{solution}
 
 \hypertarget{exr3-12}{%

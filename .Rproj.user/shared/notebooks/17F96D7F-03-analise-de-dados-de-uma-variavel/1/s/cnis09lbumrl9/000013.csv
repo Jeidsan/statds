@@ -1,0 +1,2 @@
+"0","salario2 <- salarios %>%"
+"0","              gather(key = ""Profissao"", value = ""Salario"", -""Cidade"")"

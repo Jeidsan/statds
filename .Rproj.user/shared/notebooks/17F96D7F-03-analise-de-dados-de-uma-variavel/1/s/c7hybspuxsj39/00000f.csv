@@ -44,3 +44,7 @@
 "0","                    Obito = as.Date(Obito),"
 "0","                    Causa = as.integer(Causa)"
 "0","                )"
+"2","Warning: [38;5;232mThere was 1 warning in `mutate()`.[39m
+[38;5;232m[36mℹ[38;5;232m In argument: `Triglic = as.double(Triglic)`.[39m
+Caused by warning:
+[33m![39m NAs introduzidos por coerção"

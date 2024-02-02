@@ -2211,8 +2211,9 @@ Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. 
 <span id="cb144-9"><a href="análise-de-dados-de-uma-variável.html#cb144-9" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb144-10"><a href="análise-de-dados-de-uma-variável.html#cb144-10" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">15</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb144-11"><a href="análise-de-dados-de-uma-variável.html#cb144-11" tabindex="-1"></a>    tema</span></code></pre></div>
-<p><img src="statds_files/figure-html/unnamed-chunk-82-1.png" width="672" />
-#### Medidas de posição {-}</p>
+<p><img src="statds_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div id="medidas-de-posição" class="section level4 unnumbered hasAnchor">
+<h4>Medidas de posição<a href="análise-de-dados-de-uma-variável.html#medidas-de-posição" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A média da amostra é 18.4 e o desvio padrão é 13.525373. Os quartis da amostras são apresentados abaixo:</p>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="análise-de-dados-de-uma-variável.html#cb145-1" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb145-2"><a href="análise-de-dados-de-uma-variável.html#cb145-2" tabindex="-1"></a>            <span class="st">`</span><span class="at">Mínimo</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">min</span>(vento<span class="sc">$</span>vt),</span>
@@ -2306,6 +2307,7 @@ Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. 
 </tbody>
 </table>
 <p>Notamos que após remoção do valor atípico, há uma diferença considerável tanto na média, como no desvio padrão. Este caiu pela metade.</p>
+</div>
 </div>
 </div>
 <div id="exr3-5" class="section level3 unnumbered hasAnchor">
@@ -2528,7 +2530,7 @@ Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. 
 <span id="cb169-9"><a href="análise-de-dados-de-uma-variável.html#cb169-9" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb169-10"><a href="análise-de-dados-de-uma-variável.html#cb169-10" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> order) <span class="sc">+</span></span>
 <span id="cb169-11"><a href="análise-de-dados-de-uma-variável.html#cb169-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb169-12"><a href="análise-de-dados-de-uma-variável.html#cb169-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.57: Distribuição dos salários por profissão&quot;</span>,</span>
+<span id="cb169-12"><a href="análise-de-dados-de-uma-variável.html#cb169-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.58: Distribuição dos salários por profissão&quot;</span>,</span>
 <span id="cb169-13"><a href="análise-de-dados-de-uma-variável.html#cb169-13" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Profissão&quot;</span>,</span>
 <span id="cb169-14"><a href="análise-de-dados-de-uma-variável.html#cb169-14" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Salário&quot;</span></span>
 <span id="cb169-15"><a href="análise-de-dados-de-uma-variável.html#cb169-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
@@ -2543,7 +2545,83 @@ Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. 
 <p>Construa um gráfico ramo-e-folhas e um <em>boxplot</em> para os dados de precipitação atmosférica de Fortaleza disponíveis no arquivo <code>precipitacao.xls</code>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-18" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-18" class="solution"><em>Solução</em>. </span>Carregamos os dados com a função <code>readxls</code> do pacote <strong>readxl</strong>:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="análise-de-dados-de-uma-variável.html#cb170-1" tabindex="-1"></a>precipitacao <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="fu">paste0</span>(data_dir,<span class="st">&quot;precipitacao.xls&quot;</span>))</span></code></pre></div>
+<pre><code>## New names:
+## • `Ano` -&gt; `Ano...1`
+## • `Chuva` -&gt; `Chuva...2`
+## • `Ano` -&gt; `Ano...3`
+## • `Chuva` -&gt; `Chuva...4`
+## • `Ano` -&gt; `Ano...5`
+## • `Chuva` -&gt; `Chuva...6`
+## • `Ano` -&gt; `Ano...7`
+## • `Chuva` -&gt; `Chuva...8`</code></pre>
+<p>Como os dados estão mal organizados na planilha, precisamos fazer um ajuste.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="análise-de-dados-de-uma-variável.html#cb172-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> precipitacao <span class="sc">%&gt;%</span></span>
+<span id="cb172-2"><a href="análise-de-dados-de-uma-variável.html#cb172-2" tabindex="-1"></a>        <span class="fu">select</span>(Ano...<span class="dv">1</span>, Chuva...<span class="dv">2</span>)</span>
+<span id="cb172-3"><a href="análise-de-dados-de-uma-variável.html#cb172-3" tabindex="-1"></a></span>
+<span id="cb172-4"><a href="análise-de-dados-de-uma-variável.html#cb172-4" tabindex="-1"></a>b <span class="ot">&lt;-</span> precipitacao <span class="sc">%&gt;%</span></span>
+<span id="cb172-5"><a href="análise-de-dados-de-uma-variável.html#cb172-5" tabindex="-1"></a>        <span class="fu">select</span>(Ano...<span class="dv">3</span>, Chuva...<span class="dv">4</span>)</span>
+<span id="cb172-6"><a href="análise-de-dados-de-uma-variável.html#cb172-6" tabindex="-1"></a></span>
+<span id="cb172-7"><a href="análise-de-dados-de-uma-variável.html#cb172-7" tabindex="-1"></a>c <span class="ot">&lt;-</span> precipitacao <span class="sc">%&gt;%</span></span>
+<span id="cb172-8"><a href="análise-de-dados-de-uma-variável.html#cb172-8" tabindex="-1"></a>        <span class="fu">select</span>(Ano...<span class="dv">5</span>, Chuva...<span class="dv">6</span>)</span>
+<span id="cb172-9"><a href="análise-de-dados-de-uma-variável.html#cb172-9" tabindex="-1"></a></span>
+<span id="cb172-10"><a href="análise-de-dados-de-uma-variável.html#cb172-10" tabindex="-1"></a>d <span class="ot">&lt;-</span> precipitacao <span class="sc">%&gt;%</span></span>
+<span id="cb172-11"><a href="análise-de-dados-de-uma-variável.html#cb172-11" tabindex="-1"></a>        <span class="fu">select</span>(Ano...<span class="dv">7</span>, Chuva...<span class="dv">8</span>)</span>
+<span id="cb172-12"><a href="análise-de-dados-de-uma-variável.html#cb172-12" tabindex="-1"></a></span>
+<span id="cb172-13"><a href="análise-de-dados-de-uma-variável.html#cb172-13" tabindex="-1"></a>precipitacao <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(a, b, c, d) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span></code></pre></div>
+<pre><code>## New names:
+## New names:
+## New names:
+## New names:
+## • `Ano...1` -&gt; `Ano`
+## • `Chuva...2` -&gt; `Chuva`</code></pre>
+<p>Utilizamos a função <code>stem()</code> para construir o diagrama de ramos e folhas:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="análise-de-dados-de-uma-variável.html#cb174-1" tabindex="-1"></a><span class="fu">stem</span>(precipitacao<span class="sc">$</span>Chuva)</span></code></pre></div>
+<pre><code>## 
+##   The decimal point is 2 digit(s) to the right of the |
+## 
+##    4 | 7
+##    5 | 003
+##    6 | 06
+##    7 | 045889
+##    8 | 12335688
+##    9 | 24468
+##   10 | 00123445578999
+##   11 | 0113444599
+##   12 | 0123334566799
+##   13 | 011223667889
+##   14 | 02233555667799
+##   15 | 111345577899
+##   16 | 0336
+##   17 | 1223345578
+##   18 | 1144556689
+##   19 | 114
+##   20 | 035689
+##   21 | 044
+##   22 | 6
+##   23 | 38
+##   24 | 135689
+##   25 | 011
+##   26 | 
+##   27 | 
+##   28 | 4</code></pre>
+<p>Utilizamos <strong>ggplot2</strong> para construir o boxplot.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="análise-de-dados-de-uma-variável.html#cb176-1" tabindex="-1"></a>precipitacao <span class="sc">%&gt;%</span></span>
+<span id="cb176-2"><a href="análise-de-dados-de-uma-variável.html#cb176-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Chuva)) <span class="sc">+</span></span>
+<span id="cb176-3"><a href="análise-de-dados-de-uma-variável.html#cb176-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb176-4"><a href="análise-de-dados-de-uma-variável.html#cb176-4" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb176-5"><a href="análise-de-dados-de-uma-variável.html#cb176-5" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb176-6"><a href="análise-de-dados-de-uma-variável.html#cb176-6" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>,</span>
+<span id="cb176-7"><a href="análise-de-dados-de-uma-variável.html#cb176-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb176-8"><a href="análise-de-dados-de-uma-variável.html#cb176-8" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb176-9"><a href="análise-de-dados-de-uma-variável.html#cb176-9" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.59: Precipitação atmosférica em Fortaleza-CE&quot;</span>,</span>
+<span id="cb176-10"><a href="análise-de-dados-de-uma-variável.html#cb176-10" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Chuva&quot;</span></span>
+<span id="cb176-11"><a href="análise-de-dados-de-uma-variável.html#cb176-11" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb176-12"><a href="análise-de-dados-de-uma-variável.html#cb176-12" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-104-1.png" width="672" />
+Salvamos o conjunto de dados para futuras análises:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="análise-de-dados-de-uma-variável.html#cb177-1" tabindex="-1"></a><span class="fu">write_csv</span>(precipitacao, <span class="fu">paste0</span>(data_dir, <span class="st">&quot;precipitacao.csv&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="exr3-10" class="section level3 unnumbered hasAnchor">
@@ -2552,16 +2630,72 @@ Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. 
 <p>Construa gráficos de quantis e de simetria para os dados de arquivo manchas solares disponíveis no arquivo <code>manchas.xls</code>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-19" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-19" class="solution"><em>Solução</em>. </span>Carregamos os dados com <strong>readxl</strong>:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="análise-de-dados-de-uma-variável.html#cb178-1" tabindex="-1"></a>manchas <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;manchas.xls&quot;</span>), <span class="at">skip =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## New names:
+## • `Ano` -&gt; `Ano...1`
+## • `Número` -&gt; `Número...2`
+## • `Ano` -&gt; `Ano...3`
+## • `Número` -&gt; `Número...4`
+## • `Ano` -&gt; `Ano...5`
+## • `Número` -&gt; `Número...6`
+## • `Ano` -&gt; `Ano...7`
+## • `Número` -&gt; `Número...8`</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="análise-de-dados-de-uma-variável.html#cb180-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> manchas <span class="sc">%&gt;%</span> <span class="fu">select</span>(Ano...<span class="dv">1</span>, Número...<span class="dv">2</span>)</span>
+<span id="cb180-2"><a href="análise-de-dados-de-uma-variável.html#cb180-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> manchas <span class="sc">%&gt;%</span> <span class="fu">select</span>(Ano...<span class="dv">3</span>, Número...<span class="dv">4</span>)</span>
+<span id="cb180-3"><a href="análise-de-dados-de-uma-variável.html#cb180-3" tabindex="-1"></a>c <span class="ot">&lt;-</span> manchas <span class="sc">%&gt;%</span> <span class="fu">select</span>(Ano...<span class="dv">5</span>, Número...<span class="dv">6</span>)</span>
+<span id="cb180-4"><a href="análise-de-dados-de-uma-variável.html#cb180-4" tabindex="-1"></a>d <span class="ot">&lt;-</span> manchas <span class="sc">%&gt;%</span> <span class="fu">select</span>(Ano...<span class="dv">7</span>, Número...<span class="dv">8</span>)</span>
+<span id="cb180-5"><a href="análise-de-dados-de-uma-variável.html#cb180-5" tabindex="-1"></a></span>
+<span id="cb180-6"><a href="análise-de-dados-de-uma-variável.html#cb180-6" tabindex="-1"></a>manchas <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(a, b, c, d) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span></code></pre></div>
+<pre><code>## New names:
+## New names:
+## New names:
+## New names:
+## • `Ano...1` -&gt; `Ano`
+## • `Número...2` -&gt; `Número`</code></pre>
+<p>Agora vamos construir o gráfico que quantis:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="análise-de-dados-de-uma-variável.html#cb182-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.02</span>)</span>
+<span id="cb182-2"><a href="análise-de-dados-de-uma-variável.html#cb182-2" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(manchas<span class="sc">$</span>Número, p)</span>
+<span id="cb182-3"><a href="análise-de-dados-de-uma-variável.html#cb182-3" tabindex="-1"></a></span>
+<span id="cb182-4"><a href="análise-de-dados-de-uma-variável.html#cb182-4" tabindex="-1"></a><span class="fu">data.frame</span>(p, q) <span class="sc">%&gt;%</span></span>
+<span id="cb182-5"><a href="análise-de-dados-de-uma-variável.html#cb182-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(p, q)) <span class="sc">+</span></span>
+<span id="cb182-6"><a href="análise-de-dados-de-uma-variável.html#cb182-6" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb182-7"><a href="análise-de-dados-de-uma-variável.html#cb182-7" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb182-8"><a href="análise-de-dados-de-uma-variável.html#cb182-8" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb182-9"><a href="análise-de-dados-de-uma-variável.html#cb182-9" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.60: Quantis para o número de manchas solares&quot;</span>,</span>
+<span id="cb182-10"><a href="análise-de-dados-de-uma-variável.html#cb182-10" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;p&quot;</span>,</span>
+<span id="cb182-11"><a href="análise-de-dados-de-uma-variável.html#cb182-11" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Quantis amostrais&quot;</span></span>
+<span id="cb182-12"><a href="análise-de-dados-de-uma-variável.html#cb182-12" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb182-13"><a href="análise-de-dados-de-uma-variável.html#cb182-13" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p>Para o gráfico de simetria (dispersão), temos o seguinte:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="análise-de-dados-de-uma-variável.html#cb183-1" tabindex="-1"></a>manchas <span class="sc">%&gt;%</span></span>
+<span id="cb183-2"><a href="análise-de-dados-de-uma-variável.html#cb183-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb183-3"><a href="análise-de-dados-de-uma-variável.html#cb183-3" tabindex="-1"></a>    <span class="fu">geom_symmetry</span>(manchas<span class="sc">$</span>Número) <span class="sc">+</span></span>
+<span id="cb183-4"><a href="análise-de-dados-de-uma-variável.html#cb183-4" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb183-5"><a href="análise-de-dados-de-uma-variável.html#cb183-5" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb183-6"><a href="análise-de-dados-de-uma-variável.html#cb183-6" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.61: Gráfico de simetria para o número de manchas solares&quot;</span>,</span>
+<span id="cb183-7"><a href="análise-de-dados-de-uma-variável.html#cb183-7" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Dispersão inferior&quot;</span>,</span>
+<span id="cb183-8"><a href="análise-de-dados-de-uma-variável.html#cb183-8" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Dispersão superior&quot;</span></span>
+<span id="cb183-9"><a href="análise-de-dados-de-uma-variável.html#cb183-9" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb183-10"><a href="análise-de-dados-de-uma-variável.html#cb183-10" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-108-1.png" width="672" />
+Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que pode ser verificado com o Coef. de Assimetria de Fisher-Pearson Ajustado 0.8596009.</p>
 </div>
 </div>
 <div id="exr3-11" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 3.11<a href="análise-de-dados-de-uma-variável.html#exr3-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Uma outra medida de assimetria é <span class="math display">\[ A = \frac{(Q_{3} - Q_{2}) - (Q_{2} - Q_{1})}{Q_{3} - Q_{1}},\]</span> que é iual a zero no caso de distribuições simétricas. Calcule-a para os dados do <a href="análise-de-dados-de-uma-variável.html#exr3-4">Exercício 4</a>.</p>
+<p>Uma outra medida de assimetria é <span class="math display">\[ A = \frac{(Q_{3} - Q_{2}) - (Q_{2} - Q_{1})}{Q_{3} - Q_{1}},\]</span> que é iual a zero no caso de distribuições simétricas. Calcule-a para os dados do <a href="análise-de-dados-de-uma-variável.html#exr3-4">Exercício 3.4</a>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-20" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-20" class="solution"><em>Solução</em>. </span>Primeiro vamos definir uma função para calcular a medida.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="análise-de-dados-de-uma-variável.html#cb184-1" tabindex="-1"></a>assimetria <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb184-2"><a href="análise-de-dados-de-uma-variável.html#cb184-2" tabindex="-1"></a>  q <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span>
+<span id="cb184-3"><a href="análise-de-dados-de-uma-variável.html#cb184-3" tabindex="-1"></a>  </span>
+<span id="cb184-4"><a href="análise-de-dados-de-uma-variável.html#cb184-4" tabindex="-1"></a>  ((q[[<span class="dv">3</span>]] <span class="sc">-</span> q[[<span class="dv">2</span>]]) <span class="sc">-</span> (q[[<span class="dv">2</span>]] <span class="sc">-</span> q[[<span class="dv">1</span>]]))<span class="sc">/</span>(q[[<span class="dv">3</span>]] <span class="sc">-</span> q[[<span class="dv">1</span>]])</span>
+<span id="cb184-5"><a href="análise-de-dados-de-uma-variável.html#cb184-5" tabindex="-1"></a>}</span></code></pre></div>
+<p>Usando essa função, temos que o coeficiente de assimetria para a variável <code>vt</code> do conjunto <code>vento.xls</code> é de 0.0788382.</p>
 </div>
 </div>
 <div id="exr3-12" class="section level3 unnumbered hasAnchor">

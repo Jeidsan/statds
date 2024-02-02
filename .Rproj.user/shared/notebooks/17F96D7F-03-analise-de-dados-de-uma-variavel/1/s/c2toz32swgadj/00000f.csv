@@ -1,3 +1,1 @@
-"0","salarios <- readxl::read_xls(paste0(data_dir, ""salarios.xls""))
-"
-"2","New names:"
+"0","salarios <- readxl::read_xls(paste0(data_dir, ""salarios.xls""), skip = 4)"
