@@ -1346,22 +1346,22 @@ log(x), &amp; se \ p = 0
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="análise-de-dados-de-uma-variável.html#cb51-1" tabindex="-1"></a>summ <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb51-2"><a href="análise-de-dados-de-uma-variável.html#cb51-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
 <span id="cb51-3"><a href="análise-de-dados-de-uma-variável.html#cb51-3" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb51-4"><a href="análise-de-dados-de-uma-variável.html#cb51-4" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb51-5"><a href="análise-de-dados-de-uma-variável.html#cb51-5" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb51-6"><a href="análise-de-dados-de-uma-variável.html#cb51-6" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb51-7"><a href="análise-de-dados-de-uma-variável.html#cb51-7" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb51-8"><a href="análise-de-dados-de-uma-variável.html#cb51-8" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb51-9"><a href="análise-de-dados-de-uma-variável.html#cb51-9" tabindex="-1"></a>    <span class="at">iqr =</span> <span class="fu">IQR</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-10"><a href="análise-de-dados-de-uma-variável.html#cb51-10" tabindex="-1"></a>  )</span>
-<span id="cb51-11"><a href="análise-de-dados-de-uma-variável.html#cb51-11" tabindex="-1"></a>}</span>
-<span id="cb51-12"><a href="análise-de-dados-de-uma-variável.html#cb51-12" tabindex="-1"></a></span>
-<span id="cb51-13"><a href="análise-de-dados-de-uma-variável.html#cb51-13" tabindex="-1"></a>resumo <span class="ot">&lt;-</span> rehabcardio <span class="sc">%&gt;%</span></span>
-<span id="cb51-14"><a href="análise-de-dados-de-uma-variável.html#cb51-14" tabindex="-1"></a>            <span class="fu">select</span>(Peso, Altura, Coltot, HDL, LDL) <span class="sc">%&gt;%</span></span>
-<span id="cb51-15"><a href="análise-de-dados-de-uma-variável.html#cb51-15" tabindex="-1"></a>            <span class="fu">map</span>(summ) <span class="sc">%&gt;%</span></span>
-<span id="cb51-16"><a href="análise-de-dados-de-uma-variável.html#cb51-16" tabindex="-1"></a>            <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb51-17"><a href="análise-de-dados-de-uma-variável.html#cb51-17" tabindex="-1"></a>            <span class="fu">t</span>()</span>
-<span id="cb51-18"><a href="análise-de-dados-de-uma-variável.html#cb51-18" tabindex="-1"></a></span>
-<span id="cb51-19"><a href="análise-de-dados-de-uma-variável.html#cb51-19" tabindex="-1"></a><span class="fu">colnames</span>(resumo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Quantidade de observações&quot;</span>, <span class="st">&quot;Mínimo&quot;</span>, <span class="st">&quot;Máximo&quot;</span>, <span class="st">&quot;Média&quot;</span>, <span class="st">&quot;Desvio padrão&quot;</span>, <span class="st">&quot;Mediana&quot;</span>, <span class="st">&quot;Distância interquartil&quot;</span>)</span>
+<span id="cb51-4"><a href="análise-de-dados-de-uma-variável.html#cb51-4" tabindex="-1"></a>    <span class="st">`</span><span class="at">Mínimo</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">min</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-5"><a href="análise-de-dados-de-uma-variável.html#cb51-5" tabindex="-1"></a>    <span class="at">Q1 =</span> <span class="fu">quantile</span>(x, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[[<span class="dv">1</span>]],</span>
+<span id="cb51-6"><a href="análise-de-dados-de-uma-variável.html#cb51-6" tabindex="-1"></a>    <span class="st">`</span><span class="at">Mediana</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">median</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-7"><a href="análise-de-dados-de-uma-variável.html#cb51-7" tabindex="-1"></a>    <span class="at">Q3 =</span> <span class="fu">quantile</span>(x, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[[<span class="dv">1</span>]],</span>
+<span id="cb51-8"><a href="análise-de-dados-de-uma-variável.html#cb51-8" tabindex="-1"></a>    <span class="st">`</span><span class="at">Máximo</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">max</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-9"><a href="análise-de-dados-de-uma-variável.html#cb51-9" tabindex="-1"></a>    <span class="st">`</span><span class="at">Média</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-10"><a href="análise-de-dados-de-uma-variável.html#cb51-10" tabindex="-1"></a>    <span class="st">`</span><span class="at">Desvio Padrão</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-11"><a href="análise-de-dados-de-uma-variável.html#cb51-11" tabindex="-1"></a>    <span class="st">`</span><span class="at">Distância Interquartil</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">IQR</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-12"><a href="análise-de-dados-de-uma-variável.html#cb51-12" tabindex="-1"></a>  )</span>
+<span id="cb51-13"><a href="análise-de-dados-de-uma-variável.html#cb51-13" tabindex="-1"></a>}</span>
+<span id="cb51-14"><a href="análise-de-dados-de-uma-variável.html#cb51-14" tabindex="-1"></a></span>
+<span id="cb51-15"><a href="análise-de-dados-de-uma-variável.html#cb51-15" tabindex="-1"></a>resumo <span class="ot">&lt;-</span> rehabcardio <span class="sc">%&gt;%</span></span>
+<span id="cb51-16"><a href="análise-de-dados-de-uma-variável.html#cb51-16" tabindex="-1"></a>            <span class="fu">select</span>(Peso, Altura, Coltot, HDL, LDL) <span class="sc">%&gt;%</span></span>
+<span id="cb51-17"><a href="análise-de-dados-de-uma-variável.html#cb51-17" tabindex="-1"></a>            <span class="fu">map</span>(summ) <span class="sc">%&gt;%</span></span>
+<span id="cb51-18"><a href="análise-de-dados-de-uma-variável.html#cb51-18" tabindex="-1"></a>            <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb51-19"><a href="análise-de-dados-de-uma-variável.html#cb51-19" tabindex="-1"></a>            <span class="fu">t</span>()</span>
 <span id="cb51-20"><a href="análise-de-dados-de-uma-variável.html#cb51-20" tabindex="-1"></a></span>
 <span id="cb51-21"><a href="análise-de-dados-de-uma-variável.html#cb51-21" tabindex="-1"></a>resumo <span class="sc">%&gt;%</span></span>
 <span id="cb51-22"><a href="análise-de-dados-de-uma-variável.html#cb51-22" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
@@ -1375,25 +1375,29 @@ log(x), &amp; se \ p = 0
 <table>
 <caption><strong>Tabela 3.4:</strong> Medidas de resumo para algumas variáveis de <code>rehabcardio.xls</code></caption>
 <colgroup>
-<col width="6%" />
-<col width="25%" />
 <col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="14%" />
+<col width="5%" />
 <col width="8%" />
-<col width="22%" />
+<col width="8%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="15%" />
+<col width="24%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="center">Quantidade de observações</th>
+<th align="center">n</th>
 <th align="center">Mínimo</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
 <th align="center">Máximo</th>
 <th align="center">Média</th>
-<th align="center">Desvio padrão</th>
-<th align="center">Mediana</th>
-<th align="center">Distância interquartil</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Distância Interquartil</th>
 </tr>
 </thead>
 <tbody>
@@ -1401,50 +1405,60 @@ log(x), &amp; se \ p = 0
 <td align="left">Peso</td>
 <td align="center">375</td>
 <td align="center">47,00</td>
+<td align="center">67,05</td>
+<td align="center">75,50</td>
+<td align="center">84,95</td>
 <td align="center">119,00</td>
 <td align="center">76,11</td>
 <td align="center">12,79</td>
-<td align="center">75,50</td>
 <td align="center">17,9</td>
 </tr>
 <tr class="even">
 <td align="left">Altura</td>
 <td align="center">374</td>
 <td align="center">1,44</td>
+<td align="center">1,63</td>
+<td align="center">1,68</td>
+<td align="center">1,73</td>
 <td align="center">1,91</td>
 <td align="center">1,67</td>
 <td align="center">0,08</td>
-<td align="center">1,68</td>
 <td align="center">0,1</td>
 </tr>
 <tr class="odd">
 <td align="left">Coltot</td>
 <td align="center">327</td>
 <td align="center">111,00</td>
+<td align="center">180,00</td>
+<td align="center">206,00</td>
+<td align="center">238,00</td>
 <td align="center">799,00</td>
 <td align="center">215,43</td>
 <td align="center">60,16</td>
-<td align="center">206,00</td>
 <td align="center">58,0</td>
 </tr>
 <tr class="even">
 <td align="left">HDL</td>
 <td align="center">316</td>
 <td align="center">14,00</td>
+<td align="center">35,00</td>
+<td align="center">40,00</td>
+<td align="center">46,00</td>
 <td align="center">200,00</td>
 <td align="center">41,52</td>
 <td align="center">13,14</td>
-<td align="center">40,00</td>
 <td align="center">11,0</td>
 </tr>
 <tr class="odd">
 <td align="left">LDL</td>
 <td align="center">289</td>
 <td align="center">57,00</td>
+<td align="center">110,00</td>
+<td align="center">129,00</td>
+<td align="center">159,00</td>
 <td align="center">425,00</td>
 <td align="center">137,31</td>
 <td align="center">43,41</td>
-<td align="center">129,00</td>
 <td align="center">49,0</td>
 </tr>
 </tbody>
@@ -1540,39 +1554,41 @@ log(x), &amp; se \ p = 0
 <span id="cb68-3"><a href="análise-de-dados-de-uma-variável.html#cb68-3" tabindex="-1"></a>            <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb68-4"><a href="análise-de-dados-de-uma-variável.html#cb68-4" tabindex="-1"></a>            <span class="fu">t</span>()</span>
 <span id="cb68-5"><a href="análise-de-dados-de-uma-variável.html#cb68-5" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="análise-de-dados-de-uma-variável.html#cb68-6" tabindex="-1"></a><span class="fu">colnames</span>(resumo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Quantidade de observações&quot;</span>, <span class="st">&quot;Mínimo&quot;</span>, <span class="st">&quot;Máximo&quot;</span>, <span class="st">&quot;Média&quot;</span>, <span class="st">&quot;Desvio padrão&quot;</span>, <span class="st">&quot;Mediana&quot;</span>, <span class="st">&quot;Distância interquartil&quot;</span>)</span>
-<span id="cb68-7"><a href="análise-de-dados-de-uma-variável.html#cb68-7" tabindex="-1"></a></span>
-<span id="cb68-8"><a href="análise-de-dados-de-uma-variável.html#cb68-8" tabindex="-1"></a>resumo <span class="sc">%&gt;%</span></span>
-<span id="cb68-9"><a href="análise-de-dados-de-uma-variável.html#cb68-9" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
-<span id="cb68-10"><a href="análise-de-dados-de-uma-variável.html#cb68-10" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
-<span id="cb68-11"><a href="análise-de-dados-de-uma-variável.html#cb68-11" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.5:** Medidas de resumo para algumas variáveis de `antracose.xls`&quot;</span>,</span>
-<span id="cb68-12"><a href="análise-de-dados-de-uma-variável.html#cb68-12" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
-<span id="cb68-13"><a href="análise-de-dados-de-uma-variável.html#cb68-13" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
-<span id="cb68-14"><a href="análise-de-dados-de-uma-variável.html#cb68-14" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
-<span id="cb68-15"><a href="análise-de-dados-de-uma-variável.html#cb68-15" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb68-16"><a href="análise-de-dados-de-uma-variável.html#cb68-16" tabindex="-1"></a>  )</span></code></pre></div>
-<table>
+<span id="cb68-6"><a href="análise-de-dados-de-uma-variável.html#cb68-6" tabindex="-1"></a>resumo <span class="sc">%&gt;%</span></span>
+<span id="cb68-7"><a href="análise-de-dados-de-uma-variável.html#cb68-7" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb68-8"><a href="análise-de-dados-de-uma-variável.html#cb68-8" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb68-9"><a href="análise-de-dados-de-uma-variável.html#cb68-9" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.5:** Medidas de resumo para algumas variáveis de `antracose.xls`&quot;</span>,</span>
+<span id="cb68-10"><a href="análise-de-dados-de-uma-variável.html#cb68-10" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb68-11"><a href="análise-de-dados-de-uma-variável.html#cb68-11" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb68-12"><a href="análise-de-dados-de-uma-variável.html#cb68-12" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb68-13"><a href="análise-de-dados-de-uma-variável.html#cb68-13" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb68-14"><a href="análise-de-dados-de-uma-variável.html#cb68-14" tabindex="-1"></a>  )</span></code></pre></div>
+<table style="width:100%;">
 <caption><strong>Tabela 3.5:</strong> Medidas de resumo para algumas variáveis de <code>antracose.xls</code></caption>
 <colgroup>
-<col width="9%" />
-<col width="24%" />
+<col width="10%" />
+<col width="5%" />
+<col width="7%" />
+<col width="6%" />
+<col width="8%" />
 <col width="7%" />
 <col width="8%" />
 <col width="7%" />
-<col width="13%" />
-<col width="8%" />
-<col width="21%" />
+<col width="14%" />
+<col width="22%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="center">Quantidade de observações</th>
+<th align="center">n</th>
 <th align="center">Mínimo</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
 <th align="center">Máximo</th>
 <th align="center">Média</th>
-<th align="center">Desvio padrão</th>
-<th align="center">Mediana</th>
-<th align="center">Distância interquartil</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Distância Interquartil</th>
 </tr>
 </thead>
 <tbody>
@@ -1580,80 +1596,96 @@ log(x), &amp; se \ p = 0
 <td align="left">idade</td>
 <td align="center">2452</td>
 <td align="center">19,00</td>
+<td align="center">58,00</td>
+<td align="center">69,00</td>
+<td align="center">81,00</td>
 <td align="center">110,00</td>
 <td align="center">68,43</td>
 <td align="center">15,14</td>
-<td align="center">69,00</td>
 <td align="center">23,00</td>
 </tr>
 <tr class="even">
 <td align="left">tmunic</td>
 <td align="center">2452</td>
 <td align="center">0,00</td>
+<td align="center">39,00</td>
+<td align="center">50,00</td>
+<td align="center">62,00</td>
 <td align="center">103,00</td>
 <td align="center">49,27</td>
 <td align="center">20,63</td>
-<td align="center">50,00</td>
 <td align="center">23,00</td>
 </tr>
 <tr class="odd">
 <td align="left">htransp</td>
 <td align="center">2452</td>
 <td align="center">0,00</td>
+<td align="center">0,00</td>
+<td align="center">0,83</td>
+<td align="center">2,00</td>
 <td align="center">12,00</td>
 <td align="center">1,78</td>
 <td align="center">2,54</td>
-<td align="center">0,83</td>
 <td align="center">2,00</td>
 </tr>
 <tr class="even">
 <td align="left">cargatabag</td>
 <td align="center">2452</td>
 <td align="center">0,00</td>
+<td align="center">0,00</td>
+<td align="center">1,50</td>
+<td align="center">41,00</td>
 <td align="center">256,00</td>
 <td align="center">25,57</td>
 <td align="center">39,31</td>
-<td align="center">1,50</td>
 <td align="center">41,00</td>
 </tr>
 <tr class="odd">
 <td align="left">antracose</td>
 <td align="center">2350</td>
 <td align="center">0,00</td>
+<td align="center">0,07</td>
+<td align="center">0,17</td>
+<td align="center">0,29</td>
 <td align="center">0,83</td>
 <td align="center">0,20</td>
 <td align="center">0,16</td>
-<td align="center">0,17</td>
 <td align="center">0,22</td>
 </tr>
 <tr class="even">
 <td align="left">ses</td>
 <td align="center">2452</td>
 <td align="center">-1,00</td>
+<td align="center">-0,51</td>
+<td align="center">-0,31</td>
+<td align="center">-0,05</td>
 <td align="center">1,00</td>
 <td align="center">-0,24</td>
 <td align="center">0,36</td>
-<td align="center">-0,31</td>
 <td align="center">0,47</td>
 </tr>
 <tr class="odd">
 <td align="left">densid</td>
 <td align="center">2452</td>
 <td align="center">0,00</td>
+<td align="center">0,01</td>
+<td align="center">0,02</td>
+<td align="center">0,02</td>
 <td align="center">0,04</td>
 <td align="center">0,02</td>
 <td align="center">0,01</td>
-<td align="center">0,02</td>
 <td align="center">0,01</td>
 </tr>
 <tr class="even">
 <td align="left">distmin</td>
 <td align="center">2452</td>
 <td align="center">0,03</td>
+<td align="center">45,24</td>
+<td align="center">114,12</td>
+<td align="center">225,95</td>
 <td align="center">1964,02</td>
 <td align="center">170,67</td>
 <td align="center">190,87</td>
-<td align="center">114,12</td>
 <td align="center">180,71</td>
 </tr>
 </tbody>
@@ -2701,7 +2733,7 @@ Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que
 <div id="exr3-12" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 3.12<a href="análise-de-dados-de-uma-variável.html#exr3-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Os dados disponíveis no arquivo <code>endometrione.xls</code> são provenientes de um estudo em que o objetivo é verificar se existe diferença entre os grupos de doentes e controles quanto a algumas caracteristicas observadas.</p>
+<p>Os dados disponíveis no arquivo <code>endometrione.xls</code> <span class="citation">(<a href="#ref-AbraoEtAl1997">ABRÃO et al., 1997</a>)</span> são provenientes de um estudo em que o objetivo é verificar se existe diferença entre os grupos de doentes e controles quanto a algumas caracteristicas observadas.</p>
 <ol style="list-style-type: lower-alpha">
 <li>O pesquisador responsável pelo estudo tem a seguinte pergunta: pacientes doentes apresentam mais dor na menstruação do que as pacientes não doentes? Que tipo de análise você faria para responder essa pergunta utilizando as técnicas discutidas neste capitulo? Faça-a e tire suas conclusões.</li>
 <li>Compare as distribuições das variáveis idade e concentração de PCR durante a menstruação (<code>PCRa</code>) para pacientes dos grupos controle e doente utilizando medidas resumo (minimo, máximo, quartis, mediana, média, desvio padrão, etc.), <em>boxplots</em>, histogramas, gráficos de médias e gráficos QQ. Como você considerou os valores <span class="math inline">\(&lt; 0,5\)</span> da variável <code>PCRa</code> nesses cálculos? Você sugeriria uma outra maneira para considerar tais valores?</li>
@@ -2709,7 +2741,437 @@ Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-21" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-21" class="solution"><em>Solução</em>. </span>Como sempre, vamos iniciar com o carregamento e ajuste nos dados:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="análise-de-dados-de-uma-variável.html#cb185-1" tabindex="-1"></a>endometriose <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;endometriose.xls&quot;</span>), <span class="at">sheet =</span> <span class="st">&quot;dados&quot;</span>)</span>
+<span id="cb185-2"><a href="análise-de-dados-de-uma-variável.html#cb185-2" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="análise-de-dados-de-uma-variável.html#cb185-3" tabindex="-1"></a><span class="fu">head</span>(endometriose, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 13
+##    Grupo   Paciente Idade Gestação Partos Abortos Dismenorréia Dispareunia  AFSr
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt;
+##  1 Contro…        1    26        3      3       0 L            N               0
+##  2 Contro…        2    37        4      3       1 N            P               0
+##  3 Contro…        3    37        4      4       0 N            N               0
+##  4 Contro…        4    35        3      3       0 L            N               0
+##  5 Contro…        5    34        4      3       1 N            N               0
+##  6 Contro…        6    38        5      5       0 L            N               0
+##  7 Contro…        7    30        5      4       1 N            N               0
+##  8 Contro…        8    38       11      7       4 N            N               0
+##  9 Contro…        9    36        7      6       1 N            N               0
+## 10 Contro…       10    41        4      3       1 N            N               0
+## # ℹ 4 more variables: `CA125/A` &lt;chr&gt;, `CA125/B` &lt;chr&gt;, PCRa &lt;chr&gt;, PCRb &lt;chr&gt;</code></pre>
+<p>Vamos transformar em fator as variáveis <code>Grupo</code>, <code>Dismenorréia</code> e <code>Dispareunia</code>. Vamos também ubstituir o valor <code>&lt;0,5</code> por zero nas variáveis <code>CA125/A</code>, <code>CA125/B</code>, <code>PCRa</code> e <code>PCRb</code>. Por fim, transformaremos em inteiras as variáveis <code>Idade</code>, <code>Gestação</code>, <code>Partos</code>, <code>Abortos</code> e <code>AFSr</code>.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="análise-de-dados-de-uma-variável.html#cb187-1" tabindex="-1"></a>dismenorreia_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Não tem&quot;</span>, <span class="st">&quot;Leve&quot;</span>, <span class="st">&quot;Moderada&quot;</span>, <span class="st">&quot;Intensa&quot;</span>, <span class="st">&quot;Sem informação&quot;</span>)</span>
+<span id="cb187-2"><a href="análise-de-dados-de-uma-variável.html#cb187-2" tabindex="-1"></a>dismenorreia <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb187-3"><a href="análise-de-dados-de-uma-variável.html#cb187-3" tabindex="-1"></a>  x <span class="sc">%&gt;%</span> </span>
+<span id="cb187-4"><a href="análise-de-dados-de-uma-variável.html#cb187-4" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;S/&quot;</span>, <span class="st">&quot;Sem informação&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb187-5"><a href="análise-de-dados-de-uma-variável.html#cb187-5" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;Não tem&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb187-6"><a href="análise-de-dados-de-uma-variável.html#cb187-6" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;L&quot;</span>, <span class="st">&quot;Leve&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb187-7"><a href="análise-de-dados-de-uma-variável.html#cb187-7" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;Moderada&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb187-8"><a href="análise-de-dados-de-uma-variável.html#cb187-8" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;Intensa&quot;</span>)</span>
+<span id="cb187-9"><a href="análise-de-dados-de-uma-variável.html#cb187-9" tabindex="-1"></a>}</span>
+<span id="cb187-10"><a href="análise-de-dados-de-uma-variável.html#cb187-10" tabindex="-1"></a></span>
+<span id="cb187-11"><a href="análise-de-dados-de-uma-variável.html#cb187-11" tabindex="-1"></a>dispareunia <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb187-12"><a href="análise-de-dados-de-uma-variável.html#cb187-12" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb187-13"><a href="análise-de-dados-de-uma-variável.html#cb187-13" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;Sem informação&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb187-14"><a href="análise-de-dados-de-uma-variável.html#cb187-14" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;Não tem&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb187-15"><a href="análise-de-dados-de-uma-variável.html#cb187-15" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;P</span><span class="sc">\\</span><span class="st">b&quot;</span>, <span class="st">&quot;Penetração&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb187-16"><a href="análise-de-dados-de-uma-variável.html#cb187-16" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;PRO&quot;</span>, <span class="st">&quot;Profunda&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb187-17"><a href="análise-de-dados-de-uma-variável.html#cb187-17" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;2&quot;</span>, <span class="st">&quot;Penetração e Profunda&quot;</span>)</span>
+<span id="cb187-18"><a href="análise-de-dados-de-uma-variável.html#cb187-18" tabindex="-1"></a>}</span>
+<span id="cb187-19"><a href="análise-de-dados-de-uma-variável.html#cb187-19" tabindex="-1"></a></span>
+<span id="cb187-20"><a href="análise-de-dados-de-uma-variável.html#cb187-20" tabindex="-1"></a>zerar <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb187-21"><a href="análise-de-dados-de-uma-variável.html#cb187-21" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb187-22"><a href="análise-de-dados-de-uma-variável.html#cb187-22" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="st">&quot;&lt;0,5&quot;</span>, <span class="st">&quot;0&quot;</span>)</span>
+<span id="cb187-23"><a href="análise-de-dados-de-uma-variável.html#cb187-23" tabindex="-1"></a>}</span>
+<span id="cb187-24"><a href="análise-de-dados-de-uma-variável.html#cb187-24" tabindex="-1"></a></span>
+<span id="cb187-25"><a href="análise-de-dados-de-uma-variável.html#cb187-25" tabindex="-1"></a>endometriose <span class="ot">&lt;-</span> endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb187-26"><a href="análise-de-dados-de-uma-variável.html#cb187-26" tabindex="-1"></a>                  <span class="fu">mutate</span>(</span>
+<span id="cb187-27"><a href="análise-de-dados-de-uma-variável.html#cb187-27" tabindex="-1"></a>                    <span class="at">Grupo =</span> <span class="fu">parse_factor</span>(Grupo),</span>
+<span id="cb187-28"><a href="análise-de-dados-de-uma-variável.html#cb187-28" tabindex="-1"></a>                    Dismenorréia <span class="ot">=</span> <span class="fu">parse_factor</span>(<span class="fu">dismenorreia</span>(Dismenorréia), <span class="at">levels =</span> dismenorreia_levels, <span class="at">ordered =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb187-29"><a href="análise-de-dados-de-uma-variável.html#cb187-29" tabindex="-1"></a>                    <span class="at">Dispareunia =</span> <span class="fu">parse_factor</span>(<span class="fu">dispareunia</span>(Dispareunia)),</span>
+<span id="cb187-30"><a href="análise-de-dados-de-uma-variável.html#cb187-30" tabindex="-1"></a>                    <span class="st">`</span><span class="at">CA125/A</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">parse_double</span>(<span class="fu">zerar</span>(<span class="st">`</span><span class="at">CA125/A</span><span class="st">`</span>)),</span>
+<span id="cb187-31"><a href="análise-de-dados-de-uma-variável.html#cb187-31" tabindex="-1"></a>                    <span class="st">`</span><span class="at">CA125/B</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">parse_double</span>(<span class="fu">zerar</span>(<span class="st">`</span><span class="at">CA125/B</span><span class="st">`</span>)),</span>
+<span id="cb187-32"><a href="análise-de-dados-de-uma-variável.html#cb187-32" tabindex="-1"></a>                    <span class="at">PCRa =</span> <span class="fu">parse_double</span>(<span class="fu">zerar</span>(PCRa)),</span>
+<span id="cb187-33"><a href="análise-de-dados-de-uma-variável.html#cb187-33" tabindex="-1"></a>                    <span class="at">PCRb =</span> <span class="fu">parse_double</span>(<span class="fu">zerar</span>(PCRb)),</span>
+<span id="cb187-34"><a href="análise-de-dados-de-uma-variável.html#cb187-34" tabindex="-1"></a>                    <span class="at">Idade =</span> <span class="fu">as.integer</span>(Idade),</span>
+<span id="cb187-35"><a href="análise-de-dados-de-uma-variável.html#cb187-35" tabindex="-1"></a>                    Gestação <span class="ot">=</span> <span class="fu">as.integer</span>(Gestação),</span>
+<span id="cb187-36"><a href="análise-de-dados-de-uma-variável.html#cb187-36" tabindex="-1"></a>                    <span class="at">Partos =</span> <span class="fu">as.integer</span>(Partos),</span>
+<span id="cb187-37"><a href="análise-de-dados-de-uma-variável.html#cb187-37" tabindex="-1"></a>                    <span class="at">Abortos =</span> <span class="fu">as.integer</span>(Abortos),</span>
+<span id="cb187-38"><a href="análise-de-dados-de-uma-variável.html#cb187-38" tabindex="-1"></a>                    <span class="at">AFSr =</span> <span class="fu">as.integer</span>(AFSr)</span>
+<span id="cb187-39"><a href="análise-de-dados-de-uma-variável.html#cb187-39" tabindex="-1"></a>                  )</span></code></pre></div>
+<div id="pacientes-doentes-apresentam-mais-dor-na-menstruação-do-que-as-pacientes-não-doentes" class="section level4 unnumbered hasAnchor">
+<h4>Pacientes doentes apresentam mais dor na menstruação do que as pacientes não doentes?<a href="análise-de-dados-de-uma-variável.html#pacientes-doentes-apresentam-mais-dor-na-menstruação-do-que-as-pacientes-não-doentes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Em primeiro lugar, vamos construir uma tabela de contigência com os graus de dismenorréia entre os grupos.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="análise-de-dados-de-uma-variável.html#cb188-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb188-2"><a href="análise-de-dados-de-uma-variável.html#cb188-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Dismenorréia, Grupo) <span class="sc">%&gt;%</span></span>
+<span id="cb188-3"><a href="análise-de-dados-de-uma-variável.html#cb188-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb188-4"><a href="análise-de-dados-de-uma-variável.html#cb188-4" tabindex="-1"></a>  <span class="fu">spread</span>(Grupo, n) <span class="sc">%&gt;%</span></span>
+<span id="cb188-5"><a href="análise-de-dados-de-uma-variável.html#cb188-5" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb188-6"><a href="análise-de-dados-de-uma-variável.html#cb188-6" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb188-7"><a href="análise-de-dados-de-uma-variável.html#cb188-7" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.7:** Distribuição da ocorrência de dismenorréia entre casos e controles&quot;</span>,</span>
+<span id="cb188-8"><a href="análise-de-dados-de-uma-variável.html#cb188-8" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb188-9"><a href="análise-de-dados-de-uma-variável.html#cb188-9" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb188-10"><a href="análise-de-dados-de-uma-variável.html#cb188-10" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb188-11"><a href="análise-de-dados-de-uma-variável.html#cb188-11" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>),</span>
+<span id="cb188-12"><a href="análise-de-dados-de-uma-variável.html#cb188-12" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 3.7:</strong> Distribuição da ocorrência de dismenorréia entre casos e controles</caption>
+<thead>
+<tr class="header">
+<th align="center">Dismenorréia</th>
+<th align="center">Controle</th>
+<th align="center">Doente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Não tem</td>
+<td align="center">10</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="center">Leve</td>
+<td align="center">4</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">Moderada</td>
+<td align="center">1</td>
+<td align="center">14</td>
+</tr>
+<tr class="even">
+<td align="center">Intensa</td>
+<td align="center">-</td>
+<td align="center">17</td>
+</tr>
+<tr class="odd">
+<td align="center">Sem informação</td>
+<td align="center">-</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>Através da Tabela 3.7, é possível perceber que 88,57% das pacientes com endometriose apresentam dor moderada ou intensa, contra apenas 6,67% das pacientes que não apresentam esta condição. Ou seja, as pacientes com a doença apresentam mais dor na mestruação do que as demais.</p>
+</div>
+<div id="distribuição-das-variáveis-idade-e-pcra-entre-os-grupos" class="section level4 unnumbered hasAnchor">
+<h4>Distribuição das variáveis <code>Idade</code> e <code>PCRa</code> entre os grupos<a href="análise-de-dados-de-uma-variável.html#distribuição-das-variáveis-idade-e-pcra-entre-os-grupos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Primeiro vamos calcular as medidas globais de resumo para cada uma das variáveis.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="análise-de-dados-de-uma-variável.html#cb189-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb189-2"><a href="análise-de-dados-de-uma-variável.html#cb189-2" tabindex="-1"></a>  <span class="fu">select</span>(Idade, PCRa) <span class="sc">%&gt;%</span></span>
+<span id="cb189-3"><a href="análise-de-dados-de-uma-variável.html#cb189-3" tabindex="-1"></a>  <span class="fu">map</span>(summ) <span class="sc">%&gt;%</span></span>
+<span id="cb189-4"><a href="análise-de-dados-de-uma-variável.html#cb189-4" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb189-5"><a href="análise-de-dados-de-uma-variável.html#cb189-5" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb189-6"><a href="análise-de-dados-de-uma-variável.html#cb189-6" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb189-7"><a href="análise-de-dados-de-uma-variável.html#cb189-7" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb189-8"><a href="análise-de-dados-de-uma-variável.html#cb189-8" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.8:** Medidas de resumo para as variáveis `Idade` e `PCRa`&quot;</span>,</span>
+<span id="cb189-9"><a href="análise-de-dados-de-uma-variável.html#cb189-9" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb189-10"><a href="análise-de-dados-de-uma-variável.html#cb189-10" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb189-11"><a href="análise-de-dados-de-uma-variável.html#cb189-11" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb189-12"><a href="análise-de-dados-de-uma-variável.html#cb189-12" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb189-13"><a href="análise-de-dados-de-uma-variável.html#cb189-13" tabindex="-1"></a>  )</span></code></pre></div>
+<table style="width:100%;">
+<caption><strong>Tabela 3.8:</strong> Medidas de resumo para as variáveis <code>Idade</code> e <code>PCRa</code></caption>
+<colgroup>
+<col width="6%" />
+<col width="4%" />
+<col width="8%" />
+<col width="7%" />
+<col width="9%" />
+<col width="6%" />
+<col width="8%" />
+<col width="7%" />
+<col width="15%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">n</th>
+<th align="center">Mínimo</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
+<th align="center">Máximo</th>
+<th align="center">Média</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Distância Interquartil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Idade</td>
+<td align="center">50</td>
+<td align="center">20</td>
+<td align="center">27,00</td>
+<td align="center">32,00</td>
+<td align="center">37,0</td>
+<td align="center">43</td>
+<td align="center">32,04</td>
+<td align="center">5,76</td>
+<td align="center">10,00</td>
+</tr>
+<tr class="even">
+<td align="left">PCRa</td>
+<td align="center">50</td>
+<td align="center">0</td>
+<td align="center">1,27</td>
+<td align="center">3,55</td>
+<td align="center">6,9</td>
+<td align="center">32</td>
+<td align="center">6,33</td>
+<td align="center">8,06</td>
+<td align="center">5,62</td>
+</tr>
+</tbody>
+</table>
+<p>Para o grupo de controle, temos o seguinte:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="análise-de-dados-de-uma-variável.html#cb190-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb190-2"><a href="análise-de-dados-de-uma-variável.html#cb190-2" tabindex="-1"></a>  <span class="fu">filter</span>(Grupo <span class="sc">==</span> <span class="st">&quot;Controle&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb190-3"><a href="análise-de-dados-de-uma-variável.html#cb190-3" tabindex="-1"></a>  <span class="fu">select</span>(Idade, PCRa) <span class="sc">%&gt;%</span></span>
+<span id="cb190-4"><a href="análise-de-dados-de-uma-variável.html#cb190-4" tabindex="-1"></a>  <span class="fu">map</span>(summ) <span class="sc">%&gt;%</span></span>
+<span id="cb190-5"><a href="análise-de-dados-de-uma-variável.html#cb190-5" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb190-6"><a href="análise-de-dados-de-uma-variável.html#cb190-6" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb190-7"><a href="análise-de-dados-de-uma-variável.html#cb190-7" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb190-8"><a href="análise-de-dados-de-uma-variável.html#cb190-8" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb190-9"><a href="análise-de-dados-de-uma-variável.html#cb190-9" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.9:** Medidas de resumo para o grupo de controle&quot;</span>,</span>
+<span id="cb190-10"><a href="análise-de-dados-de-uma-variável.html#cb190-10" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb190-11"><a href="análise-de-dados-de-uma-variável.html#cb190-11" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb190-12"><a href="análise-de-dados-de-uma-variável.html#cb190-12" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb190-13"><a href="análise-de-dados-de-uma-variável.html#cb190-13" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb190-14"><a href="análise-de-dados-de-uma-variável.html#cb190-14" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 3.9:</strong> Medidas de resumo para o grupo de controle</caption>
+<colgroup>
+<col width="6%" />
+<col width="4%" />
+<col width="8%" />
+<col width="4%" />
+<col width="9%" />
+<col width="6%" />
+<col width="8%" />
+<col width="7%" />
+<col width="16%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">n</th>
+<th align="center">Mínimo</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
+<th align="center">Máximo</th>
+<th align="center">Média</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Distância Interquartil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Idade</td>
+<td align="center">15</td>
+<td align="center">26</td>
+<td align="center">33</td>
+<td align="center">36,0</td>
+<td align="center">37,5</td>
+<td align="center">41,0</td>
+<td align="center">35,13</td>
+<td align="center">3,80</td>
+<td align="center">4,5</td>
+</tr>
+<tr class="even">
+<td align="left">PCRa</td>
+<td align="center">15</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1,2</td>
+<td align="center">2,3</td>
+<td align="center">3,8</td>
+<td align="center">1,35</td>
+<td align="center">1,44</td>
+<td align="center">2,3</td>
+</tr>
+</tbody>
+</table>
+<p>Para o grupo de casos, obtemos as seguintes medidas:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="análise-de-dados-de-uma-variável.html#cb191-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb191-2"><a href="análise-de-dados-de-uma-variável.html#cb191-2" tabindex="-1"></a>  <span class="fu">filter</span>(Grupo <span class="sc">==</span> <span class="st">&quot;Doente&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb191-3"><a href="análise-de-dados-de-uma-variável.html#cb191-3" tabindex="-1"></a>  <span class="fu">select</span>(Idade, PCRa) <span class="sc">%&gt;%</span></span>
+<span id="cb191-4"><a href="análise-de-dados-de-uma-variável.html#cb191-4" tabindex="-1"></a>  <span class="fu">map</span>(summ) <span class="sc">%&gt;%</span></span>
+<span id="cb191-5"><a href="análise-de-dados-de-uma-variável.html#cb191-5" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb191-6"><a href="análise-de-dados-de-uma-variável.html#cb191-6" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb191-7"><a href="análise-de-dados-de-uma-variável.html#cb191-7" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb191-8"><a href="análise-de-dados-de-uma-variável.html#cb191-8" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb191-9"><a href="análise-de-dados-de-uma-variável.html#cb191-9" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.10:** Medidas de resumo para o grupo de casos&quot;</span>,</span>
+<span id="cb191-10"><a href="análise-de-dados-de-uma-variável.html#cb191-10" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb191-11"><a href="análise-de-dados-de-uma-variável.html#cb191-11" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb191-12"><a href="análise-de-dados-de-uma-variável.html#cb191-12" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb191-13"><a href="análise-de-dados-de-uma-variável.html#cb191-13" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb191-14"><a href="análise-de-dados-de-uma-variável.html#cb191-14" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 3.10:</strong> Medidas de resumo para o grupo de casos</caption>
+<colgroup>
+<col width="6%" />
+<col width="4%" />
+<col width="8%" />
+<col width="6%" />
+<col width="9%" />
+<col width="6%" />
+<col width="8%" />
+<col width="7%" />
+<col width="16%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">n</th>
+<th align="center">Mínimo</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
+<th align="center">Máximo</th>
+<th align="center">Média</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Distância Interquartil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Idade</td>
+<td align="center">35</td>
+<td align="center">20</td>
+<td align="center">26,5</td>
+<td align="center">29,0</td>
+<td align="center">35,5</td>
+<td align="center">43</td>
+<td align="center">30,71</td>
+<td align="center">5,98</td>
+<td align="center">9,0</td>
+</tr>
+<tr class="even">
+<td align="left">PCRa</td>
+<td align="center">35</td>
+<td align="center">0</td>
+<td align="center">3,2</td>
+<td align="center">4,6</td>
+<td align="center">12,5</td>
+<td align="center">32</td>
+<td align="center">8,46</td>
+<td align="center">8,79</td>
+<td align="center">9,3</td>
+</tr>
+</tbody>
+</table>
+<p>Vamos também construir alguns gráficos para visualizar melhor os dados:</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="análise-de-dados-de-uma-variável.html#cb192-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb192-2"><a href="análise-de-dados-de-uma-variável.html#cb192-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Idade)) <span class="sc">+</span></span>
+<span id="cb192-3"><a href="análise-de-dados-de-uma-variável.html#cb192-3" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb192-4"><a href="análise-de-dados-de-uma-variável.html#cb192-4" tabindex="-1"></a>      <span class="at">binwidth =</span> <span class="dv">4</span>,</span>
+<span id="cb192-5"><a href="análise-de-dados-de-uma-variável.html#cb192-5" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb192-6"><a href="análise-de-dados-de-uma-variável.html#cb192-6" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb192-7"><a href="análise-de-dados-de-uma-variável.html#cb192-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb192-8"><a href="análise-de-dados-de-uma-variável.html#cb192-8" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>Grupo) <span class="sc">+</span></span>
+<span id="cb192-9"><a href="análise-de-dados-de-uma-variável.html#cb192-9" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb192-10"><a href="análise-de-dados-de-uma-variável.html#cb192-10" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.62: Distribuição da idade entre pacientes&quot;</span>,</span>
+<span id="cb192-11"><a href="análise-de-dados-de-uma-variável.html#cb192-11" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Idade&quot;</span>,</span>
+<span id="cb192-12"><a href="análise-de-dados-de-uma-variável.html#cb192-12" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Quantidade&quot;</span></span>
+<span id="cb192-13"><a href="análise-de-dados-de-uma-variável.html#cb192-13" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb192-14"><a href="análise-de-dados-de-uma-variável.html#cb192-14" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="análise-de-dados-de-uma-variável.html#cb193-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb193-2"><a href="análise-de-dados-de-uma-variável.html#cb193-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Grupo, Idade)) <span class="sc">+</span></span>
+<span id="cb193-3"><a href="análise-de-dados-de-uma-variável.html#cb193-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(</span>
+<span id="cb193-4"><a href="análise-de-dados-de-uma-variável.html#cb193-4" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>,</span>
+<span id="cb193-5"><a href="análise-de-dados-de-uma-variável.html#cb193-5" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span></span>
+<span id="cb193-6"><a href="análise-de-dados-de-uma-variável.html#cb193-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb193-7"><a href="análise-de-dados-de-uma-variável.html#cb193-7" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb193-8"><a href="análise-de-dados-de-uma-variável.html#cb193-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb193-9"><a href="análise-de-dados-de-uma-variável.html#cb193-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb193-10"><a href="análise-de-dados-de-uma-variável.html#cb193-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb193-11"><a href="análise-de-dados-de-uma-variável.html#cb193-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb193-12"><a href="análise-de-dados-de-uma-variável.html#cb193-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.63: Distribuição da idade entre pacientes&quot;</span>,</span>
+<span id="cb193-13"><a href="análise-de-dados-de-uma-variável.html#cb193-13" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Quantidade&quot;</span></span>
+<span id="cb193-14"><a href="análise-de-dados-de-uma-variável.html#cb193-14" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb193-15"><a href="análise-de-dados-de-uma-variável.html#cb193-15" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="análise-de-dados-de-uma-variável.html#cb194-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb194-2"><a href="análise-de-dados-de-uma-variável.html#cb194-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(PCRa)) <span class="sc">+</span></span>
+<span id="cb194-3"><a href="análise-de-dados-de-uma-variável.html#cb194-3" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb194-4"><a href="análise-de-dados-de-uma-variável.html#cb194-4" tabindex="-1"></a>      <span class="at">binwidth =</span> <span class="dv">4</span>,</span>
+<span id="cb194-5"><a href="análise-de-dados-de-uma-variável.html#cb194-5" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb194-6"><a href="análise-de-dados-de-uma-variável.html#cb194-6" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb194-7"><a href="análise-de-dados-de-uma-variável.html#cb194-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb194-8"><a href="análise-de-dados-de-uma-variável.html#cb194-8" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>Grupo) <span class="sc">+</span></span>
+<span id="cb194-9"><a href="análise-de-dados-de-uma-variável.html#cb194-9" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb194-10"><a href="análise-de-dados-de-uma-variável.html#cb194-10" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.64: Distribuição da variável `PCRa` entre pacientes&quot;</span>,</span>
+<span id="cb194-11"><a href="análise-de-dados-de-uma-variável.html#cb194-11" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;PCRa&quot;</span>,</span>
+<span id="cb194-12"><a href="análise-de-dados-de-uma-variável.html#cb194-12" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Quantidade&quot;</span></span>
+<span id="cb194-13"><a href="análise-de-dados-de-uma-variável.html#cb194-13" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb194-14"><a href="análise-de-dados-de-uma-variável.html#cb194-14" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="análise-de-dados-de-uma-variável.html#cb195-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb195-2"><a href="análise-de-dados-de-uma-variável.html#cb195-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Grupo, PCRa)) <span class="sc">+</span></span>
+<span id="cb195-3"><a href="análise-de-dados-de-uma-variável.html#cb195-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(</span>
+<span id="cb195-4"><a href="análise-de-dados-de-uma-variável.html#cb195-4" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>,</span>
+<span id="cb195-5"><a href="análise-de-dados-de-uma-variável.html#cb195-5" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span></span>
+<span id="cb195-6"><a href="análise-de-dados-de-uma-variável.html#cb195-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb195-7"><a href="análise-de-dados-de-uma-variável.html#cb195-7" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb195-8"><a href="análise-de-dados-de-uma-variável.html#cb195-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb195-9"><a href="análise-de-dados-de-uma-variável.html#cb195-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb195-10"><a href="análise-de-dados-de-uma-variável.html#cb195-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb195-11"><a href="análise-de-dados-de-uma-variável.html#cb195-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb195-12"><a href="análise-de-dados-de-uma-variável.html#cb195-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.65: Distribuição da variável `PCRa` entre pacientes&quot;</span>,</span>
+<span id="cb195-13"><a href="análise-de-dados-de-uma-variável.html#cb195-13" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Quantidade&quot;</span></span>
+<span id="cb195-14"><a href="análise-de-dados-de-uma-variável.html#cb195-14" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb195-15"><a href="análise-de-dados-de-uma-variável.html#cb195-15" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<p>Notamos com esses dados que a idade das pacientes com endrometriose varia de 20 a 43 anos, com média de 30,71 anos e desvio padrão de 5,98 anos. Já entre o grupo de controle, a variação de idade é menos (entre 26 e 41 anos), com média de 35,13 anos e desvio padrão de 3,80 anos.</p>
+<p>Para a variável PCRa, temos uma discrepância considerável. Mulheres com endometriose tem uma concentração de mais de 6 vezes maior de PCR durante a menstruação do que as pacientes do grupo de controle.</p>
+<p>Optamos por zerar o valor das observações cuja medida foi $ &lt; 0,5$. Uma vez que 0,5 é o menor valor que o instrumento de aferição consegue detectar, entendemos ser justo considerar essas medidas como nula. Seria uma opção desconsiderar essas medidas? Cabe avaliar.</p>
+</div>
+<div id="comparando-o-número-de-gestações-entre-os-grupos" class="section level4 unnumbered hasAnchor">
+<h4>Comparando o número de gestações entre os grupos<a href="análise-de-dados-de-uma-variável.html#comparando-o-número-de-gestações-entre-os-grupos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="análise-de-dados-de-uma-variável.html#cb196-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb196-2"><a href="análise-de-dados-de-uma-variável.html#cb196-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Grupo, Gestação) <span class="sc">%&gt;%</span></span>
+<span id="cb196-3"><a href="análise-de-dados-de-uma-variável.html#cb196-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb196-4"><a href="análise-de-dados-de-uma-variável.html#cb196-4" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Grupo, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb196-5"><a href="análise-de-dados-de-uma-variável.html#cb196-5" tabindex="-1"></a>  <span class="fu">arrange</span>(Gestação)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 3
+## # Groups:   Gestação [10]
+##    Gestação Controle Doente
+##       &lt;int&gt;    &lt;int&gt;  &lt;int&gt;
+##  1        0        0     18
+##  2        1        0      9
+##  3        2        0      4
+##  4        3        5      2
+##  5        4        4      0
+##  6        5        2      1
+##  7        6        1      0
+##  8        7        2      0
+##  9        9        0      1
+## 10       11        1      0</code></pre>
+<p>Vamos também representar graficamente a relação entre os grupos usando um <em>boxplot</em>.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="análise-de-dados-de-uma-variável.html#cb198-1" tabindex="-1"></a>endometriose <span class="sc">%&gt;%</span></span>
+<span id="cb198-2"><a href="análise-de-dados-de-uma-variável.html#cb198-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Grupo, <span class="at">y =</span> Gestação)) <span class="sc">+</span></span>
+<span id="cb198-3"><a href="análise-de-dados-de-uma-variável.html#cb198-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(</span>
+<span id="cb198-4"><a href="análise-de-dados-de-uma-variável.html#cb198-4" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>,</span>
+<span id="cb198-5"><a href="análise-de-dados-de-uma-variável.html#cb198-5" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span></span>
+<span id="cb198-6"><a href="análise-de-dados-de-uma-variável.html#cb198-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb198-7"><a href="análise-de-dados-de-uma-variável.html#cb198-7" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb198-8"><a href="análise-de-dados-de-uma-variável.html#cb198-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb198-9"><a href="análise-de-dados-de-uma-variável.html#cb198-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb198-10"><a href="análise-de-dados-de-uma-variável.html#cb198-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb198-11"><a href="análise-de-dados-de-uma-variável.html#cb198-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb198-12"><a href="análise-de-dados-de-uma-variável.html#cb198-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Figura 3.66: Número de gestações entre mulheres com e sem endometriose&quot;</span>,</span>
+<span id="cb198-13"><a href="análise-de-dados-de-uma-variável.html#cb198-13" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Grupo&quot;</span>,</span>
+<span id="cb198-14"><a href="análise-de-dados-de-uma-variável.html#cb198-14" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Número de gestações&quot;</span></span>
+<span id="cb198-15"><a href="análise-de-dados-de-uma-variável.html#cb198-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb198-16"><a href="análise-de-dados-de-uma-variável.html#cb198-16" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p>Notamos que o número de gestações entre mulheres com endometriose é muito menor do que entre as mulheres do grupo controle. Uma parte desse efeito poderia ser explicado pela idade das pacientes (a média de idade das pacientes com endometriose é menor do que as do grupo de controle), mas certamente a doença em si é o maior fator pra o menor número de gestações.</p>
+</div>
 </div>
 </div>
 <div id="exr3-13" class="section level3 unnumbered hasAnchor">
@@ -3272,6 +3734,9 @@ Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que
 </div>
 <h3>Referências<a href="referências.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-AbraoEtAl1997" class="csl-entry">
+ABRÃO, M. S. et al. <a href="https://doi.org/10.1093/humrep/12.11.2523"><span>The use of biochemical markers in the diagnosis of pelvic endometriosis</span></a>. <strong>Human Reproduction</strong>, v. 12, n. 11, p. 2523–2527, nov. 1997.
+</div>
 <div id="ref-CarvalhoEtAl2007" class="csl-entry">
 CARVALHO, T. DE et al. <a href="https://doi.org/10.1590/S0066-782X2007000100012">Reabilitação cardiovascular de portadores de cardiopatia isquêmica submetidos a tratamento clínico, angioplastia coronariana transluminal percutânea e revascularização cirúrgica do miocárdio</a>. <strong>Arquivos Brasileiros de Cardiologia</strong>, v. 88, n. 1, p. 72–78, jan. 2007.
 </div>

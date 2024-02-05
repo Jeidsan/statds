@@ -73,6 +73,53 @@
             "volume": "88"
         },
         {
+            "DOI": "10.1093/humrep/12.11.2523",
+            "ISSN": "0268-1161",
+            "URL": "https://doi.org/10.1093/humrep/12.11.2523",
+            "author": [
+                {
+                    "family": "Abrão",
+                    "given": "Mauricio S."
+                },
+                {
+                    "family": "Podgaec",
+                    "given": "Sergio"
+                },
+                {
+                    "family": "Filho",
+                    "given": "Braz Martorelli"
+                },
+                {
+                    "family": "Ramos",
+                    "given": "Laudelino O."
+                },
+                {
+                    "family": "Pinotti",
+                    "given": "José Aristodemo"
+                },
+                {
+                    "dropping-particle": "de",
+                    "family": "Oliveira",
+                    "given": "Ricardo M."
+                }
+            ],
+            "container-title": "Human Reproduction",
+            "id": "AbraoEtAl1997",
+            "issue": "11",
+            "issued": {
+                "date-parts": [
+                    [
+                        1997,
+                        11
+                    ]
+                ]
+            },
+            "page": "2523-2527",
+            "title": "The use of biochemical markers in the diagnosis of pelvic endometriosis",
+            "type": "article-journal",
+            "volume": "12"
+        },
+        {
             "URL": "https://www.R-project.org/",
             "author": [
                 {

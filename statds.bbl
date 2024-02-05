@@ -1,9 +1,17 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abrão et~al.(1997)Abrão, Podgaec, Filho, Ramos, Pinotti, and de~Oliveira]{AbraoEtAl1997}
+Mauricio~S. Abrão, Sergio Podgaec, Braz~Martorelli Filho, Laudelino~O. Ramos, José~Aristodemo Pinotti, and Ricardo~M. de~Oliveira.
+\newblock {The use of biochemical markers in the diagnosis of pelvic endometriosis}.
+\newblock \emph{Human Reproduction}, 12\penalty0 (11):\penalty0 2523--2527, 11 1997.
+\newblock ISSN 0268-1161.
+\newblock \doi{10.1093/humrep/12.11.2523}.
+\newblock URL \url{https://doi.org/10.1093/humrep/12.11.2523}.
 
 \bibitem[Carvalho et~al.(2007)Carvalho, Curi, Andrade, Singer, Benetti, and Mansur]{CarvalhoEtAl2007}
 Tales~de Carvalho, Ana Luiza~Hallal Curi, Dalton~Francisco Andrade, Julio da~Motta Singer, Magnus Benetti, and Alfredo~José Mansur.

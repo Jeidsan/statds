@@ -588,12 +588,14 @@ rehabcardio %>%
 summ <- function(x) {
   c(
     n = sum(!is.na(x), na.rm = TRUE),
-    min = min(x, na.rm = TRUE),
-    max = max(x, na.rm = TRUE),
-    mean = mean(x, na.rm = TRUE),
-    sd = sd(x, na.rm = TRUE),
-    median = median(x, na.rm = TRUE),
-    iqr = IQR(x, na.rm = TRUE)
+    `Mínimo` = min(x, na.rm = TRUE),
+    Q1 = quantile(x, 0.25, na.rm = TRUE)[[1]],
+    `Mediana` = median(x, na.rm = TRUE),
+    Q3 = quantile(x, 0.75, na.rm = TRUE)[[1]],
+    `Máximo` = max(x, na.rm = TRUE),
+    `Média` = mean(x, na.rm = TRUE),
+    `Desvio Padrão` = sd(x, na.rm = TRUE),
+    `Distância Interquartil` = IQR(x, na.rm = TRUE)
   )
 }
 
@@ -602,8 +604,6 @@ resumo <- rehabcardio %>%
             map(summ) %>%
             as.data.frame() %>%
             t()
-
-colnames(resumo) <- c("Quantidade de observações", "Mínimo", "Máximo", "Média", "Desvio padrão", "Mediana", "Distância interquartil")
 
 resumo %>%
   kable(
@@ -710,8 +710,6 @@ resumo <- antracose %>%
             map(summ) %>%
             as.data.frame() %>%
             t()
-
-colnames(resumo) <- c("Quantidade de observações", "Mínimo", "Máximo", "Média", "Desvio padrão", "Mediana", "Distância interquartil")
 
 resumo %>%
   kable(
@@ -1830,7 +1828,7 @@ Usando essa função, temos que o coeficiente de assimetria para a variável `vt
 ### Exercício 3.12 {- #exr3-12}
 
 ::: {.enunciado}
-Os dados disponíveis no arquivo `endometrione.xls` são provenientes de um estudo em que o objetivo é verificar se existe diferença entre os grupos de doentes e controles quanto a algumas caracteristicas observadas.
+Os dados disponíveis no arquivo `endometrione.xls` [@AbraoEtAl1997] são provenientes de um estudo em que o objetivo é verificar se existe diferença entre os grupos de doentes e controles quanto a algumas caracteristicas observadas.
 
 a) O pesquisador responsável pelo estudo tem a seguinte pergunta: pacientes doentes apresentam mais dor na menstruação do que as pacientes não doentes? Que tipo de análise você faria para responder essa pergunta utilizando as técnicas discutidas neste capitulo? Faça-a e tire suas conclusões.
 b) Compare as distribuições das variáveis idade e concentração de PCR durante a menstruação (`PCRa`) para pacientes dos grupos controle e doente utilizando medidas resumo (minimo, máximo, quartis, mediana, média, desvio padrão, etc.), *boxplots*, histogramas, gráficos de médias e gráficos QQ. Como você considerou os valores $< 0,5$ da variável `PCRa` nesses cálculos? Você sugeriria uma outra maneira para considerar tais valores?
@@ -1838,7 +1836,253 @@ c) Compare a distribuição da variável número de gestações para os dois gru
 :::
 
 :::{.solution}
-x
+
+Como sempre, vamos iniciar com o carregamento e ajuste nos dados:
+
+```{r}
+endometriose <- readxl::read_xls(paste0(data_dir, "endometriose.xls"), sheet = "dados")
+
+head(endometriose, 10)
+```
+
+Vamos transformar em fator as variáveis `Grupo`, `Dismenorréia` e `Dispareunia`. Vamos também ubstituir o valor `<0,5` por zero nas variáveis `CA125/A`, `CA125/B`, `PCRa` e `PCRb`. Por fim, transformaremos em inteiras as variáveis `Idade`, `Gestação`, `Partos`, `Abortos` e `AFSr`.
+
+```{r}
+dismenorreia_levels <- c("Não tem", "Leve", "Moderada", "Intensa", "Sem informação")
+dismenorreia <- function(x) {
+  x %>% 
+    str_replace("S/", "Sem informação") %>%
+    str_replace("N", "Não tem") %>%
+    str_replace("L", "Leve") %>%
+    str_replace("M", "Moderada") %>% 
+    str_replace("I", "Intensa")
+}
+
+dispareunia <- function(x) {
+  x %>%
+    str_replace("\\.", "Sem informação") %>%
+    str_replace("N", "Não tem") %>%
+    str_replace("P\\b", "Penetração") %>%
+    str_replace("PRO", "Profunda") %>%
+    str_replace("2", "Penetração e Profunda")
+}
+
+zerar <- function(x) {
+  x %>%
+    str_replace("<0,5", "0")
+}
+
+endometriose <- endometriose %>%
+                  mutate(
+                    Grupo = parse_factor(Grupo),
+                    Dismenorréia = parse_factor(dismenorreia(Dismenorréia), levels = dismenorreia_levels, ordered = TRUE),
+                    Dispareunia = parse_factor(dispareunia(Dispareunia)),
+                    `CA125/A` = parse_double(zerar(`CA125/A`)),
+                    `CA125/B` = parse_double(zerar(`CA125/B`)),
+                    PCRa = parse_double(zerar(PCRa)),
+                    PCRb = parse_double(zerar(PCRb)),
+                    Idade = as.integer(Idade),
+                    Gestação = as.integer(Gestação),
+                    Partos = as.integer(Partos),
+                    Abortos = as.integer(Abortos),
+                    AFSr = as.integer(AFSr)
+                  )
+
+```
+
+
+#### Pacientes doentes apresentam mais dor na menstruação do que as pacientes não doentes? {-}
+
+Em primeiro lugar, vamos construir uma tabela de contigência com os graus de dismenorréia entre os grupos.
+
+```{r}
+endometriose %>%
+  group_by(Dismenorréia, Grupo) %>%
+  count() %>%
+  spread(Grupo, n) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.7:** Distribuição da ocorrência de dismenorréia entre casos e controles",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ","),
+  )
+```
+
+Através da Tabela 3.7, é possível perceber que 88,57% das pacientes com endometriose apresentam dor moderada ou intensa, contra apenas 6,67% das pacientes que não apresentam esta condição. Ou seja, as pacientes com a doença apresentam mais dor na mestruação do que as demais.
+
+#### Distribuição das variáveis `Idade` e `PCRa` entre os grupos {-}
+
+Primeiro vamos calcular as medidas globais de resumo para cada uma das variáveis.
+
+```{r}
+endometriose %>%
+  select(Idade, PCRa) %>%
+  map(summ) %>%
+  as.data.frame() %>%
+  t() %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.8:** Medidas de resumo para as variáveis `Idade` e `PCRa`",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Para o grupo de controle, temos o seguinte:
+
+```{r}
+endometriose %>%
+  filter(Grupo == "Controle") %>%
+  select(Idade, PCRa) %>%
+  map(summ) %>%
+  as.data.frame() %>%
+  t() %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.9:** Medidas de resumo para o grupo de controle",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Para o grupo de casos, obtemos as seguintes medidas:
+
+```{r}
+endometriose %>%
+  filter(Grupo == "Doente") %>%
+  select(Idade, PCRa) %>%
+  map(summ) %>%
+  as.data.frame() %>%
+  t() %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.10:** Medidas de resumo para o grupo de casos",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Vamos também construir alguns gráficos para visualizar melhor os dados:
+
+```{r}
+endometriose %>%
+  ggplot(aes(Idade)) +
+    geom_histogram(
+      binwidth = 4,
+      fill = "grey",
+      color = "grey30"
+    ) +
+    facet_wrap(~Grupo) +
+    labs(
+      title = "Figura 3.62: Distribuição da idade entre pacientes",
+      x = "Idade",
+      y = "Quantidade"
+    ) +
+    tema
+```
+
+```{r}
+endometriose %>%
+  ggplot(aes(Grupo, Idade)) +
+    stat_boxplot(
+      geom = "errorbar",
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.63: Distribuição da idade entre pacientes",
+      y = "Quantidade"
+    ) +
+    tema
+```
+
+
+```{r}
+endometriose %>%
+  ggplot(aes(PCRa)) +
+    geom_histogram(
+      binwidth = 4,
+      fill = "grey",
+      color = "grey30"
+    ) +
+    facet_wrap(~Grupo) +
+    labs(
+      title = "Figura 3.64: Distribuição da variável `PCRa` entre pacientes",
+      x = "PCRa",
+      y = "Quantidade"
+    ) +
+    tema
+```
+
+```{r}
+endometriose %>%
+  ggplot(aes(Grupo, PCRa)) +
+    stat_boxplot(
+      geom = "errorbar",
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.65: Distribuição da variável `PCRa` entre pacientes",
+      y = "Quantidade"
+    ) +
+    tema
+```
+
+Notamos com esses dados que a idade das pacientes com endrometriose varia de 20 a 43 anos, com média de 30,71 anos e desvio padrão de 5,98 anos. Já entre o grupo de controle, a variação de idade é menos (entre 26 e 41 anos), com média de 35,13 anos e desvio padrão de 3,80 anos.
+
+Para a variável PCRa, temos uma discrepância considerável. Mulheres com endometriose tem uma concentração de mais de 6 vezes maior de PCR durante a menstruação do que as pacientes do grupo de controle. 
+
+Optamos por zerar o valor das observações cuja medida foi $ < 0,5$. Uma vez que 0,5 é o menor valor que o instrumento de aferição consegue detectar, entendemos ser justo considerar essas medidas como nula. Seria uma opção desconsiderar essas medidas? Cabe avaliar.
+
+
+#### Comparando o número de gestações entre os grupos {-}
+
+```{r}
+endometriose %>%
+  group_by(Grupo, Gestação) %>%
+  count() %>%
+  pivot_wider(names_from = Grupo, values_from = n, values_fill = 0) %>%
+  arrange(Gestação)
+```
+
+Vamos também representar graficamente a relação entre os grupos usando um *boxplot*.
+
+```{r}
+endometriose %>%
+  ggplot(aes(x = Grupo, y = Gestação)) +
+    stat_boxplot(
+      geom = "errorbar",
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    labs(
+      title = "Figura 3.66: Número de gestações entre mulheres com e sem endometriose",
+      x = "Grupo",
+      y = "Número de gestações"
+    ) +
+    tema
+```
+
+Notamos que o número de gestações entre mulheres com endometriose é muito menor do que entre as mulheres do grupo controle. Uma parte desse efeito poderia ser explicado pela idade das pacientes (a média de idade das pacientes com endometriose é menor do que as do grupo de controle), mas certamente a doença em si é o maior fator pra o menor número de gestações.
+
 :::
 
 ### Exercício 3.13 {- #exr3-13}

@@ -314,6 +314,8 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
 \item
   Revisar estrutura do \protect\hyperlink{exr3-5}{Exercício 3.5};
 \item
+  Complementar a análise do \protect\hyperlink{exr3-12}{Exercício 3.12};
+\item
 \end{itemize}
 
 \mainmatter
@@ -2133,12 +2135,14 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 \NormalTok{summ }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
   \FunctionTok{c}\NormalTok{(}
     \AttributeTok{n =} \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(x), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \AttributeTok{min =} \FunctionTok{min}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \AttributeTok{max =} \FunctionTok{max}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \AttributeTok{median =} \FunctionTok{median}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \AttributeTok{iqr =} \FunctionTok{IQR}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+    \StringTok{\textasciigrave{}}\AttributeTok{Mínimo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{min}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Q1 =} \FunctionTok{quantile}\NormalTok{(x, }\FloatTok{0.25}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+    \StringTok{\textasciigrave{}}\AttributeTok{Mediana}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{median}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Q3 =} \FunctionTok{quantile}\NormalTok{(x, }\FloatTok{0.75}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+    \StringTok{\textasciigrave{}}\AttributeTok{Máximo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{max}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Média}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Desvio Padrão}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{sd}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Distância Interquartil}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{IQR}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{  )}
 \NormalTok{\}}
 
@@ -2147,8 +2151,6 @@ Sem resposta & 11 & 2,89 & 100,00 \\
             \FunctionTok{map}\NormalTok{(summ) }\SpecialCharTok{\%\textgreater{}\%}
             \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
             \FunctionTok{t}\NormalTok{()}
-
-\FunctionTok{colnames}\NormalTok{(resumo) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Quantidade de observações"}\NormalTok{, }\StringTok{"Mínimo"}\NormalTok{, }\StringTok{"Máximo"}\NormalTok{, }\StringTok{"Média"}\NormalTok{, }\StringTok{"Desvio padrão"}\NormalTok{, }\StringTok{"Mediana"}\NormalTok{, }\StringTok{"Distância interquartil"}\NormalTok{)}
 
 \NormalTok{resumo }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{kable}\NormalTok{(}
@@ -2163,60 +2165,70 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 \end{Shaded}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0660}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2547}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0755}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0755}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0755}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1415}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0849}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2264}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0700}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0500}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0800}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0800}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0900}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0800}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0800}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0800}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1500}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2400}}@{}}
 \caption{\textbf{Tabela 3.4:} Medidas de resumo para algumas variáveis de \texttt{rehabcardio.xls}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Quantidade de observações
+n
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Máximo
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Média
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Desvio padrão
+Desvio Padrão
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Mediana
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Distância interquartil
+Distância Interquartil
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Quantidade de observações
+n
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Máximo
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Média
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Desvio padrão
+Desvio Padrão
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Mediana
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Distância interquartil
+Distância Interquartil
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Peso & 375 & 47,00 & 119,00 & 76,11 & 12,79 & 75,50 & 17,9 \\
-Altura & 374 & 1,44 & 1,91 & 1,67 & 0,08 & 1,68 & 0,1 \\
-Coltot & 327 & 111,00 & 799,00 & 215,43 & 60,16 & 206,00 & 58,0 \\
-HDL & 316 & 14,00 & 200,00 & 41,52 & 13,14 & 40,00 & 11,0 \\
-LDL & 289 & 57,00 & 425,00 & 137,31 & 43,41 & 129,00 & 49,0 \\
+Peso & 375 & 47,00 & 67,05 & 75,50 & 84,95 & 119,00 & 76,11 & 12,79 & 17,9 \\
+Altura & 374 & 1,44 & 1,63 & 1,68 & 1,73 & 1,91 & 1,67 & 0,08 & 0,1 \\
+Coltot & 327 & 111,00 & 180,00 & 206,00 & 238,00 & 799,00 & 215,43 & 60,16 & 58,0 \\
+HDL & 316 & 14,00 & 35,00 & 40,00 & 46,00 & 200,00 & 41,52 & 13,14 & 11,0 \\
+LDL & 289 & 57,00 & 110,00 & 129,00 & 159,00 & 425,00 & 137,31 & 43,41 & 49,0 \\
 \end{longtable}
 
 \hypertarget{d-avalie-a-compatibilidade-de-distribuiuxe7uxf5es-normais-para-as-variuxe1veis-continuas-por-meio-de-gruxe1ficos-qq}{%
@@ -2388,8 +2400,6 @@ A Tabela 3.5 apresenta as medidas de posição e dispersão dos dados.
             \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
             \FunctionTok{t}\NormalTok{()}
 
-\FunctionTok{colnames}\NormalTok{(resumo) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Quantidade de observações"}\NormalTok{, }\StringTok{"Mínimo"}\NormalTok{, }\StringTok{"Máximo"}\NormalTok{, }\StringTok{"Média"}\NormalTok{, }\StringTok{"Desvio padrão"}\NormalTok{, }\StringTok{"Mediana"}\NormalTok{, }\StringTok{"Distância interquartil"}\NormalTok{)}
-
 \NormalTok{resumo }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{kable}\NormalTok{(}
     \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
@@ -2403,63 +2413,73 @@ A Tabela 3.5 apresenta as medidas de posição e dispersão dos dados.
 \end{Shaded}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0991}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2432}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0721}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0811}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0721}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1351}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0811}}
-  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2162}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1048}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0571}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0762}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0667}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0857}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0762}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0857}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0762}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1429}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2286}}@{}}
 \caption{\textbf{Tabela 3.5:} Medidas de resumo para algumas variáveis de \texttt{antracose.xls}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Quantidade de observações
+n
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Máximo
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Média
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Desvio padrão
+Desvio Padrão
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Mediana
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Distância interquartil
+Distância Interquartil
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Quantidade de observações
+n
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Máximo
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Média
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Desvio padrão
+Desvio Padrão
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Mediana
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-Distância interquartil
+Distância Interquartil
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-idade & 2452 & 19,00 & 110,00 & 68,43 & 15,14 & 69,00 & 23,00 \\
-tmunic & 2452 & 0,00 & 103,00 & 49,27 & 20,63 & 50,00 & 23,00 \\
-htransp & 2452 & 0,00 & 12,00 & 1,78 & 2,54 & 0,83 & 2,00 \\
-cargatabag & 2452 & 0,00 & 256,00 & 25,57 & 39,31 & 1,50 & 41,00 \\
-antracose & 2350 & 0,00 & 0,83 & 0,20 & 0,16 & 0,17 & 0,22 \\
-ses & 2452 & -1,00 & 1,00 & -0,24 & 0,36 & -0,31 & 0,47 \\
-densid & 2452 & 0,00 & 0,04 & 0,02 & 0,01 & 0,02 & 0,01 \\
-distmin & 2452 & 0,03 & 1964,02 & 170,67 & 190,87 & 114,12 & 180,71 \\
+idade & 2452 & 19,00 & 58,00 & 69,00 & 81,00 & 110,00 & 68,43 & 15,14 & 23,00 \\
+tmunic & 2452 & 0,00 & 39,00 & 50,00 & 62,00 & 103,00 & 49,27 & 20,63 & 23,00 \\
+htransp & 2452 & 0,00 & 0,00 & 0,83 & 2,00 & 12,00 & 1,78 & 2,54 & 2,00 \\
+cargatabag & 2452 & 0,00 & 0,00 & 1,50 & 41,00 & 256,00 & 25,57 & 39,31 & 41,00 \\
+antracose & 2350 & 0,00 & 0,07 & 0,17 & 0,29 & 0,83 & 0,20 & 0,16 & 0,22 \\
+ses & 2452 & -1,00 & -0,51 & -0,31 & -0,05 & 1,00 & -0,24 & 0,36 & 0,47 \\
+densid & 2452 & 0,00 & 0,01 & 0,02 & 0,02 & 0,04 & 0,02 & 0,01 & 0,01 \\
+distmin & 2452 & 0,03 & 45,24 & 114,12 & 225,95 & 1964,02 & 170,67 & 190,87 & 180,71 \\
 \end{longtable}
 
 \hypertarget{construa-histogramas-e-boxplots-para-essas-variuxe1veis-e-verifique-que-transformauxe7uxe3o-uxe9-necessuxe1ria-para-tornar-mais-simuxe9tricas-aquelas-em-que-a-simetria-pode-ser-questionada}{%
@@ -4115,7 +4135,7 @@ Usando essa função, temos que o coeficiente de assimetria para a variável \te
 \subsection*{Exercício 3.12}\label{exr3-12}}
 \addcontentsline{toc}{subsection}{Exercício 3.12}
 
-Os dados disponíveis no arquivo \texttt{endometrione.xls} são provenientes de um estudo em que o objetivo é verificar se existe diferença entre os grupos de doentes e controles quanto a algumas caracteristicas observadas.
+Os dados disponíveis no arquivo \texttt{endometrione.xls} \citep{AbraoEtAl1997} são provenientes de um estudo em que o objetivo é verificar se existe diferença entre os grupos de doentes e controles quanto a algumas caracteristicas observadas.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -4129,7 +4149,532 @@ Os dados disponíveis no arquivo \texttt{endometrione.xls} são provenientes de 
 \end{enumerate}
 
 \begin{solution}
-x
+Como sempre, vamos iniciar com o carregamento e ajuste nos dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"endometriose.xls"}\NormalTok{), }\AttributeTok{sheet =} \StringTok{"dados"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(endometriose, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 13
+##    Grupo   Paciente Idade Gestação Partos Abortos Dismenorréia Dispareunia  AFSr
+##    <chr>      <dbl> <dbl>    <dbl>  <dbl>   <dbl> <chr>        <chr>       <dbl>
+##  1 Contro~        1    26        3      3       0 L            N               0
+##  2 Contro~        2    37        4      3       1 N            P               0
+##  3 Contro~        3    37        4      4       0 N            N               0
+##  4 Contro~        4    35        3      3       0 L            N               0
+##  5 Contro~        5    34        4      3       1 N            N               0
+##  6 Contro~        6    38        5      5       0 L            N               0
+##  7 Contro~        7    30        5      4       1 N            N               0
+##  8 Contro~        8    38       11      7       4 N            N               0
+##  9 Contro~        9    36        7      6       1 N            N               0
+## 10 Contro~       10    41        4      3       1 N            N               0
+## # i 4 more variables: `CA125/A` <chr>, `CA125/B` <chr>, PCRa <chr>, PCRb <chr>
+\end{verbatim}
+
+Vamos transformar em fator as variáveis \texttt{Grupo}, \texttt{Dismenorréia} e \texttt{Dispareunia}. Vamos também ubstituir o valor \texttt{\textless{}0,5} por zero nas variáveis \texttt{CA125/A}, \texttt{CA125/B}, \texttt{PCRa} e \texttt{PCRb}. Por fim, transformaremos em inteiras as variáveis \texttt{Idade}, \texttt{Gestação}, \texttt{Partos}, \texttt{Abortos} e \texttt{AFSr}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dismenorreia\_levels }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Não tem"}\NormalTok{, }\StringTok{"Leve"}\NormalTok{, }\StringTok{"Moderada"}\NormalTok{, }\StringTok{"Intensa"}\NormalTok{, }\StringTok{"Sem informação"}\NormalTok{)}
+\NormalTok{dismenorreia }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"S/"}\NormalTok{, }\StringTok{"Sem informação"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"N"}\NormalTok{, }\StringTok{"Não tem"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"Leve"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"Moderada"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"I"}\NormalTok{, }\StringTok{"Intensa"}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{dispareunia }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{."}\NormalTok{, }\StringTok{"Sem informação"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"N"}\NormalTok{, }\StringTok{"Não tem"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"P}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{b"}\NormalTok{, }\StringTok{"Penetração"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"PRO"}\NormalTok{, }\StringTok{"Profunda"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"2"}\NormalTok{, }\StringTok{"Penetração e Profunda"}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{zerar }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"\textless{}0,5"}\NormalTok{, }\StringTok{"0"}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{endometriose }\OtherTok{\textless{}{-}}\NormalTok{ endometriose }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{mutate}\NormalTok{(}
+                    \AttributeTok{Grupo =} \FunctionTok{parse\_factor}\NormalTok{(Grupo),}
+\NormalTok{                    Dismenorréia }\OtherTok{=} \FunctionTok{parse\_factor}\NormalTok{(}\FunctionTok{dismenorreia}\NormalTok{(Dismenorréia), }\AttributeTok{levels =}\NormalTok{ dismenorreia\_levels, }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{),}
+                    \AttributeTok{Dispareunia =} \FunctionTok{parse\_factor}\NormalTok{(}\FunctionTok{dispareunia}\NormalTok{(Dispareunia)),}
+                    \StringTok{\textasciigrave{}}\AttributeTok{CA125/A}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{parse\_double}\NormalTok{(}\FunctionTok{zerar}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{CA125/A}\StringTok{\textasciigrave{}}\NormalTok{)),}
+                    \StringTok{\textasciigrave{}}\AttributeTok{CA125/B}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{parse\_double}\NormalTok{(}\FunctionTok{zerar}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{CA125/B}\StringTok{\textasciigrave{}}\NormalTok{)),}
+                    \AttributeTok{PCRa =} \FunctionTok{parse\_double}\NormalTok{(}\FunctionTok{zerar}\NormalTok{(PCRa)),}
+                    \AttributeTok{PCRb =} \FunctionTok{parse\_double}\NormalTok{(}\FunctionTok{zerar}\NormalTok{(PCRb)),}
+                    \AttributeTok{Idade =} \FunctionTok{as.integer}\NormalTok{(Idade),}
+\NormalTok{                    Gestação }\OtherTok{=} \FunctionTok{as.integer}\NormalTok{(Gestação),}
+                    \AttributeTok{Partos =} \FunctionTok{as.integer}\NormalTok{(Partos),}
+                    \AttributeTok{Abortos =} \FunctionTok{as.integer}\NormalTok{(Abortos),}
+                    \AttributeTok{AFSr =} \FunctionTok{as.integer}\NormalTok{(AFSr)}
+\NormalTok{                  )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{pacientes-doentes-apresentam-mais-dor-na-menstruauxe7uxe3o-do-que-as-pacientes-nuxe3o-doentes}{%
+\subsubsection*{Pacientes doentes apresentam mais dor na menstruação do que as pacientes não doentes?}\label{pacientes-doentes-apresentam-mais-dor-na-menstruauxe7uxe3o-do-que-as-pacientes-nuxe3o-doentes}}
+\addcontentsline{toc}{subsubsection}{Pacientes doentes apresentam mais dor na menstruação do que as pacientes não doentes?}
+
+Em primeiro lugar, vamos construir uma tabela de contigência com os graus de dismenorréia entre os grupos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Dismenorréia, Grupo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{spread}\NormalTok{(Grupo, n) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.7:** Distribuição da ocorrência de dismenorréia entre casos e controles"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{),}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\textbf{Tabela 3.7:} Distribuição da ocorrência de dismenorréia entre casos e controles}\tabularnewline
+\toprule\noalign{}
+Dismenorréia & Controle & Doente \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Dismenorréia & Controle & Doente \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Não tem & 10 & - \\
+Leve & 4 & 3 \\
+Moderada & 1 & 14 \\
+Intensa & - & 17 \\
+Sem informação & - & 1 \\
+\end{longtable}
+
+Através da Tabela 3.7, é possível perceber que 88,57\% das pacientes com endometriose apresentam dor moderada ou intensa, contra apenas 6,67\% das pacientes que não apresentam esta condição. Ou seja, as pacientes com a doença apresentam mais dor na mestruação do que as demais.
+
+\hypertarget{distribuiuxe7uxe3o-das-variuxe1veis-idade-e-pcra-entre-os-grupos}{%
+\subsubsection*{\texorpdfstring{Distribuição das variáveis \texttt{Idade} e \texttt{PCRa} entre os grupos}{Distribuição das variáveis Idade e PCRa entre os grupos}}\label{distribuiuxe7uxe3o-das-variuxe1veis-idade-e-pcra-entre-os-grupos}}
+\addcontentsline{toc}{subsubsection}{Distribuição das variáveis \texttt{Idade} e \texttt{PCRa} entre os grupos}
+
+Primeiro vamos calcular as medidas globais de resumo para cada uma das variáveis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Idade, PCRa) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map}\NormalTok{(summ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{t}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.8:** Medidas de resumo para as variáveis \textasciigrave{}Idade\textasciigrave{} e \textasciigrave{}PCRa\textasciigrave{}"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0638}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0426}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0851}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0745}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0957}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0638}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0851}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0745}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1596}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2553}}@{}}
+\caption{\textbf{Tabela 3.8:} Medidas de resumo para as variáveis \texttt{Idade} e \texttt{PCRa}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Idade & 50 & 20 & 27,00 & 32,00 & 37,0 & 43 & 32,04 & 5,76 & 10,00 \\
+PCRa & 50 & 0 & 1,27 & 3,55 & 6,9 & 32 & 6,33 & 8,06 & 5,62 \\
+\end{longtable}
+
+Para o grupo de controle, temos o seguinte:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Grupo }\SpecialCharTok{==} \StringTok{"Controle"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Idade, PCRa) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map}\NormalTok{(summ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{t}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.9:** Medidas de resumo para o grupo de controle"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0659}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0440}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0879}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0440}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0989}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0659}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0879}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0769}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1648}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2637}}@{}}
+\caption{\textbf{Tabela 3.9:} Medidas de resumo para o grupo de controle}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Idade & 15 & 26 & 33 & 36,0 & 37,5 & 41,0 & 35,13 & 3,80 & 4,5 \\
+PCRa & 15 & 0 & 0 & 1,2 & 2,3 & 3,8 & 1,35 & 1,44 & 2,3 \\
+\end{longtable}
+
+Para o grupo de casos, obtemos as seguintes medidas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Grupo }\SpecialCharTok{==} \StringTok{"Doente"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Idade, PCRa) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map}\NormalTok{(summ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{t}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.10:** Medidas de resumo para o grupo de casos"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0645}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0430}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0860}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0645}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0968}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0645}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0860}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.0753}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.1613}}
+  >{\centering\arraybackslash}p{(\columnwidth - 18\tabcolsep) * \real{0.2581}}@{}}
+\caption{\textbf{Tabela 3.10:} Medidas de resumo para o grupo de casos}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Idade & 35 & 20 & 26,5 & 29,0 & 35,5 & 43 & 30,71 & 5,98 & 9,0 \\
+PCRa & 35 & 0 & 3,2 & 4,6 & 12,5 & 32 & 8,46 & 8,79 & 9,3 \\
+\end{longtable}
+
+Vamos também construir alguns gráficos para visualizar melhor os dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Idade)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{4}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Grupo) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.62: Distribuição da idade entre pacientes"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Idade"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Quantidade"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-116-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Grupo, Idade)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.63: Distribuição da idade entre pacientes"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Quantidade"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-117-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(PCRa)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{4}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Grupo) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.64: Distribuição da variável \textasciigrave{}PCRa\textasciigrave{} entre pacientes"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"PCRa"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Quantidade"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-118-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(Grupo, PCRa)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.65: Distribuição da variável \textasciigrave{}PCRa\textasciigrave{} entre pacientes"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Quantidade"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-119-1.pdf}
+
+Notamos com esses dados que a idade das pacientes com endrometriose varia de 20 a 43 anos, com média de 30,71 anos e desvio padrão de 5,98 anos. Já entre o grupo de controle, a variação de idade é menos (entre 26 e 41 anos), com média de 35,13 anos e desvio padrão de 3,80 anos.
+
+Para a variável PCRa, temos uma discrepância considerável. Mulheres com endometriose tem uma concentração de mais de 6 vezes maior de PCR durante a menstruação do que as pacientes do grupo de controle.
+
+Optamos por zerar o valor das observações cuja medida foi \$ \textless{} 0,5\$. Uma vez que 0,5 é o menor valor que o instrumento de aferição consegue detectar, entendemos ser justo considerar essas medidas como nula. Seria uma opção desconsiderar essas medidas? Cabe avaliar.
+
+\hypertarget{comparando-o-nuxfamero-de-gestauxe7uxf5es-entre-os-grupos}{%
+\subsubsection*{Comparando o número de gestações entre os grupos}\label{comparando-o-nuxfamero-de-gestauxe7uxf5es-entre-os-grupos}}
+\addcontentsline{toc}{subsubsection}{Comparando o número de gestações entre os grupos}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Grupo, Gestação) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Grupo, }\AttributeTok{values\_from =}\NormalTok{ n, }\AttributeTok{values\_fill =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(Gestação)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+## # Groups:   Gestação [10]
+##    Gestação Controle Doente
+##       <int>    <int>  <int>
+##  1        0        0     18
+##  2        1        0      9
+##  3        2        0      4
+##  4        3        5      2
+##  5        4        4      0
+##  6        5        2      1
+##  7        6        1      0
+##  8        7        2      0
+##  9        9        0      1
+## 10       11        1      0
+\end{verbatim}
+
+Vamos também representar graficamente a relação entre os grupos usando um \emph{boxplot}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Grupo, }\AttributeTok{y =}\NormalTok{ Gestação)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Figura 3.66: Número de gestações entre mulheres com e sem endometriose"}\NormalTok{,}
+      \AttributeTok{x =} \StringTok{"Grupo"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Número de gestações"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-121-1.pdf}
+
+Notamos que o número de gestações entre mulheres com endometriose é muito menor do que entre as mulheres do grupo controle. Uma parte desse efeito poderia ser explicado pela idade das pacientes (a média de idade das pacientes com endometriose é menor do que as do grupo de controle), mas certamente a doença em si é o maior fator pra o menor número de gestações.
 \end{solution}
 
 \hypertarget{exr3-13}{%

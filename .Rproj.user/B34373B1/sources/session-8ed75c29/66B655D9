@@ -3,7 +3,7 @@
     "path": "~/GitHub/1. Livros/Estatística e Ciência de Dados/statds/chapters/03-analise-de-dados-de-uma-variavel.Rmd",
     "project_path": "chapters/03-analise-de-dados-de-uma-variavel.Rmd",
     "type": "r_markdown",
-    "hash": "678801050",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1706138548258.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "1824,133",
-        "scrollLine": "1806"
+        "cursorPosition": "2083,334",
+        "scrollLine": "2082"
     },
     "folds": "",
-    "lastKnownWriteTime": 1706880332,
+    "lastKnownWriteTime": 1707136177,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1706880332613,
+    "last_content_update": 1707136177628,
     "read_only": false,
     "read_only_alternatives": []
 }

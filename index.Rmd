@@ -24,7 +24,11 @@ library(gridExtra)
 
 data_dir <- paste0(getwd(), "/data/")
 
-options(repr.plot.width = 24, repr.plot.height = 13)
+options(
+  repr.plot.width = 24, 
+  repr.plot.height = 13,
+  knitr.kable.NA = " - "
+)
 
 tema <- theme_bw() +
           theme(
@@ -64,4 +68,5 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail *jeidsan
 
 - [Exercício 2.2](#exr2-2);
 - Revisar estrutura do [Exercício 3.5](#exr3-5);
--
+- Complementar a análise do [Exercício 3.12](#exr3-12);
+- 
