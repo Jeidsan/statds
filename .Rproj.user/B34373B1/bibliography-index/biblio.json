@@ -120,6 +120,27 @@
             "volume": "12"
         },
         {
+            "author": [
+                {
+                    "family": "Braga",
+                    "given": "Ana Maria Fonseca Wanderley"
+                }
+            ],
+            "genre": "Tese de doutorado ",
+            "id": "Braga1998",
+            "issued": {
+                "date-parts": [
+                    [
+                        1998
+                    ]
+                ]
+            },
+            "publisher": "Faculdade de Medicina da Universidade de São Paulo",
+            "publisher-place": "São Paulo",
+            "title": "Comportamento e valor prognóstico das variáveis obtidas no teste de esforço cardiopulmonar em portadores de insuficiência cardíaca",
+            "type": "thesis"
+        },
+        {
             "URL": "https://www.R-project.org/",
             "author": [
                 {

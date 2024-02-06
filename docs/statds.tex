@@ -310,6 +310,8 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
 \begin{itemize}
 \tightlist
 \item
+  Ajustar títulos do gráfico colocando a parte ``Figura x.y:'' em negrito;
+\item
   \protect\hyperlink{exr2-2}{Exercício 2.2};
 \item
   Revisar estrutura do \protect\hyperlink{exr3-5}{Exercício 3.5};
@@ -4603,7 +4605,7 @@ Vamos também construir alguns gráficos para visualizar melhor os dados:
       \AttributeTok{color =} \StringTok{"grey30"}
 \NormalTok{    ) }\SpecialCharTok{+}
     \FunctionTok{labs}\NormalTok{(}
-      \AttributeTok{title =} \StringTok{"Figura 3.65: Distribuição da variável \textasciigrave{}PCRa\textasciigrave{} entre pacientes"}\NormalTok{,}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.65:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Distribuição da variável \textasciigrave{}PCRa\textasciigrave{} entre pacientes"}\NormalTok{),}
       \AttributeTok{y =} \StringTok{"Quantidade"}
 \NormalTok{    ) }\SpecialCharTok{+}
 \NormalTok{    tema}
@@ -4664,7 +4666,7 @@ Vamos também representar graficamente a relação entre os grupos usando um \em
       \AttributeTok{color =} \StringTok{"grey30"}
 \NormalTok{    ) }\SpecialCharTok{+}
     \FunctionTok{labs}\NormalTok{(}
-      \AttributeTok{title =} \StringTok{"Figura 3.66: Número de gestações entre mulheres com e sem endometriose"}\NormalTok{,}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.66:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Número de gestações entre mulheres com e sem endometriose"}\NormalTok{),}
       \AttributeTok{x =} \StringTok{"Grupo"}\NormalTok{,}
       \AttributeTok{y =} \StringTok{"Número de gestações"}
 \NormalTok{    ) }\SpecialCharTok{+}
@@ -4681,7 +4683,7 @@ Notamos que o número de gestações entre mulheres com endometriose é muito me
 \subsection*{Exercício 3.13}\label{exr3-13}}
 \addcontentsline{toc}{subsection}{Exercício 3.13}
 
-Os dados encontrados no arquivo \texttt{enforco.xls} são provenientes de um estudo sobre teste de esforço cardiopulmonar em pacientes com insuficiência cardíaca. As variáveis medidas durante a realização do teste foram observadas em quatro momentos distintos: repouso (REP), limiar anaeróbico (LAN), ponto de compensação respiratório (PCR) e pico (PICO). As demais variáveis são referentes às características demográficas e clinicas dos pacientes e foram registras uma única vez.
+Os dados encontrados no arquivo \texttt{enforco.xls} \citep{Braga1998} são provenientes de um estudo sobre teste de esforço cardiopulmonar em pacientes com insuficiência cardíaca. As variáveis medidas durante a realização do teste foram observadas em quatro momentos distintos: repouso (REP), limiar anaeróbico (LAN), ponto de compensação respiratório (PCR) e pico (PICO). As demais variáveis são referentes às características demográficas e clinicas dos pacientes e foram registras uma única vez.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -4693,7 +4695,366 @@ Os dados encontrados no arquivo \texttt{enforco.xls} são provenientes de um est
 \end{enumerate}
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{preparauxe7uxe3o-dos-dados-2}{%
+\subsubsection*{Preparação dos dados}\label{preparauxe7uxe3o-dos-dados-2}}
+\addcontentsline{toc}{subsubsection}{Preparação dos dados}
+
+Iniciaremos carregando os dados e ajustando os nomes das colunas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esforco }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"esforco.xls"}\NormalTok{), }\AttributeTok{sheet =} \StringTok{"dados"}\NormalTok{, }\AttributeTok{skip =} \DecValTok{3}\NormalTok{, }\AttributeTok{col\_names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(esforco) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+                        \StringTok{"id\_grupo"}\NormalTok{, }\StringTok{"iniciais"}\NormalTok{, }\StringTok{"etiologia"}\NormalTok{, }\StringTok{"sexo"}\NormalTok{, }\StringTok{"data\_espirometrico"}\NormalTok{,}
+                        \StringTok{"idade"}\NormalTok{, }\StringTok{"altura"}\NormalTok{, }\StringTok{"peso"}\NormalTok{, }\StringTok{"superficie\_corporal"}\NormalTok{, }\StringTok{"imc"}\NormalTok{,}
+                        \StringTok{"nyha"}\NormalTok{, }\StringTok{"weber"}\NormalTok{, }\StringTok{"fc\_rep"}\NormalTok{, }\StringTok{"vo2\_rep"}\NormalTok{, }\StringTok{"rer\_rep"}\NormalTok{, }\StringTok{"vo2\_fc\_rep"}\NormalTok{,}
+                        \StringTok{"ve\_vo2\_rep"}\NormalTok{, }\StringTok{"ve\_vco2\_rep"}\NormalTok{, }\StringTok{"aumento\_carga\_rep"}\NormalTok{, }\StringTok{"teste\_maximo\_rep"}\NormalTok{,}
+                        \StringTok{"carga\_lan"}\NormalTok{, }\StringTok{"perc\_max\_carga\_lan"}\NormalTok{, }\StringTok{"fc\_lan"}\NormalTok{, }\StringTok{"vo2\_lan"}\NormalTok{, }
+                        \StringTok{"perc\_max\_vo2\_lan"}\NormalTok{, }\StringTok{"rer\_lan"}\NormalTok{, }\StringTok{"perc\_max\_rer\_lan"}\NormalTok{, }\StringTok{"vo2\_fc\_lan"}\NormalTok{,}
+                        \StringTok{"perc\_max\_vo2\_fc\_lan"}\NormalTok{, }\StringTok{"ve\_vo2\_lan"}\NormalTok{, }\StringTok{"perc\_max\_ve\_vo2\_lan"}\NormalTok{,}
+                        \StringTok{"ve\_vco2\_lan"}\NormalTok{, }\StringTok{"perc\_max\_ve\_vco2\_lan"}\NormalTok{, }\StringTok{"carga\_pcr"}\NormalTok{, }\StringTok{"perc\_max\_carga\_pcr"}\NormalTok{,}
+                        \StringTok{"fc\_pcr"}\NormalTok{, }\StringTok{"vo2\_pcr"}\NormalTok{, }\StringTok{"perc\_max\_vo2\_pcr"}\NormalTok{, }\StringTok{"rer\_pcr"}\NormalTok{, }\StringTok{"perc\_max\_rer\_pcr"}\NormalTok{,}
+                        \StringTok{"vo2\_fc\_pcr"}\NormalTok{, }\StringTok{"perc\_max\_vo2\_fc\_pcr"}\NormalTok{, }\StringTok{"ve\_vo2\_pcr"}\NormalTok{, }\StringTok{"perc\_max\_ve\_vo2\_pcr"}\NormalTok{,}
+                        \StringTok{"ve\_vco2\_pcr"}\NormalTok{, }\StringTok{"perc\_max\_ve\_vco2\_pcr"}\NormalTok{, }\StringTok{"carga\_w"}\NormalTok{, }\StringTok{"fc\_w"}\NormalTok{,}
+                        \StringTok{"vo2\_w"}\NormalTok{, }\StringTok{"rer\_w"}\NormalTok{, }\StringTok{"vo2\_fc\_w"}\NormalTok{, }\StringTok{"ve\_vo2\_w"}\NormalTok{, }\StringTok{"ve\_vco2\_w"}\NormalTok{,}
+                        \StringTok{"tempo\_rampa"}\NormalTok{, }\StringTok{"vo2\_wr\_slope"}\NormalTok{, }\StringTok{"ve\_vco2\_slope"}\NormalTok{, }\StringTok{"data\_obito"}\NormalTok{, }
+                        \StringTok{"data\_ultima\_obs"}\NormalTok{, }\StringTok{"cirurgia"}
+\NormalTok{                      )}
+\end{Highlighting}
+\end{Shaded}
+
+Vamos também criar algumas funções que nos ajudarão a ajustar os dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{map\_etiologia }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"CH}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{b"}\NormalTok{, }\StringTok{"Chagasíaco"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"ID}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{b"}\NormalTok{, }\StringTok{"Idiopático"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"IS}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{b"}\NormalTok{, }\StringTok{"Isquêmico"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"C}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{b"}\NormalTok{, }\StringTok{"Controle"}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{map\_sexo }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"Masculino"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"Feminino"}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{map\_sim\_nao\_na }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"S"}\NormalTok{, }\StringTok{"Sim"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"N"}\NormalTok{, }\StringTok{"Não"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{."}\NormalTok{, }\ConstantTok{NA\_character\_}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Agora vamos aos ajustes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esforco }\OtherTok{\textless{}{-}}\NormalTok{ esforco }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{mutate}\NormalTok{(}
+                \AttributeTok{id =} \FunctionTok{ifelse}\NormalTok{(etiologia }\SpecialCharTok{==} \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{, id\_grupo }\SpecialCharTok{+} \DecValTok{87}\NormalTok{, id\_grupo),}
+                \AttributeTok{grupo =} \FunctionTok{parse\_factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(etiologia }\SpecialCharTok{==} \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{, }\StringTok{"Controle"}\NormalTok{, }\StringTok{"Caso"}\NormalTok{)),}
+                \AttributeTok{id\_grupo =} \FunctionTok{as.integer}\NormalTok{(id\_grupo),}
+                \AttributeTok{etiologia =} \FunctionTok{parse\_factor}\NormalTok{(}\FunctionTok{map\_etiologia}\NormalTok{(etiologia)),}
+                \AttributeTok{sexo =} \FunctionTok{parse\_factor}\NormalTok{(}\FunctionTok{map\_sexo}\NormalTok{(sexo)),}
+                \AttributeTok{data\_espirometrico =} \FunctionTok{dmy}\NormalTok{(data\_espirometrico),}
+                \AttributeTok{idade =} \FunctionTok{as.integer}\NormalTok{(idade),}
+                \AttributeTok{altura =} \FunctionTok{as.integer}\NormalTok{(altura),}
+                \AttributeTok{nyha =} \FunctionTok{parse\_factor}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(nyha), }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{"2"}\NormalTok{, }\StringTok{"3"}\NormalTok{, }\StringTok{"4"}\NormalTok{), }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{na =} \StringTok{"0"}\NormalTok{),}
+                \AttributeTok{weber =} \FunctionTok{parse\_factor}\NormalTok{(weber, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{, }\StringTok{"E"}\NormalTok{, }\ConstantTok{NA}\NormalTok{), }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{),}
+                \AttributeTok{teste\_maximo\_rep =} \FunctionTok{parse\_factor}\NormalTok{(}\FunctionTok{map\_sim\_nao\_na}\NormalTok{(teste\_maximo\_rep)),}
+                \AttributeTok{carga\_lan =} \FunctionTok{parse\_integer}\NormalTok{(carga\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_carga\_lan =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_carga\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{fc\_lan =} \FunctionTok{parse\_double}\NormalTok{(fc\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{vo2\_lan =} \FunctionTok{parse\_double}\NormalTok{(vo2\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_vo2\_lan =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_vo2\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{rer\_lan =} \FunctionTok{parse\_double}\NormalTok{(rer\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_rer\_lan =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_rer\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{vo2\_fc\_lan =} \FunctionTok{parse\_double}\NormalTok{(vo2\_fc\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_vo2\_fc\_lan =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_vo2\_fc\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{ve\_vo2\_lan =} \FunctionTok{parse\_double}\NormalTok{(ve\_vo2\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_ve\_vo2\_lan =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_ve\_vo2\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{ve\_vco2\_lan =} \FunctionTok{parse\_double}\NormalTok{(ve\_vco2\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_ve\_vco2\_lan =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_ve\_vco2\_lan, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{carga\_pcr =} \FunctionTok{parse\_double}\NormalTok{(carga\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_carga\_pcr =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_carga\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{fc\_pcr =} \FunctionTok{parse\_double}\NormalTok{(fc\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{vo2\_pcr =} \FunctionTok{parse\_double}\NormalTok{(vo2\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_vo2\_pcr =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_vo2\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{rer\_pcr =} \FunctionTok{parse\_double}\NormalTok{(rer\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_rer\_pcr =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_rer\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{vo2\_fc\_pcr =} \FunctionTok{parse\_double}\NormalTok{(vo2\_fc\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_vo2\_fc\_pcr =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_vo2\_fc\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{ve\_vo2\_pcr =} \FunctionTok{parse\_double}\NormalTok{(ve\_vo2\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_ve\_vo2\_pcr =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_ve\_vo2\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{ve\_vco2\_pcr =} \FunctionTok{parse\_double}\NormalTok{(ve\_vco2\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{perc\_max\_ve\_vco2\_pcr =} \FunctionTok{parse\_double}\NormalTok{(perc\_max\_ve\_vco2\_pcr, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{carga\_w =} \FunctionTok{parse\_double}\NormalTok{(carga\_w, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{tempo\_rampa  =} \FunctionTok{parse\_double}\NormalTok{(tempo\_rampa, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{vo2\_wr\_slope  =} \FunctionTok{parse\_double}\NormalTok{(vo2\_wr\_slope, }\AttributeTok{na =} \StringTok{"."}\NormalTok{),}
+                \AttributeTok{data\_obito =} \FunctionTok{dmy}\NormalTok{(data\_obito),}
+                \AttributeTok{data\_ultima\_obs =} \FunctionTok{dmy}\NormalTok{(data\_ultima\_obs)}
+\NormalTok{              )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: There was 1 warning in `mutate()`.
+## i In argument: `data_obito = dmy(data_obito)`.
+## Caused by warning:
+## !  47 failed to parse.
+\end{verbatim}
+
+Com o arquivo organizado, vamos salvá-lo para uso futuro como \texttt{esforco\_completo.csv}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(esforco, }\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"esforco\_completo.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{consumo-de-oxiguxeanio-nos-quatro-momentos}{%
+\subsubsection*{Consumo de oxigênio nos quatro momentos}\label{consumo-de-oxiguxeanio-nos-quatro-momentos}}
+\addcontentsline{toc}{subsubsection}{Consumo de oxigênio nos quatro momentos}
+
+Inicialmente precisamos destacar que as variáveis de interesse são \texttt{vo2\_rep}, \texttt{vo2\_lan}, \texttt{vo2\_pcr} e \texttt{vo2\_w}. Vamos isolar essas variáveis e utilizar a função \texttt{gather()} para reunir os dados dos momentos em um formato mais amigável.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vo2 }\OtherTok{\textless{}{-}}\NormalTok{ esforco }\SpecialCharTok{\%\textgreater{}\%}
+          \FunctionTok{select}\NormalTok{(id, grupo, vo2\_rep, vo2\_lan, vo2\_pcr, vo2\_w) }\SpecialCharTok{\%\textgreater{}\%}
+          \FunctionTok{gather}\NormalTok{(vo2\_rep, vo2\_lan, vo2\_pcr, vo2\_w, }\AttributeTok{key =} \StringTok{"Momento"}\NormalTok{, }\AttributeTok{value =} \StringTok{"vo2"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+          \FunctionTok{mutate}\NormalTok{ (}
+            \AttributeTok{Momento =}\NormalTok{ Momento }\SpecialCharTok{\%\textgreater{}\%} 
+                        \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"vo2\_rep"}\NormalTok{, }\StringTok{"Repouso"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+                        \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"vo2\_lan"}\NormalTok{, }\StringTok{"Limiar anaeróbico"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+                        \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"vo2\_pcr"}\NormalTok{, }\StringTok{"Ponto de Compensação"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+                        \FunctionTok{str\_replace}\NormalTok{(}\StringTok{"vo2\_w"}\NormalTok{, }\StringTok{"Pico"}\NormalTok{)}
+\NormalTok{         )}
+  
+\FunctionTok{head}\NormalTok{(vo2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##      id grupo Momento   vo2
+##   <dbl> <fct> <chr>   <dbl>
+## 1     1 Caso  Repouso   5.9
+## 2     2 Caso  Repouso   3.4
+## 3     3 Caso  Repouso   3  
+## 4     4 Caso  Repouso   3.8
+## 5     5 Caso  Repouso   3.2
+## 6     6 Caso  Repouso   3.8
+\end{verbatim}
+
+Agora vamos avaliar a disbtibuição da variável \texttt{vo2} em cada um dos momentos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vo2 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(vo2)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Momento) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.67:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Consumo de oxigênio durante teste de esforço"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Consumo de oxigênio {-} ml/(kg.min)"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 9 rows containing non-finite values (`stat_bin()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-127-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vo2 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}
+      \AttributeTok{x =} \FunctionTok{factor}\NormalTok{(Momento, }\AttributeTok{level =} \FunctionTok{c}\NormalTok{(}\StringTok{"Repouso"}\NormalTok{, }\StringTok{"Limiar anaeróbico"}\NormalTok{, }\StringTok{"Ponto de Compensação"}\NormalTok{, }\StringTok{"Pico"}\NormalTok{)), }
+      \AttributeTok{y =}\NormalTok{ vo2}
+\NormalTok{  )) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.68:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Consumo de oxigênio durante teste de esforço"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Momento do teste"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Consumo de oxigênio {-} ml/(kg.min)"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 9 rows containing non-finite values (`stat_boxplot()`).
+## Removed 9 rows containing non-finite values (`stat_boxplot()`).
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-128-1.pdf}
+
+Vamos calcular também a média e desvio padrão para o consumo de oxigênio em cada momento:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resumo }\OtherTok{\textless{}{-}}\NormalTok{ vo2 }\SpecialCharTok{\%\textgreater{}\%}
+            \FunctionTok{group\_by}\NormalTok{(Momento, grupo) }\SpecialCharTok{\%\textgreater{}\%}
+            \FunctionTok{summarise}\NormalTok{(}
+              \StringTok{\textasciigrave{}}\AttributeTok{Média}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{mean}\NormalTok{(vo2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+              \StringTok{\textasciigrave{}}\AttributeTok{Desvio Padrão}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{sd}\NormalTok{(vo2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+              \AttributeTok{Q1 =} \FunctionTok{quantile}\NormalTok{(vo2, }\FloatTok{0.25}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+              \StringTok{\textasciigrave{}}\AttributeTok{Mediana}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{median}\NormalTok{(vo2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+              \AttributeTok{Q3 =} \FunctionTok{quantile}\NormalTok{(vo2, }\FloatTok{0.75}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+              \StringTok{\textasciigrave{}}\AttributeTok{Distância Interquartil}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{IQR}\NormalTok{(vo2, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%}
+            \FunctionTok{arrange}\NormalTok{(}\FunctionTok{factor}\NormalTok{(Momento, }\AttributeTok{level =} \FunctionTok{c}\NormalTok{(}\StringTok{"Repouso"}\NormalTok{, }\StringTok{"Limiar anaeróbico"}\NormalTok{, }\StringTok{"Ponto de Compensação"}\NormalTok{, }\StringTok{"Pico"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'Momento'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resumo }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.11:** Consumo de oxigênio por momento de avaliação"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2178}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0990}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0693}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1485}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0693}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0891}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0693}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2376}}@{}}
+\caption{\textbf{Tabela 3.11:} Consumo de oxigênio por momento de avaliação}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Momento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+grupo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Momento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+grupo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Distância Interquartil
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Repouso & Caso & 3,58 & 0,91 & 3,00 & 3,40 & 3,95 & 0,95 \\
+Repouso & Controle & 3,50 & 0,60 & 3,00 & 3,45 & 3,85 & 0,85 \\
+Limiar anaeróbico & Caso & 9,98 & 2,73 & 8,47 & 9,70 & 11,03 & 2,55 \\
+Limiar anaeróbico & Controle & 11,53 & 2,84 & 9,60 & 10,85 & 13,77 & 4,17 \\
+Ponto de Compensação & Caso & 13,32 & 4,05 & 10,60 & 12,80 & 15,10 & 4,50 \\
+Ponto de Compensação & Controle & 17,68 & 4,67 & 13,83 & 16,15 & 21,50 & 7,67 \\
+Pico & Caso & 15,78 & 5,43 & 12,15 & 14,50 & 18,45 & 6,30 \\
+Pico & Controle & 23,00 & 5,82 & 18,28 & 22,75 & 27,72 & 9,45 \\
+\end{longtable}
+
+Os gráficos nos mostram que alguns pacientes possuem um consumo excessivamente alto de oxigênio. Apesar desses valores, os dados parecem apresentar tendência normal. Notamos ainda uma menor consumo de oxigênio para o grupo de pacientes com alguma doença pré-existente.
+
+Abaixo, listamos os identificadores dos valores discrepantes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resumo2 }\OtherTok{\textless{}{-}}\NormalTok{ resumo }\SpecialCharTok{\%\textgreater{}\%}
+            \FunctionTok{transmute}\NormalTok{(}
+              \AttributeTok{m =}\NormalTok{ Momento,}
+              \AttributeTok{l =}\NormalTok{ Q3 }\SpecialCharTok{+} \FloatTok{1.5} \SpecialCharTok{*} \StringTok{\textasciigrave{}}\AttributeTok{Distância Interquartil}\StringTok{\textasciigrave{}}
+\NormalTok{            )}
+
+\NormalTok{vo2 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(resumo2, }\AttributeTok{by =} \FunctionTok{join\_by}\NormalTok{(Momento }\SpecialCharTok{==}\NormalTok{ m)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(vo2 }\SpecialCharTok{\textgreater{}}\NormalTok{ l) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(id) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{array}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in left_join(., resumo2, by = join_by(Momento == m)): Detected an unexpected many-to-many relationship between `x` and `y`.
+## i Row 1 of `x` matches multiple rows in `y`.
+## i Row 1 of `y` matches multiple rows in `x`.
+## i If a many-to-many relationship is expected, set `relationship =
+##   "many-to-many"` to silence this warning.
+\end{verbatim}
+
+\begin{verbatim}
+## [[1]]
+##  [1]   1  29  32  52  85  34  38  42  45  95  96 103 106 109 122 123  18  91 104
+## [20] 111 115 126 101 110 127
+\end{verbatim}
+
+\hypertarget{observauxe7uxe3o}{%
+\subsubsection*{Observação}\label{observauxe7uxe3o}}
+\addcontentsline{toc}{subsubsection}{Observação}
+
+Para melhorar a análise, poderíamos montar gráficos separados para casos e controles. Isso facilitaria a comparação entre os dois grupos em cada etapa.
+
 \end{solution}
 
 \hypertarget{exr3-14}{%

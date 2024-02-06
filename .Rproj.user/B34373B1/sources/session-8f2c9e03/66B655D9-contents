@@ -2037,7 +2037,7 @@ endometriose %>%
       color = "grey30"
     ) +
     labs(
-      title = "Figura 3.65: Distribuição da variável `PCRa` entre pacientes",
+      title = bquote(bold("Figura 3.65:")~"Distribuição da variável `PCRa` entre pacientes"),
       y = "Quantidade"
     ) +
     tema
@@ -2074,7 +2074,7 @@ endometriose %>%
       color = "grey30"
     ) +
     labs(
-      title = "Figura 3.66: Número de gestações entre mulheres com e sem endometriose",
+      title = bquote(bold("Figura 3.66:")~"Número de gestações entre mulheres com e sem endometriose"),
       x = "Grupo",
       y = "Número de gestações"
     ) +
@@ -2088,14 +2088,226 @@ Notamos que o número de gestações entre mulheres com endometriose é muito me
 ### Exercício 3.13 {- #exr3-13}
 
 ::: {.enunciado}
-Os dados encontrados no arquivo `enforco.xls` são provenientes de um estudo sobre teste de esforço cardiopulmonar em pacientes com insuficiência cardíaca. As variáveis medidas durante a realização do teste foram observadas em quatro momentos distintos: repouso (REP), limiar anaeróbico (LAN), ponto de compensação respiratório (PCR) e pico (PICO). As demais variáveis são referentes às características demográficas e clinicas dos pacientes e foram registras uma única vez.
+Os dados encontrados no arquivo `enforco.xls` [@Braga1998] são provenientes de um estudo sobre teste de esforço cardiopulmonar em pacientes com insuficiência cardíaca. As variáveis medidas durante a realização do teste foram observadas em quatro momentos distintos: repouso (REP), limiar anaeróbico (LAN), ponto de compensação respiratório (PCR) e pico (PICO). As demais variáveis são referentes às características demográficas e clinicas dos pacientes e foram registras uma única vez.
 
 a) Descreva a distribuição da variável consumo de oxigênio (`VO2`) em cada um dos quatro momentos de avaliação utilizando medidas resumo (mínimo, máximo, quartis, mediana, média, desvio padrão, etc.), *boxplots* e histogramas. Você identifica algum paciente com valores de consumo de oxigênio discrepantes? Interprete os resultados.
 b) Descreva a distribuição da classe funcional NYHA por meio de uma tabela de frequências. Utilize um método gráfico para representar essa tabela.
 :::
 
 :::{.solution}
-x
+#### Preparação dos dados {-}
+
+Iniciaremos carregando os dados e ajustando os nomes das colunas. 
+
+```{r, results = "hide", message = FALSE}
+esforco <- readxl::read_xls(paste0(data_dir, "esforco.xls"), sheet = "dados", skip = 3, col_names = FALSE)
+colnames(esforco) <- c(
+                        "id_grupo", "iniciais", "etiologia", "sexo", "data_espirometrico",
+                        "idade", "altura", "peso", "superficie_corporal", "imc",
+                        "nyha", "weber", "fc_rep", "vo2_rep", "rer_rep", "vo2_fc_rep",
+                        "ve_vo2_rep", "ve_vco2_rep", "aumento_carga_rep", "teste_maximo_rep",
+                        "carga_lan", "perc_max_carga_lan", "fc_lan", "vo2_lan", 
+                        "perc_max_vo2_lan", "rer_lan", "perc_max_rer_lan", "vo2_fc_lan",
+                        "perc_max_vo2_fc_lan", "ve_vo2_lan", "perc_max_ve_vo2_lan",
+                        "ve_vco2_lan", "perc_max_ve_vco2_lan", "carga_pcr", "perc_max_carga_pcr",
+                        "fc_pcr", "vo2_pcr", "perc_max_vo2_pcr", "rer_pcr", "perc_max_rer_pcr",
+                        "vo2_fc_pcr", "perc_max_vo2_fc_pcr", "ve_vo2_pcr", "perc_max_ve_vo2_pcr",
+                        "ve_vco2_pcr", "perc_max_ve_vco2_pcr", "carga_w", "fc_w",
+                        "vo2_w", "rer_w", "vo2_fc_w", "ve_vo2_w", "ve_vco2_w",
+                        "tempo_rampa", "vo2_wr_slope", "ve_vco2_slope", "data_obito", 
+                        "data_ultima_obs", "cirurgia"
+                      )
+```
+
+Vamos também criar algumas funções que nos ajudarão a ajustar os dados.
+
+```{r}
+map_etiologia <- function(x) {
+  x %>% 
+    str_replace("CH\\b", "Chagasíaco") %>%
+    str_replace("ID\\b", "Idiopático") %>%
+    str_replace("IS\\b", "Isquêmico") %>%
+    str_replace("C\\b", "Controle")
+}
+
+map_sexo <- function(x) {
+  x %>%
+    str_replace("M", "Masculino") %>%
+    str_replace("F", "Feminino")
+}
+
+map_sim_nao_na <- function(x) {
+  x %>%
+    str_replace("S", "Sim") %>%
+    str_replace("N", "Não") %>%
+    str_replace("\\.", NA_character_)
+}
+```
+
+Agora vamos aos ajustes:
+
+```{r}
+esforco <- esforco %>%
+              mutate(
+                id = ifelse(etiologia == 'C', id_grupo + 87, id_grupo),
+                grupo = parse_factor(ifelse(etiologia == 'C', "Controle", "Caso")),
+                id_grupo = as.integer(id_grupo),
+                etiologia = parse_factor(map_etiologia(etiologia)),
+                sexo = parse_factor(map_sexo(sexo)),
+                data_espirometrico = dmy(data_espirometrico),
+                idade = as.integer(idade),
+                altura = as.integer(altura),
+                nyha = parse_factor(as.character(nyha), levels = c("1", "2", "3", "4"), ordered = TRUE, na = "0"),
+                weber = parse_factor(weber, levels = c("A", "B", "C", "D", "E", NA), ordered = TRUE),
+                teste_maximo_rep = parse_factor(map_sim_nao_na(teste_maximo_rep)),
+                carga_lan = parse_integer(carga_lan, na = "."),
+                perc_max_carga_lan = parse_double(perc_max_carga_lan, na = "."),
+                fc_lan = parse_double(fc_lan, na = "."),
+                vo2_lan = parse_double(vo2_lan, na = "."),
+                perc_max_vo2_lan = parse_double(perc_max_vo2_lan, na = "."),
+                rer_lan = parse_double(rer_lan, na = "."),
+                perc_max_rer_lan = parse_double(perc_max_rer_lan, na = "."),
+                vo2_fc_lan = parse_double(vo2_fc_lan, na = "."),
+                perc_max_vo2_fc_lan = parse_double(perc_max_vo2_fc_lan, na = "."),
+                ve_vo2_lan = parse_double(ve_vo2_lan, na = "."),
+                perc_max_ve_vo2_lan = parse_double(perc_max_ve_vo2_lan, na = "."),
+                ve_vco2_lan = parse_double(ve_vco2_lan, na = "."),
+                perc_max_ve_vco2_lan = parse_double(perc_max_ve_vco2_lan, na = "."),
+                carga_pcr = parse_double(carga_pcr, na = "."),
+                perc_max_carga_pcr = parse_double(perc_max_carga_pcr, na = "."),
+                fc_pcr = parse_double(fc_pcr, na = "."),
+                vo2_pcr = parse_double(vo2_pcr, na = "."),
+                perc_max_vo2_pcr = parse_double(perc_max_vo2_pcr, na = "."),
+                rer_pcr = parse_double(rer_pcr, na = "."),
+                perc_max_rer_pcr = parse_double(perc_max_rer_pcr, na = "."),
+                vo2_fc_pcr = parse_double(vo2_fc_pcr, na = "."),
+                perc_max_vo2_fc_pcr = parse_double(perc_max_vo2_fc_pcr, na = "."),
+                ve_vo2_pcr = parse_double(ve_vo2_pcr, na = "."),
+                perc_max_ve_vo2_pcr = parse_double(perc_max_ve_vo2_pcr, na = "."),
+                ve_vco2_pcr = parse_double(ve_vco2_pcr, na = "."),
+                perc_max_ve_vco2_pcr = parse_double(perc_max_ve_vco2_pcr, na = "."),
+                carga_w = parse_double(carga_w, na = "."),
+                tempo_rampa  = parse_double(tempo_rampa, na = "."),
+                vo2_wr_slope  = parse_double(vo2_wr_slope, na = "."),
+                data_obito = dmy(data_obito),
+                data_ultima_obs = dmy(data_ultima_obs)
+              )
+```
+
+Com o arquivo organizado, vamos salvá-lo para uso futuro como `esforco_completo.csv`.
+
+```{r}
+write_csv(esforco, paste0(data_dir, "esforco_completo.csv"))
+```
+
+#### Consumo de oxigênio nos quatro momentos {-}
+
+Inicialmente precisamos destacar que as variáveis de interesse são `vo2_rep`, `vo2_lan`, `vo2_pcr` e `vo2_w`. Vamos isolar essas variáveis e utilizar a função `gather()` para reunir os dados dos momentos em um formato mais amigável.
+
+```{r}
+vo2 <- esforco %>%
+          select(id, grupo, vo2_rep, vo2_lan, vo2_pcr, vo2_w) %>%
+          gather(vo2_rep, vo2_lan, vo2_pcr, vo2_w, key = "Momento", value = "vo2") %>%
+          mutate (
+            Momento = Momento %>% 
+                        str_replace("vo2_rep", "Repouso") %>%
+                        str_replace("vo2_lan", "Limiar anaeróbico") %>%
+                        str_replace("vo2_pcr", "Ponto de Compensação") %>%
+                        str_replace("vo2_w", "Pico")
+         )
+  
+head(vo2)
+```
+
+Agora vamos avaliar a disbtibuição da variável `vo2` em cada um dos momentos:
+
+```{r}
+vo2 %>%
+  ggplot(aes(vo2)) +
+    geom_histogram(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    facet_wrap(~Momento) +
+    labs(
+      title = bquote(bold("Figura 3.67:")~"Consumo de oxigênio durante teste de esforço"),
+      x = "Consumo de oxigênio - ml/(kg.min)",
+      y = "Frequência"
+    ) +
+    tema
+```
+
+```{r}
+vo2 %>%
+  ggplot(aes(
+      x = factor(Momento, level = c("Repouso", "Limiar anaeróbico", "Ponto de Compensação", "Pico")), 
+      y = vo2
+  )) +
+    stat_boxplot(
+      geom = "errorbar", 
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    labs(
+      title = bquote(bold("Figura 3.68:")~"Consumo de oxigênio durante teste de esforço"),
+      x = "Momento do teste",
+      y = "Consumo de oxigênio - ml/(kg.min)"
+    ) +
+    tema
+```
+
+Vamos calcular também a média e desvio padrão para o consumo de oxigênio em cada momento:
+
+```{r}
+resumo <- vo2 %>%
+            group_by(Momento, grupo) %>%
+            summarise(
+              `Média` = mean(vo2, na.rm = TRUE),
+              `Desvio Padrão` = sd(vo2, na.rm = TRUE),
+              Q1 = quantile(vo2, 0.25, na.rm = TRUE)[[1]],
+              `Mediana` = median(vo2, na.rm = TRUE),
+              Q3 = quantile(vo2, 0.75, na.rm = TRUE)[[1]],
+              `Distância Interquartil` = IQR(vo2, na.rm = TRUE)
+            ) %>%
+            arrange(factor(Momento, level = c("Repouso", "Limiar anaeróbico", "Ponto de Compensação", "Pico")))
+
+resumo %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.11:** Consumo de oxigênio por momento de avaliação",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Os gráficos nos mostram que alguns pacientes possuem um consumo excessivamente alto de oxigênio. Apesar desses valores, os dados parecem apresentar tendência normal. Notamos ainda uma menor consumo de oxigênio para o grupo de pacientes com alguma doença pré-existente.
+
+Abaixo, listamos os identificadores dos valores discrepantes.
+
+```{r}
+resumo2 <- resumo %>%
+            transmute(
+              m = Momento,
+              l = Q3 + 1.5 * `Distância Interquartil`
+            )
+
+vo2 %>%
+  left_join(resumo2, by = join_by(Momento == m)) %>%
+  filter(vo2 > l) %>%
+  select(id) %>%
+  distinct() %>%
+  array()
+```
+
+#### Observação {-}
+
+Para melhorar a análise, poderíamos montar gráficos separados para casos e controles. Isso facilitaria a comparação entre os dois grupos em cada etapa.
+
 :::
 
 ### Exercício 3.14 {- #exr3-14}

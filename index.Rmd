@@ -66,6 +66,7 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail *jeidsan
 
 ## Pendências {-}
 
+- Ajustar títulos do gráfico colocando a parte "Figura x.y:" em negrito;
 - [Exercício 2.2](#exr2-2);
 - Revisar estrutura do [Exercício 3.5](#exr3-5);
 - Complementar a análise do [Exercício 3.12](#exr3-12);
