@@ -3506,6 +3506,7 @@ Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que
 <div class="enunciado">
 <p>Na tabela abaixo estão indicadas as durações de 335 lâmpadas.</p>
 <table>
+<caption><strong>Tabela 3.12:</strong> Duração de 335 lâmpadas</caption>
 <thead>
 <tr class="header">
 <th align="center">Duração (horas)</th>
@@ -3545,7 +3546,120 @@ Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-23" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-23" class="solution"><em>Solução</em>. </span>Vamos começar colocando os dados da tabela em um data frame.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="análise-de-dados-de-uma-variável.html#cb217-1" tabindex="-1"></a>lampadas <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb217-2"><a href="análise-de-dados-de-uma-variável.html#cb217-2" tabindex="-1"></a>  <span class="sc">~</span>min, <span class="sc">~</span>max, <span class="sc">~</span>freq,</span>
+<span id="cb217-3"><a href="análise-de-dados-de-uma-variável.html#cb217-3" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">99</span>, <span class="dv">82</span>,</span>
+<span id="cb217-4"><a href="análise-de-dados-de-uma-variável.html#cb217-4" tabindex="-1"></a>  <span class="dv">100</span>, <span class="dv">199</span>, <span class="dv">71</span>,</span>
+<span id="cb217-5"><a href="análise-de-dados-de-uma-variável.html#cb217-5" tabindex="-1"></a>  <span class="dv">200</span>, <span class="dv">299</span>, <span class="dv">68</span>,</span>
+<span id="cb217-6"><a href="análise-de-dados-de-uma-variável.html#cb217-6" tabindex="-1"></a>  <span class="dv">300</span>, <span class="dv">399</span>, <span class="dv">56</span>,</span>
+<span id="cb217-7"><a href="análise-de-dados-de-uma-variável.html#cb217-7" tabindex="-1"></a>  <span class="dv">400</span>, <span class="dv">499</span>, <span class="dv">43</span>,</span>
+<span id="cb217-8"><a href="análise-de-dados-de-uma-variável.html#cb217-8" tabindex="-1"></a>  <span class="dv">500</span>, <span class="dv">599</span>, <span class="dv">15</span></span>
+<span id="cb217-9"><a href="análise-de-dados-de-uma-variável.html#cb217-9" tabindex="-1"></a>)</span></code></pre></div>
+<p>Vamos agora adicionar a frequência relativa e a frequência acumulada ao nosso data frame:</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="análise-de-dados-de-uma-variável.html#cb218-1" tabindex="-1"></a>lampadas <span class="ot">&lt;-</span> lampadas <span class="sc">%&gt;%</span></span>
+<span id="cb218-2"><a href="análise-de-dados-de-uma-variável.html#cb218-2" tabindex="-1"></a>                <span class="fu">mutate</span>(</span>
+<span id="cb218-3"><a href="análise-de-dados-de-uma-variável.html#cb218-3" tabindex="-1"></a>                  <span class="at">freq_acu =</span> <span class="fu">cumsum</span>(freq),</span>
+<span id="cb218-4"><a href="análise-de-dados-de-uma-variável.html#cb218-4" tabindex="-1"></a>                  <span class="at">freq_rel =</span> freq<span class="sc">/</span><span class="fu">sum</span>(freq),</span>
+<span id="cb218-5"><a href="análise-de-dados-de-uma-variável.html#cb218-5" tabindex="-1"></a>                  <span class="at">freq_rel_acu =</span> <span class="fu">cumsum</span>(freq_rel)</span>
+<span id="cb218-6"><a href="análise-de-dados-de-uma-variável.html#cb218-6" tabindex="-1"></a>                )</span>
+<span id="cb218-7"><a href="análise-de-dados-de-uma-variável.html#cb218-7" tabindex="-1"></a></span>
+<span id="cb218-8"><a href="análise-de-dados-de-uma-variável.html#cb218-8" tabindex="-1"></a>lampadas</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+##     min   max  freq freq_acu freq_rel freq_rel_acu
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
+## 1     0    99    82       82   0.245         0.245
+## 2   100   199    71      153   0.212         0.457
+## 3   200   299    68      221   0.203         0.660
+## 4   300   399    56      277   0.167         0.827
+## 5   400   499    43      320   0.128         0.955
+## 6   500   599    15      335   0.0448        1</code></pre>
+<p>Com os dados organizados podemos construir o histograma:</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="análise-de-dados-de-uma-variável.html#cb220-1" tabindex="-1"></a>lampadas <span class="sc">%&gt;%</span></span>
+<span id="cb220-2"><a href="análise-de-dados-de-uma-variável.html#cb220-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> min <span class="sc">+</span> <span class="dv">50</span>, <span class="at">y =</span> freq)) <span class="sc">+</span></span>
+<span id="cb220-3"><a href="análise-de-dados-de-uma-variável.html#cb220-3" tabindex="-1"></a>    <span class="fu">geom_col</span>(</span>
+<span id="cb220-4"><a href="análise-de-dados-de-uma-variável.html#cb220-4" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb220-5"><a href="análise-de-dados-de-uma-variável.html#cb220-5" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb220-6"><a href="análise-de-dados-de-uma-variável.html#cb220-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb220-7"><a href="análise-de-dados-de-uma-variável.html#cb220-7" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb220-8"><a href="análise-de-dados-de-uma-variável.html#cb220-8" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">600</span>, <span class="dv">100</span>)</span>
+<span id="cb220-9"><a href="análise-de-dados-de-uma-variável.html#cb220-9" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb220-10"><a href="análise-de-dados-de-uma-variável.html#cb220-10" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb220-11"><a href="análise-de-dados-de-uma-variável.html#cb220-11" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 3.69:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Tempo de vida das lâmpadas&quot;</span>),</span>
+<span id="cb220-12"><a href="análise-de-dados-de-uma-variável.html#cb220-12" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Tempo de vida (h)&quot;</span>,</span>
+<span id="cb220-13"><a href="análise-de-dados-de-uma-variável.html#cb220-13" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Frequência observada&quot;</span></span>
+<span id="cb220-14"><a href="análise-de-dados-de-uma-variável.html#cb220-14" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb220-15"><a href="análise-de-dados-de-uma-variável.html#cb220-15" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-133-1.png" width="672" />
+Para calcular o quantil de ordem <span class="math inline">\(p\)</span>, vamos seguir dois passos:</p>
+<ol style="list-style-type: decimal">
+<li>utilizar a tabela de frequência para identificar a classe <span class="math inline">\(k\)</span> à qual pertence o quantil de ordem <span class="math inline">\(p\)</span>;</li>
+<li>utilizar a fomula <span class="math display">\[ Q_{p} = l_{k} + \frac{( p \cdot n - F_{k-1} ) \cdot h_{k}}{f_{k}} \]</span> onde:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(l_{i}\)</span> é o limite inferior da classe <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(f_{i}\)</span> é a frequência absoluta da classe <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(F_{i}\)</span> é a frequência acumulada até a classe <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(h_{i}\)</span> é a amplitude da classe <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(n\)</span> é o tamanho da amostra;</li>
+</ol>
+<p>Vamos definir uma função para calcular o quantil:</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="análise-de-dados-de-uma-variável.html#cb221-1" tabindex="-1"></a>quantil <span class="ot">&lt;-</span> <span class="cf">function</span>(l, p, n, f_p, f_ant, h) {</span>
+<span id="cb221-2"><a href="análise-de-dados-de-uma-variável.html#cb221-2" tabindex="-1"></a>  l <span class="sc">+</span> (((p <span class="sc">*</span> n) <span class="sc">-</span> f_ant) <span class="sc">*</span> (h <span class="sc">/</span> f_p))</span>
+<span id="cb221-3"><a href="análise-de-dados-de-uma-variável.html#cb221-3" tabindex="-1"></a>}</span></code></pre></div>
+<p>Agora temos condições de calcular os quantis:</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="análise-de-dados-de-uma-variável.html#cb222-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(lampadas<span class="sc">$</span>freq)</span>
+<span id="cb222-2"><a href="análise-de-dados-de-uma-variável.html#cb222-2" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb222-3"><a href="análise-de-dados-de-uma-variável.html#cb222-3" tabindex="-1"></a></span>
+<span id="cb222-4"><a href="análise-de-dados-de-uma-variável.html#cb222-4" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb222-5"><a href="análise-de-dados-de-uma-variável.html#cb222-5" tabindex="-1"></a>  <span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">3</span>, .<span class="dv">5</span>, .<span class="dv">7</span>, .<span class="dv">9</span>),</span>
+<span id="cb222-6"><a href="análise-de-dados-de-uma-variável.html#cb222-6" tabindex="-1"></a>  <span class="at">l =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>),</span>
+<span id="cb222-7"><a href="análise-de-dados-de-uma-variável.html#cb222-7" tabindex="-1"></a>  <span class="at">f_p =</span> <span class="fu">c</span>(<span class="dv">82</span>, <span class="dv">71</span>, <span class="dv">68</span>, <span class="dv">56</span>, <span class="dv">43</span>),</span>
+<span id="cb222-8"><a href="análise-de-dados-de-uma-variável.html#cb222-8" tabindex="-1"></a>  <span class="at">f_ant =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">82</span>, <span class="dv">153</span>, <span class="dv">221</span>, <span class="dv">277</span>)</span>
+<span id="cb222-9"><a href="análise-de-dados-de-uma-variável.html#cb222-9" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb222-10"><a href="análise-de-dados-de-uma-variável.html#cb222-10" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb222-11"><a href="análise-de-dados-de-uma-variável.html#cb222-11" tabindex="-1"></a>    <span class="at">Q_p =</span> <span class="fu">quantil</span>(l, p, n, f_p, f_ant, h)</span>
+<span id="cb222-12"><a href="análise-de-dados-de-uma-variável.html#cb222-12" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb222-13"><a href="análise-de-dados-de-uma-variável.html#cb222-13" tabindex="-1"></a>  <span class="fu">select</span>(p, Q_p) <span class="sc">%&gt;%</span></span>
+<span id="cb222-14"><a href="análise-de-dados-de-uma-variável.html#cb222-14" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb222-15"><a href="análise-de-dados-de-uma-variável.html#cb222-15" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb222-16"><a href="análise-de-dados-de-uma-variável.html#cb222-16" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.12:** Quantis para a vida útil de lâmpadas&quot;</span>,</span>
+<span id="cb222-17"><a href="análise-de-dados-de-uma-variável.html#cb222-17" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb222-18"><a href="análise-de-dados-de-uma-variável.html#cb222-18" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb222-19"><a href="análise-de-dados-de-uma-variável.html#cb222-19" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb222-20"><a href="análise-de-dados-de-uma-variável.html#cb222-20" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb222-21"><a href="análise-de-dados-de-uma-variável.html#cb222-21" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 3.12:</strong> Quantis para a vida útil de lâmpadas</caption>
+<thead>
+<tr class="header">
+<th align="center">p</th>
+<th align="center">Q_p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0,1</td>
+<td align="center">40,85</td>
+</tr>
+<tr class="even">
+<td align="center">0,3</td>
+<td align="center">126,06</td>
+</tr>
+<tr class="odd">
+<td align="center">0,5</td>
+<td align="center">221,32</td>
+</tr>
+<tr class="even">
+<td align="center">0,7</td>
+<td align="center">324,11</td>
+</tr>
+<tr class="odd">
+<td align="center">0,9</td>
+<td align="center">456,98</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exr3-15" class="section level3 unnumbered hasAnchor">

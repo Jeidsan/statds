@@ -5064,6 +5064,11 @@ Para melhorar a análise, poderíamos montar gráficos separados para casos e co
 Na tabela abaixo estão indicadas as durações de 335 lâmpadas.
 
 \begin{longtable}[]{@{}cc@{}}
+\caption{\textbf{Tabela 3.12:} Duração de 335 lâmpadas}\tabularnewline
+\toprule\noalign{}
+Duração (horas) & Número de lâmpadas \\
+\midrule\noalign{}
+\endfirsthead
 \toprule\noalign{}
 Duração (horas) & Número de lâmpadas \\
 \midrule\noalign{}
@@ -5088,7 +5093,156 @@ Duração (horas) & Número de lâmpadas \\
 \end{enumerate}
 
 \begin{solution}
-x
+
+Vamos começar colocando os dados da tabela em um data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lampadas }\OtherTok{\textless{}{-}} \FunctionTok{tribble}\NormalTok{(}
+  \SpecialCharTok{\textasciitilde{}}\NormalTok{min, }\SpecialCharTok{\textasciitilde{}}\NormalTok{max, }\SpecialCharTok{\textasciitilde{}}\NormalTok{freq,}
+  \DecValTok{0}\NormalTok{, }\DecValTok{99}\NormalTok{, }\DecValTok{82}\NormalTok{,}
+  \DecValTok{100}\NormalTok{, }\DecValTok{199}\NormalTok{, }\DecValTok{71}\NormalTok{,}
+  \DecValTok{200}\NormalTok{, }\DecValTok{299}\NormalTok{, }\DecValTok{68}\NormalTok{,}
+  \DecValTok{300}\NormalTok{, }\DecValTok{399}\NormalTok{, }\DecValTok{56}\NormalTok{,}
+  \DecValTok{400}\NormalTok{, }\DecValTok{499}\NormalTok{, }\DecValTok{43}\NormalTok{,}
+  \DecValTok{500}\NormalTok{, }\DecValTok{599}\NormalTok{, }\DecValTok{15}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Vamos agora adicionar a frequência relativa e a frequência acumulada ao nosso data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lampadas }\OtherTok{\textless{}{-}}\NormalTok{ lampadas }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{mutate}\NormalTok{(}
+                  \AttributeTok{freq\_acu =} \FunctionTok{cumsum}\NormalTok{(freq),}
+                  \AttributeTok{freq\_rel =}\NormalTok{ freq}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(freq),}
+                  \AttributeTok{freq\_rel\_acu =} \FunctionTok{cumsum}\NormalTok{(freq\_rel)}
+\NormalTok{                )}
+
+\NormalTok{lampadas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 6
+##     min   max  freq freq_acu freq_rel freq_rel_acu
+##   <dbl> <dbl> <dbl>    <dbl>    <dbl>        <dbl>
+## 1     0    99    82       82   0.245         0.245
+## 2   100   199    71      153   0.212         0.457
+## 3   200   299    68      221   0.203         0.660
+## 4   300   399    56      277   0.167         0.827
+## 5   400   499    43      320   0.128         0.955
+## 6   500   599    15      335   0.0448        1
+\end{verbatim}
+
+Com os dados organizados podemos construir o histograma:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lampadas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ min }\SpecialCharTok{+} \DecValTok{50}\NormalTok{, }\AttributeTok{y =}\NormalTok{ freq)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_col}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_continuous}\NormalTok{(}
+      \AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{600}\NormalTok{, }\DecValTok{100}\NormalTok{)}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.69:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Tempo de vida das lâmpadas"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Tempo de vida (h)"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência observada"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-133-1.pdf}
+Para calcular o quantil de ordem \(p\), vamos seguir dois passos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  utilizar a tabela de frequência para identificar a classe \(k\) à qual pertence o quantil de ordem \(p\);
+\item
+  utilizar a fomula \[ Q_{p} = l_{k} + \frac{( p \cdot n - F_{k-1} ) \cdot h_{k}}{f_{k}} \] onde:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \(l_{i}\) é o limite inferior da classe \(i\);
+\item
+  \(f_{i}\) é a frequência absoluta da classe \(i\);
+\item
+  \(F_{i}\) é a frequência acumulada até a classe \(i\);
+\item
+  \(h_{i}\) é a amplitude da classe \(i\);
+\item
+  \(n\) é o tamanho da amostra;
+\end{enumerate}
+
+Vamos definir uma função para calcular o quantil:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{quantil }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(l, p, n, f\_p, f\_ant, h) \{}
+\NormalTok{  l }\SpecialCharTok{+}\NormalTok{ (((p }\SpecialCharTok{*}\NormalTok{ n) }\SpecialCharTok{{-}}\NormalTok{ f\_ant) }\SpecialCharTok{*}\NormalTok{ (h }\SpecialCharTok{/}\NormalTok{ f\_p))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Agora temos condições de calcular os quantis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(lampadas}\SpecialCharTok{$}\NormalTok{freq)}
+\NormalTok{h }\OtherTok{\textless{}{-}} \DecValTok{100}
+
+\FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{p =} \FunctionTok{c}\NormalTok{(.}\DecValTok{1}\NormalTok{, .}\DecValTok{3}\NormalTok{, .}\DecValTok{5}\NormalTok{, .}\DecValTok{7}\NormalTok{, .}\DecValTok{9}\NormalTok{),}
+  \AttributeTok{l =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{300}\NormalTok{, }\DecValTok{400}\NormalTok{),}
+  \AttributeTok{f\_p =} \FunctionTok{c}\NormalTok{(}\DecValTok{82}\NormalTok{, }\DecValTok{71}\NormalTok{, }\DecValTok{68}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{43}\NormalTok{),}
+  \AttributeTok{f\_ant =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{82}\NormalTok{, }\DecValTok{153}\NormalTok{, }\DecValTok{221}\NormalTok{, }\DecValTok{277}\NormalTok{)}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{Q\_p =} \FunctionTok{quantil}\NormalTok{(l, p, n, f\_p, f\_ant, h)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(p, Q\_p) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.12:** Quantis para a vida útil de lâmpadas"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\textbf{Tabela 3.12:} Quantis para a vida útil de lâmpadas}\tabularnewline
+\toprule\noalign{}
+p & Q\_p \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+p & Q\_p \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0,1 & 40,85 \\
+0,3 & 126,06 \\
+0,5 & 221,32 \\
+0,7 & 324,11 \\
+0,9 & 456,98 \\
+\end{longtable}
+
 \end{solution}
 
 \hypertarget{exr3-15}{%

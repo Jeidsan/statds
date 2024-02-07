@@ -1,0 +1,8 @@
+"0","lampadas <- lampadas %>%"
+"0","                mutate("
+"0","                  freq_acu = cumsum(freq),"
+"0","                  freq_rel = freq/sum(freq),"
+"0","                  freq_rel_acu = cumsum(freq_rel)"
+"0","                )"
+"0",""
+"0","lampadas"

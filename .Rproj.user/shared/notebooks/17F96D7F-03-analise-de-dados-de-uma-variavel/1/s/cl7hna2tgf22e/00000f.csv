@@ -1,0 +1,5 @@
+"0","endometriose %>%"
+"0","  group_by(Grupo, Gestação) %>%"
+"0","  count() %>%"
+"0","  pivot_wider(names_from = Grupo, values_from = n, values_fill = 0) %>%"
+"0","  arrange(Gestação)"
