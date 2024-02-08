@@ -100,14 +100,14 @@
 \contentsline {subsubsection}{A probabilidade de cura em até 60s é maior para o medicamento B?}{151}{section*.67}%
 \contentsline {subsection}{Exercício 3.23}{151}{section*.68}%
 \contentsline {subsection}{Exercício 3.24}{152}{section*.69}%
-\contentsline {subsection}{Exercício 3.25}{152}{section*.70}%
+\contentsline {subsection}{Exercício 3.25}{153}{section*.70}%
 \contentsline {subsection}{Exercício 3.26}{153}{section*.71}%
-\contentsline {subsection}{Exercício 3.27}{153}{section*.72}%
-\contentsline {subsection}{Exercício 3.28}{153}{section*.73}%
+\contentsline {subsection}{Exercício 3.27}{154}{section*.72}%
+\contentsline {subsection}{Exercício 3.28}{154}{section*.73}%
 \contentsline {subsection}{Exercício 3.29}{154}{section*.74}%
-\contentsline {subsection}{Exercício 3.30}{154}{section*.75}%
-\contentsline {subsection}{Exercício 3.31}{154}{section*.76}%
-\contentsline {subsection}{Exercício 3.32}{154}{section*.77}%
+\contentsline {subsection}{Exercício 3.30}{155}{section*.75}%
+\contentsline {subsection}{Exercício 3.31}{155}{section*.76}%
+\contentsline {subsection}{Exercício 3.32}{155}{section*.77}%
 \contentsline {subsection}{Exercício 3.33}{155}{section*.78}%
 \contentsline {chapter}{\numberline {4}Análise de dados de duas variáveis}{157}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{157}{section.4.1}%

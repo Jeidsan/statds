@@ -3013,6 +3013,7 @@ Dependentes | Frequência
 4           | 20
 5           | 10
 Total       | 150
+: **Tabela 3.20:** Número de dependentes poe empregado
 
 A mediana, média e moda cujos valores calculados por quatro estagiários, foram: 
 
@@ -3025,7 +3026,42 @@ Indique qual deles está correto, justificando sua resposta.
 :::
 
 :::{.solution}
-x
+Para este caso, a média é dada por 
+
+$$\frac{\sum{x_if_i}}{\sum{f_i}}$$ 
+
+onde:
+- $x_i$ representa o número de dependentes na linha $i$;
+- $f_i$ representa o número de empregados que possuem $x_i$ dependentes;
+
+Dessa forma, temos:
+
+$$
+\bar{x} = \frac{(1 \cdot 40) + (2 \cdot 50) + (3 \cdot 30) + (4 \cdot 20) + (5 \cdot 10)}{40 + 50 + 30 + 20 + 10} = \frac{360}{150} = 2,4
+$$
+
+Para a mediana e a moda, vamos calcular as frequências relativa e acumulada na tabela.
+
+Dependentes | Frequência  | Frequência <br /> relativa (%) | Frequência <br /> acumulada (%)
+:----------:|:-----------:|:------------------------------:|:-------------------------------:
+1           | 40          | 26,67                          | 26,67
+2           | 50          | 33,33                          | 60,00
+3           | 30          | 20,00                          | 80,00
+4           | 20          | 13,33                          | 93,33
+5           | 10          | 6,67                           | 100,00
+Total       | 150         | 100,00                         | 100,00
+: **Tabela 3.21:** Número de dependentes por empregado
+
+
+A mediana corresponderá ao valor $x_i$ na linha $i$ que contém frequência acumulada maior do que ou igual a 50% e a moda será o valor $x_j$ da linha $j$ que contém a maior frequência ou frequência relativa.
+
+Nesse caso, temos:
+- mediana igual a 2 filhos;
+- moda igual a 2 filhos;
+- média igual a 2,4.
+
+E nenhuma das alternativas está correta.
+
 :::
 
 ### Exercício 3.24 {- #exr3-24}

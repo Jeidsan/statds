@@ -6216,6 +6216,11 @@ Como, para ambos os medicamentos, se supôs a simetria e centralidade na média,
 A tabela abaixo representa a distribuição do número de dependentes por empregado de uma determinada empresa.
 
 \begin{longtable}[]{@{}cc@{}}
+\caption{\textbf{Tabela 3.20:} Número de dependentes poe empregado}\tabularnewline
+\toprule\noalign{}
+Dependentes & Frequência \\
+\midrule\noalign{}
+\endfirsthead
 \toprule\noalign{}
 Dependentes & Frequência \\
 \midrule\noalign{}
@@ -6248,7 +6253,70 @@ A mediana, média e moda cujos valores calculados por quatro estagiários, foram
 Indique qual deles está correto, justificando sua resposta.
 
 \begin{solution}
-x
+Para este caso, a média é dada por
+
+\[\frac{\sum{x_if_i}}{\sum{f_i}}\]
+
+onde:
+- \(x_i\) representa o número de dependentes na linha \(i\);
+- \(f_i\) representa o número de empregados que possuem \(x_i\) dependentes;
+
+Dessa forma, temos:
+
+\[
+\bar{x} = \frac{(1 \cdot 40) + (2 \cdot 50) + (3 \cdot 30) + (4 \cdot 20) + (5 \cdot 10)}{40 + 50 + 30 + 20 + 10} = \frac{360}{150} = 2,4
+\]
+
+Para a mediana e a moda, vamos calcular as frequências relativa e acumulada na tabela.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1333}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1444}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3556}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3667}}@{}}
+\caption{\textbf{Tabela 3.21:} Número de dependentes por empregado}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Dependentes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência relativa (\%)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência acumulada (\%)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Dependentes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência relativa (\%)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência acumulada (\%)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 40 & 26,67 & 26,67 \\
+2 & 50 & 33,33 & 60,00 \\
+3 & 30 & 20,00 & 80,00 \\
+4 & 20 & 13,33 & 93,33 \\
+5 & 10 & 6,67 & 100,00 \\
+Total & 150 & 100,00 & 100,00 \\
+\end{longtable}
+
+A mediana corresponderá ao valor \(x_i\) na linha \(i\) que contém frequência acumulada maior do que ou igual a 50\% e a moda será o valor \(x_j\) da linha \(j\) que contém a maior frequência ou frequência relativa.
+
+Nesse caso, temos:
+- mediana igual a 2 filhos;
+- moda igual a 2 filhos;
+- média igual a 2,4.
+
+E nenhuma das alternativas está correta.
 \end{solution}
 
 \hypertarget{exr3-24}{%
