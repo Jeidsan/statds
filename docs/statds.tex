@@ -5258,11 +5258,13 @@ Os dados apresentados na tabela abaixo referem-se aos instantes nos quais o cent
   >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1711}}
   >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1711}}
   >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1711}}@{}}
+\caption{\textbf{Tabela 3.13:} Horários das chamadas de auxílio em duas estradas num dia específico}\tabularnewline
 \toprule\noalign{}
+\endfirsthead
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Estrada 1 & 12:07:00 AM & 15:58:00 AM & 01:24:00 AM & 01:35:00 AM & 02:05:00 AM \\
+Estrada 1 & 12:07:00 AM & 12:58:00 AM & 01:24:00 AM & 01:35:00 AM & 02:05:00 AM \\
 & 03:14:00 AM & 03:25:00 AM & 03:46:00 AM & 05:44:00 AM & 05:56:00 AM \\
 & 06:36:00 AM & 07:26:00 AM & 07:48:00 AM & 09:13:00 AM & 12:05:00 PM \\
 & 12:48:00 PM & 01:21:00 PM & 02:22:00 PM & 05:30:00 PM & 06:00:00 PM \\
@@ -5286,7 +5288,354 @@ Estrada 2 & 12:03:00 AM & 01:18:00 AM & 04:35:00 AM & 06:13:00 AM & 06:59:00 AM 
 \end{enumerate}
 
 \begin{solution}
-x
+Em primeiro lugar, precisamos arrumar os dados em um formato mais tangível.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas }\OtherTok{\textless{}{-}} \FunctionTok{tribble}\NormalTok{(}
+  \SpecialCharTok{\textasciitilde{}}\NormalTok{estrada, }\SpecialCharTok{\textasciitilde{}}\NormalTok{horario,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"00:07:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"00:58:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"01:24:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"01:35:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"02:05:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"03:14:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"03:25:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"03:46:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"05:44:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"05:56:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"06:36:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"07:26:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"07:48:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"09:13:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"12:05:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"12:48:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"01:21:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"02:22:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"05:30:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"06:00:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"07:53:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"09:15:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"09:49:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"09:59:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"10:53:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"11:27:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"11:49:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 1"}\NormalTok{, }\StringTok{"11:57:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"00:03:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"01:18:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"04:35:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"06:13:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"06:59:00 AM"}\NormalTok{, }
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"08:03:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"10:07:00 AM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"12:24:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"01:45:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"02:07:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"03:23:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"06:34:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"07:19:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"09:44:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"10:27:00 PM"}\NormalTok{, }
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"10:52:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"11:19:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"11:29:00 PM"}\NormalTok{,}
+  \StringTok{"Estrada 2"}\NormalTok{, }\StringTok{"11:44:00 PM"}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{horario =} \FunctionTok{parse\_time}\NormalTok{(horario)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{distribuiuxe7uxe3o-de-frequuxeancia}{%
+\subsubsection*{Distribuição de frequência}\label{distribuiuxe7uxe3o-de-frequuxeancia}}
+\addcontentsline{toc}{subsubsection}{Distribuição de frequência}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(horario)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{bins =} \DecValTok{12}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ estrada) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.70:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Horário das chamadas de apoio"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Horário"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência observada"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-137-1.pdf}
+
+\hypertarget{intervalo-entre-as-chamadas}{%
+\subsubsection*{Intervalo entre as chamadas}\label{intervalo-entre-as-chamadas}}
+\addcontentsline{toc}{subsubsection}{Intervalo entre as chamadas}
+
+Primeiro precisamos calcular a diferença de tempo entre as chamadas. Para isso vamos adicionar uma coluna em nosso conjunto de dados contendo o horário da chamada anterior e outra contendo a diferença.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas}\SpecialCharTok{$}\NormalTok{anterior }\OtherTok{=} \FunctionTok{parse\_time}\NormalTok{(}\StringTok{"00:00:00 AM"}\NormalTok{)}
+
+\NormalTok{n\_1 }\OtherTok{\textless{}{-}}\NormalTok{ chamadas }\SpecialCharTok{\%\textgreater{}\%} 
+          \FunctionTok{filter}\NormalTok{(estrada }\SpecialCharTok{==} \StringTok{"Estrada 1"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+          \FunctionTok{nrow}\NormalTok{()}
+
+\NormalTok{n\_2 }\OtherTok{\textless{}{-}}\NormalTok{ chamadas }\SpecialCharTok{\%\textgreater{}\%} 
+          \FunctionTok{filter}\NormalTok{(estrada }\SpecialCharTok{==} \StringTok{"Estrada 2"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+          \FunctionTok{nrow}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\NormalTok{n\_1) \{}
+\NormalTok{  chamadas}\SpecialCharTok{$}\NormalTok{anterior[i] }\OtherTok{\textless{}{-}}\NormalTok{ chamadas}\SpecialCharTok{$}\NormalTok{horario[i}\DecValTok{{-}1}\NormalTok{]}
+\NormalTok{\}}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\NormalTok{n\_2) \{}
+\NormalTok{  chamadas}\SpecialCharTok{$}\NormalTok{anterior[i }\SpecialCharTok{+}\NormalTok{ n\_1] }\OtherTok{\textless{}{-}}\NormalTok{ chamadas}\SpecialCharTok{$}\NormalTok{horario[i }\SpecialCharTok{+}\NormalTok{ n\_1 }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{\}}
+
+\NormalTok{chamadas}\SpecialCharTok{$}\NormalTok{intervalo }\OtherTok{\textless{}{-}} \FunctionTok{as.duration}\NormalTok{(chamadas}\SpecialCharTok{$}\NormalTok{horario }\SpecialCharTok{{-}}\NormalTok{ chamadas}\SpecialCharTok{$}\NormalTok{anterior)}
+\end{Highlighting}
+\end{Shaded}
+
+A tabela a seguir mostra o resultado desses cálculos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.14:** Chamadas de auxílio em duas estradas"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{\textbf{Tabela 3.14:} Chamadas de auxílio em duas estradas}\tabularnewline
+\toprule\noalign{}
+estrada & horario & anterior & intervalo \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+estrada & horario & anterior & intervalo \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Estrada 1 & 00:07:00 & 00:00:00 & 420s (\textasciitilde7 minutes) \\
+Estrada 1 & 00:58:00 & 00:07:00 & 3060s (\textasciitilde51 minutes) \\
+Estrada 1 & 01:24:00 & 00:58:00 & 1560s (\textasciitilde26 minutes) \\
+Estrada 1 & 01:35:00 & 01:24:00 & 660s (\textasciitilde11 minutes) \\
+Estrada 1 & 02:05:00 & 01:35:00 & 1800s (\textasciitilde30 minutes) \\
+Estrada 1 & 03:14:00 & 02:05:00 & 4140s (\textasciitilde1.15 hours) \\
+Estrada 1 & 03:25:00 & 03:14:00 & 660s (\textasciitilde11 minutes) \\
+Estrada 1 & 03:46:00 & 03:25:00 & 1260s (\textasciitilde21 minutes) \\
+Estrada 1 & 05:44:00 & 03:46:00 & 7080s (\textasciitilde1.97 hours) \\
+Estrada 1 & 05:56:00 & 05:44:00 & 720s (\textasciitilde12 minutes) \\
+Estrada 1 & 06:36:00 & 05:56:00 & 2400s (\textasciitilde40 minutes) \\
+Estrada 1 & 07:26:00 & 06:36:00 & 3000s (\textasciitilde50 minutes) \\
+Estrada 1 & 07:48:00 & 07:26:00 & 1320s (\textasciitilde22 minutes) \\
+Estrada 1 & 09:13:00 & 07:48:00 & 5100s (\textasciitilde1.42 hours) \\
+Estrada 1 & 12:05:00 & 09:13:00 & 10320s (\textasciitilde2.87 hours) \\
+Estrada 1 & 12:48:00 & 12:05:00 & 2580s (\textasciitilde43 minutes) \\
+Estrada 1 & 13:21:00 & 12:48:00 & 1980s (\textasciitilde33 minutes) \\
+Estrada 1 & 14:22:00 & 13:21:00 & 3660s (\textasciitilde1.02 hours) \\
+Estrada 1 & 17:30:00 & 14:22:00 & 11280s (\textasciitilde3.13 hours) \\
+Estrada 1 & 18:00:00 & 17:30:00 & 1800s (\textasciitilde30 minutes) \\
+Estrada 1 & 19:53:00 & 18:00:00 & 6780s (\textasciitilde1.88 hours) \\
+Estrada 1 & 21:15:00 & 19:53:00 & 4920s (\textasciitilde1.37 hours) \\
+Estrada 1 & 21:49:00 & 21:15:00 & 2040s (\textasciitilde34 minutes) \\
+Estrada 1 & 21:59:00 & 21:49:00 & 600s (\textasciitilde10 minutes) \\
+Estrada 1 & 22:53:00 & 21:59:00 & 3240s (\textasciitilde54 minutes) \\
+Estrada 1 & 23:27:00 & 22:53:00 & 2040s (\textasciitilde34 minutes) \\
+Estrada 1 & 23:49:00 & 23:27:00 & 1320s (\textasciitilde22 minutes) \\
+Estrada 1 & 23:57:00 & 23:49:00 & 480s (\textasciitilde8 minutes) \\
+Estrada 2 & 00:03:00 & 00:00:00 & 180s (\textasciitilde3 minutes) \\
+Estrada 2 & 01:18:00 & 00:03:00 & 4500s (\textasciitilde1.25 hours) \\
+Estrada 2 & 04:35:00 & 01:18:00 & 11820s (\textasciitilde3.28 hours) \\
+Estrada 2 & 06:13:00 & 04:35:00 & 5880s (\textasciitilde1.63 hours) \\
+Estrada 2 & 06:59:00 & 06:13:00 & 2760s (\textasciitilde46 minutes) \\
+Estrada 2 & 08:03:00 & 06:59:00 & 3840s (\textasciitilde1.07 hours) \\
+Estrada 2 & 10:07:00 & 08:03:00 & 7440s (\textasciitilde2.07 hours) \\
+Estrada 2 & 12:24:00 & 10:07:00 & 8220s (\textasciitilde2.28 hours) \\
+Estrada 2 & 13:45:00 & 12:24:00 & 4860s (\textasciitilde1.35 hours) \\
+Estrada 2 & 14:07:00 & 13:45:00 & 1320s (\textasciitilde22 minutes) \\
+Estrada 2 & 15:23:00 & 14:07:00 & 4560s (\textasciitilde1.27 hours) \\
+Estrada 2 & 18:34:00 & 15:23:00 & 11460s (\textasciitilde3.18 hours) \\
+Estrada 2 & 19:19:00 & 18:34:00 & 2700s (\textasciitilde45 minutes) \\
+Estrada 2 & 21:44:00 & 19:19:00 & 8700s (\textasciitilde2.42 hours) \\
+Estrada 2 & 22:27:00 & 21:44:00 & 2580s (\textasciitilde43 minutes) \\
+Estrada 2 & 22:52:00 & 22:27:00 & 1500s (\textasciitilde25 minutes) \\
+Estrada 2 & 23:19:00 & 22:52:00 & 1620s (\textasciitilde27 minutes) \\
+Estrada 2 & 23:29:00 & 23:19:00 & 600s (\textasciitilde10 minutes) \\
+Estrada 2 & 23:44:00 & 23:29:00 & 900s (\textasciitilde15 minutes) \\
+\end{longtable}
+
+Com essas informações em mãos, podemos calcular as medidas de resumo para cada uma das estradas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summ\_data }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data) \{}
+\NormalTok{  x }\OtherTok{\textless{}{-}}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{intervalo}
+  
+  \FunctionTok{tibble}\NormalTok{(}
+     \AttributeTok{n =} \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(x), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Mínimo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{min}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)),}
+    \AttributeTok{Q1 =} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{quantile}\NormalTok{(x, }\FloatTok{0.25}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]]),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Mediana}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{median}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)),}
+    \AttributeTok{Q3 =} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{quantile}\NormalTok{(x, }\FloatTok{0.75}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]]),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Máximo}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{max}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Média}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Desvio Padrão}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{sd}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)),}
+    \StringTok{\textasciigrave{}}\AttributeTok{Distância Interquartil}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{IQR}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
+\NormalTok{  )}
+\NormalTok{\}}
+
+\NormalTok{chamadas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(estrada) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{nest}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{resumo =} \FunctionTok{map}\NormalTok{(data, summ\_data),}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{data) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{unnest}\NormalTok{(resumo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{t}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.15:** Resumo do intervalo entre chamadas para as duas estradas"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2421}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3789}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3789}}@{}}
+\caption{\textbf{Tabela 3.15:} Resumo do intervalo entre chamadas para as duas estradas}\tabularnewline
+\toprule\noalign{}
+\endfirsthead
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+estrada & Estrada 1 & Estrada 2 \\
+n & 28 & 19 \\
+Mínimo & 420s (\textasciitilde7 minutes) & 180s (\textasciitilde3 minutes) \\
+Q1 & 1305s (\textasciitilde21.75 minutes) & 1560s (\textasciitilde26 minutes) \\
+Mediana & 2040s (\textasciitilde34 minutes) & 3840s (\textasciitilde1.07 hours) \\
+Q3 & 3780s (\textasciitilde1.05 hours) & 6660s (\textasciitilde1.85 hours) \\
+Máximo & 11280s (\textasciitilde3.13 hours) & 11820s (\textasciitilde3.28 hours) \\
+Média & 3079.28571428571s (\textasciitilde51.32 minutes) & 4496.84210526316s (\textasciitilde1.25 hours) \\
+Desvio Padrão & 2820.26256798564s (\textasciitilde47 minutes) & 3565.35965558655s (\textasciitilde59.42 minutes) \\
+Distância Interquartil & 2475s (\textasciitilde41.25 minutes) & 5100s (\textasciitilde1.42 hours) \\
+\end{longtable}
+
+O gráfico a seguir mostra a distribuição do intervalo entre chamadas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ estrada, }\AttributeTok{y =}\NormalTok{ intervalo)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.71:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Distribuição dos intervalos entre as chamadas"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{""}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Intervalo (s)"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-141-1.pdf}
+\#\#\#\# O intervalo entre as chamadas segue alguma tendência normal ou exponencial? \{-\}
+
+Vamos começar plotando o histograma dos intervalos de tempo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(intervalo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}
+      \AttributeTok{binwidth =} \DecValTok{900}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ estrada) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.72:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Intervalo de tempo entre as chamadas"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Intervalo (s)"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Frequência"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-142-1.pdf}
+
+Este gráfico não nos indica nenhuma tendência, vamos então construir o gráfico QQ para cada uma das estradas, primeiro comparando com a distribuição normal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ intervalo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_qq}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_qq\_line}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ estrada) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.73:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Intervalo de tempo entre as chamadas"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Quantis normais"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Quantis amostrais"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-143-1.pdf}
+
+Como os dados estão muito afastados da reta de referência, não podemos dizer que os seguem a distribuição normal. Vamos tentar agora compará-los a uma distribuição exponencial.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chamadas }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ intervalo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_qq}\NormalTok{(}
+      \AttributeTok{distribution =}\NormalTok{ stats}\SpecialCharTok{::}\NormalTok{qexp}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_qq\_line}\NormalTok{(}
+      \AttributeTok{distribution =}\NormalTok{ stats}\SpecialCharTok{::}\NormalTok{qexp}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ estrada) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.74:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Intervalo de tempo entre as chamadas"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Quantis exponenciais"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Quantis amostrais"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-144-1.pdf}
+
+Notamos que os dados estão muito mais próximos da distribuição exponencial, exceto por alguns pontos extremos.
 \end{solution}
 
 \hypertarget{exr3-16}{%

@@ -2433,7 +2433,7 @@ Os dados apresentados na tabela abaixo referem-se aos instantes nos quais o cent
 
 |           |             |             |             |             |             |
 |:---------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|
-| Estrada 1 | 12:07:00 AM | 15:58:00 AM | 01:24:00 AM | 01:35:00 AM | 02:05:00 AM |
+| Estrada 1 | 12:07:00 AM | 12:58:00 AM | 01:24:00 AM | 01:35:00 AM | 02:05:00 AM |
 |           | 03:14:00 AM | 03:25:00 AM | 03:46:00 AM | 05:44:00 AM | 05:56:00 AM |
 |           | 06:36:00 AM | 07:26:00 AM | 07:48:00 AM | 09:13:00 AM | 12:05:00 PM |
 |           | 12:48:00 PM | 01:21:00 PM | 02:22:00 PM | 05:30:00 PM | 06:00:00 PM |
@@ -2443,6 +2443,7 @@ Os dados apresentados na tabela abaixo referem-se aos instantes nos quais o cent
 |           | 08:03:00 AM | 10:07:00 AM | 12:24:00 PM | 01:45:00 PM | 02:07:00 PM |
 |           | 03:23:00 PM | 06:34:00 PM | 07:19:00 PM | 09:44:00 PM | 10:27:00 PM |
 |           | 10:52:00 PM | 11:19:00 PM | 11:29:00 PM | 11:44:00 PM |             |
+: **Tabela 3.13:** Horários das chamadas de auxílio em duas estradas num dia específico
 
 a) Construa um histograma para a distribuição de frequências dos instantes de chamados em cada uma das estradas. 
 b) Calcule os intervalos de tempo entre as sucessivas chamadas e descreva-os, para cada uma das estradas, utilizando medidas resumo e gráficos do tipo *boxplot*. Existe alguma relação entre o tipo de estrada e o intervalo de tempo entre as chamadas?
@@ -2450,7 +2451,240 @@ c) Por intermédio de um gráfico do tipo QQ, verifique se a distribuição da v
 :::
 
 :::{.solution}
-x
+Em primeiro lugar, precisamos arrumar os dados em um formato mais tangível.
+
+```{r}
+chamadas <- tribble(
+  ~estrada, ~horario,
+  "Estrada 1", "00:07:00 AM", 
+  "Estrada 1", "00:58:00 AM", 
+  "Estrada 1", "01:24:00 AM", 
+  "Estrada 1", "01:35:00 AM", 
+  "Estrada 1", "02:05:00 AM", 
+  "Estrada 1", "03:14:00 AM", 
+  "Estrada 1", "03:25:00 AM", 
+  "Estrada 1", "03:46:00 AM",
+  "Estrada 1", "05:44:00 AM", 
+  "Estrada 1", "05:56:00 AM", 
+  "Estrada 1", "06:36:00 AM",
+  "Estrada 1", "07:26:00 AM",
+  "Estrada 1", "07:48:00 AM",
+  "Estrada 1", "09:13:00 AM",
+  "Estrada 1", "12:05:00 PM",
+  "Estrada 1", "12:48:00 PM",
+  "Estrada 1", "01:21:00 PM",
+  "Estrada 1", "02:22:00 PM",
+  "Estrada 1", "05:30:00 PM",
+  "Estrada 1", "06:00:00 PM", 
+  "Estrada 1", "07:53:00 PM", 
+  "Estrada 1", "09:15:00 PM", 
+  "Estrada 1", "09:49:00 PM", 
+  "Estrada 1", "09:59:00 PM", 
+  "Estrada 1", "10:53:00 PM", 
+  "Estrada 1", "11:27:00 PM", 
+  "Estrada 1", "11:49:00 PM", 
+  "Estrada 1", "11:57:00 PM",
+  "Estrada 2", "00:03:00 AM",
+  "Estrada 2", "01:18:00 AM",
+  "Estrada 2", "04:35:00 AM",
+  "Estrada 2", "06:13:00 AM",
+  "Estrada 2", "06:59:00 AM", 
+  "Estrada 2", "08:03:00 AM",
+  "Estrada 2", "10:07:00 AM",
+  "Estrada 2", "12:24:00 PM",
+  "Estrada 2", "01:45:00 PM",
+  "Estrada 2", "02:07:00 PM", 
+  "Estrada 2", "03:23:00 PM", 
+  "Estrada 2", "06:34:00 PM", 
+  "Estrada 2", "07:19:00 PM", 
+  "Estrada 2", "09:44:00 PM", 
+  "Estrada 2", "10:27:00 PM", 
+  "Estrada 2", "10:52:00 PM",
+  "Estrada 2", "11:19:00 PM",
+  "Estrada 2", "11:29:00 PM",
+  "Estrada 2", "11:44:00 PM"
+) %>%
+  mutate(
+    horario = parse_time(horario)
+  )
+```
+
+#### Distribuição de frequência {-}
+
+```{r}
+chamadas %>%
+  ggplot(aes(horario)) +
+    geom_histogram(
+      bins = 12,
+      fill = "grey",
+      color = "grey30"
+    ) +
+    facet_wrap(~ estrada) +
+    labs(
+      title = bquote(bold("Figura 3.70:")~"Horário das chamadas de apoio"),
+      x = "Horário",
+      y = "Frequência observada"
+    ) +
+    tema
+```
+
+#### Intervalo entre as chamadas {-}
+
+Primeiro precisamos calcular a diferença de tempo entre as chamadas. Para isso vamos adicionar uma coluna em nosso conjunto de dados contendo o horário da chamada anterior e outra contendo a diferença.
+
+```{r}
+chamadas$anterior = parse_time("00:00:00 AM")
+
+n_1 <- chamadas %>% 
+          filter(estrada == "Estrada 1") %>%
+          nrow()
+
+n_2 <- chamadas %>% 
+          filter(estrada == "Estrada 2") %>%
+          nrow()
+
+for (i in 2:n_1) {
+  chamadas$anterior[i] <- chamadas$horario[i-1]
+}
+
+for (i in 2:n_2) {
+  chamadas$anterior[i + n_1] <- chamadas$horario[i + n_1 -1]
+}
+
+chamadas$intervalo <- as.duration(chamadas$horario - chamadas$anterior)
+```
+
+A tabela a seguir mostra o resultado desses cálculos.
+
+```{r}
+chamadas %>% 
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.14:** Chamadas de auxílio em duas estradas",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Com essas informações em mãos, podemos calcular as medidas de resumo para cada uma das estradas.
+
+```{r}
+summ_data <- function(data) {
+  x <- data$intervalo
+  
+  tibble(
+     n = sum(!is.na(x), na.rm = TRUE),
+    `Mínimo` = as.duration(min(x, na.rm = TRUE)),
+    Q1 = as.duration(quantile(x, 0.25, na.rm = TRUE)[[1]]),
+    `Mediana` = as.duration(median(x, na.rm = TRUE)),
+    Q3 = as.duration(quantile(x, 0.75, na.rm = TRUE)[[1]]),
+    `Máximo` = as.duration(max(x, na.rm = TRUE)),
+    `Média` = as.duration(mean(x, na.rm = TRUE)),
+    `Desvio Padrão` = as.duration(sd(x, na.rm = TRUE)),
+    `Distância Interquartil` = as.duration(IQR(x, na.rm = TRUE))
+  )
+}
+
+chamadas %>%
+  group_by(estrada) %>%
+  nest() %>%
+  mutate(
+    resumo = map(data, summ_data),
+  ) %>%
+  select(-data) %>%
+  unnest(resumo) %>%
+  t() %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.15:** Resumo do intervalo entre chamadas para as duas estradas",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+O gráfico a seguir mostra a distribuição do intervalo entre chamadas:
+
+```{r}
+chamadas %>%
+  ggplot(aes(x = estrada, y = intervalo)) +
+    stat_boxplot(
+      geom = "errorbar",
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    labs(
+      title = bquote(bold("Figura 3.71:")~"Distribuição dos intervalos entre as chamadas"),
+      x = "",
+      y = "Intervalo (s)"
+    ) +
+    tema
+```
+#### O intervalo entre as chamadas segue alguma tendência normal ou exponencial? {-}
+
+Vamos começar plotando o histograma dos intervalos de tempo:
+
+```{r}
+chamadas %>%
+  ggplot(aes(intervalo)) +
+    geom_histogram(
+      binwidth = 900,
+      fill = "grey",
+      color = "grey30"
+    ) +
+    facet_wrap(~ estrada) +
+    labs(
+      title = bquote(bold("Figura 3.72:")~"Intervalo de tempo entre as chamadas"),
+      x = "Intervalo (s)",
+      y = "Frequência"
+    ) +
+    tema
+```
+
+Este gráfico não nos indica nenhuma tendência, vamos então construir o gráfico QQ para cada uma das estradas, primeiro comparando com a distribuição normal:
+
+```{r}
+chamadas %>%
+  ggplot(aes(sample = intervalo)) +
+    geom_qq() +
+    geom_qq_line() +
+    facet_wrap(~ estrada) +
+    labs(
+      title = bquote(bold("Figura 3.73:")~"Intervalo de tempo entre as chamadas"),
+      x = "Quantis normais",
+      y = "Quantis amostrais"
+    ) +
+    tema
+```
+
+Como os dados estão muito afastados da reta de referência, não podemos dizer que os seguem a distribuição normal. Vamos tentar agora compará-los a uma distribuição exponencial.
+
+```{r}
+chamadas %>%
+  ggplot(aes(sample = intervalo)) +
+    geom_qq(
+      distribution = stats::qexp
+    ) +
+    geom_qq_line(
+      distribution = stats::qexp
+    ) +
+    facet_wrap(~ estrada) +
+    labs(
+      title = bquote(bold("Figura 3.74:")~"Intervalo de tempo entre as chamadas"),
+      x = "Quantis exponenciais",
+      y = "Quantis amostrais"
+    ) +
+    tema
+```
+
+Notamos que os dados estão muito mais próximos da distribuição exponencial, exceto por alguns pontos extremos.
+
 :::
 
 ### Exercício 3.16 {- #exr3-16}
