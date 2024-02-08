@@ -4773,7 +4773,25 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-31" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-31" class="solution"><em>Solução</em>. </span></p>
+<div id="os-medicamentos-são-equivalentes" class="section level4 unnumbered hasAnchor">
+<h4>Os medicamentos são equivalentes?<a href="análise-de-dados-de-uma-variável.html#os-medicamentos-são-equivalentes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Como os desvios padrão são diferentes, os medicamentos NÃO são equivalentes.</p>
+</div>
+<div id="a-probabilidade-de-cura-em-até-40s-é-igual-para-ambos" class="section level4 unnumbered hasAnchor">
+<h4>A probabilidade de cura em até 40s é igual para ambos?<a href="análise-de-dados-de-uma-variável.html#a-probabilidade-de-cura-em-até-40s-é-igual-para-ambos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Considerando que o tempo de cura se distribui normalmente, vamos utilizar a função <code>pnorm()</code> para calcular a probabilidade de cura para ambos os medicamentos:</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="análise-de-dados-de-uma-variável.html#cb249-1" tabindex="-1"></a>(p_A <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">10</span>))</span></code></pre></div>
+<pre><code>## [1] 0.02275013</code></pre>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="análise-de-dados-de-uma-variável.html#cb251-1" tabindex="-1"></a>(p_B <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">30</span>))</span></code></pre></div>
+<pre><code>## [1] 0.2524925</code></pre>
+<p>Como <code>p_A</code> &lt; <code>p_B</code>, a probabilidade de a dor de cabeça ser curada em até 40 segundos é maior para o medicamento B.</p>
+<p>Obs: A suposição de normalidade foi apenas para facilitar os calculos, mas o resultado se repetiria para qualquer distribuição simetrica centrada e com pico na média.</p>
+</div>
+<div id="a-probabilidade-de-cura-em-até-60s-é-maior-para-o-medicamento-b" class="section level4 unnumbered hasAnchor">
+<h4>A probabilidade de cura em até 60s é maior para o medicamento B?<a href="análise-de-dados-de-uma-variável.html#a-probabilidade-de-cura-em-até-60s-é-maior-para-o-medicamento-b" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Como, para ambos os medicamentos, se supôs a simetria e centralidade na média, as probabilidades de cura até a média são iguais em ambos os medicamentos e correspondem à 50%.</p>
+</div>
 </div>
 </div>
 <div id="exr3-23" class="section level3 unnumbered hasAnchor">

@@ -6163,7 +6163,50 @@ A bula de um medicamento A para dor de cabeça afirma que o tempo médio para qu
 \end{enumerate}
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{os-medicamentos-suxe3o-equivalentes}{%
+\subsubsection*{Os medicamentos são equivalentes?}\label{os-medicamentos-suxe3o-equivalentes}}
+\addcontentsline{toc}{subsubsection}{Os medicamentos são equivalentes?}
+
+Como os desvios padrão são diferentes, os medicamentos NÃO são equivalentes.
+
+\hypertarget{a-probabilidade-de-cura-em-atuxe9-40s-uxe9-igual-para-ambos}{%
+\subsubsection*{A probabilidade de cura em até 40s é igual para ambos?}\label{a-probabilidade-de-cura-em-atuxe9-40s-uxe9-igual-para-ambos}}
+\addcontentsline{toc}{subsubsection}{A probabilidade de cura em até 40s é igual para ambos?}
+
+Considerando que o tempo de cura se distribui normalmente, vamos utilizar a função \texttt{pnorm()} para calcular a probabilidade de cura para ambos os medicamentos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(p\_A }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02275013
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(p\_B }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{30}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2524925
+\end{verbatim}
+
+Como \texttt{p\_A} \textless{} \texttt{p\_B}, a probabilidade de a dor de cabeça ser curada em até 40 segundos é maior para o medicamento B.
+
+Obs: A suposição de normalidade foi apenas para facilitar os calculos, mas o resultado se repetiria para qualquer distribuição simetrica centrada e com pico na média.
+
+\hypertarget{a-probabilidade-de-cura-em-atuxe9-60s-uxe9-maior-para-o-medicamento-b}{%
+\subsubsection*{A probabilidade de cura em até 60s é maior para o medicamento B?}\label{a-probabilidade-de-cura-em-atuxe9-60s-uxe9-maior-para-o-medicamento-b}}
+\addcontentsline{toc}{subsubsection}{A probabilidade de cura em até 60s é maior para o medicamento B?}
+
+Como, para ambos os medicamentos, se supôs a simetria e centralidade na média, as probabilidades de cura até a média são iguais em ambos os medicamentos e correspondem à 50\%.
+
 \end{solution}
 
 \hypertarget{exr3-23}{%

@@ -2977,7 +2977,27 @@ c) Com o medicamento B, a probabilidade de você ter sua dor de cabeça curada a
 :::
 
 :::{.solution}
-x
+#### Os medicamentos são equivalentes? {-}
+
+Como os desvios padrão são diferentes, os medicamentos NÃO são equivalentes.
+
+#### A probabilidade de cura em até 40s é igual para ambos? {-}
+
+Considerando que o tempo de cura se distribui normalmente, vamos utilizar a função `pnorm()` para calcular a probabilidade de cura para ambos os medicamentos:
+
+```{r}
+(p_A <- pnorm(40, 60, 10))
+(p_B <- pnorm(40, 60, 30))
+```
+Como `p_A` < `p_B`, a probabilidade de a dor de cabeça ser curada em até 40 segundos é maior para o medicamento B.
+
+Obs: A suposição de normalidade foi apenas para facilitar os calculos, mas o resultado se repetiria para qualquer distribuição simetrica centrada e com pico na média.
+
+#### A probabilidade de cura em até 60s é maior para o medicamento B? {-}
+
+Como, para ambos os medicamentos, se supôs a simetria e centralidade na média, as probabilidades de cura até a média são iguais em ambos os medicamentos e correspondem à 50%.
+
+
 :::
 
 ### Exercício 3.23 {- #exr3-23}
