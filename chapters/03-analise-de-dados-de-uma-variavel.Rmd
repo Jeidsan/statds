@@ -2795,6 +2795,7 @@ Atividade | N   | Media | Mediana | DP   | Min | Max | Q1  | Q3
 :---------|:---:|:-----:|:-------:|:----:|:---:|:---:|:---:|:---:
 Intensa   | 30  | 79,6  | 82      | 10,5 | 62  | 90  | 70  | 85
 Fraca	    | 30  | 73,1  | 70      | 9,6  | 58  | 92  | 63  | 77
+: **Tabela 3.19:** Pulsação de estudantes durante atividade física
 
 Indique se as seguintes afirmações estão corretas, justificando a sua respostas:
 
@@ -2805,7 +2806,31 @@ d) Mais da metade dos estudantes com atividade fisica intensa têm pulsação ma
 :::
 
 :::{.solution}
-x
+#### Item a {-}
+
+A tabela nos informa que o primeiro quartil entre o grupo que praticou atividade intensa é 70, logo, espera-se que 25% dos estudantes neste grupo tiveram pulsação inferior a 70 e não 5% como alegado no enunciado. 
+Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera-se que pelo menos a metade tenha pulsação menor do que 70 (note contudo, que podem haver mais o que 50% dos estudantes!).
+
+**Conclusão:** o item é FALSO.
+
+#### Item b {-}
+
+Considerando que o primeiro quartil vale 70 para o grupo de estudantes com atividade intensa e 63 para o grupo com atividade fraca, sabemos que pelo menos 25% dois estudantes de cada grupo estão abaixo desses valores.
+
+**Conclusão:** a afirmação é FALSA.
+
+#### item c {-}
+
+Considerando a o intervalo de confiança para a média como $[\bar{x} - s; \bar{x} + s]$, temos que a verdadeira média para o grupo com atividade intensa está entre 69,1 e 90,1 e, para o segundo grupo, entre 63,5 e 82,7. Como os intervalos não são disjuntos, não é possível afirmar que há diferença entre as médias. 
+
+**Conclusão:** a afirmativa é VERDADEIRA.
+
+#### item d {-}
+
+Como a mediana é 82, só podemos concluir que pelo menos metade dos estudantes tem pulsação maior do que ou igual a 82.
+
+**Conclusão:** o item é FALSO.
+
 :::
 
 ### Exercício 3.18 {- #exr3-18}

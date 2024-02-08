@@ -318,6 +318,8 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
 \item
   Complementar a análise do \protect\hyperlink{exr3-12}{Exercício 3.12};
 \item
+  Reavaliar questão 3.17. Talvez a questão não esteja muito bem formulada;
+\item
 \end{itemize}
 
 \mainmatter
@@ -5843,6 +5845,11 @@ Avaliando o desvio padrão, e o intervalo interquartil, percebemos que as notas 
 Considere o seguinte resumo descritivo da pulsação de estudantes com atividade fisica intensa e fraca:
 
 \begin{longtable}[]{@{}lcccccccc@{}}
+\caption{\textbf{Tabela 3.19:} Pulsação de estudantes durante atividade física}\tabularnewline
+\toprule\noalign{}
+Atividade & N & Media & Mediana & DP & Min & Max & Q1 & Q3 \\
+\midrule\noalign{}
+\endfirsthead
 \toprule\noalign{}
 Atividade & N & Media & Mediana & DP & Min & Max & Q1 & Q3 \\
 \midrule\noalign{}
@@ -5869,7 +5876,41 @@ Indique se as seguintes afirmações estão corretas, justificando a sua respost
 \end{enumerate}
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{item-a}{%
+\subsubsection*{Item a}\label{item-a}}
+\addcontentsline{toc}{subsubsection}{Item a}
+
+A tabela nos informa que o primeiro quartil entre o grupo que praticou atividade intensa é 70, logo, espera-se que 25\% dos estudantes neste grupo tiveram pulsação inferior a 70 e não 5\% como alegado no enunciado.
+Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera-se que pelo menos a metade tenha pulsação menor do que 70 (note contudo, que podem haver mais o que 50\% dos estudantes!).
+
+\textbf{Conclusão:} o item é FALSO.
+
+\hypertarget{item-b}{%
+\subsubsection*{Item b}\label{item-b}}
+\addcontentsline{toc}{subsubsection}{Item b}
+
+Considerando que o primeiro quartil vale 70 para o grupo de estudantes com atividade intensa e 63 para o grupo com atividade fraca, sabemos que pelo menos 25\% dois estudantes de cada grupo estão abaixo desses valores.
+
+\textbf{Conclusão:} a afirmação é FALSA.
+
+\hypertarget{item-c}{%
+\subsubsection*{item c}\label{item-c}}
+\addcontentsline{toc}{subsubsection}{item c}
+
+Considerando a o intervalo de confiança para a média como \([\bar{x} - s; \bar{x} + s]\), temos que a verdadeira média para o grupo com atividade intensa está entre 69,1 e 90,1 e, para o segundo grupo, entre 63,5 e 82,7. Como os intervalos não são disjuntos, não é possível afirmar que há diferença entre as médias.
+
+\textbf{Conclusão:} a afirmativa é VERDADEIRA.
+
+\hypertarget{item-d}{%
+\subsubsection*{item d}\label{item-d}}
+\addcontentsline{toc}{subsubsection}{item d}
+
+Como a mediana é 82, só podemos concluir que pelo menos metade dos estudantes tem pulsação maior do que ou igual a 82.
+
+\textbf{Conclusão:} o item é FALSO.
+
 \end{solution}
 
 \hypertarget{exr3-18}{%
