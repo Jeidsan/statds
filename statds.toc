@@ -90,18 +90,22 @@
 \contentsline {subsubsection}{Item a}{148}{section*.57}%
 \contentsline {subsubsection}{Item b}{148}{section*.58}%
 \contentsline {subsection}{Exercício 3.21}{149}{section*.59}%
-\contentsline {subsection}{Exercício 3.22}{149}{section*.60}%
-\contentsline {subsection}{Exercício 3.23}{150}{section*.61}%
-\contentsline {subsection}{Exercício 3.24}{150}{section*.62}%
-\contentsline {subsection}{Exercício 3.25}{151}{section*.63}%
-\contentsline {subsection}{Exercício 3.26}{151}{section*.64}%
-\contentsline {subsection}{Exercício 3.27}{152}{section*.65}%
-\contentsline {subsection}{Exercício 3.28}{152}{section*.66}%
-\contentsline {subsection}{Exercício 3.29}{152}{section*.67}%
-\contentsline {subsection}{Exercício 3.30}{153}{section*.68}%
-\contentsline {subsection}{Exercício 3.31}{153}{section*.69}%
-\contentsline {subsection}{Exercício 3.32}{153}{section*.70}%
-\contentsline {subsection}{Exercício 3.33}{153}{section*.71}%
+\contentsline {subsubsection}{A distância interquartis é 5}{149}{section*.60}%
+\contentsline {subsubsection}{O valor 32 seria considerado \emph {outlier} segundo o critério utilizado na construção do \emph {boxplot}}{150}{section*.61}%
+\contentsline {subsubsection}{A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior}{150}{section*.62}%
+\contentsline {subsubsection}{O valor mínimo é maior do que zero}{150}{section*.63}%
+\contentsline {subsection}{Exercício 3.22}{150}{section*.64}%
+\contentsline {subsection}{Exercício 3.23}{150}{section*.65}%
+\contentsline {subsection}{Exercício 3.24}{151}{section*.66}%
+\contentsline {subsection}{Exercício 3.25}{151}{section*.67}%
+\contentsline {subsection}{Exercício 3.26}{152}{section*.68}%
+\contentsline {subsection}{Exercício 3.27}{152}{section*.69}%
+\contentsline {subsection}{Exercício 3.28}{153}{section*.70}%
+\contentsline {subsection}{Exercício 3.29}{153}{section*.71}%
+\contentsline {subsection}{Exercício 3.30}{153}{section*.72}%
+\contentsline {subsection}{Exercício 3.31}{153}{section*.73}%
+\contentsline {subsection}{Exercício 3.32}{154}{section*.74}%
+\contentsline {subsection}{Exercício 3.33}{154}{section*.75}%
 \contentsline {chapter}{\numberline {4}Análise de dados de duas variáveis}{155}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{155}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Duas variáveis qualitativas}{155}{section.4.2}%
@@ -212,4 +216,4 @@
 \contentsline {section}{\numberline {C.4}Cálculo de erros padrões}{185}{section.C.4}%
 \contentsline {section}{\numberline {C.5}O algoritmo para dados aumentados}{185}{section.C.5}%
 \contentsline {section}{\numberline {C.6}Exercícios}{185}{section.C.6}%
-\contentsline {fm}{Bibliografia}{187}{appendix*.72}%
+\contentsline {fm}{Bibliografia}{187}{appendix*.76}%

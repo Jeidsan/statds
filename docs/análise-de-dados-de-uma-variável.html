@@ -4727,7 +4727,7 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 <span id="cb247-16"><a href="análise-de-dados-de-uma-variável.html#cb247-16" tabindex="-1"></a>    tema</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="statds_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
-<p>Como a dispersão é muito pequena, os valores estão super concentrados ao redor da média, neste caso, a probabilidade de o salário ser menor do que 5000 é quase nula, tornndo a emprea B mais atrativa.</p>
+<p>Como a dispersão é muito pequena, os valores estão super concentrados ao redor da média, neste caso, a probabilidade de o salário ser menor do que 5000 é quase nula, tornando a emprea B mais atrativa.</p>
 </div>
 </div>
 </div>
@@ -4737,13 +4737,29 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 <p>Num conjunto de dados, o primeiro quartil é 10, a mediana é 15 e o terceiro quartil é 20. Indique quais das seguintes afirmativas são verdadeiras, justificando sua resposta:</p>
 <ol style="list-style-type: lower-alpha">
 <li>A distância interquartis é 5.</li>
-<li>O valor 32 seria considerado outlier segundo o critério utilizado na construção do boxplot.</li>
+<li>O valor 32 seria considerado <em>outlier</em> segundo o critério utilizado na construção do <em>boxplot</em>.</li>
 <li>A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior.</li>
 <li>O valor mínimo é maior do que zero.</li>
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-30" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-30" class="solution"><em>Solução</em>. </span></p>
+<div id="a-distância-interquartis-é-5" class="section level4 unnumbered hasAnchor">
+<h4>A distância interquartis é 5<a href="análise-de-dados-de-uma-variável.html#a-distância-interquartis-é-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A afirmação é falsa, pois a distância interquartil é dada por <span class="math inline">\(d_Q = Q_3 - Q_1\)</span>, logo, para o nosso exemplo, <span class="math inline">\(d_Q = 20 - 10 = 10\)</span>.</p>
+</div>
+<div id="o-valor-32-seria-considerado-outlier-segundo-o-critério-utilizado-na-construção-do-boxplot" class="section level4 unnumbered hasAnchor">
+<h4>O valor 32 seria considerado <em>outlier</em> segundo o critério utilizado na construção do <em>boxplot</em><a href="análise-de-dados-de-uma-variável.html#o-valor-32-seria-considerado-outlier-segundo-o-critério-utilizado-na-construção-do-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Os outliers são aqueles que distam mais do que <span class="math inline">\(1,5 \cdot d_Q\)</span> dos quartis 1 e 3. Dessa forma, seria considerados <em>outliers</em> os valores abaixo de -5 (<span class="math inline">\(Q_1 - 1,5 \cdot d_q\)</span>) ou acima de 35 (<span class="math inline">\(Q_3 + 1,5 \cdot d_Q\)</span>), tornando a afirmação é falsa.</p>
+</div>
+<div id="a-mediana-ficaria-alterada-de-2-unidades-se-um-ponto-com-valor-acima-do-terceiro-quartil-fosse-substituído-por-outro-2-vezes-maior" class="section level4 unnumbered hasAnchor">
+<h4>A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior<a href="análise-de-dados-de-uma-variável.html#a-mediana-ficaria-alterada-de-2-unidades-se-um-ponto-com-valor-acima-do-terceiro-quartil-fosse-substituído-por-outro-2-vezes-maior" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Como a mediana divide o conjunto em partes de igual tamanho, substituir valores acima da mediana por outros maiores não muda o seu valor. A afirmação é, então, uma falsidade.</p>
+</div>
+<div id="o-valor-mínimo-é-maior-do-que-zero" class="section level4 unnumbered hasAnchor">
+<h4>O valor mínimo é maior do que zero<a href="análise-de-dados-de-uma-variável.html#o-valor-mínimo-é-maior-do-que-zero" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Não há como afirmar!</p>
+</div>
 </div>
 </div>
 <div id="exr3-22" class="section level3 unnumbered hasAnchor">

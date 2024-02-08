@@ -6093,7 +6093,7 @@ Para melhor exemplificar, vamos simular uma distribuição com média 7000 e des
 
 \includegraphics{statds_files/figure-latex/unnamed-chunk-152-1.pdf}
 
-Como a dispersão é muito pequena, os valores estão super concentrados ao redor da média, neste caso, a probabilidade de o salário ser menor do que 5000 é quase nula, tornndo a emprea B mais atrativa.
+Como a dispersão é muito pequena, os valores estão super concentrados ao redor da média, neste caso, a probabilidade de o salário ser menor do que 5000 é quase nula, tornando a emprea B mais atrativa.
 
 \end{solution}
 
@@ -6109,7 +6109,7 @@ Num conjunto de dados, o primeiro quartil é 10, a mediana é 15 e o terceiro qu
 \item
   A distância interquartis é 5.
 \item
-  O valor 32 seria considerado outlier segundo o critério utilizado na construção do boxplot.
+  O valor 32 seria considerado \emph{outlier} segundo o critério utilizado na construção do \emph{boxplot}.
 \item
   A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior.
 \item
@@ -6117,7 +6117,32 @@ Num conjunto de dados, o primeiro quartil é 10, a mediana é 15 e o terceiro qu
 \end{enumerate}
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{a-distuxe2ncia-interquartis-uxe9-5}{%
+\subsubsection*{A distância interquartis é 5}\label{a-distuxe2ncia-interquartis-uxe9-5}}
+\addcontentsline{toc}{subsubsection}{A distância interquartis é 5}
+
+A afirmação é falsa, pois a distância interquartil é dada por \(d_Q = Q_3 - Q_1\), logo, para o nosso exemplo, \(d_Q = 20 - 10 = 10\).
+
+\hypertarget{o-valor-32-seria-considerado-outlier-segundo-o-crituxe9rio-utilizado-na-construuxe7uxe3o-do-boxplot}{%
+\subsubsection*{\texorpdfstring{O valor 32 seria considerado \emph{outlier} segundo o critério utilizado na construção do \emph{boxplot}}{O valor 32 seria considerado outlier segundo o critério utilizado na construção do boxplot}}\label{o-valor-32-seria-considerado-outlier-segundo-o-crituxe9rio-utilizado-na-construuxe7uxe3o-do-boxplot}}
+\addcontentsline{toc}{subsubsection}{O valor 32 seria considerado \emph{outlier} segundo o critério utilizado na construção do \emph{boxplot}}
+
+Os outliers são aqueles que distam mais do que \(1,5 \cdot d_Q\) dos quartis 1 e 3. Dessa forma, seria considerados \emph{outliers} os valores abaixo de -5 (\(Q_1 - 1,5 \cdot d_q\)) ou acima de 35 (\(Q_3 + 1,5 \cdot d_Q\)), tornando a afirmação é falsa.
+
+\hypertarget{a-mediana-ficaria-alterada-de-2-unidades-se-um-ponto-com-valor-acima-do-terceiro-quartil-fosse-substituuxeddo-por-outro-2-vezes-maior}{%
+\subsubsection*{A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior}\label{a-mediana-ficaria-alterada-de-2-unidades-se-um-ponto-com-valor-acima-do-terceiro-quartil-fosse-substituuxeddo-por-outro-2-vezes-maior}}
+\addcontentsline{toc}{subsubsection}{A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior}
+
+Como a mediana divide o conjunto em partes de igual tamanho, substituir valores acima da mediana por outros maiores não muda o seu valor. A afirmação é, então, uma falsidade.
+
+\hypertarget{o-valor-muxednimo-uxe9-maior-do-que-zero}{%
+\subsubsection*{O valor mínimo é maior do que zero}\label{o-valor-muxednimo-uxe9-maior-do-que-zero}}
+\addcontentsline{toc}{subsubsection}{O valor mínimo é maior do que zero}
+
+Não há como afirmar!
+
 \end{solution}
 
 \hypertarget{exr3-22}{%

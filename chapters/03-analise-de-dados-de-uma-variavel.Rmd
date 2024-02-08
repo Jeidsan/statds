@@ -2943,13 +2943,27 @@ Como a dispersão é muito pequena, os valores estão super concentrados ao redo
 Num conjunto de dados, o primeiro quartil é 10, a mediana é 15 e o terceiro quartil é 20. Indique quais das seguintes afirmativas são verdadeiras, justificando sua resposta:
 
 a) A distância interquartis é 5.
-b) O valor 32 seria considerado outlier segundo o critério utilizado na construção do boxplot.
+b) O valor 32 seria considerado *outlier* segundo o critério utilizado na construção do *boxplot*.
 c) A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior. 
 d) O valor mínimo é maior do que zero.
 :::
 
 :::{.solution}
-x
+#### A distância interquartis é 5 {-}
+
+A afirmação é falsa, pois a distância interquartil é dada por $d_Q = Q_3 - Q_1$, logo, para o nosso exemplo, $d_Q = 20 - 10 = 10$.
+
+#### O valor 32 seria considerado *outlier* segundo o critério utilizado na construção do *boxplot* {-}
+
+Os outliers são aqueles que distam mais do que $1,5 \cdot d_Q$ dos quartis 1 e 3. Dessa forma, seria considerados *outliers* os valores abaixo de -5 ($Q_1 - 1,5 \cdot d_q$) ou acima de 35 ($Q_3 + 1,5 \cdot d_Q$), tornando a afirmação é falsa.
+
+#### A mediana ficaria alterada de 2 unidades se um ponto com valor acima do terceiro quartil fosse substituído por outro 2 vezes maior {-}
+
+Como a mediana divide o conjunto em partes de igual tamanho, substituir valores acima da mediana por outros maiores não muda o seu valor. A afirmação é, então, uma falsidade.
+
+#### O valor mínimo é maior do que zero {-}
+
+Não há como afirmar!
 :::
 
 ### Exercício 3.22 {- #exr3-22}
