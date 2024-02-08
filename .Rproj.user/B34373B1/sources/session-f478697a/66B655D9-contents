@@ -2860,7 +2860,40 @@ d) As temperaturas das regiões R1 e R2 têm mesma média e variância diferente
 :::
 
 :::{.solution}
-x
+Vamos iniciar a análise considerando o ponto médio e a frequência das classes:
+
+```{r}
+r1 <- c(10,10,10,10,10,10,12,12,12,12,14,16,16,16,16,18,18,18,18,18,18)
+r2 <- c(10,10,10,10,12,12,12,12,14,14,14,14,14,16,16,16,16,18,18,18,18)
+
+mean(r1)
+sd(r1)
+mean(r2)
+sd(r2)
+```
+#### Item a {-}
+
+Temos a mesma média (14ºC), porém desvios padrão diferentes (3,35 para R1 e 2,83 para R2).
+
+**Conclusão:** A afirmação é FALSA.
+
+#### Item b {-}
+
+Podemos calcular o desvio padrão considerando o ponto médio e as frequências das classes.
+
+**Conclusão:** A afirmativa é falsa.
+
+#### Item c {-}
+
+Conforme calculamos acima, as médias são iguais.
+
+**Conclusão:** A afirmativa é falsa.
+
+#### Item d {-}
+
+Conforme calculamos acima, as medias são iguais, mas os desvios são diferentes.
+
+**Conclusão:** A afirmação é VERDADEIRA.
 :::
 
 ### Exercício 3.20 {- #exr3-20}
@@ -2873,7 +2906,35 @@ b) Suponha que na companhia B a média dos salários seja 7000 unidades, a vari�
 :::
 
 :::{.solution}
-x
+#### Item a {-}
+
+Como o terceiro quartil é maior do que ou igual a 75% dos valores, a probabilidade de ganhar menos do que 5000 é de, pelo menos 75%. Logo é mais provável que o salário não ultrapasse este valor.
+
+#### Item b {-}
+
+Para melhor exemplificar, vamos simular uma distribuição com média 7000 e desvio padrão igual a 1/1000.
+
+```{r}
+salario <- tibble(
+  x = rnorm(1000, mean = 7000, sd = 1/1000)
+)
+
+salario %>%
+  ggplot(aes(x = x)) +
+    geom_histogram(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    labs(
+      title = bquote(bold("Figura 3.76:")~"Distribuição dos salários na empresa B"),
+      x = "Salário",
+      y = "Frequência"
+    ) +
+    tema
+```
+
+Como a dispersão é muito pequena, os valores estão super concentrados ao redor da média, neste caso, a probabilidade de o salário ser menor do que 5000 é quase nula, tornando a emprea B mais atrativa.
+
 :::
 
 ### Exercício 3.21 {- #exr3-21}

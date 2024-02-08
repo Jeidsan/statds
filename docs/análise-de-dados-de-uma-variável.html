@@ -4657,7 +4657,38 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-28" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-28" class="solution"><em>Solução</em>. </span>Vamos iniciar a análise considerando o ponto médio e a frequência das classes:</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="análise-de-dados-de-uma-variável.html#cb239-1" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">18</span>,<span class="dv">18</span>,<span class="dv">18</span>,<span class="dv">18</span>,<span class="dv">18</span>)</span>
+<span id="cb239-2"><a href="análise-de-dados-de-uma-variável.html#cb239-2" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">18</span>,<span class="dv">18</span>,<span class="dv">18</span>)</span>
+<span id="cb239-3"><a href="análise-de-dados-de-uma-variável.html#cb239-3" tabindex="-1"></a></span>
+<span id="cb239-4"><a href="análise-de-dados-de-uma-variável.html#cb239-4" tabindex="-1"></a><span class="fu">mean</span>(r1)</span></code></pre></div>
+<pre><code>## [1] 14</code></pre>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="análise-de-dados-de-uma-variável.html#cb241-1" tabindex="-1"></a><span class="fu">sd</span>(r1)</span></code></pre></div>
+<pre><code>## [1] 3.34664</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="análise-de-dados-de-uma-variável.html#cb243-1" tabindex="-1"></a><span class="fu">mean</span>(r2)</span></code></pre></div>
+<pre><code>## [1] 14</code></pre>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="análise-de-dados-de-uma-variável.html#cb245-1" tabindex="-1"></a><span class="fu">sd</span>(r2)</span></code></pre></div>
+<pre><code>## [1] 2.828427</code></pre>
+<div id="item-a-1" class="section level4 unnumbered hasAnchor">
+<h4>Item a<a href="análise-de-dados-de-uma-variável.html#item-a-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Temos a mesma média (14ºC), porém desvios padrão diferentes (3,35 para R1 e 2,83 para R2).</p>
+<p><strong>Conclusão:</strong> A afirmação é FALSA.</p>
+</div>
+<div id="item-b-1" class="section level4 unnumbered hasAnchor">
+<h4>Item b<a href="análise-de-dados-de-uma-variável.html#item-b-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Podemos calcular o desvio padrão considerando o ponto médio e as frequências das classes.</p>
+<p><strong>Conclusão:</strong> A afirmativa é falsa.</p>
+</div>
+<div id="item-c-1" class="section level4 unnumbered hasAnchor">
+<h4>Item c<a href="análise-de-dados-de-uma-variável.html#item-c-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Conforme calculamos acima, as médias são iguais.</p>
+<p><strong>Conclusão:</strong> A afirmativa é falsa.</p>
+</div>
+<div id="item-d-1" class="section level4 unnumbered hasAnchor">
+<h4>Item d<a href="análise-de-dados-de-uma-variável.html#item-d-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Conforme calculamos acima, as medias são iguais, mas os desvios são diferentes.</p>
+<p><strong>Conclusão:</strong> A afirmação é VERDADEIRA.</p>
+</div>
 </div>
 </div>
 <div id="exr3-20" class="section level3 unnumbered hasAnchor">
@@ -4670,7 +4701,34 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-29" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-29" class="solution"><em>Solução</em>. </span></p>
+<div id="item-a-2" class="section level4 unnumbered hasAnchor">
+<h4>Item a<a href="análise-de-dados-de-uma-variável.html#item-a-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Como o terceiro quartil é maior do que ou igual a 75% dos valores, a probabilidade de ganhar menos do que 5000 é de, pelo menos 75%. Logo é mais provável que o salário não ultrapasse este valor.</p>
+</div>
+<div id="item-b-2" class="section level4 unnumbered hasAnchor">
+<h4>Item b<a href="análise-de-dados-de-uma-variável.html#item-b-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para melhor exemplificar, vamos simular uma distribuição com média 7000 e desvio padrão igual a 1/1000.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="análise-de-dados-de-uma-variável.html#cb247-1" tabindex="-1"></a>salario <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb247-2"><a href="análise-de-dados-de-uma-variável.html#cb247-2" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">7000</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb247-3"><a href="análise-de-dados-de-uma-variável.html#cb247-3" tabindex="-1"></a>)</span>
+<span id="cb247-4"><a href="análise-de-dados-de-uma-variável.html#cb247-4" tabindex="-1"></a></span>
+<span id="cb247-5"><a href="análise-de-dados-de-uma-variável.html#cb247-5" tabindex="-1"></a>salario <span class="sc">%&gt;%</span></span>
+<span id="cb247-6"><a href="análise-de-dados-de-uma-variável.html#cb247-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb247-7"><a href="análise-de-dados-de-uma-variável.html#cb247-7" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb247-8"><a href="análise-de-dados-de-uma-variável.html#cb247-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb247-9"><a href="análise-de-dados-de-uma-variável.html#cb247-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb247-10"><a href="análise-de-dados-de-uma-variável.html#cb247-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb247-11"><a href="análise-de-dados-de-uma-variável.html#cb247-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb247-12"><a href="análise-de-dados-de-uma-variável.html#cb247-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 3.76:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Distribuição dos salários na empresa B&quot;</span>),</span>
+<span id="cb247-13"><a href="análise-de-dados-de-uma-variável.html#cb247-13" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Salário&quot;</span>,</span>
+<span id="cb247-14"><a href="análise-de-dados-de-uma-variável.html#cb247-14" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Frequência&quot;</span></span>
+<span id="cb247-15"><a href="análise-de-dados-de-uma-variável.html#cb247-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb247-16"><a href="análise-de-dados-de-uma-variável.html#cb247-16" tabindex="-1"></a>    tema</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="statds_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
+<p>Como a dispersão é muito pequena, os valores estão super concentrados ao redor da média, neste caso, a probabilidade de o salário ser menor do que 5000 é quase nula, tornndo a emprea B mais atrativa.</p>
+</div>
 </div>
 </div>
 <div id="exr3-21" class="section level3 unnumbered hasAnchor">
