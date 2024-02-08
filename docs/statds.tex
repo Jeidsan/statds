@@ -5654,7 +5654,186 @@ As notas finais de um curso de Estatistica foram: 7, 5, 4, 5, 6, 3, 8, 4, 5, 4, 
 \end{enumerate}
 
 \begin{solution}
-x
+Vamos organizar as notas em um data frame e incluir o status (Aprovado ou Reprovado) aos estudantes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{estatistica }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+                  \AttributeTok{nota =} \FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{              ) }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{mutate}\NormalTok{(}
+                \AttributeTok{status =} \FunctionTok{ifelse}\NormalTok{(nota }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{, }\StringTok{"Reprovado"}\NormalTok{, }\StringTok{"Aprovado"}\NormalTok{)}
+\NormalTok{              )}
+
+\FunctionTok{head}\NormalTok{(estatistica)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##    nota status   
+##   <dbl> <chr>    
+## 1     7 Aprovado 
+## 2     5 Aprovado 
+## 3     4 Reprovado
+## 4     5 Aprovado 
+## 5     6 Aprovado 
+## 6     3 Reprovado
+\end{verbatim}
+
+Agora podemos calcular as medidas de resumo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{estatistica}\SpecialCharTok{$}\NormalTok{nota }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summ}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.16:** Medidas de resumo para as notas em estatística"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lc@{}}
+\caption{\textbf{Tabela 3.16:} Medidas de resumo para as notas em estatística}\tabularnewline
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n & 25,00 \\
+Mínimo & 3,00 \\
+Q1 & 4,00 \\
+Mediana & 5,00 \\
+Q3 & 6,00 \\
+Máximo & 8,00 \\
+Média & 5,12 \\
+Desvio Padrão & 1,33 \\
+Distância Interquartil & 2,00 \\
+\end{longtable}
+
+Vamos agora comparar os grupos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{apr }\OtherTok{\textless{}{-}}\NormalTok{ estatistica }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(status }\SpecialCharTok{==} \StringTok{"Aprovado"}\NormalTok{)}
+\NormalTok{rep }\OtherTok{\textless{}{-}}\NormalTok{ estatistica }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(status }\SpecialCharTok{==} \StringTok{"Reprovado"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+A tabela a seguir mostra um resumo dos aprovados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{apr}\SpecialCharTok{$}\NormalTok{nota }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summ}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.17:** Medidas de resumo para as notas dos aprovados em estatística"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lc@{}}
+\caption{\textbf{Tabela 3.17:} Medidas de resumo para as notas dos aprovados em estatística}\tabularnewline
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n & 16,00 \\
+Mínimo & 5,00 \\
+Q1 & 5,00 \\
+Mediana & 6,00 \\
+Q3 & 6,00 \\
+Máximo & 8,00 \\
+Média & 5,88 \\
+Desvio Padrão & 1,02 \\
+Distância Interquartil & 1,00 \\
+\end{longtable}
+
+E a próxima tabela exibe um resumo para os reprovados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rep}\SpecialCharTok{$}\NormalTok{nota }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summ}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 3.18:** Medidas de resumo para as notas dos reprovados em estatística"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lc@{}}
+\caption{\textbf{Tabela 3.18:} Medidas de resumo para as notas dos reprovados em estatística}\tabularnewline
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n & 9,00 \\
+Mínimo & 3,00 \\
+Q1 & 4,00 \\
+Mediana & 4,00 \\
+Q3 & 4,00 \\
+Máximo & 4,00 \\
+Média & 3,78 \\
+Desvio Padrão & 0,44 \\
+Distância Interquartil & 0,00 \\
+\end{longtable}
+
+Avaliando o desvio padrão, e o intervalo interquartil, percebemos que as notas dos reprovados são muito mais uniformes, isto é, apresentam menor variação. O mesmo pode ser constatado no gráfico a seguir.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{estatistica }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ status, }\AttributeTok{y =}\NormalTok{ nota)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{,}
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 3.75:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Distribuição das notas em Estatística"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Resultado Final"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Nota"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-150-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-17}{%

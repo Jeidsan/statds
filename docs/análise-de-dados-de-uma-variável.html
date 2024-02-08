@@ -4338,7 +4338,219 @@ Para calcular o quantil de ordem <span class="math inline">\(p\)</span>, vamos s
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-25" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-25" class="solution"><em>Solução</em>. </span>Vamos organizar as notas em um data frame e incluir o status (Aprovado ou Reprovado) aos estudantes.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="análise-de-dados-de-uma-variável.html#cb232-1" tabindex="-1"></a>estatistica <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb232-2"><a href="análise-de-dados-de-uma-variável.html#cb232-2" tabindex="-1"></a>                  <span class="at">nota =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb232-3"><a href="análise-de-dados-de-uma-variável.html#cb232-3" tabindex="-1"></a>              ) <span class="sc">%&gt;%</span></span>
+<span id="cb232-4"><a href="análise-de-dados-de-uma-variável.html#cb232-4" tabindex="-1"></a>              <span class="fu">mutate</span>(</span>
+<span id="cb232-5"><a href="análise-de-dados-de-uma-variável.html#cb232-5" tabindex="-1"></a>                <span class="at">status =</span> <span class="fu">ifelse</span>(nota <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">&quot;Reprovado&quot;</span>, <span class="st">&quot;Aprovado&quot;</span>)</span>
+<span id="cb232-6"><a href="análise-de-dados-de-uma-variável.html#cb232-6" tabindex="-1"></a>              )</span>
+<span id="cb232-7"><a href="análise-de-dados-de-uma-variável.html#cb232-7" tabindex="-1"></a></span>
+<span id="cb232-8"><a href="análise-de-dados-de-uma-variável.html#cb232-8" tabindex="-1"></a><span class="fu">head</span>(estatistica)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##    nota status   
+##   &lt;dbl&gt; &lt;chr&gt;    
+## 1     7 Aprovado 
+## 2     5 Aprovado 
+## 3     4 Reprovado
+## 4     5 Aprovado 
+## 5     6 Aprovado 
+## 6     3 Reprovado</code></pre>
+<p>Agora podemos calcular as medidas de resumo:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="análise-de-dados-de-uma-variável.html#cb234-1" tabindex="-1"></a>estatistica<span class="sc">$</span>nota <span class="sc">%&gt;%</span></span>
+<span id="cb234-2"><a href="análise-de-dados-de-uma-variável.html#cb234-2" tabindex="-1"></a>  <span class="fu">summ</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb234-3"><a href="análise-de-dados-de-uma-variável.html#cb234-3" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb234-4"><a href="análise-de-dados-de-uma-variável.html#cb234-4" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb234-5"><a href="análise-de-dados-de-uma-variável.html#cb234-5" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.16:** Medidas de resumo para as notas em estatística&quot;</span>,</span>
+<span id="cb234-6"><a href="análise-de-dados-de-uma-variável.html#cb234-6" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb234-7"><a href="análise-de-dados-de-uma-variável.html#cb234-7" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb234-8"><a href="análise-de-dados-de-uma-variável.html#cb234-8" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb234-9"><a href="análise-de-dados-de-uma-variável.html#cb234-9" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb234-10"><a href="análise-de-dados-de-uma-variável.html#cb234-10" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 3.16:</strong> Medidas de resumo para as notas em estatística</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">n</td>
+<td align="center">25,00</td>
+</tr>
+<tr class="even">
+<td align="left">Mínimo</td>
+<td align="center">3,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Q1</td>
+<td align="center">4,00</td>
+</tr>
+<tr class="even">
+<td align="left">Mediana</td>
+<td align="center">5,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Q3</td>
+<td align="center">6,00</td>
+</tr>
+<tr class="even">
+<td align="left">Máximo</td>
+<td align="center">8,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Média</td>
+<td align="center">5,12</td>
+</tr>
+<tr class="even">
+<td align="left">Desvio Padrão</td>
+<td align="center">1,33</td>
+</tr>
+<tr class="odd">
+<td align="left">Distância Interquartil</td>
+<td align="center">2,00</td>
+</tr>
+</tbody>
+</table>
+<p>Vamos agora comparar os grupos:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="análise-de-dados-de-uma-variável.html#cb235-1" tabindex="-1"></a>apr <span class="ot">&lt;-</span> estatistica <span class="sc">%&gt;%</span> <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">&quot;Aprovado&quot;</span>)</span>
+<span id="cb235-2"><a href="análise-de-dados-de-uma-variável.html#cb235-2" tabindex="-1"></a>rep <span class="ot">&lt;-</span> estatistica <span class="sc">%&gt;%</span> <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">&quot;Reprovado&quot;</span>)</span></code></pre></div>
+<p>A tabela a seguir mostra um resumo dos aprovados:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="análise-de-dados-de-uma-variável.html#cb236-1" tabindex="-1"></a>apr<span class="sc">$</span>nota <span class="sc">%&gt;%</span></span>
+<span id="cb236-2"><a href="análise-de-dados-de-uma-variável.html#cb236-2" tabindex="-1"></a>  <span class="fu">summ</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb236-3"><a href="análise-de-dados-de-uma-variável.html#cb236-3" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb236-4"><a href="análise-de-dados-de-uma-variável.html#cb236-4" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb236-5"><a href="análise-de-dados-de-uma-variável.html#cb236-5" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.17:** Medidas de resumo para as notas dos aprovados em estatística&quot;</span>,</span>
+<span id="cb236-6"><a href="análise-de-dados-de-uma-variável.html#cb236-6" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb236-7"><a href="análise-de-dados-de-uma-variável.html#cb236-7" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb236-8"><a href="análise-de-dados-de-uma-variável.html#cb236-8" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb236-9"><a href="análise-de-dados-de-uma-variável.html#cb236-9" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb236-10"><a href="análise-de-dados-de-uma-variável.html#cb236-10" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 3.17:</strong> Medidas de resumo para as notas dos aprovados em estatística</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">n</td>
+<td align="center">16,00</td>
+</tr>
+<tr class="even">
+<td align="left">Mínimo</td>
+<td align="center">5,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Q1</td>
+<td align="center">5,00</td>
+</tr>
+<tr class="even">
+<td align="left">Mediana</td>
+<td align="center">6,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Q3</td>
+<td align="center">6,00</td>
+</tr>
+<tr class="even">
+<td align="left">Máximo</td>
+<td align="center">8,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Média</td>
+<td align="center">5,88</td>
+</tr>
+<tr class="even">
+<td align="left">Desvio Padrão</td>
+<td align="center">1,02</td>
+</tr>
+<tr class="odd">
+<td align="left">Distância Interquartil</td>
+<td align="center">1,00</td>
+</tr>
+</tbody>
+</table>
+<p>E a próxima tabela exibe um resumo para os reprovados:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="análise-de-dados-de-uma-variável.html#cb237-1" tabindex="-1"></a>rep<span class="sc">$</span>nota <span class="sc">%&gt;%</span></span>
+<span id="cb237-2"><a href="análise-de-dados-de-uma-variável.html#cb237-2" tabindex="-1"></a>  <span class="fu">summ</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb237-3"><a href="análise-de-dados-de-uma-variável.html#cb237-3" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb237-4"><a href="análise-de-dados-de-uma-variável.html#cb237-4" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb237-5"><a href="análise-de-dados-de-uma-variável.html#cb237-5" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 3.18:** Medidas de resumo para as notas dos reprovados em estatística&quot;</span>,</span>
+<span id="cb237-6"><a href="análise-de-dados-de-uma-variável.html#cb237-6" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb237-7"><a href="análise-de-dados-de-uma-variável.html#cb237-7" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb237-8"><a href="análise-de-dados-de-uma-variável.html#cb237-8" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb237-9"><a href="análise-de-dados-de-uma-variável.html#cb237-9" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb237-10"><a href="análise-de-dados-de-uma-variável.html#cb237-10" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 3.18:</strong> Medidas de resumo para as notas dos reprovados em estatística</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">n</td>
+<td align="center">9,00</td>
+</tr>
+<tr class="even">
+<td align="left">Mínimo</td>
+<td align="center">3,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Q1</td>
+<td align="center">4,00</td>
+</tr>
+<tr class="even">
+<td align="left">Mediana</td>
+<td align="center">4,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Q3</td>
+<td align="center">4,00</td>
+</tr>
+<tr class="even">
+<td align="left">Máximo</td>
+<td align="center">4,00</td>
+</tr>
+<tr class="odd">
+<td align="left">Média</td>
+<td align="center">3,78</td>
+</tr>
+<tr class="even">
+<td align="left">Desvio Padrão</td>
+<td align="center">0,44</td>
+</tr>
+<tr class="odd">
+<td align="left">Distância Interquartil</td>
+<td align="center">0,00</td>
+</tr>
+</tbody>
+</table>
+<p>Avaliando o desvio padrão, e o intervalo interquartil, percebemos que as notas dos reprovados são muito mais uniformes, isto é, apresentam menor variação. O mesmo pode ser constatado no gráfico a seguir.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="análise-de-dados-de-uma-variável.html#cb238-1" tabindex="-1"></a>estatistica <span class="sc">%&gt;%</span></span>
+<span id="cb238-2"><a href="análise-de-dados-de-uma-variável.html#cb238-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> status, <span class="at">y =</span> nota)) <span class="sc">+</span></span>
+<span id="cb238-3"><a href="análise-de-dados-de-uma-variável.html#cb238-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(</span>
+<span id="cb238-4"><a href="análise-de-dados-de-uma-variável.html#cb238-4" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>,</span>
+<span id="cb238-5"><a href="análise-de-dados-de-uma-variável.html#cb238-5" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span></span>
+<span id="cb238-6"><a href="análise-de-dados-de-uma-variável.html#cb238-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb238-7"><a href="análise-de-dados-de-uma-variável.html#cb238-7" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb238-8"><a href="análise-de-dados-de-uma-variável.html#cb238-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb238-9"><a href="análise-de-dados-de-uma-variável.html#cb238-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb238-10"><a href="análise-de-dados-de-uma-variável.html#cb238-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb238-11"><a href="análise-de-dados-de-uma-variável.html#cb238-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb238-12"><a href="análise-de-dados-de-uma-variável.html#cb238-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 3.75:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Distribuição das notas em Estatística&quot;</span>),</span>
+<span id="cb238-13"><a href="análise-de-dados-de-uma-variável.html#cb238-13" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Resultado Final&quot;</span>,</span>
+<span id="cb238-14"><a href="análise-de-dados-de-uma-variável.html#cb238-14" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Nota&quot;</span></span>
+<span id="cb238-15"><a href="análise-de-dados-de-uma-variável.html#cb238-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb238-16"><a href="análise-de-dados-de-uma-variável.html#cb238-16" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 </div>
 </div>
 <div id="exr3-17" class="section level3 unnumbered hasAnchor">

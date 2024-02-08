@@ -2697,7 +2697,93 @@ b) Separe o conjunto de dados em dois grupos denominados **aprovados**, com nota
 :::
 
 :::{.solution}
-x
+
+Vamos organizar as notas em um data frame e incluir o status (Aprovado ou Reprovado) aos estudantes.
+
+```{r}
+estatistica <- tibble(
+                  nota = c(7, 5, 4, 5, 6, 3, 8, 4, 5, 4, 6, 4, 5, 6, 4, 6, 6, 3, 8, 4, 5, 4, 5, 5, 6)
+              ) %>%
+              mutate(
+                status = ifelse(nota < 5, "Reprovado", "Aprovado")
+              )
+
+head(estatistica)
+```
+
+Agora podemos calcular as medidas de resumo: 
+
+```{r}
+estatistica$nota %>%
+  summ() %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.16:** Medidas de resumo para as notas em estatística",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Vamos agora comparar os grupos:
+
+```{r}
+apr <- estatistica %>% filter(status == "Aprovado")
+rep <- estatistica %>% filter(status == "Reprovado")
+```
+
+A tabela a seguir mostra um resumo dos aprovados:
+
+```{r}
+apr$nota %>%
+  summ() %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.17:** Medidas de resumo para as notas dos aprovados em estatística",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+E a próxima tabela exibe um resumo para os reprovados:
+
+```{r}
+rep$nota %>%
+  summ() %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 3.18:** Medidas de resumo para as notas dos reprovados em estatística",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Avaliando o desvio padrão, e o intervalo interquartil, percebemos que as notas dos reprovados são muito mais uniformes, isto é, apresentam menor variação. O mesmo pode ser constatado no gráfico a seguir.
+
+```{r}
+estatistica %>%
+  ggplot(aes(x = status, y = nota)) +
+    stat_boxplot(
+      geom = "errorbar",
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey",
+      color = "grey30"
+    ) +
+    labs(
+      title = bquote(bold("Figura 3.75:")~"Distribuição das notas em Estatística"),
+      x = "Resultado Final",
+      y = "Nota"
+    ) +
+    tema
+```
+
 :::
 
 ### Exercício 3.17 {- #exr3-17}

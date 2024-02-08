@@ -1,0 +1,9 @@
+"0","estatistica %>%
+  filter(status == ""Aprovado"") %>%
+  mean(nota)
+"
+"2","Warning: argumento não é numérico nem lógico: retornando NA"
+"1","[1]"
+"1"," NA"
+"1","
+"
