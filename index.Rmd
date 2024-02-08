@@ -70,5 +70,6 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail *jeidsan
 - [Exercício 2.2](#exr2-2);
 - Revisar estrutura do [Exercício 3.5](#exr3-5);
 - Complementar a análise do [Exercício 3.12](#exr3-12);
-- Reavaliar questão 3.17. Talvez a questão não esteja muito bem formulada;
+- Reavaliar [Exercício 3.17](#exr3-17) - Questão mal formulada;
+- Reavaliar [Exercício 3.18](#exr3-18) - Alternativas não parecem conter a resposta correta;
 - 

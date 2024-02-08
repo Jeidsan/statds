@@ -2845,7 +2845,7 @@ d) B e C
 :::
 
 :::{.solution}
-x
+Analisando o gráfico, a correspondencia mais adequada seria A e D, que não está listada acima. 
 :::
 
 ### Exercício 3.19 {- #exr3-19}
