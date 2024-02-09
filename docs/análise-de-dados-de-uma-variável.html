@@ -5240,10 +5240,35 @@ s_V^2 &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}(V_i - \overline{V})^2 \\
 <div id="exr3-30" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 3.30<a href="análise-de-dados-de-uma-variável.html#exr3-30" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Considere os valores <span class="math inline">\(X_{1}, \cdots , X_{n}\)</span> de uma variável <span class="math inline">\(X\)</span>, com média <span class="math inline">\(\overline{X}\)</span> e desvio padrão <span class="math inline">\(S\)</span>. Mostre que a variável <span class="math inline">\(Z\)</span>, cujos valores são <span class="math inline">\(Z_{i} = (X_{i} - X) / S, \ i = 1, \cdots , n\)</span>, tem média 0 e desvio padrão 1.</p>
+<p>Considere os valores <span class="math inline">\(X_{1}, \cdots , X_{n}\)</span> de uma variável <span class="math inline">\(X\)</span>, com média <span class="math inline">\(\overline{X}\)</span> e desvio padrão <span class="math inline">\(S\)</span>. Mostre que a variável <span class="math inline">\(Z\)</span>, cujos valores são <span class="math inline">\(Z_{i} = (X_{i} - \overline{X}) / S, \ i = 1, \cdots , n\)</span>, tem média 0 e desvio padrão 1.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-39" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-39" class="solution"><em>Solução</em>. </span>Para a média da variável <span class="math inline">\(z\)</span>, temos:</p>
+<p><span class="math display">\[
+\begin{split}
+\overline{z} &amp; = \frac{1}{n} \cdot \sum \limits_{i = 1}^{n} z_i \\
+             &amp; = \frac{1}{n} \cdot \sum \limits_{i = 1}^{n} \left( \frac{x_i - \overline{x}}{s_x} \right) \\
+             &amp; = \frac{1}{n} \cdot \frac{1}{s_x} \cdot \sum \limits_{i = 1}^{n} \left( x_i - \overline{x} \right) \\
+             &amp; = \frac{1}{n} \cdot \frac{1}{s_x} \cdot \left[ \sum \limits_{i = 1}^{n} x_i - \sum \limits_{i = 1}^{n} \overline{x} \right] \\
+             &amp; = \frac{1}{n} \cdot \frac{1}{s_x} \cdot \left[ n \overline{x} - n \overline{x} \right] \\
+             &amp; = \frac{1}{n} \cdot \frac{1}{s_x} \cdot 0 \\
+             &amp; = 0
+\end{split}
+\]</span></p>
+<p>Para o desvio padrão de <span class="math inline">\(z\)</span>, temos:</p>
+<p><span class="math display">\[
+\begin{split}
+s_z^2 &amp; = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n} \left( z_i - \overline{z} \right) \\
+      &amp; = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n}z_i \\
+      &amp; = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n} \left( \frac{x_i - \overline{x}}{s_x} \right)^2 \\
+      &amp; = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n} \frac{\left(x_i - \overline{x}\right)^2}{s_x^2} \\
+      &amp; = \frac{1}{n - 1} \cdot \frac{1}{s_x^2} \cdot \sum \limits_{i = 1}^{n} \left(x_i - \overline{x}\right)^2 \\
+      &amp; = \frac{1}{s_x^2} \cdot \left[ \frac{1}{n - 1} \cdot  \sum \limits_{i = 1}^{n} \left(x_i - \overline{x}\right)^2 \right] \\
+      &amp; = \frac{1}{s_x^2} \cdot s_x^2 \\
+      &amp; = 1
+\end{split}
+\]</span></p>
+<p>Segue que <span class="math inline">\(s_z = 1\)</span>.</p>
 </div>
 </div>
 <div id="exr3-31" class="section level3 unnumbered hasAnchor">

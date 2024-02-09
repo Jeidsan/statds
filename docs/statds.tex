@@ -324,6 +324,7 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
 \item
   Reavaliar \protect\hyperlink{exr3-27}{Exercício 3.27};
 \item
+  \protect\hyperlink{exr3-29}{Exercício 3.29};
 \end{itemize}
 
 \mainmatter
@@ -6693,10 +6694,39 @@ x
 \subsection*{Exercício 3.30}\label{exr3-30}}
 \addcontentsline{toc}{subsection}{Exercício 3.30}
 
-Considere os valores \(X_{1}, \cdots , X_{n}\) de uma variável \(X\), com média \(\overline{X}\) e desvio padrão \(S\). Mostre que a variável \(Z\), cujos valores são \(Z_{i} = (X_{i} - X) / S, \ i = 1, \cdots , n\), tem média 0 e desvio padrão 1.
+Considere os valores \(X_{1}, \cdots , X_{n}\) de uma variável \(X\), com média \(\overline{X}\) e desvio padrão \(S\). Mostre que a variável \(Z\), cujos valores são \(Z_{i} = (X_{i} - \overline{X}) / S, \ i = 1, \cdots , n\), tem média 0 e desvio padrão 1.
 
 \begin{solution}
-x
+Para a média da variável \(z\), temos:
+
+\[
+\begin{split}
+\overline{z} & = \frac{1}{n} \cdot \sum \limits_{i = 1}^{n} z_i \\
+             & = \frac{1}{n} \cdot \sum \limits_{i = 1}^{n} \left( \frac{x_i - \overline{x}}{s_x} \right) \\
+             & = \frac{1}{n} \cdot \frac{1}{s_x} \cdot \sum \limits_{i = 1}^{n} \left( x_i - \overline{x} \right) \\
+             & = \frac{1}{n} \cdot \frac{1}{s_x} \cdot \left[ \sum \limits_{i = 1}^{n} x_i - \sum \limits_{i = 1}^{n} \overline{x} \right] \\
+             & = \frac{1}{n} \cdot \frac{1}{s_x} \cdot \left[ n \overline{x} - n \overline{x} \right] \\
+             & = \frac{1}{n} \cdot \frac{1}{s_x} \cdot 0 \\
+             & = 0
+\end{split}
+\]
+
+Para o desvio padrão de \(z\), temos:
+
+\[
+\begin{split}
+s_z^2 & = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n} \left( z_i - \overline{z} \right) \\
+      & = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n}z_i \\
+      & = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n} \left( \frac{x_i - \overline{x}}{s_x} \right)^2 \\
+      & = \frac{1}{n - 1} \cdot \sum \limits_{i = 1}^{n} \frac{\left(x_i - \overline{x}\right)^2}{s_x^2} \\
+      & = \frac{1}{n - 1} \cdot \frac{1}{s_x^2} \cdot \sum \limits_{i = 1}^{n} \left(x_i - \overline{x}\right)^2 \\
+      & = \frac{1}{s_x^2} \cdot \left[ \frac{1}{n - 1} \cdot  \sum \limits_{i = 1}^{n} \left(x_i - \overline{x}\right)^2 \right] \\
+      & = \frac{1}{s_x^2} \cdot s_x^2 \\
+      & = 1
+\end{split}
+\]
+
+Segue que \(s_z = 1\).
 \end{solution}
 
 \hypertarget{exr3-31}{%
