@@ -6349,6 +6349,11 @@ Somando as frequências relativas correspondentes, chegamos ao valor de 73,33\%,
 Num estudo na área de Oncologia, o número de vasos que alimentam o tumor está resumido na seguinte tabela.
 
 \begin{longtable}[]{@{}cc@{}}
+\caption{\textbf{Tabela 3.22:} Número de vasos alimentando um tumor}\tabularnewline
+\toprule\noalign{}
+Número de vasos & Frequência \\
+\midrule\noalign{}
+\endfirsthead
 \toprule\noalign{}
 Número de vasos & Frequência \\
 \midrule\noalign{}
@@ -6382,8 +6387,75 @@ Indique a resposta correta.
 \end{enumerate}
 
 \begin{solution}
-x
+
+Para facilitar a visualização, vamos separar a frequência relativa e adicionar uma nova coluna com a frequência acumulada.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1778}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1333}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3556}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3333}}@{}}
+\caption{\textbf{Tabela 3.23:} Número de vasos alimentando um tumor}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Número de vasos
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência relativa (\%)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência acumulada(\%)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Número de vasos
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência relativa (\%)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Frequência acumulada(\%)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(0 \vdash 5\) & 8 & 12 & 12 \\
+\(5 \vdash 10\) & 23 & 35 & 47 \\
+\(10 \vdash 15\) & 12 & 18 & 65 \\
+\(15 \vdash 20\) & 9 & 14 & 79 \\
+\(20 \vdash 25\) & 8 & 12 & 91 \\
+\(25 \vdash 30\) & 6 & 9 & 100 \\
+Total & 66 & 100 & 100 \\
+\end{longtable}
+
 \end{solution}
+
+\hypertarget{o-primeiro-quartil-uxe9-25}{%
+\subsubsection*{O primeiro quartil é 25\%?}\label{o-primeiro-quartil-uxe9-25}}
+\addcontentsline{toc}{subsubsection}{O primeiro quartil é 25\%?}
+
+Para calcular o valor do primeiro quartil, vamos usar a função \texttt{quantil()} que criamos anteriormente e chegamos ao valor de 8.6956522, mostrando que a afirmação é FALSA.
+
+\hypertarget{a-mediana-estuxe1-entre-10-e-15}{%
+\subsubsection*{A mediana está entre 10 e 15?}\label{a-mediana-estuxe1-entre-10-e-15}}
+\addcontentsline{toc}{subsubsection}{A mediana está entre 10 e 15?}
+
+Basta encontrarmos a classe que contém frequência acumulada maior ou igual a 50\%. No nosso caso, a classe é a que vai de 10 a 15 vasos. A alternativa é VERDADEIRA.
+
+\hypertarget{o-percentil-de-ordem-10-uxe9-10}{%
+\subsubsection*{O percentil de ordem 10\% é 10?}\label{o-percentil-de-ordem-10-uxe9-10}}
+\addcontentsline{toc}{subsubsection}{O percentil de ordem 10\% é 10?}
+
+Como a primeira classe, que vai de 0 a 5 vasos, acumula 12\% das observações, concluímos que o primeiro decil está entre 0 e 5, tornando a afirmação FALSA.
+
+\hypertarget{a-distuxe2ncia-interquartis-uxe9-50}{%
+\subsubsection*{A distância interquartis é 50?}\label{a-distuxe2ncia-interquartis-uxe9-50}}
+\addcontentsline{toc}{subsubsection}{A distância interquartis é 50?}
+
+Como nossa variável está distribuida entre 0 e 30, não há como a distância interquartil ser maior do que 30. A afirmação é FALSA.
 
 \hypertarget{exr3-26}{%
 \subsection*{Exercício 3.26}\label{exr3-26}}

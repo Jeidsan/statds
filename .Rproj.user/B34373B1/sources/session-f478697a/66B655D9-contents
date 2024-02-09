@@ -3093,6 +3093,7 @@ $15 \vdash 20$  | 9 (14%)
 $20 \vdash 25$  | 8 (12%)
 $25 \vdash 30$  | 6 (9%)
 Total           | 66 (100%)
+: **Tabela 3.22:** Número de vasos alimentando um tumor
 
 Indique a resposta correta.
 
@@ -3104,8 +3105,35 @@ e) Nenhuma das respostas anteriores.
 :::
 
 :::{.solution}
-x
+Para facilitar a visualização, vamos separar a frequência relativa e adicionar uma nova coluna com a frequência acumulada.
+
+Número de vasos | Frequência | Frequência <br /> relativa (%) | Frequência <br />acumulada(%)
+:--------------:|:----------:|:------------------------------:|:----------------------------:
+$0 \vdash 5$    | 8          | 12                             | 12
+$5 \vdash 10$   | 23         | 35                             | 47
+$10 \vdash 15$  | 12         | 18                             | 65
+$15 \vdash 20$  | 9          | 14                             | 79
+$20 \vdash 25$  | 8          | 12                             | 91
+$25 \vdash 30$  | 6          | 9                              | 100
+Total           | 66         | 100                            | 100
+: **Tabela 3.23:** Número de vasos alimentando um tumor
 :::
+
+#### O primeiro quartil é 25%? {-}
+
+Para calcular o valor do primeiro quartil, vamos usar a função `quantil()` que criamos anteriormente e chegamos ao valor de `r quantil(5, 0.25, 100, 23, 8, 5)`, mostrando que a afirmação é FALSA.
+
+#### A mediana está entre 10 e 15? {-}
+
+Basta encontrarmos a classe que contém  frequência acumulada maior ou igual a 50%. No nosso caso, a classe é a que vai de 10 a 15 vasos. A alternativa é VERDADEIRA.
+
+#### O percentil de ordem 10% é 10? {-}
+
+Como a primeira classe, que vai de 0 a 5 vasos, acumula 12% das observações, concluímos que o primeiro decil está entre 0 e 5, tornando a afirmação FALSA.
+
+#### A distância interquartis é 50? {-}
+
+Como nossa variável está distribuida entre 0 e 30, não há como a distância interquartil ser maior do que 30. A afirmação é FALSA.
 
 ### Exercício 3.26 {- #exr3-26}
 

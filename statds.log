@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.24)  8 FEB 2024 20:38
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.24)  8 FEB 2024 21:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3663,176 +3663,126 @@ Underfull \hbox (badness 10000) detected at line 6338
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6373
+Underfull \hbox (badness 10000) detected at line 6378
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6373
+Underfull \hbox (badness 10000) detected at line 6378
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6375
+Underfull \hbox (badness 10000) detected at line 6380
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6375
+Underfull \hbox (badness 10000) detected at line 6380
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6377
+Underfull \hbox (badness 10000) detected at line 6382
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6377
+Underfull \hbox (badness 10000) detected at line 6382
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6379
+Underfull \hbox (badness 10000) detected at line 6384
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6379
+Underfull \hbox (badness 10000) detected at line 6384
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6381
+Underfull \hbox (badness 10000) detected at line 6386
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6381
+Underfull \hbox (badness 10000) detected at line 6386
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6398
- [][]
+Overfull \hbox (4.52332pt too wide) in paragraph at lines 6403--6404
+ []\TU/Alegreya(0)/m/n/10 Frequência 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6398
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6400
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6400
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6402
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6402
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6404
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6404
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6406
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6406
-[][][]
+Overfull \hbox (4.52332pt too wide) in paragraph at lines 6415--6416
+ []\TU/Alegreya(0)/m/n/10 Frequência 
  []
 
 [153]
-Underfull \hbox (badness 10000) detected at line 6441
+Underfull \hbox (badness 10000) detected at line 6470
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6441
+Underfull \hbox (badness 10000) detected at line 6470
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6443
+Underfull \hbox (badness 10000) detected at line 6472
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6443
+Underfull \hbox (badness 10000) detected at line 6472
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6445
+Underfull \hbox (badness 10000) detected at line 6474
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6445
+Underfull \hbox (badness 10000) detected at line 6474
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6447
+Underfull \hbox (badness 10000) detected at line 6476
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6447
+Underfull \hbox (badness 10000) detected at line 6476
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6449
+Underfull \hbox (badness 10000) detected at line 6478
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6449
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6466
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6466
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6468
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6468
+Underfull \hbox (badness 10000) detected at line 6478
 [][][]
  []
 
 [154]
+Underfull \hbox (badness 10000) detected at line 6513
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6513
+[][][]
+ []
+
+
 Underfull \hbox (badness 10000) detected at line 6515
  [][]
  []
@@ -3863,6 +3813,16 @@ Underfull \hbox (badness 10000) detected at line 6519
  []
 
 
+Underfull \hbox (badness 10000) detected at line 6521
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6521
+[][][]
+ []
+
+
 Underfull \hbox (badness 10000) detected at line 6538
  [][]
  []
@@ -3879,75 +3839,80 @@ Underfull \hbox (badness 10000) detected at line 6540
 
 
 Underfull \hbox (badness 10000) detected at line 6540
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6542
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6542
 [][][]
  []
 
 [155]
-Underfull \hbox (badness 10000) detected at line 6544
+Underfull \hbox (badness 10000) detected at line 6587
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6544
+Underfull \hbox (badness 10000) detected at line 6587
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6589
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6589
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6591
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6591
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6610
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6610
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6612
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6612
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6614
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6614
 [][][]
  []
 
 [156]
-Underfull \vbox (badness 10000) detected at line 6552
+Underfull \hbox (badness 10000) detected at line 6616
+ [][]
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6552
-[]
+Underfull \hbox (badness 10000) detected at line 6616
+[][][]
  []
 
-
-Underfull \vbox (badness 10000) detected at line 6552
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6552
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6552
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6552
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6552
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6552
-[]
- []
-
-Cap\'{\i }tulo 4.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[157
-
-
-]
+[157]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3987,42 +3952,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [158
 
 ]
-Underfull \vbox (badness 10000) detected at line 6573
+Underfull \vbox (badness 10000) detected at line 6624
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6573
+Overfull \hbox (336.25pt too wide) detected at line 6624
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6573
+Underfull \vbox (badness 10000) detected at line 6624
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6573
+Overfull \hbox (336.25pt too wide) detected at line 6624
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6573
+Underfull \vbox (badness 10000) detected at line 6624
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6573
+Overfull \hbox (336.25pt too wide) detected at line 6624
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6573
+Underfull \vbox (badness 10000) detected at line 6624
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6573
+Overfull \hbox (336.25pt too wide) detected at line 6624
 []
  []
 
-Cap\'{\i }tulo 5.
+Cap\'{\i }tulo 4.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -4070,42 +4035,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [160
 
 ]
-Underfull \vbox (badness 10000) detected at line 6597
+Underfull \vbox (badness 10000) detected at line 6645
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6597
+Overfull \hbox (336.25pt too wide) detected at line 6645
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6597
+Underfull \vbox (badness 10000) detected at line 6645
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6597
+Overfull \hbox (336.25pt too wide) detected at line 6645
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6597
+Underfull \vbox (badness 10000) detected at line 6645
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6597
+Overfull \hbox (336.25pt too wide) detected at line 6645
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6597
+Underfull \vbox (badness 10000) detected at line 6645
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6597
+Overfull \hbox (336.25pt too wide) detected at line 6645
 []
  []
 
-Cap\'{\i }tulo 6.
+Cap\'{\i }tulo 5.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -4153,78 +4118,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [162
 
 ]
-Underfull \vbox (badness 10000) detected at line 6621
+Underfull \vbox (badness 10000) detected at line 6669
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6621
+Overfull \hbox (336.25pt too wide) detected at line 6669
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6621
+Underfull \vbox (badness 10000) detected at line 6669
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6621
+Overfull \hbox (336.25pt too wide) detected at line 6669
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6621
+Underfull \vbox (badness 10000) detected at line 6669
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6621
+Overfull \hbox (336.25pt too wide) detected at line 6669
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6621
+Underfull \vbox (badness 10000) detected at line 6669
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6621
+Overfull \hbox (336.25pt too wide) detected at line 6669
 []
  []
 
-Cap\'{\i }tulo 7.
-
-Underfull \vbox (badness 10000) detected at line 6642
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6642
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6642
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6642
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6642
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6642
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6642
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6642
-[]
- []
-
+Cap\'{\i }tulo 6.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -4272,6 +4201,86 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [164
 
 ]
+Underfull \vbox (badness 10000) detected at line 6693
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6693
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6693
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6693
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6693
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6693
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6693
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6693
+[]
+ []
+
+Cap\'{\i }tulo 7.
+
+Underfull \vbox (badness 10000) detected at line 6714
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6714
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6714
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6714
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6714
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6714
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6714
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6714
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[165
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4308,7 +4317,9 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[165]
+[166
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4345,39 +4356,76 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[166]
-Underfull \vbox (badness 10000) detected at line 6645
- []
+[167]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6645
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6645
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6645
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6645
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6645
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6645
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6645
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[168]
+Underfull \vbox (badness 10000) detected at line 6717
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6717
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6717
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6717
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6717
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6717
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6717
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6717
 []
  []
 
@@ -4387,91 +4435,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[167
-
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[168
-
-]
-Underfull \vbox (badness 10000) detected at line 6663
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6663
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6663
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6663
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6663
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6663
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6663
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6663
-[]
- []
-
-Cap\'{\i }tulo 9.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
 [169
+
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -4513,42 +4478,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [170
 
 ]
-Underfull \vbox (badness 10000) detected at line 6687
+Underfull \vbox (badness 10000) detected at line 6735
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6687
+Overfull \hbox (336.25pt too wide) detected at line 6735
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6687
+Underfull \vbox (badness 10000) detected at line 6735
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6687
+Overfull \hbox (336.25pt too wide) detected at line 6735
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6687
+Underfull \vbox (badness 10000) detected at line 6735
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6687
+Overfull \hbox (336.25pt too wide) detected at line 6735
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6687
+Underfull \vbox (badness 10000) detected at line 6735
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6687
+Overfull \hbox (336.25pt too wide) detected at line 6735
 []
  []
 
-Cap\'{\i }tulo 10.
+Cap\'{\i }tulo 9.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -4596,42 +4561,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [172
 
 ]
-Underfull \vbox (badness 10000) detected at line 6714
+Underfull \vbox (badness 10000) detected at line 6759
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6714
+Overfull \hbox (336.25pt too wide) detected at line 6759
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6714
+Underfull \vbox (badness 10000) detected at line 6759
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6714
+Overfull \hbox (336.25pt too wide) detected at line 6759
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6714
+Underfull \vbox (badness 10000) detected at line 6759
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6714
+Overfull \hbox (336.25pt too wide) detected at line 6759
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6714
+Underfull \vbox (badness 10000) detected at line 6759
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6714
+Overfull \hbox (336.25pt too wide) detected at line 6759
 []
  []
 
-Cap\'{\i }tulo 11.
+Cap\'{\i }tulo 10.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -4679,78 +4644,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [174
 
 ]
-Underfull \vbox (badness 10000) detected at line 6735
+Underfull \vbox (badness 10000) detected at line 6786
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6735
+Overfull \hbox (336.25pt too wide) detected at line 6786
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6735
+Underfull \vbox (badness 10000) detected at line 6786
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6735
+Overfull \hbox (336.25pt too wide) detected at line 6786
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6735
+Underfull \vbox (badness 10000) detected at line 6786
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6735
+Overfull \hbox (336.25pt too wide) detected at line 6786
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6735
+Underfull \vbox (badness 10000) detected at line 6786
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6735
+Overfull \hbox (336.25pt too wide) detected at line 6786
 []
  []
 
-Cap\'{\i }tulo 12.
-
-Underfull \vbox (badness 10000) detected at line 6759
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6759
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6759
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6759
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6759
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6759
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6759
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6759
-[]
- []
-
+Cap\'{\i }tulo 11.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -4798,6 +4727,86 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [176
 
 ]
+Underfull \vbox (badness 10000) detected at line 6807
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6807
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6807
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6807
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6807
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6807
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6807
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6807
+[]
+ []
+
+Cap\'{\i }tulo 12.
+
+Underfull \vbox (badness 10000) detected at line 6831
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6831
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6831
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6831
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6831
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6831
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6831
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6831
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[177
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4834,7 +4843,9 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[177]
+[178
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4871,39 +4882,76 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[178]
-Underfull \vbox (badness 10000) detected at line 6762
- []
+[179]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6762
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6762
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6762
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6762
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6762
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6762
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6762
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[180]
+Underfull \vbox (badness 10000) detected at line 6834
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6834
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6834
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6834
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6834
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6834
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6834
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6834
 []
  []
 
@@ -4913,91 +4961,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[179
-
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[180
-
-]
-Underfull \vbox (badness 10000) detected at line 6783
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6783
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6783
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6783
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6783
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6783
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 6783
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 6783
-[]
- []
-
-Cap\'{\i }tulo 14.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
 [181
+
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -5039,42 +5004,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [182
 
 ]
-Underfull \vbox (badness 10000) detected at line 6808
+Underfull \vbox (badness 10000) detected at line 6855
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6808
+Overfull \hbox (336.25pt too wide) detected at line 6855
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6808
+Underfull \vbox (badness 10000) detected at line 6855
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6808
+Overfull \hbox (336.25pt too wide) detected at line 6855
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6808
+Underfull \vbox (badness 10000) detected at line 6855
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6808
+Overfull \hbox (336.25pt too wide) detected at line 6855
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6808
+Underfull \vbox (badness 10000) detected at line 6855
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6808
+Overfull \hbox (336.25pt too wide) detected at line 6855
 []
  []
 
-Ap\^endice A.
+Cap\'{\i }tulo 14.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -5122,42 +5087,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [184
 
 ]
-Underfull \vbox (badness 10000) detected at line 6835
+Underfull \vbox (badness 10000) detected at line 6880
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6835
+Overfull \hbox (336.25pt too wide) detected at line 6880
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6835
+Underfull \vbox (badness 10000) detected at line 6880
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6835
+Overfull \hbox (336.25pt too wide) detected at line 6880
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6835
+Underfull \vbox (badness 10000) detected at line 6880
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6835
+Overfull \hbox (336.25pt too wide) detected at line 6880
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6835
+Underfull \vbox (badness 10000) detected at line 6880
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6835
+Overfull \hbox (336.25pt too wide) detected at line 6880
 []
  []
 
-Ap\^endice B.
+Ap\^endice A.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -5205,42 +5170,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [186
 
 ]
-Underfull \vbox (badness 10000) detected at line 6862
+Underfull \vbox (badness 10000) detected at line 6907
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6862
+Overfull \hbox (336.25pt too wide) detected at line 6907
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6862
+Underfull \vbox (badness 10000) detected at line 6907
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6862
+Overfull \hbox (336.25pt too wide) detected at line 6907
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6862
+Underfull \vbox (badness 10000) detected at line 6907
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6862
+Overfull \hbox (336.25pt too wide) detected at line 6907
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6862
+Underfull \vbox (badness 10000) detected at line 6907
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6862
+Overfull \hbox (336.25pt too wide) detected at line 6907
 []
  []
 
-Ap\^endice C.
+Ap\^endice B.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -5286,6 +5251,89 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [188
+
+]
+Underfull \vbox (badness 10000) detected at line 6934
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6934
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6934
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6934
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6934
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6934
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 6934
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 6934
+[]
+ []
+
+Ap\^endice C.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[189
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[190
 
 ] (./statds.bbl
 Underfull \vbox (badness 10000) detected at line 1
@@ -5335,7 +5383,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[189
+[191
 
 
 ] (./statds.aux)
@@ -5344,15 +5392,15 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `statds.out' has not changed.
-(rerunfilecheck)             Checksum: DF0F85390FD2C1C0C3ACC6E70F83E974;25564.
+(rerunfilecheck)             Checksum: 7D6DD75BF8F8F20ADCDB88C47F9F84AE;25564.
  ) 
 Here is how much of TeX's memory you used:
- 22198 strings out of 476861
- 441143 string characters out of 5802360
+ 22203 strings out of 476861
+ 441284 string characters out of 5802360
  1948630 words of memory out of 5000000
- 43690 multiletter control sequences out of 15000+600000
+ 43695 multiletter control sequences out of 15000+600000
  563975 words of font info for 135 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  90i,16n,115p,1098b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on statds.pdf (199 pages).
+Output written on statds.pdf (201 pages).

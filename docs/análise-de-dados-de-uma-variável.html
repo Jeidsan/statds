@@ -4936,6 +4936,7 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 <div class="enunciado">
 <p>Num estudo na área de Oncologia, o número de vasos que alimentam o tumor está resumido na seguinte tabela.</p>
 <table>
+<caption><strong>Tabela 3.22:</strong> Número de vasos alimentando um tumor</caption>
 <thead>
 <tr class="header">
 <th align="center">Número de vasos</th>
@@ -4983,7 +4984,84 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-34" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-34" class="solution"><em>Solução</em>. </span>Para facilitar a visualização, vamos separar a frequência relativa e adicionar uma nova coluna com a frequência acumulada.</p>
+<table>
+<caption><strong>Tabela 3.23:</strong> Número de vasos alimentando um tumor</caption>
+<colgroup>
+<col width="17%" />
+<col width="13%" />
+<col width="35%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Número de vasos</th>
+<th align="center">Frequência</th>
+<th align="center">Frequência <br /> relativa (%)</th>
+<th align="center">Frequência <br />acumulada(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(0 \vdash 5\)</span></td>
+<td align="center">8</td>
+<td align="center">12</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(5 \vdash 10\)</span></td>
+<td align="center">23</td>
+<td align="center">35</td>
+<td align="center">47</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(10 \vdash 15\)</span></td>
+<td align="center">12</td>
+<td align="center">18</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(15 \vdash 20\)</span></td>
+<td align="center">9</td>
+<td align="center">14</td>
+<td align="center">79</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(20 \vdash 25\)</span></td>
+<td align="center">8</td>
+<td align="center">12</td>
+<td align="center">91</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(25 \vdash 30\)</span></td>
+<td align="center">6</td>
+<td align="center">9</td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">66</td>
+<td align="center">100</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="o-primeiro-quartil-é-25" class="section level4 unnumbered hasAnchor">
+<h4>O primeiro quartil é 25%?<a href="análise-de-dados-de-uma-variável.html#o-primeiro-quartil-é-25" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para calcular o valor do primeiro quartil, vamos usar a função <code>quantil()</code> que criamos anteriormente e chegamos ao valor de 8.6956522, mostrando que a afirmação é FALSA.</p>
+</div>
+<div id="a-mediana-está-entre-10-e-15" class="section level4 unnumbered hasAnchor">
+<h4>A mediana está entre 10 e 15?<a href="análise-de-dados-de-uma-variável.html#a-mediana-está-entre-10-e-15" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Basta encontrarmos a classe que contém frequência acumulada maior ou igual a 50%. No nosso caso, a classe é a que vai de 10 a 15 vasos. A alternativa é VERDADEIRA.</p>
+</div>
+<div id="o-percentil-de-ordem-10-é-10" class="section level4 unnumbered hasAnchor">
+<h4>O percentil de ordem 10% é 10?<a href="análise-de-dados-de-uma-variável.html#o-percentil-de-ordem-10-é-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Como a primeira classe, que vai de 0 a 5 vasos, acumula 12% das observações, concluímos que o primeiro decil está entre 0 e 5, tornando a afirmação FALSA.</p>
+</div>
+<div id="a-distância-interquartis-é-50" class="section level4 unnumbered hasAnchor">
+<h4>A distância interquartis é 50?<a href="análise-de-dados-de-uma-variável.html#a-distância-interquartis-é-50" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Como nossa variável está distribuida entre 0 e 30, não há como a distância interquartil ser maior do que 30. A afirmação é FALSA.</p>
 </div>
 </div>
 <div id="exr3-26" class="section level3 unnumbered hasAnchor">
