@@ -99,20 +99,24 @@
 \contentsline {subsubsection}{A probabilidade de cura em até 40s é igual para ambos?}{150}{section*.66}%
 \contentsline {subsubsection}{A probabilidade de cura em até 60s é maior para o medicamento B?}{151}{section*.67}%
 \contentsline {subsection}{Exercício 3.23}{151}{section*.68}%
-\contentsline {subsection}{Exercício 3.24}{152}{section*.69}%
+\contentsline {subsection}{Exercício 3.24}{153}{section*.69}%
 \contentsline {subsection}{Exercício 3.25}{153}{section*.70}%
 \contentsline {subsubsection}{O primeiro quartil é 25\%?}{154}{section*.71}%
 \contentsline {subsubsection}{A mediana está entre 10 e 15?}{154}{section*.72}%
 \contentsline {subsubsection}{O percentil de ordem 10\% é 10?}{154}{section*.73}%
 \contentsline {subsubsection}{A distância interquartis é 50?}{154}{section*.74}%
 \contentsline {subsection}{Exercício 3.26}{154}{section*.75}%
-\contentsline {subsection}{Exercício 3.27}{155}{section*.76}%
-\contentsline {subsection}{Exercício 3.28}{155}{section*.77}%
-\contentsline {subsection}{Exercício 3.29}{155}{section*.78}%
-\contentsline {subsection}{Exercício 3.30}{156}{section*.79}%
-\contentsline {subsection}{Exercício 3.31}{156}{section*.80}%
-\contentsline {subsection}{Exercício 3.32}{156}{section*.81}%
-\contentsline {subsection}{Exercício 3.33}{156}{section*.82}%
+\contentsline {subsubsection}{Não é possível estimar nem a média nem a variância com esses dados?}{155}{section*.76}%
+\contentsline {subsubsection}{A variancia é menor que 30?}{155}{section*.77}%
+\contentsline {subsubsection}{A média estimada é 12,8?}{155}{section*.78}%
+\contentsline {subsubsection}{Em apenas 35\% dos casos, o número de vasos é maior que 10?}{155}{section*.79}%
+\contentsline {subsection}{Exercício 3.27}{155}{section*.80}%
+\contentsline {subsection}{Exercício 3.28}{156}{section*.81}%
+\contentsline {subsection}{Exercício 3.29}{156}{section*.82}%
+\contentsline {subsection}{Exercício 3.30}{156}{section*.83}%
+\contentsline {subsection}{Exercício 3.31}{156}{section*.84}%
+\contentsline {subsection}{Exercício 3.32}{157}{section*.85}%
+\contentsline {subsection}{Exercício 3.33}{157}{section*.86}%
 \contentsline {chapter}{\numberline {4}Análise de dados de duas variáveis}{159}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{159}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Duas variáveis qualitativas}{159}{section.4.2}%
@@ -223,4 +227,4 @@
 \contentsline {section}{\numberline {C.4}Cálculo de erros padrões}{189}{section.C.4}%
 \contentsline {section}{\numberline {C.5}O algoritmo para dados aumentados}{189}{section.C.5}%
 \contentsline {section}{\numberline {C.6}Exercícios}{189}{section.C.6}%
-\contentsline {fm}{Bibliografia}{191}{appendix*.83}%
+\contentsline {fm}{Bibliografia}{191}{appendix*.87}%

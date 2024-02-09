@@ -4845,9 +4845,11 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 <div class="solution">
 <p><span id="unlabeled-div-32" class="solution"><em>Solução</em>. </span>Para este caso, a média é dada por</p>
 <p><span class="math display">\[\frac{\sum{x_if_i}}{\sum{f_i}}\]</span></p>
-<p>onde:
-- <span class="math inline">\(x_i\)</span> representa o número de dependentes na linha <span class="math inline">\(i\)</span>;
-- <span class="math inline">\(f_i\)</span> representa o número de empregados que possuem <span class="math inline">\(x_i\)</span> dependentes;</p>
+<p>onde:</p>
+<ul>
+<li><span class="math inline">\(x_i\)</span> representa o número de dependentes na linha <span class="math inline">\(i\)</span>;</li>
+<li><span class="math inline">\(f_i\)</span> representa o número de empregados que possuem <span class="math inline">\(x_i\)</span> dependentes;</li>
+</ul>
 <p>Dessa forma, temos:</p>
 <p><span class="math display">\[
 \bar{x} = \frac{(1 \cdot 40) + (2 \cdot 50) + (3 \cdot 30) + (4 \cdot 20) + (5 \cdot 10)}{40 + 50 + 30 + 20 + 10} = \frac{360}{150} = 2,4
@@ -4909,10 +4911,12 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 </tbody>
 </table>
 <p>A mediana corresponderá ao valor <span class="math inline">\(x_i\)</span> na linha <span class="math inline">\(i\)</span> que contém frequência acumulada maior do que ou igual a 50% e a moda será o valor <span class="math inline">\(x_j\)</span> da linha <span class="math inline">\(j\)</span> que contém a maior frequência ou frequência relativa.</p>
-<p>Nesse caso, temos:
-- mediana igual a 2 filhos;
-- moda igual a 2 filhos;
-- média igual a 2,4.</p>
+<p>Nesse caso, temos:</p>
+<ul>
+<li>mediana igual a 2 filhos;</li>
+<li>moda igual a 2 filhos;</li>
+<li>média igual a 2,4.</li>
+</ul>
 <p>E nenhuma das alternativas está correta.</p>
 </div>
 </div>
@@ -5077,7 +5081,27 @@ Entre os estudantes que particaram atividade fraca, como a mediana é 70, espera
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-35" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-35" class="solution"><em>Solução</em>. </span></p>
+<div id="não-é-possível-estimar-nem-a-média-nem-a-variância-com-esses-dados" class="section level4 unnumbered hasAnchor">
+<h4>Não é possível estimar nem a média nem a variância com esses dados?<a href="análise-de-dados-de-uma-variável.html#não-é-possível-estimar-nem-a-média-nem-a-variância-com-esses-dados" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Conforme vimos no <a href="análise-de-dados-de-uma-variável.html#exr3-23">Exercício 3.23</a>, a média pode ser estimada. No item a seguir, veremos que também é possível estimar a variância, logo a afirmação FALSA.</p>
+</div>
+<div id="a-variancia-é-menor-que-30" class="section level4 unnumbered hasAnchor">
+<h4>A variancia é menor que 30?<a href="análise-de-dados-de-uma-variável.html#a-variancia-é-menor-que-30" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Podemos estimar a variância utilizando o ponto médio das classes através da seguinte equação:</p>
+<p><span class="math display">\[
+s^{2} = \frac{\sum \big[f_i \cdot (x_i - \bar{x})^2\big]}{n-1}
+\]</span></p>
+<p>Em nosso exemplo, temos a <span class="math inline">\(s^2 \approx 57.60\)</span>, o que torna a afirmação FALSA.</p>
+</div>
+<div id="a-média-estimada-é-128" class="section level4 unnumbered hasAnchor">
+<h4>A média estimada é 12,8?<a href="análise-de-dados-de-uma-variável.html#a-média-estimada-é-128" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Usando a formula acima, temos que <span class="math inline">\(\bar{x} \approx 12.80\)</span>, logo a afirmação é VERDADEIRA.</p>
+</div>
+<div id="em-apenas-35-dos-casos-o-número-de-vasos-é-maior-que-10" class="section level4 unnumbered hasAnchor">
+<h4>Em apenas 35% dos casos, o número de vasos é maior que 10?<a href="análise-de-dados-de-uma-variável.html#em-apenas-35-dos-casos-o-número-de-vasos-é-maior-que-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Basta somarmos as frequências relativas das classes correspondentes para notar que em 53% dos casos, o número de vasos é igual ou superior a 10. A afirmação é, portanto, FALSA.</p>
+</div>
 </div>
 </div>
 <div id="exr3-27" class="section level3 unnumbered hasAnchor">

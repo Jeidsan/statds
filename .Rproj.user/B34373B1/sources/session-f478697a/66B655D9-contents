@@ -3031,6 +3031,7 @@ Para este caso, a média é dada por
 $$\frac{\sum{x_if_i}}{\sum{f_i}}$$ 
 
 onde:
+
 - $x_i$ representa o número de dependentes na linha $i$;
 - $f_i$ representa o número de empregados que possuem $x_i$ dependentes;
 
@@ -3056,6 +3057,7 @@ Total       | 150         | 100,00                         | 100,00
 A mediana corresponderá ao valor $x_i$ na linha $i$ que contém frequência acumulada maior do que ou igual a 50% e a moda será o valor $x_j$ da linha $j$ que contém a maior frequência ou frequência relativa.
 
 Nesse caso, temos:
+
 - mediana igual a 2 filhos;
 - moda igual a 2 filhos;
 - média igual a 2,4.
@@ -3148,7 +3150,29 @@ e) Nenhuma das anteriores.
 :::
 
 :::{.solution}
-x
+
+#### Não é possível estimar nem a média nem a variância com esses dados? {-}
+
+Conforme vimos no [Exercício 3.23](#exr3-23), a média pode ser estimada. No item a seguir, veremos que também é possível estimar a variância, logo a afirmação FALSA.
+
+#### A variancia é menor que 30? {-}
+
+Podemos estimar a variância utilizando o ponto médio das classes através da seguinte equação:
+
+$$
+s^{2} = \frac{\sum \big[f_i \cdot (x_i - \bar{x})^2\big]}{n-1}
+$$
+
+Em nosso exemplo, temos a $s^2 \approx 57.60$, o que torna a afirmação FALSA.
+
+#### A média estimada é 12,8? {-}
+
+Usando a formula acima, temos que $\bar{x} \approx 12.80$, logo a afirmação é VERDADEIRA.
+
+#### Em apenas 35% dos casos, o número de vasos é maior que 10? {-}
+
+Basta somarmos as frequências relativas das classes correspondentes para notar que em 53% dos casos, o número de vasos é igual ou superior a 10. A afirmação é, portanto, FALSA.
+
 :::
 
 ### Exercício 3.27 {- #exr3-27}

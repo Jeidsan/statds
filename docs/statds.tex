@@ -6258,8 +6258,14 @@ Para este caso, a média é dada por
 \[\frac{\sum{x_if_i}}{\sum{f_i}}\]
 
 onde:
-- \(x_i\) representa o número de dependentes na linha \(i\);
-- \(f_i\) representa o número de empregados que possuem \(x_i\) dependentes;
+
+\begin{itemize}
+\tightlist
+\item
+  \(x_i\) representa o número de dependentes na linha \(i\);
+\item
+  \(f_i\) representa o número de empregados que possuem \(x_i\) dependentes;
+\end{itemize}
 
 Dessa forma, temos:
 
@@ -6312,9 +6318,16 @@ Total & 150 & 100,00 & 100,00 \\
 A mediana corresponderá ao valor \(x_i\) na linha \(i\) que contém frequência acumulada maior do que ou igual a 50\% e a moda será o valor \(x_j\) da linha \(j\) que contém a maior frequência ou frequência relativa.
 
 Nesse caso, temos:
-- mediana igual a 2 filhos;
-- moda igual a 2 filhos;
-- média igual a 2,4.
+
+\begin{itemize}
+\tightlist
+\item
+  mediana igual a 2 filhos;
+\item
+  moda igual a 2 filhos;
+\item
+  média igual a 2,4.
+\end{itemize}
 
 E nenhuma das alternativas está correta.
 \end{solution}
@@ -6479,7 +6492,38 @@ Utilizando o mesmo enunciado da questão anterior, indique a resposta correta:
 \end{enumerate}
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{nuxe3o-uxe9-possuxedvel-estimar-nem-a-muxe9dia-nem-a-variuxe2ncia-com-esses-dados}{%
+\subsubsection*{Não é possível estimar nem a média nem a variância com esses dados?}\label{nuxe3o-uxe9-possuxedvel-estimar-nem-a-muxe9dia-nem-a-variuxe2ncia-com-esses-dados}}
+\addcontentsline{toc}{subsubsection}{Não é possível estimar nem a média nem a variância com esses dados?}
+
+Conforme vimos no \protect\hyperlink{exr3-23}{Exercício 3.23}, a média pode ser estimada. No item a seguir, veremos que também é possível estimar a variância, logo a afirmação FALSA.
+
+\hypertarget{a-variancia-uxe9-menor-que-30}{%
+\subsubsection*{A variancia é menor que 30?}\label{a-variancia-uxe9-menor-que-30}}
+\addcontentsline{toc}{subsubsection}{A variancia é menor que 30?}
+
+Podemos estimar a variância utilizando o ponto médio das classes através da seguinte equação:
+
+\[
+s^{2} = \frac{\sum \big[f_i \cdot (x_i - \bar{x})^2\big]}{n-1}
+\]
+
+Em nosso exemplo, temos a \(s^2 \approx 57.60\), o que torna a afirmação FALSA.
+
+\hypertarget{a-muxe9dia-estimada-uxe9-128}{%
+\subsubsection*{A média estimada é 12,8?}\label{a-muxe9dia-estimada-uxe9-128}}
+\addcontentsline{toc}{subsubsection}{A média estimada é 12,8?}
+
+Usando a formula acima, temos que \(\bar{x} \approx 12.80\), logo a afirmação é VERDADEIRA.
+
+\hypertarget{em-apenas-35-dos-casos-o-nuxfamero-de-vasos-uxe9-maior-que-10}{%
+\subsubsection*{Em apenas 35\% dos casos, o número de vasos é maior que 10?}\label{em-apenas-35-dos-casos-o-nuxfamero-de-vasos-uxe9-maior-que-10}}
+\addcontentsline{toc}{subsubsection}{Em apenas 35\% dos casos, o número de vasos é maior que 10?}
+
+Basta somarmos as frequências relativas das classes correspondentes para notar que em 53\% dos casos, o número de vasos é igual ou superior a 10. A afirmação é, portanto, FALSA.
+
 \end{solution}
 
 \hypertarget{exr3-27}{%
