@@ -3184,7 +3184,7 @@ Estudo | n   | Média     | Desvio padrão
 :-----:|:---:|:---------:|:-------------:
 A      | 100 | 160 mg/dL | 60 mg/dL
 B      | 49  | 150 mg/dL | 35 mg/dL
-: **Tabela A:** Medidas descritivas dos estudos A e B
+: **Tabela 3.24:** Medidas descritivas dos estudos A e B
 
 Indique a resposta correta:
 
@@ -3196,7 +3196,22 @@ e) Nenhuma das respostas anteriores.
 :::
 
 :::{.solution}
-x
+#### Não é possível estimar o nível médio de colesterol populacional só com esses dados {-}
+
+FALSO, porque a média amostral é uma estimativa da média populacional, além disso os desvios padrão nos ajudam a calcular um intervalo de confiança para a média populacional.
+
+#### Se os dois estudos foram realizados com amostras da mesma população não deveria haver diferença entre os desvios padrões amostrais {-}
+
+FALSO, porque como o desvio padrão é calculado a partir da amostra, pode ocorrer diferença entre amostras diferentes.
+
+#### Com os dados do estudo B, o colesterol médio populacional pode ser estimado com mais precisão do que com os dados do estudo A {-}
+
+VERDADEIRO?
+
+#### Ambos os estudos sugerem que a distribuição do colesterol na população é simétrica {-}
+
+FALSO, pois só com esses dados não há como afirmar.
+
 :::
 
 ### Exercício 3.28 {- #exr3-28}

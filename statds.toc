@@ -111,12 +111,16 @@
 \contentsline {subsubsection}{A média estimada é 12,8?}{155}{section*.78}%
 \contentsline {subsubsection}{Em apenas 35\% dos casos, o número de vasos é maior que 10?}{155}{section*.79}%
 \contentsline {subsection}{Exercício 3.27}{155}{section*.80}%
-\contentsline {subsection}{Exercício 3.28}{156}{section*.81}%
-\contentsline {subsection}{Exercício 3.29}{156}{section*.82}%
-\contentsline {subsection}{Exercício 3.30}{156}{section*.83}%
-\contentsline {subsection}{Exercício 3.31}{156}{section*.84}%
-\contentsline {subsection}{Exercício 3.32}{157}{section*.85}%
-\contentsline {subsection}{Exercício 3.33}{157}{section*.86}%
+\contentsline {subsubsection}{Não é possível estimar o nível médio de colesterol populacional só com esses dados}{156}{section*.81}%
+\contentsline {subsubsection}{Se os dois estudos foram realizados com amostras da mesma população não deveria haver diferença entre os desvios padrões amostrais}{156}{section*.82}%
+\contentsline {subsubsection}{Com os dados do estudo B, o colesterol médio populacional pode ser estimado com mais precisão do que com os dados do estudo A}{156}{section*.83}%
+\contentsline {subsubsection}{Ambos os estudos sugerem que a distribuição do colesterol na população é simétrica}{156}{section*.84}%
+\contentsline {subsection}{Exercício 3.28}{156}{section*.85}%
+\contentsline {subsection}{Exercício 3.29}{157}{section*.86}%
+\contentsline {subsection}{Exercício 3.30}{157}{section*.87}%
+\contentsline {subsection}{Exercício 3.31}{157}{section*.88}%
+\contentsline {subsection}{Exercício 3.32}{157}{section*.89}%
+\contentsline {subsection}{Exercício 3.33}{157}{section*.90}%
 \contentsline {chapter}{\numberline {4}Análise de dados de duas variáveis}{159}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{159}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Duas variáveis qualitativas}{159}{section.4.2}%
@@ -227,4 +231,4 @@
 \contentsline {section}{\numberline {C.4}Cálculo de erros padrões}{189}{section.C.4}%
 \contentsline {section}{\numberline {C.5}O algoritmo para dados aumentados}{189}{section.C.5}%
 \contentsline {section}{\numberline {C.6}Exercícios}{189}{section.C.6}%
-\contentsline {fm}{Bibliografia}{191}{appendix*.87}%
+\contentsline {fm}{Bibliografia}{191}{appendix*.91}%
