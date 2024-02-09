@@ -6612,14 +6612,78 @@ Considere um conjunto de dados \(\{X_{1}, \cdots , X_{n}\}\)
 \end{enumerate}
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{calculando-a-muxe9dia-de-w_i}{%
+\subsubsection*{\texorpdfstring{Calculando a média de \(W_i\)}{Calculando a média de W\_i}}\label{calculando-a-muxe9dia-de-w_i}}
+\addcontentsline{toc}{subsubsection}{Calculando a média de \(W_i\)}
+
+\[
+\begin{split}
+\overline{W} & = \frac{1}{n} \cdot \sum _{i = 1}^{n} W_i \\
+             & = \frac{1}{n} \cdot \sum _{i = 1}^{n} \left( X_i + k \right) \\
+             & = \frac{1}{n} \cdot \left[ \left( \sum _{i = 1}^{n} k \right) + \left( \sum _{i = 1}^{n} X_i \right) \right]\\
+             & = \frac{1}{n} \cdot \left[ \left( n \cdot k \right) + \left( \sum _{i = 1}^{n} X_i \right) \right]\\
+             & = \left( \frac{1}{n} \cdot n \cdot k \right) + \left( \frac{1}{n} \cdot\sum _{i = 1}^{n} X_i \right) \\
+             & = k + \overline{X}
+\end{split}
+\]
+
+\hypertarget{calculando-o-desvio-padruxe3o-de-w_i}{%
+\subsubsection*{\texorpdfstring{Calculando o desvio padrão de \(W_i\)}{Calculando o desvio padrão de W\_i}}\label{calculando-o-desvio-padruxe3o-de-w_i}}
+\addcontentsline{toc}{subsubsection}{Calculando o desvio padrão de \(W_i\)}
+
+\[
+\begin{split}
+s_W^2 & = \frac{1}{n} \cdot \sum_{i = 1}^{n}(W_i - \overline{W})^2 \\
+      & = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ \left( X_i + k \right) - \left(k + \overline{X} \right) \right]^2 \\
+      & = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left( X_i + k - k - \overline{X} \right)^2 \\
+      & = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left( X_i + \overline{X} \right)^2 \\
+      & = s_X^2
+\end{split}
+\]
+
+Logo \(s_W = s_X\), isto é, os desvios padrão são iguais.
+
+\hypertarget{calculando-a-muxe9dia-de-v_i}{%
+\subsubsection*{\texorpdfstring{Calculando a média de \(V_i\)}{Calculando a média de V\_i}}\label{calculando-a-muxe9dia-de-v_i}}
+\addcontentsline{toc}{subsubsection}{Calculando a média de \(V_i\)}
+
+\[
+\begin{split}
+\overline{V} & = \frac{1}{n} \cdot \sum _{i = 1}^{n} V_i \\
+             & = \frac{1}{n} \cdot \sum _{i = 1}^{n} \left( k \cdot X_i \right) \\
+             & = \frac{1}{n} \cdot k \cdot \sum _{i = 1}^{n} X_i \\
+             & = \frac{1}{n} \cdot \left[ \left( n \cdot k \right) + \left( \sum _{i = 1}^{n} X_i \right) \right]\\
+             & = k \cdot \overline{X}
+\end{split}
+\]
+
+\hypertarget{calculando-o-desvio-padruxe3o-de-v_i}{%
+\subsubsection*{\texorpdfstring{Calculando o desvio padrão de \(V_i\)}{Calculando o desvio padrão de V\_i}}\label{calculando-o-desvio-padruxe3o-de-v_i}}
+\addcontentsline{toc}{subsubsection}{Calculando o desvio padrão de \(V_i\)}
+
+\[
+\begin{split}
+s_V^2 & = \frac{1}{n} \cdot \sum_{i = 1}^{n}(V_i - \overline{V})^2 \\
+      & = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ \left( k \cdot X_i \right) - \left(k \cdot \overline{X} \right) \right]^2 \\
+      & = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ k \cdot \left( X_i - \overline{X} \right) \right]^2 \\
+      & = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ k^2 \cdot \left( X_i - \overline{X} \right)^2 \right] \\
+      & = \frac{1}{n} \cdot  k^2 \cdot \sum_{i = 1}^{n} \left( X_i - \overline{X} \right)^2 \\
+      & =  k^2 \cdot s_X^2 \\
+      & = (k \cdot s_X)^2
+\end{split}
+\]
+
+Logo \(s_V = k \cdot s_X\).
+
 \end{solution}
 
 \hypertarget{exr3-29}{%
 \subsection*{Exercício 3.29}\label{exr3-29}}
 \addcontentsline{toc}{subsection}{Exercício 3.29}
 
-Prove que \(S^{2}\) dado por (3.10) é um estimador não enviesado da variáncia populacional.
+Prove que \(S^{2}\) dado por (3.10) é um estimador não enviesado da variância populacional.
 
 \begin{solution}
 x

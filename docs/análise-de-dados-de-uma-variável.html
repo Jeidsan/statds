@@ -5172,13 +5172,66 @@ s^{2} = \frac{\sum \big[f_i \cdot (x_i - \bar{x})^2\big]}{n-1}
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-37" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-37" class="solution"><em>Solução</em>. </span></p>
+<div id="calculando-a-média-de-w_i" class="section level4 unnumbered hasAnchor">
+<h4>Calculando a média de <span class="math inline">\(W_i\)</span><a href="análise-de-dados-de-uma-variável.html#calculando-a-média-de-w_i" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display">\[
+\begin{split}
+\overline{W} &amp; = \frac{1}{n} \cdot \sum _{i = 1}^{n} W_i \\
+             &amp; = \frac{1}{n} \cdot \sum _{i = 1}^{n} \left( X_i + k \right) \\
+             &amp; = \frac{1}{n} \cdot \left[ \left( \sum _{i = 1}^{n} k \right) + \left( \sum _{i = 1}^{n} X_i \right) \right]\\
+             &amp; = \frac{1}{n} \cdot \left[ \left( n \cdot k \right) + \left( \sum _{i = 1}^{n} X_i \right) \right]\\
+             &amp; = \left( \frac{1}{n} \cdot n \cdot k \right) + \left( \frac{1}{n} \cdot\sum _{i = 1}^{n} X_i \right) \\
+             &amp; = k + \overline{X}
+\end{split}
+\]</span></p>
+</div>
+<div id="calculando-o-desvio-padrão-de-w_i" class="section level4 unnumbered hasAnchor">
+<h4>Calculando o desvio padrão de <span class="math inline">\(W_i\)</span><a href="análise-de-dados-de-uma-variável.html#calculando-o-desvio-padrão-de-w_i" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display">\[
+\begin{split}
+s_W^2 &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}(W_i - \overline{W})^2 \\
+      &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ \left( X_i + k \right) - \left(k + \overline{X} \right) \right]^2 \\
+      &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left( X_i + k - k - \overline{X} \right)^2 \\
+      &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left( X_i + \overline{X} \right)^2 \\
+      &amp; = s_X^2
+\end{split}
+\]</span></p>
+<p>Logo <span class="math inline">\(s_W = s_X\)</span>, isto é, os desvios padrão são iguais.</p>
+</div>
+<div id="calculando-a-média-de-v_i" class="section level4 unnumbered hasAnchor">
+<h4>Calculando a média de <span class="math inline">\(V_i\)</span><a href="análise-de-dados-de-uma-variável.html#calculando-a-média-de-v_i" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display">\[
+\begin{split}
+\overline{V} &amp; = \frac{1}{n} \cdot \sum _{i = 1}^{n} V_i \\
+             &amp; = \frac{1}{n} \cdot \sum _{i = 1}^{n} \left( k \cdot X_i \right) \\
+             &amp; = \frac{1}{n} \cdot k \cdot \sum _{i = 1}^{n} X_i \\
+             &amp; = \frac{1}{n} \cdot \left[ \left( n \cdot k \right) + \left( \sum _{i = 1}^{n} X_i \right) \right]\\
+             &amp; = k \cdot \overline{X}
+\end{split}
+\]</span></p>
+</div>
+<div id="calculando-o-desvio-padrão-de-v_i" class="section level4 unnumbered hasAnchor">
+<h4>Calculando o desvio padrão de <span class="math inline">\(V_i\)</span><a href="análise-de-dados-de-uma-variável.html#calculando-o-desvio-padrão-de-v_i" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display">\[
+\begin{split}
+s_V^2 &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}(V_i - \overline{V})^2 \\
+      &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ \left( k \cdot X_i \right) - \left(k \cdot \overline{X} \right) \right]^2 \\
+      &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ k \cdot \left( X_i - \overline{X} \right) \right]^2 \\
+      &amp; = \frac{1}{n} \cdot \sum_{i = 1}^{n}\left[ k^2 \cdot \left( X_i - \overline{X} \right)^2 \right] \\
+      &amp; = \frac{1}{n} \cdot  k^2 \cdot \sum_{i = 1}^{n} \left( X_i - \overline{X} \right)^2 \\
+      &amp; =  k^2 \cdot s_X^2 \\
+      &amp; = (k \cdot s_X)^2
+\end{split}
+\]</span></p>
+<p>Logo <span class="math inline">\(s_V = k \cdot s_X\)</span>.</p>
+</div>
 </div>
 </div>
 <div id="exr3-29" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 3.29<a href="análise-de-dados-de-uma-variável.html#exr3-29" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Prove que <span class="math inline">\(S^{2}\)</span> dado por (3.10) é um estimador não enviesado da variáncia populacional.</p>
+<p>Prove que <span class="math inline">\(S^{2}\)</span> dado por (3.10) é um estimador não enviesado da variância populacional.</p>
 </div>
 <div class="solution">
 <p><span id="unlabeled-div-38" class="solution"><em>Solução</em>. </span>x</p>
