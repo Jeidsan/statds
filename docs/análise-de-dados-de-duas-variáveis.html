@@ -286,7 +286,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#exr4-25"><i class="fa fa-check"></i>Exercício 4.25</a></li>
 <li class="chapter" data-level="" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#exr4-26"><i class="fa fa-check"></i>Exercício 4.26</a></li>
 <li class="chapter" data-level="" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#exr4-27"><i class="fa fa-check"></i>Exercício 4.27</a></li>
-<li class="chapter" data-level="" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#exr4-25"><i class="fa fa-check"></i>Exercício 4.28</a></li>
+<li class="chapter" data-level="" data-path="análise-de-dados-de-duas-variáveis.html"><a href="análise-de-dados-de-duas-variáveis.html#exr4-28"><i class="fa fa-check"></i>Exercício 4.28</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="análise-de-dados-de-várias-variáveis.html"><a href="análise-de-dados-de-várias-variáveis.html"><i class="fa fa-check"></i><b>5</b> Análise de dados de várias variáveis</a>
@@ -443,18 +443,71 @@ div.csl-indent {
 <h1><span class="header-section-number">Capítulo 4</span> Análise de dados de duas variáveis<a href="análise-de-dados-de-duas-variáveis.html#análise-de-dados-de-duas-variáveis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introdução-2" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Introdução<a href="análise-de-dados-de-duas-variáveis.html#introdução-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>De maneira geral, dizemos que existe uma associação entre duas variáveis se o conhecimento do valor de uma delas nos dá alguma característica da distribuição (de frequência) da outra. <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 79</a>)</span></p>
+</blockquote>
 </div>
 <div id="duas-variáveis-qualitativas" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Duas variáveis qualitativas<a href="análise-de-dados-de-duas-variáveis.html#duas-variáveis-qualitativas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Dnotando os valores observados por <span class="math inline">\(o_i\)</span> e os esperados por <span class="math inline">\(e_i\)</span>, <span class="math inline">\(i = 1, 2, 3, 4\)</span>, podemos calcular os <em>residuos</em> <span class="math inline">\(r_i = o_i - e_i\)</span> e verificar que <span class="math inline">\(\sum_i r_i = 0\)</span>. Uma medida da discrepância entre os valores observados e aqueles esperados sob a hipótese <span class="math inline">\(H\)</span> é chamada estatística ou <strong>qui-quadrado</strong> de Pearson, <span class="math display">\[\chi^2 = \sum\limits_{i = 1}^{n} \frac{(o_i - e_i)^2}{e_i}\]</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 82</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>A própria estatística de Pearson poderia servir como medida da intensidade da associação mas seu valor valor aumenta com o tamanho da amostra; uma alternativa para corrigir ese problema é o <strong>coeficiente de contingência de Pearson</strong>, dado por <span class="math display">\[C = \sqrt{\frac{\chi^2}{\chi^2 + n}}\]</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 83</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Uma modificação de <span class="math inline">\(C\)</span> é o ** ceficiente de Tschuprov**, <span class="math display">\[ T = \sqrt{\frac{\chi^2/n}{\sqrt{(r - 1)(c - 1)}}} \ ,\]</span> que atinge o valor máximo igual a <span class="math inline">\(1\)</span> quando <span class="math inline">\(r = c\)</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 83</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Uma estimativa do índice denominado <span class="math inline">\(\kappa\)</span> de Cohen (1960), construido com esse propósito [avaliar a magnitude da concordância entre duas classificações] é <span class="math display">\[\hat{\kappa} = \frac{\sum \limits_{i = 1}^{3}p_{ii} - \sum \limits_{i = 1}^{3}p_{i+}p_{+i}}{1 - \sum \limits_{i = 1}^{3}p_{i+}p_{+i}}\]</span> Nessa expressão, $p_{ij} representa frequência relativa associada à casela correspondente à linha <span class="math inline">\(i\)</span> e coluna <span class="math inline">\(j\)</span> da tabela [de contingência] e <span class="math inline">\(p_{i+}\)</span> e <span class="math inline">\(p_{+j}\)</span> representam a soma das frequências relativas asociadas à linha <span class="math inline">\(i\)</span> e coluna <span class="math inline">\(j\)</span>, respectivamente <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 85</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Risco atribuível</strong>: <span class="math inline">\(d = \pi_1 - \pi_0\)</span>, que coresponde a diferença entre as probabilidades (ou riscos) de ocorrência do evento de interese para expostos e não expostos ao fator de risco <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 86</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Risco relativo</strong>: <span class="math inline">\(r=\pi_{1}/\pi_{0}\)</span>, que corresponde ao quociente entre as probabilidades de ocorrência do evento de interesse para expostos e não expostos ao fator de risco <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 87</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Razão de chances</strong> (<em>odds ratio</em>): <span class="math inline">\(\omega=[\pi_{1}/(1-\pi_{1})]/[\pi_{0}/(1-\pi_{0})]\)</span>, que corresponde ao quociente entre as chances de ocorrência do evento de interesse para expostos e não expostos ao fator de risco <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 87</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Acurácia</strong>: corresponde à probabilidade de resultados corretos <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 89</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Sensibilidade e especificidade são características do teste, mas tanto o valor preditivo positivo quanto o valor preditivo negativo dependem da <strong>prevalência</strong> (porcentagem de indivíduos doentes na população) da doença <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 89</a>)</span>.</p>
+</blockquote>
 </div>
 <div id="duas-variáveis-quantitativas" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Duas variáveis quantitativas<a href="análise-de-dados-de-duas-variáveis.html#duas-variáveis-quantitativas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Dado um conjunto de <span class="math inline">\(n\)</span> pares <span class="math inline">\((x_i, y_i)\)</span>, a associação (linear) entre as variáveis quantitativas <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> pode ser quantificada por meio do <strong>coeficiente de correlação (linear)</strong> de Pearson, definifo por <span class="math display">\[r_p = \frac{\sum \limits_{i=1}^{n}(x_i - \overline{x})(y_i - \overline{y})}{\left[ \sum \limits_{i = 1}^{n}(x_i - \overline{x})^2 \cdot \sum\limits_{i=1}^{n}(y_i - \overline{y})^2  \right]^{1/2}}\]</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 91</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>[…] uma medida de associação mais robusta é o coeficiente de correlação de Apearman cuja expressão é similar à (4.4) [coef. de Pearson] com valores de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> substituídos pelos respectivos <strong>postos</strong>. […] <span class="math display">\[r_p = \frac{\sum \limits_{i=1}^{n}(R_i - \overline{R})(S_i - \overline{S})}{\left[ \sum \limits_{i = 1}^{n}(R_i - \overline{R})^2 \cdot \sum\limits_{i=1}^{n}(S_i - \overline{S})^2  \right]^{1/2}}\]</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 92</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>[…] o coeficiente de correlação de Spearman é mais apropriado para avaliação de associações não lineares, desde que sejam <strong>monotônicas</strong> […] <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 93</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>[…] dados longitudinais, <em>i.e.</em>, aqueles qem que a mesma variável é observada em cada unidade amostral mais do que uma vez ao longo do tempo […] <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 95</a>)</span>.</p>
+</blockquote>
+<p>Gráfico de médias/diferenças ou gráfico de Bland-Altman “consiste num gráfico das diferenças entre duas observações pareadas <span class="math inline">\((X_{2i} - X_{1i})\)</span> em função das médias correspondentes <span class="math inline">\([(X_{1i} + X_{2i})/2]\)</span>, <span class="math inline">\(i = 1, \cdots, n\)</span>” <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 97–98</a>)</span>.</p>
 </div>
 <div id="uma-variável-qualitativa-e-outra-quantitativa" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Uma variável qualitativa e outra quantitativa<a href="análise-de-dados-de-duas-variáveis.html#uma-variável-qualitativa-e-outra-quantitativa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Outro gráfico útil para avaliar a associação entre a variável quantitativa […] e a variável qualitativa […] é o <strong>gráfico de perfis médios</strong>. Nesse gráfico cartesiano as médias (e barras representando desvios padrões, erros padrões ou intervalos de confiança […]) da variável quantitativa são representadas no eixo das ordenadas e os níveis da variável qualitativa, no eixo das abscissas <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 101</a>)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Então podemos definir o grau de associação entre duas variáveis como o ganho relativo na variância obtido pela introdução da variável qualitativa. Explicitamente: <span class="math display">\[R^2 = \frac{Var(S) - \overline{Var(S)}}{Var(S)} = 1 - \frac{\overline{Var(S)}}{Var(S)}\]</span> Além disso, pode-se mostrar que <span class="math inline">\(0 \le R^2 \le 1\)</span> <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 106</a>)</span>.</p>
+</blockquote>
+<p><span class="math inline">\(R^2\)</span> indica o percentual da variação de uma variável dependente que pode ser explicada pela variável independente <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 106</a>)</span>.</p>
 </div>
 <div id="notas-de-capítulo-2" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Notas de capítulo<a href="análise-de-dados-de-duas-variáveis.html#notas-de-capítulo-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Embora não se possa calcular o risco relativo de doença em estudos retrospectivos, a razão de chances obtida por meio desse tipo de estudo é igual àquela que seria obtida por intermédio de um estudo prospectivo, que em muitas situações práticas não pode ser realizado devido ao custo <span class="citation">(<a href="#ref-MorettinSinger2022">MORETTIN; SINGER, 2022, p. 107</a>)</span>.</p>
+</blockquote>
 </div>
 <div id="exercícios-2" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Exercícios<a href="análise-de-dados-de-duas-variáveis.html#exercícios-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1008,8 +1061,8 @@ Y | 1 | 2 | 4 | 4 | 5 | 7 | 8 | 9 |</div>
 <p><span id="unlabeled-div-69" class="solution"><em>Solução</em>. </span>x</p>
 </div>
 </div>
-<div id="exr4-25" class="section level3 unnumbered hasAnchor">
-<h3>Exercício 4.28<a href="análise-de-dados-de-duas-variáveis.html#exr4-25" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exr4-28" class="section level3 unnumbered hasAnchor">
+<h3>Exercício 4.28<a href="análise-de-dados-de-duas-variáveis.html#exr4-28" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
 <p>Prove as relações (4.12)-(4.14).</p>
 </div>
@@ -1018,6 +1071,12 @@ Y | 1 | 2 | 4 | 4 | 5 | 7 | 8 | 9 |</div>
 </div>
 
 </div>
+</div>
+</div>
+<h3>Referências<a href="referências.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-MorettinSinger2022" class="csl-entry">
+MORETTIN, P. A.; SINGER, J. DA M. <strong>Estatística e Ciência de Dados</strong>. Rio de Janeiro: LTC, 2022.
 </div>
 </div>
             </section>

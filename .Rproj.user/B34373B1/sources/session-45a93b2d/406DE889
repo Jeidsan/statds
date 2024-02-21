@@ -3,7 +3,7 @@
     "path": "~/GitHub/1. Livros/Estatística e Ciência de Dados/statds/chapters/04-analise-de-dados-de-duas-variaveis.Rmd",
     "project_path": "chapters/04-analise-de-dados-de-duas-variaveis.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "978827040",
     "contents": "",
     "dirty": false,
     "created": 1708003908742.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "0,0",
-        "scrollLine": "0"
+        "cursorPosition": "28,412",
+        "scrollLine": "18"
     },
     "folds": "",
-    "lastKnownWriteTime": 1708516113,
+    "lastKnownWriteTime": 1708525281,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1708516113319,
+    "last_content_update": 1708525281264,
     "read_only": false,
     "read_only_alternatives": []
 }

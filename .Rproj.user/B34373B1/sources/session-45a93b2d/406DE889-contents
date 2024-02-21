@@ -2,13 +2,51 @@
 
 ## Introdução
 
+> De maneira geral, dizemos que existe uma associação entre duas variáveis se o conhecimento do valor de uma delas nos dá alguma característica da distribuição (de frequência) da outra. [@MorettinSinger2022, p. 79]
+
 ## Duas variáveis qualitativas
+
+> Dnotando os valores observados por $o_i$ e os esperados por $e_i$, $i = 1, 2, 3, 4$, podemos calcular os *residuos* $r_i = o_i - e_i$ e verificar que $\sum_i r_i = 0$. Uma medida da discrepância entre os valores observados e aqueles esperados sob a hipótese $H$ é chamada estatística ou **qui-quadrado** de Pearson, $$\chi^2 = \sum\limits_{i = 1}^{n} \frac{(o_i - e_i)^2}{e_i}$$ [@MorettinSinger2022, p. 82].
+
+> A própria estatística de Pearson poderia servir como medida da intensidade da associação mas seu valor valor aumenta com o tamanho da amostra; uma alternativa para corrigir ese problema é o **coeficiente de contingência de Pearson**, dado por $$C = \sqrt{\frac{\chi^2}{\chi^2 + n}}$$ [@MorettinSinger2022, p. 83].
+
+> Uma modificação de $C$ é o ** ceficiente de Tschuprov**, $$ T = \sqrt{\frac{\chi^2/n}{\sqrt{(r - 1)(c - 1)}}} \ ,$$ que atinge o valor máximo igual a $1$ quando $r = c$ [@MorettinSinger2022, p. 83].
+
+> Uma estimativa do índice denominado $\kappa$ de Cohen (1960), construido com esse propósito [avaliar a magnitude da concordância entre duas classificações] é $$\hat{\kappa} = \frac{\sum \limits_{i = 1}^{3}p_{ii} - \sum \limits_{i = 1}^{3}p_{i+}p_{+i}}{1 - \sum \limits_{i = 1}^{3}p_{i+}p_{+i}}$$ Nessa expressão, $p_{ij} representa frequência relativa associada à casela correspondente à linha $i$ e coluna $j$ da tabela [de contingência] e $p_{i+}$ e $p_{+j}$ representam a soma das frequências relativas asociadas à linha $i$ e coluna $j$, respectivamente [@MorettinSinger2022, p. 85].
+
+> **Risco atribuível**: $d = \pi_1 - \pi_0$, que coresponde a diferença entre as probabilidades (ou riscos) de ocorrência do evento de interese para expostos e não expostos ao fator de risco [@MorettinSinger2022, p. 86].
+
+> **Risco relativo**: $r=\pi_{1}/\pi_{0}$, que corresponde ao quociente entre as probabilidades de ocorrência do evento de interesse para expostos e não expostos ao fator de risco [@MorettinSinger2022, p. 87]. 
+
+> **Razão de chances** (*odds ratio*): $\omega=[\pi_{1}/(1-\pi_{1})]/[\pi_{0}/(1-\pi_{0})]$, que corresponde ao quociente entre as chances de ocorrência do evento de interesse para expostos e não expostos ao fator de risco [@MorettinSinger2022, p. 87]. 
+
+> **Acurácia**: corresponde à probabilidade de resultados corretos [@MorettinSinger2022, p. 89]. 
+
+> Sensibilidade e especificidade são características do teste, mas tanto o valor preditivo positivo quanto o valor preditivo negativo dependem da **prevalência** (porcentagem de indivíduos doentes na população) da doença [@MorettinSinger2022, p. 89].
 
 ## Duas variáveis quantitativas
 
+> Dado um conjunto de $n$ pares $(x_i, y_i)$, a associação (linear) entre as variáveis quantitativas $X$ e $Y$ pode ser quantificada por meio do **coeficiente de correlação (linear)** de Pearson, definifo por $$r_p = \frac{\sum \limits_{i=1}^{n}(x_i - \overline{x})(y_i - \overline{y})}{\left[ \sum \limits_{i = 1}^{n}(x_i - \overline{x})^2 \cdot \sum\limits_{i=1}^{n}(y_i - \overline{y})^2  \right]^{1/2}}$$ [@MorettinSinger2022, p. 91].
+
+> [...] uma medida de associação mais robusta é o coeficiente de correlação de Apearman cuja expressão é similar à (4.4) [coef. de Pearson] com valores de $X$ e $Y$ substituídos pelos respectivos **postos**. [...] $$r_p = \frac{\sum \limits_{i=1}^{n}(R_i - \overline{R})(S_i - \overline{S})}{\left[ \sum \limits_{i = 1}^{n}(R_i - \overline{R})^2 \cdot \sum\limits_{i=1}^{n}(S_i - \overline{S})^2  \right]^{1/2}}$$ [@MorettinSinger2022, p. 92].
+
+> [...] o coeficiente de correlação de Spearman é mais apropriado para avaliação de associações não lineares, desde que sejam **monotônicas** [...] [@MorettinSinger2022, p. 93].
+
+> [...] dados longitudinais, *i.e.*, aqueles qem que a mesma variável é observada em cada unidade amostral mais do que uma vez ao longo do tempo [...] [@MorettinSinger2022, p. 95].
+
+Gráfico de médias/diferenças ou gráfico de Bland-Altman "consiste num gráfico das diferenças entre duas observações pareadas $(X_{2i} -  X_{1i})$ em função das médias correspondentes $[(X_{1i} + X_{2i})/2]$, $i = 1, \cdots, n$" [@MorettinSinger2022, p. 97-98].
+
 ## Uma variável qualitativa e outra quantitativa
 
+> Outro gráfico útil para avaliar a associação entre a variável quantitativa [...] e a variável qualitativa [...] é o **gráfico de perfis médios**. Nesse gráfico cartesiano as médias (e barras representando desvios padrões, erros padrões ou intervalos de confiança [...]) da variável quantitativa são representadas no eixo das ordenadas e os níveis da variável qualitativa, no eixo das abscissas [@MorettinSinger2022, p. 101].
+
+> Então podemos definir o grau de associação entre duas variáveis como o ganho relativo na variância obtido pela introdução da variável qualitativa. Explicitamente: $$R^2 = \frac{Var(S) - \overline{Var(S)}}{Var(S)} = 1 - \frac{\overline{Var(S)}}{Var(S)}$$ Além disso, pode-se mostrar que $0 \le R^2 \le 1$ [@MorettinSinger2022, p. 106].
+
+$R^2$ indica o percentual da variação de uma variável dependente que pode ser explicada pela variável independente [@MorettinSinger2022, p. 106].
+
 ## Notas de capítulo
+
+> Embora não se possa calcular o risco relativo de doença em estudos retrospectivos, a razão de chances obtida por meio desse tipo de estudo é igual àquela que seria obtida por intermédio de um estudo prospectivo, que em muitas situações práticas não pode ser realizado devido ao custo [@MorettinSinger2022, p. 107].
 
 ## Exercícios
 
@@ -419,7 +457,7 @@ Prove que (4.4) e (4.5) são equivalentes.
 x
 :::
 
-### Exercício 4.28 {- #exr4-25}
+### Exercício 4.28 {- #exr4-28}
 
 ::: {.enunciado}
  Prove as relações (4.12)-(4.14).
