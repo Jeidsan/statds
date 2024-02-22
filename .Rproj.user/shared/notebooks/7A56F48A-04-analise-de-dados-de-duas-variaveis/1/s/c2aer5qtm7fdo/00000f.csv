@@ -1,0 +1,3 @@
+"0","qui_quadrado <- chisq.test(empresa$instrucao, empresa$regiao)$statistic[[1]]
+"
+"2","Warning: Aproximação do qui-quadrado pode estar incorreta"

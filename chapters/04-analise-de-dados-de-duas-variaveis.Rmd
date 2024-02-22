@@ -53,17 +53,156 @@ $R^2$ indica o percentual da variação de uma variável dependente que pode ser
 ### Exercício 4.1 {- #exr4-1}
 
 ::: {.enunciado}
-Considere o conjunto de dados disponível no arquivo `empresa.xls`.Compare as distribuições de frequências das variáveis `Estado civil`, `Grau de Instrução` e `Salário` para indivíduos com diferentes procedências. 
+Considere o conjunto de dados disponível no arquivo `empresa.xls`. Compare as distribuições de frequências das variáveis `Estado civil`, `Grau de Instrução` e `Salário` para indivíduos com diferentes procedências. 
 :::
 
 :::{.solution}
-x
+Vamos começar carregando os dados.
+
+```{r}
+empresa <- readxl::read_xls(paste0(data_dir, "empresa.xls"), skip = 1)
+colnames(empresa) <- c("id", "estado", "instrucao", "filhos", "salario", "anos", "meses", "regiao")
+
+empresa <- empresa %>%
+              mutate(
+                estado = parse_factor(estado, levels = c("solteiro", "casado", "divorciado", "viúdo"), ordered = FALSE),
+                instrucao = parse_factor(instrucao, ordered = TRUE, levels = c("ensino fundamental", "ensino médio", "superior")),
+                regiao = parse_factor(regiao, ordered = FALSE, levels = c("interior", "capital", "outra")),
+                idade = anos + (meses / 12)
+              )
+
+write_csv(empresa, paste0(data_dir, "empresa.csv"))
+```
+
+Com os dados carregados e arrumados, podemos partir para as análises.
+
+#### Estado Civil *versus* Região de Procedência {-}
+
+Por se tratar de duas variáveis categóricas, vamos analisá-las a partir da tabela de contingência, à estatística qui-quadrado de Pearson e ao coeficiente de contingência de Pearson.
+
+```{r}
+empresa %>%
+  group_by(estado, regiao) %>%
+  count() %>%
+  bind_rows(
+    group_by(., estado) %>%
+      summarise(n = sum(n)) %>%
+      mutate(regiao = "Total")
+  ) %>%
+  bind_rows(
+    group_by(., regiao) %>%
+      summarise(n = sum(n)) %>%
+      mutate(estado = "Total")
+  ) %>%
+  spread(regiao, n) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.1:** Distribuição conjunta das variáveis Estado Civil e Região de Procedência",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+  
+```
+
+Utilizaremos a função `chisq.test()` para calcular nossas estatísticas de interesse:
+
+```{r}
+qui_quadrado <- chisq.test(empresa$estado, empresa$regiao)$statistic[[1]]
+n <- nrow(empresa)
+c <- sqrt(qui_quadrado / (qui_quadrado + n))
+```
+
+Após os cálculos, constatamos que o valor de $\chi^2$ é `r qui_quadrado` e o coeficiente $C$ de contingência de Pearson é de `r c`, indicando uma baixa correlação entre as variáveis. 
+
+#### Grau de Instrução *versus* Região de Procedência {-}
+
+Novamente usaremos a tabela de contingência, a estatística qui-quadrado de Pearson e o coeficiente de contingência de Pearson.
+
+```{r}
+empresa %>%
+  group_by(instrucao, regiao) %>%
+  count() %>%
+  bind_rows(
+    group_by(., instrucao) %>%
+      summarise(n = sum(n)) %>%
+      mutate(regiao = "Total")
+  ) %>%
+  bind_rows(
+    group_by(., regiao) %>%
+      summarise(n = sum(n)) %>%
+      mutate(instrucao = "Total")
+  ) %>%
+  spread(regiao, n) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.2:** Distribuição conjunta das variáveis Grau de Instrução e Região de Procedência",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+  
+```
+
+Utilizaremos a função `chisq.test()` para calcular nossas estatísticas de interesse:
+
+```{r}
+qui_quadrado <- chisq.test(empresa$instrucao, empresa$regiao)$statistic[[1]]
+n <- nrow(empresa)
+c <- sqrt(qui_quadrado / (qui_quadrado + n))
+```
+
+Após os cálculos, constatamos que o valor de $\chi^2$ é `r qui_quadrado` e o coeficiente $C$ de contingência de Pearson é de `r c`, indicando uma baixa correlação entre as variáveis. 
+
+#### Salário *versus* Região de Procedência {-}
+
+Agora temos em mãos uma variável qualitativa e outra quantitativa. Utilizaremos uma tabela de resumo e gráfico de *boxplots* para avaliar a relação, além de calcularmos a estatística $R^2$.
+
+A Tabela 4.3 a seguir apresenta as medidas de resumo para o salário dos funcionários, conforme a região de procedência do funcionário. A Figura 4.1 apresenta uma comparação gráfica dos salários utilizando *boxplots*.
+
+```{r}
+empresa %>%
+  statds_summarise(salario, regiao) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.3:** Medidas de resumo para a variável `Salário`, conforme `Região de procedência`",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+```{r}
+empresa %>%
+  ggplot(aes(regiao, salario)) +
+    stat_boxplot(
+      geom = "errorbar", 
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+    labs(
+      title = bquote(bold("Figura 4.1:")~"Distribuição dos salários conforme região de procedência"),
+      x = "Região de Procedência",
+      y = "Salário"
+    ) +
+    tema
+  
+```
+
+Utilizamos a função `var()` da base do R para calcular a variância total da variável salário $Var(salário) = 21.04477$ e os dados da Tabela 4.1 para calcular a média de variação da variável por grupos $\overline{Var(salário)} = 22.08694$ e chegamos a $R^2 = -0.0495217$. Como os valores estão inconsistentes, será necessário revisar este item.
+
 :::
 
 ### Exercício 4.2 {- #exr4-2}
 
 ::: {.enunciado}
-Considere o conjunto de dados disponivel no arquivo `regioes.xls`. Avalie a relação entre variáveis `Região` e `Densidade populacional`.
+Considere o conjunto de dados disponível no arquivo `regioes.xls`. Avalie a relação entre variáveis `Região` e `Densidade populacional`.
 :::
 
 :::{.solution}

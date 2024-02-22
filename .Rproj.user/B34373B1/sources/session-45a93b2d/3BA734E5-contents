@@ -64,9 +64,77 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail *jeidsan
 - Para facilitar a navegação, quando possível, adicionamos links para outras partes do texto que estejam relacionadas.
 - Sempre que possível, procuramos também adicionar as referências originais aos conjuntos de dados, com o intuito de facilitar a consulta pelo leitor. Por exemplo, o conjunto de dados `rehabcardio.xls` é oriundo da pesquisa realizada por @CarvalhoEtAl2007.
 
+## Funções auxiliares {-}
+
+Durante a solução dos exercícios, repetiremos muitas vezes algumas ações (como o carregamento de um arquivo, o cálculo de medidas de resumo para uma determinada variável, etc). Para evitar replicar o código para essas ações, vaos criar aqui algumas funções.
+
+A primeira delas visa carregar um arquivo de dados:
+
+```{r}
+statds_read <- function(file, type = "csv", ...) {
+  file <- paste0(data_dir, file)
+  
+  switch(
+    type,
+    "csv" = readr::read_csv(file, ...),
+    "xls" = readxl::read_xls(file, ...)
+  )
+}
+```
+
+A nossa segunda função servirá para calcular um resumo de uma coluna de um data frame:
+
+```{r}
+statds_summarise <- function(data, x, ...) {
+  x <- enquo(x)
+  data %>% 
+    group_by(...) %>%
+    summarize(
+        `n` = n(),
+        `Média` = mean(!!x, na.rm = TRUE), 
+        `Variância` = var(!!x, na.rm = TRUE),
+        `Desvio Padrão` = sd(!!x, na.rm = TRUE),
+        `Min.` = min(!!x),
+        `Q1` = quantile(!!x, c(0.25), na.rm = TRUE)[[1]],
+        `Mediana` = median(!!x, na.rm = TRUE),
+        `Q3` = quantile(!!x, c(0.75), na.rm = TRUE)[[1]],
+        `Máx.` = max(!!x),
+        `IQR` = IQR(!!x, na.rm = TRUE)
+    )
+}
+
+```
+
+A próxima função tem o objetivo de construir a tabela de contingência para duas variáveis categóricas:
+
+```{r}
+statds_crosstable <- function(data, x, y, totals = TRUE) {
+  x <- enquo(x)
+  y <- enquo(y)
+  
+  data %>%
+    group_by(!!x, !!y) %>%
+    count() %>%
+    bind_rows(
+      group_by(., !!x) %>%
+        summarise(n = sum(n)) %>%
+        mutate(regiao = 'Total')
+    ) %>%
+    bind_rows(
+      group_by(., !!y) %>%
+        summarise(n = sum(n)) %>%
+        mutate(estado = 'Total')
+    ) %>%
+    spread(!!y, n)
+}
+```
+
+
 ## Pendências {-}
 
 - Ajustar títulos do gráfico colocando a parte "Figura x.y:" em negrito;
+- Ajustar capítulos 2 e 3 pra usarem as funções `statds_()` definidas acima;
+- Melhorar os totais da função `statds_crosstable()` e utilizá-la nos exercícios;
 - [Exercício 2.2](#exr2-2);
 - Revisar estrutura do [Exercício 3.5](#exr3-5);
 - Complementar a análise do [Exercício 3.12](#exr3-12);
@@ -77,3 +145,6 @@ Dúvidas ou sugestões de melhoria podem ser encaminhadas para o e-mail *jeidsan
 - [Exercício 3.31](#exr3-31);
 - [Exercício 3.32](#exr3-32);
 - [Exercício 3.33](#exr3-33);
+- Validar cálculo de $R^2$ no [Exercício 4.1](#exr4-1);
+- Revisar cálculo de conceito de $R^2$ no último item do [Exercício](#exr4-1);
+-

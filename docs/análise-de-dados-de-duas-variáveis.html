@@ -165,6 +165,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#notas-sobre-a-edição"><i class="fa fa-check"></i>Notas sobre a edição</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#funções-auxiliares"><i class="fa fa-check"></i>Funções auxiliares</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#pendências"><i class="fa fa-check"></i>Pendências</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html"><i class="fa fa-check"></i><b>1</b> Estatística, Ciência de Dados e Megadados</a>
@@ -514,16 +515,277 @@ div.csl-indent {
 <div id="exr4-1" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 4.1<a href="análise-de-dados-de-duas-variáveis.html#exr4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Considere o conjunto de dados disponível no arquivo <code>empresa.xls</code>.Compare as distribuições de frequências das variáveis <code>Estado civil</code>, <code>Grau de Instrução</code> e <code>Salário</code> para indivíduos com diferentes procedências.</p>
+<p>Considere o conjunto de dados disponível no arquivo <code>empresa.xls</code>. Compare as distribuições de frequências das variáveis <code>Estado civil</code>, <code>Grau de Instrução</code> e <code>Salário</code> para indivíduos com diferentes procedências.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-43" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-43" class="solution"><em>Solução</em>. </span>Vamos começar carregando os dados.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="análise-de-dados-de-duas-variáveis.html#cb256-1" tabindex="-1"></a>empresa <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="fu">paste0</span>(data_dir, <span class="st">&quot;empresa.xls&quot;</span>), <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb256-2"><a href="análise-de-dados-de-duas-variáveis.html#cb256-2" tabindex="-1"></a><span class="fu">colnames</span>(empresa) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;estado&quot;</span>, <span class="st">&quot;instrucao&quot;</span>, <span class="st">&quot;filhos&quot;</span>, <span class="st">&quot;salario&quot;</span>, <span class="st">&quot;anos&quot;</span>, <span class="st">&quot;meses&quot;</span>, <span class="st">&quot;regiao&quot;</span>)</span>
+<span id="cb256-3"><a href="análise-de-dados-de-duas-variáveis.html#cb256-3" tabindex="-1"></a></span>
+<span id="cb256-4"><a href="análise-de-dados-de-duas-variáveis.html#cb256-4" tabindex="-1"></a>empresa <span class="ot">&lt;-</span> empresa <span class="sc">%&gt;%</span></span>
+<span id="cb256-5"><a href="análise-de-dados-de-duas-variáveis.html#cb256-5" tabindex="-1"></a>              <span class="fu">mutate</span>(</span>
+<span id="cb256-6"><a href="análise-de-dados-de-duas-variáveis.html#cb256-6" tabindex="-1"></a>                <span class="at">estado =</span> <span class="fu">parse_factor</span>(estado, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;solteiro&quot;</span>, <span class="st">&quot;casado&quot;</span>, <span class="st">&quot;divorciado&quot;</span>, <span class="st">&quot;viúdo&quot;</span>), <span class="at">ordered =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb256-7"><a href="análise-de-dados-de-duas-variáveis.html#cb256-7" tabindex="-1"></a>                <span class="at">instrucao =</span> <span class="fu">parse_factor</span>(instrucao, <span class="at">ordered =</span> <span class="cn">TRUE</span>, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;ensino fundamental&quot;</span>, <span class="st">&quot;ensino médio&quot;</span>, <span class="st">&quot;superior&quot;</span>)),</span>
+<span id="cb256-8"><a href="análise-de-dados-de-duas-variáveis.html#cb256-8" tabindex="-1"></a>                <span class="at">regiao =</span> <span class="fu">parse_factor</span>(regiao, <span class="at">ordered =</span> <span class="cn">FALSE</span>, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;interior&quot;</span>, <span class="st">&quot;capital&quot;</span>, <span class="st">&quot;outra&quot;</span>)),</span>
+<span id="cb256-9"><a href="análise-de-dados-de-duas-variáveis.html#cb256-9" tabindex="-1"></a>                <span class="at">idade =</span> anos <span class="sc">+</span> (meses <span class="sc">/</span> <span class="dv">12</span>)</span>
+<span id="cb256-10"><a href="análise-de-dados-de-duas-variáveis.html#cb256-10" tabindex="-1"></a>              )</span>
+<span id="cb256-11"><a href="análise-de-dados-de-duas-variáveis.html#cb256-11" tabindex="-1"></a></span>
+<span id="cb256-12"><a href="análise-de-dados-de-duas-variáveis.html#cb256-12" tabindex="-1"></a><span class="fu">write_csv</span>(empresa, <span class="fu">paste0</span>(data_dir, <span class="st">&quot;empresa.csv&quot;</span>))</span></code></pre></div>
+<p>Com os dados carregados e arrumados, podemos partir para as análises.</p>
+<div id="estado-civil-versus-região-de-procedência" class="section level4 unnumbered hasAnchor">
+<h4>Estado Civil <em>versus</em> Região de Procedência<a href="análise-de-dados-de-duas-variáveis.html#estado-civil-versus-região-de-procedência" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Por se tratar de duas variáveis categóricas, vamos analisá-las a partir da tabela de contingência, à estatística qui-quadrado de Pearson e ao coeficiente de contingência de Pearson.</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="análise-de-dados-de-duas-variáveis.html#cb257-1" tabindex="-1"></a>empresa <span class="sc">%&gt;%</span></span>
+<span id="cb257-2"><a href="análise-de-dados-de-duas-variáveis.html#cb257-2" tabindex="-1"></a>  <span class="fu">group_by</span>(estado, regiao) <span class="sc">%&gt;%</span></span>
+<span id="cb257-3"><a href="análise-de-dados-de-duas-variáveis.html#cb257-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb257-4"><a href="análise-de-dados-de-duas-variáveis.html#cb257-4" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb257-5"><a href="análise-de-dados-de-duas-variáveis.html#cb257-5" tabindex="-1"></a>    <span class="fu">group_by</span>(., estado) <span class="sc">%&gt;%</span></span>
+<span id="cb257-6"><a href="análise-de-dados-de-duas-variáveis.html#cb257-6" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb257-7"><a href="análise-de-dados-de-duas-variáveis.html#cb257-7" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">regiao =</span> <span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb257-8"><a href="análise-de-dados-de-duas-variáveis.html#cb257-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb257-9"><a href="análise-de-dados-de-duas-variáveis.html#cb257-9" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb257-10"><a href="análise-de-dados-de-duas-variáveis.html#cb257-10" tabindex="-1"></a>    <span class="fu">group_by</span>(., regiao) <span class="sc">%&gt;%</span></span>
+<span id="cb257-11"><a href="análise-de-dados-de-duas-variáveis.html#cb257-11" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb257-12"><a href="análise-de-dados-de-duas-variáveis.html#cb257-12" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">estado =</span> <span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb257-13"><a href="análise-de-dados-de-duas-variáveis.html#cb257-13" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb257-14"><a href="análise-de-dados-de-duas-variáveis.html#cb257-14" tabindex="-1"></a>  <span class="fu">spread</span>(regiao, n) <span class="sc">%&gt;%</span></span>
+<span id="cb257-15"><a href="análise-de-dados-de-duas-variáveis.html#cb257-15" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb257-16"><a href="análise-de-dados-de-duas-variáveis.html#cb257-16" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb257-17"><a href="análise-de-dados-de-duas-variáveis.html#cb257-17" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 4.1:** Distribuição conjunta das variáveis Estado Civil e Região de Procedência&quot;</span>,</span>
+<span id="cb257-18"><a href="análise-de-dados-de-duas-variáveis.html#cb257-18" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb257-19"><a href="análise-de-dados-de-duas-variáveis.html#cb257-19" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb257-20"><a href="análise-de-dados-de-duas-variáveis.html#cb257-20" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb257-21"><a href="análise-de-dados-de-duas-variáveis.html#cb257-21" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb257-22"><a href="análise-de-dados-de-duas-variáveis.html#cb257-22" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 4.1:</strong> Distribuição conjunta das variáveis Estado Civil e Região de Procedência</caption>
+<thead>
+<tr class="header">
+<th align="center">estado</th>
+<th align="center">capital</th>
+<th align="center">interior</th>
+<th align="center">outra</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">casado</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">5</td>
+<td align="center">20</td>
+</tr>
+<tr class="even">
+<td align="center">solteiro</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">16</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">11</td>
+<td align="center">12</td>
+<td align="center">13</td>
+<td align="center">36</td>
+</tr>
+</tbody>
+</table>
+<p>Utilizaremos a função <code>chisq.test()</code> para calcular nossas estatísticas de interesse:</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="análise-de-dados-de-duas-variáveis.html#cb258-1" tabindex="-1"></a>qui_quadrado <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(empresa<span class="sc">$</span>estado, empresa<span class="sc">$</span>regiao)<span class="sc">$</span>statistic[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## Warning in chisq.test(empresa$estado, empresa$regiao): Aproximação do
+## qui-quadrado pode estar incorreta</code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="análise-de-dados-de-duas-variáveis.html#cb260-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(empresa)</span>
+<span id="cb260-2"><a href="análise-de-dados-de-duas-variáveis.html#cb260-2" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(qui_quadrado <span class="sc">/</span> (qui_quadrado <span class="sc">+</span> n))</span></code></pre></div>
+<p>Após os cálculos, constatamos que o valor de <span class="math inline">\(\chi^2\)</span> é 2.4293706 e o coeficiente <span class="math inline">\(C\)</span> de contingência de Pearson é de 0.2514289, indicando uma baixa correlação entre as variáveis.</p>
+</div>
+<div id="grau-de-instrução-versus-região-de-procedência" class="section level4 unnumbered hasAnchor">
+<h4>Grau de Instrução <em>versus</em> Região de Procedência<a href="análise-de-dados-de-duas-variáveis.html#grau-de-instrução-versus-região-de-procedência" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Novamente usaremos a tabela de contingência, a estatística qui-quadrado de Pearson e o coeficiente de contingência de Pearson.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="análise-de-dados-de-duas-variáveis.html#cb261-1" tabindex="-1"></a>empresa <span class="sc">%&gt;%</span></span>
+<span id="cb261-2"><a href="análise-de-dados-de-duas-variáveis.html#cb261-2" tabindex="-1"></a>  <span class="fu">group_by</span>(instrucao, regiao) <span class="sc">%&gt;%</span></span>
+<span id="cb261-3"><a href="análise-de-dados-de-duas-variáveis.html#cb261-3" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb261-4"><a href="análise-de-dados-de-duas-variáveis.html#cb261-4" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb261-5"><a href="análise-de-dados-de-duas-variáveis.html#cb261-5" tabindex="-1"></a>    <span class="fu">group_by</span>(., instrucao) <span class="sc">%&gt;%</span></span>
+<span id="cb261-6"><a href="análise-de-dados-de-duas-variáveis.html#cb261-6" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb261-7"><a href="análise-de-dados-de-duas-variáveis.html#cb261-7" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">regiao =</span> <span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb261-8"><a href="análise-de-dados-de-duas-variáveis.html#cb261-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb261-9"><a href="análise-de-dados-de-duas-variáveis.html#cb261-9" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb261-10"><a href="análise-de-dados-de-duas-variáveis.html#cb261-10" tabindex="-1"></a>    <span class="fu">group_by</span>(., regiao) <span class="sc">%&gt;%</span></span>
+<span id="cb261-11"><a href="análise-de-dados-de-duas-variáveis.html#cb261-11" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb261-12"><a href="análise-de-dados-de-duas-variáveis.html#cb261-12" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">instrucao =</span> <span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb261-13"><a href="análise-de-dados-de-duas-variáveis.html#cb261-13" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb261-14"><a href="análise-de-dados-de-duas-variáveis.html#cb261-14" tabindex="-1"></a>  <span class="fu">spread</span>(regiao, n) <span class="sc">%&gt;%</span></span>
+<span id="cb261-15"><a href="análise-de-dados-de-duas-variáveis.html#cb261-15" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb261-16"><a href="análise-de-dados-de-duas-variáveis.html#cb261-16" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb261-17"><a href="análise-de-dados-de-duas-variáveis.html#cb261-17" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 4.2:** Distribuição conjunta das variáveis Grau de Instrução e Região de Procedência&quot;</span>,</span>
+<span id="cb261-18"><a href="análise-de-dados-de-duas-variáveis.html#cb261-18" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb261-19"><a href="análise-de-dados-de-duas-variáveis.html#cb261-19" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb261-20"><a href="análise-de-dados-de-duas-variáveis.html#cb261-20" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb261-21"><a href="análise-de-dados-de-duas-variáveis.html#cb261-21" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb261-22"><a href="análise-de-dados-de-duas-variáveis.html#cb261-22" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 4.2:</strong> Distribuição conjunta das variáveis Grau de Instrução e Região de Procedência</caption>
+<thead>
+<tr class="header">
+<th align="center">instrucao</th>
+<th align="center">capital</th>
+<th align="center">interior</th>
+<th align="center">outra</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ensino fundamental</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">12</td>
+</tr>
+<tr class="even">
+<td align="center">ensino médio</td>
+<td align="center">5</td>
+<td align="center">7</td>
+<td align="center">6</td>
+<td align="center">18</td>
+</tr>
+<tr class="odd">
+<td align="center">superior</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center">11</td>
+<td align="center">12</td>
+<td align="center">13</td>
+<td align="center">36</td>
+</tr>
+</tbody>
+</table>
+<p>Utilizaremos a função <code>chisq.test()</code> para calcular nossas estatísticas de interesse:</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="análise-de-dados-de-duas-variáveis.html#cb262-1" tabindex="-1"></a>qui_quadrado <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(empresa<span class="sc">$</span>instrucao, empresa<span class="sc">$</span>regiao)<span class="sc">$</span>statistic[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## Warning in chisq.test(empresa$instrucao, empresa$regiao): Aproximação do
+## qui-quadrado pode estar incorreta</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="análise-de-dados-de-duas-variáveis.html#cb264-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(empresa)</span>
+<span id="cb264-2"><a href="análise-de-dados-de-duas-variáveis.html#cb264-2" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(qui_quadrado <span class="sc">/</span> (qui_quadrado <span class="sc">+</span> n))</span></code></pre></div>
+<p>Após os cálculos, constatamos que o valor de <span class="math inline">\(\chi^2\)</span> é 0.6614219 e o coeficiente <span class="math inline">\(C\)</span> de contingência de Pearson é de 0.1343181, indicando uma baixa correlação entre as variáveis.</p>
+</div>
+<div id="salário-versus-região-de-procedência" class="section level4 unnumbered hasAnchor">
+<h4>Salário <em>versus</em> Região de Procedência<a href="análise-de-dados-de-duas-variáveis.html#salário-versus-região-de-procedência" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Agora temos em mãos uma variável qualitativa e outra quantitativa. Utilizaremos uma tabela de resumo e gráfico de <em>boxplots</em> para avaliar a relação, além de calcularmos a estatística <span class="math inline">\(R^2\)</span>.</p>
+<p>A Tabela 4.3 a seguir apresenta as medidas de resumo para o salário dos funcionários, conforme a região de procedência do funcionário. A Figura 4.1 apresenta uma comparação gráfica dos salários utilizando <em>boxplots</em>.</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="análise-de-dados-de-duas-variáveis.html#cb265-1" tabindex="-1"></a>empresa <span class="sc">%&gt;%</span></span>
+<span id="cb265-2"><a href="análise-de-dados-de-duas-variáveis.html#cb265-2" tabindex="-1"></a>  <span class="fu">statds_summarise</span>(salario, regiao) <span class="sc">%&gt;%</span></span>
+<span id="cb265-3"><a href="análise-de-dados-de-duas-variáveis.html#cb265-3" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb265-4"><a href="análise-de-dados-de-duas-variáveis.html#cb265-4" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb265-5"><a href="análise-de-dados-de-duas-variáveis.html#cb265-5" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 4.3:** Medidas de resumo para a variável `Salário`, conforme `Região de procedência`&quot;</span>,</span>
+<span id="cb265-6"><a href="análise-de-dados-de-duas-variáveis.html#cb265-6" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb265-7"><a href="análise-de-dados-de-duas-variáveis.html#cb265-7" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb265-8"><a href="análise-de-dados-de-duas-variáveis.html#cb265-8" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb265-9"><a href="análise-de-dados-de-duas-variáveis.html#cb265-9" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb265-10"><a href="análise-de-dados-de-duas-variáveis.html#cb265-10" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 4.3:</strong> Medidas de resumo para a variável <code>Salário</code>, conforme <code>Região de procedência</code></caption>
+<colgroup>
+<col width="11%" />
+<col width="4%" />
+<col width="7%" />
+<col width="12%" />
+<col width="17%" />
+<col width="6%" />
+<col width="6%" />
+<col width="10%" />
+<col width="7%" />
+<col width="7%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">regiao</th>
+<th align="center">n</th>
+<th align="center">Média</th>
+<th align="center">Variância</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Min.</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
+<th align="center">Máx.</th>
+<th align="center">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">interior</td>
+<td align="center">12</td>
+<td align="center">11,55</td>
+<td align="center">28,05</td>
+<td align="center">5,30</td>
+<td align="center">4,00</td>
+<td align="center">7,80</td>
+<td align="center">10,64</td>
+<td align="center">14,70</td>
+<td align="center">23,30</td>
+<td align="center">6,89</td>
+</tr>
+<tr class="even">
+<td align="center">capital</td>
+<td align="center">11</td>
+<td align="center">11,46</td>
+<td align="center">29,99</td>
+<td align="center">5,48</td>
+<td align="center">4,56</td>
+<td align="center">7,49</td>
+<td align="center">9,77</td>
+<td align="center">16,62</td>
+<td align="center">19,40</td>
+<td align="center">9,13</td>
+</tr>
+<tr class="odd">
+<td align="center">outra</td>
+<td align="center">13</td>
+<td align="center">10,45</td>
+<td align="center">9,89</td>
+<td align="center">3,15</td>
+<td align="center">5,73</td>
+<td align="center">8,74</td>
+<td align="center">9,80</td>
+<td align="center">12,79</td>
+<td align="center">16,22</td>
+<td align="center">4,05</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="análise-de-dados-de-duas-variáveis.html#cb266-1" tabindex="-1"></a>empresa <span class="sc">%&gt;%</span></span>
+<span id="cb266-2"><a href="análise-de-dados-de-duas-variáveis.html#cb266-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(regiao, salario)) <span class="sc">+</span></span>
+<span id="cb266-3"><a href="análise-de-dados-de-duas-variáveis.html#cb266-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(</span>
+<span id="cb266-4"><a href="análise-de-dados-de-duas-variáveis.html#cb266-4" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
+<span id="cb266-5"><a href="análise-de-dados-de-duas-variáveis.html#cb266-5" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span></span>
+<span id="cb266-6"><a href="análise-de-dados-de-duas-variáveis.html#cb266-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb266-7"><a href="análise-de-dados-de-duas-variáveis.html#cb266-7" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb266-8"><a href="análise-de-dados-de-duas-variáveis.html#cb266-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb266-9"><a href="análise-de-dados-de-duas-variáveis.html#cb266-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb266-10"><a href="análise-de-dados-de-duas-variáveis.html#cb266-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb266-11"><a href="análise-de-dados-de-duas-variáveis.html#cb266-11" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb266-12"><a href="análise-de-dados-de-duas-variáveis.html#cb266-12" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.1:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Distribuição dos salários conforme região de procedência&quot;</span>),</span>
+<span id="cb266-13"><a href="análise-de-dados-de-duas-variáveis.html#cb266-13" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Região de Procedência&quot;</span>,</span>
+<span id="cb266-14"><a href="análise-de-dados-de-duas-variáveis.html#cb266-14" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Salário&quot;</span></span>
+<span id="cb266-15"><a href="análise-de-dados-de-duas-variáveis.html#cb266-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb266-16"><a href="análise-de-dados-de-duas-variáveis.html#cb266-16" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<p>Utilizamos a função <code>var()</code> da base do R para calcular a variância total da variável salário <span class="math inline">\(Var(salário) = 21.04477\)</span> e os dados da Tabela 4.1 para calcular a média de variação da variável por grupos <span class="math inline">\(\overline{Var(salário)} = 22.08694\)</span> e chegamos a <span class="math inline">\(R^2 = -0.0495217\)</span>. Como os valores estão inconsistentes, será necessário revisar este item.</p>
+</div>
 </div>
 </div>
 <div id="exr4-2" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 4.2<a href="análise-de-dados-de-duas-variáveis.html#exr4-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Considere o conjunto de dados disponivel no arquivo <code>regioes.xls</code>. Avalie a relação entre variáveis <code>Região</code> e <code>Densidade populacional</code>.</p>
+<p>Considere o conjunto de dados disponível no arquivo <code>regioes.xls</code>. Avalie a relação entre variáveis <code>Região</code> e <code>Densidade populacional</code>.</p>
 </div>
 <div class="solution">
 <p><span id="unlabeled-div-44" class="solution"><em>Solução</em>. </span>x</p>

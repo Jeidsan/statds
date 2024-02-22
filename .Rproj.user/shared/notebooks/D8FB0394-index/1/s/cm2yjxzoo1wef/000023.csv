@@ -1,0 +1,18 @@
+"0","  data %>%
+    group_by(!!x, !!y) %>%
+    count() %>%
+    bind_rows(
+      group_by(., !!x) %>%
+        summarise(n = sum(n)) %>%
+        mutate(regiao = 'Total')
+    ) %>%
+    bind_rows(
+      group_by(., !!y) %>%
+        summarise(n = sum(n)) %>%
+        mutate(estado = 'Total')
+    ) %>%
+    spread(!!y, n)
+"
+"2","Error in UseMethod(""group_by"") : 
+  método não aplicável para 'group_by' aplicado a um objeto de classe ""function""
+"

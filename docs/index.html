@@ -165,6 +165,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#notas-sobre-a-edição"><i class="fa fa-check"></i>Notas sobre a edição</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#funções-auxiliares"><i class="fa fa-check"></i>Funções auxiliares</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#pendências"><i class="fa fa-check"></i>Pendências</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="estatística-ciência-de-dados-e-megadados.html"><a href="estatística-ciência-de-dados-e-megadados.html"><i class="fa fa-check"></i><b>1</b> Estatística, Ciência de Dados e Megadados</a>
@@ -465,10 +466,64 @@ div.csl-indent {
 <li>Sempre que possível, procuramos também adicionar as referências originais aos conjuntos de dados, com o intuito de facilitar a consulta pelo leitor. Por exemplo, o conjunto de dados <code>rehabcardio.xls</code> é oriundo da pesquisa realizada por <span class="citation">CARVALHO et al. (<a href="#ref-CarvalhoEtAl2007">2007</a>)</span>.</li>
 </ul>
 </div>
+<div id="funções-auxiliares" class="section level2 unnumbered hasAnchor">
+<h2>Funções auxiliares<a href="index.html#funções-auxiliares" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Durante a solução dos exercícios, repetiremos muitas vezes algumas ações (como o carregamento de um arquivo, o cálculo de medidas de resumo para uma determinada variável, etc). Para evitar replicar o código para essas ações, vaos criar aqui algumas funções.</p>
+<p>A primeira delas visa carregar um arquivo de dados:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a>statds_read <span class="ot">&lt;-</span> <span class="cf">function</span>(file, <span class="at">type =</span> <span class="st">&quot;csv&quot;</span>, ...) {</span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a>  file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(data_dir, file)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a>  </span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a>  <span class="cf">switch</span>(</span>
+<span id="cb1-5"><a href="index.html#cb1-5" tabindex="-1"></a>    type,</span>
+<span id="cb1-6"><a href="index.html#cb1-6" tabindex="-1"></a>    <span class="st">&quot;csv&quot;</span> <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(file, ...),</span>
+<span id="cb1-7"><a href="index.html#cb1-7" tabindex="-1"></a>    <span class="st">&quot;xls&quot;</span> <span class="ot">=</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(file, ...)</span>
+<span id="cb1-8"><a href="index.html#cb1-8" tabindex="-1"></a>  )</span>
+<span id="cb1-9"><a href="index.html#cb1-9" tabindex="-1"></a>}</span></code></pre></div>
+<p>A nossa segunda função servirá para calcular um resumo de uma coluna de um data frame:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a>statds_summarise <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, ...) {</span>
+<span id="cb2-2"><a href="index.html#cb2-2" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(x)</span>
+<span id="cb2-3"><a href="index.html#cb2-3" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="index.html#cb2-4" tabindex="-1"></a>    <span class="fu">group_by</span>(...) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="index.html#cb2-5" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb2-6"><a href="index.html#cb2-6" tabindex="-1"></a>        <span class="st">`</span><span class="at">n</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">n</span>(),</span>
+<span id="cb2-7"><a href="index.html#cb2-7" tabindex="-1"></a>        <span class="st">`</span><span class="at">Média</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="sc">!!</span>x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb2-8"><a href="index.html#cb2-8" tabindex="-1"></a>        <span class="st">`</span><span class="at">Variância</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">var</span>(<span class="sc">!!</span>x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-9"><a href="index.html#cb2-9" tabindex="-1"></a>        <span class="st">`</span><span class="at">Desvio Padrão</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sd</span>(<span class="sc">!!</span>x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-10"><a href="index.html#cb2-10" tabindex="-1"></a>        <span class="st">`</span><span class="at">Min.</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">min</span>(<span class="sc">!!</span>x),</span>
+<span id="cb2-11"><a href="index.html#cb2-11" tabindex="-1"></a>        <span class="st">`</span><span class="at">Q1</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">quantile</span>(<span class="sc">!!</span>x, <span class="fu">c</span>(<span class="fl">0.25</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[[<span class="dv">1</span>]],</span>
+<span id="cb2-12"><a href="index.html#cb2-12" tabindex="-1"></a>        <span class="st">`</span><span class="at">Mediana</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">median</span>(<span class="sc">!!</span>x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-13"><a href="index.html#cb2-13" tabindex="-1"></a>        <span class="st">`</span><span class="at">Q3</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">quantile</span>(<span class="sc">!!</span>x, <span class="fu">c</span>(<span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[[<span class="dv">1</span>]],</span>
+<span id="cb2-14"><a href="index.html#cb2-14" tabindex="-1"></a>        <span class="st">`</span><span class="at">Máx.</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">max</span>(<span class="sc">!!</span>x),</span>
+<span id="cb2-15"><a href="index.html#cb2-15" tabindex="-1"></a>        <span class="st">`</span><span class="at">IQR</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">IQR</span>(<span class="sc">!!</span>x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-16"><a href="index.html#cb2-16" tabindex="-1"></a>    )</span>
+<span id="cb2-17"><a href="index.html#cb2-17" tabindex="-1"></a>}</span></code></pre></div>
+<p>A próxima função tem o objetivo de construir a tabela de contingência para duas variáveis categóricas:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a>statds_crosstable <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, y, <span class="at">totals =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(x)</span>
+<span id="cb3-3"><a href="index.html#cb3-3" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">enquo</span>(y)</span>
+<span id="cb3-4"><a href="index.html#cb3-4" tabindex="-1"></a>  </span>
+<span id="cb3-5"><a href="index.html#cb3-5" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="index.html#cb3-6" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="sc">!!</span>x, <span class="sc">!!</span>y) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="index.html#cb3-7" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="index.html#cb3-8" tabindex="-1"></a>    <span class="fu">bind_rows</span>(</span>
+<span id="cb3-9"><a href="index.html#cb3-9" tabindex="-1"></a>      <span class="fu">group_by</span>(., <span class="sc">!!</span>x) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="index.html#cb3-10" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="index.html#cb3-11" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">regiao =</span> <span class="st">&#39;Total&#39;</span>)</span>
+<span id="cb3-12"><a href="index.html#cb3-12" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="index.html#cb3-13" tabindex="-1"></a>    <span class="fu">bind_rows</span>(</span>
+<span id="cb3-14"><a href="index.html#cb3-14" tabindex="-1"></a>      <span class="fu">group_by</span>(., <span class="sc">!!</span>y) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="index.html#cb3-15" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="index.html#cb3-16" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">estado =</span> <span class="st">&#39;Total&#39;</span>)</span>
+<span id="cb3-17"><a href="index.html#cb3-17" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="index.html#cb3-18" tabindex="-1"></a>    <span class="fu">spread</span>(<span class="sc">!!</span>y, n)</span>
+<span id="cb3-19"><a href="index.html#cb3-19" tabindex="-1"></a>}</span></code></pre></div>
+</div>
 <div id="pendências" class="section level2 unnumbered hasAnchor">
 <h2>Pendências<a href="index.html#pendências" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Ajustar títulos do gráfico colocando a parte “Figura x.y:” em negrito;</li>
+<li>Ajustar capítulos 2 e 3 pra usarem as funções <code>statds_()</code> definidas acima;</li>
+<li>Melhorar os totais da função <code>statds_crosstable()</code> e utilizá-la nos exercícios;</li>
 <li><a href="preparação-dos-dados.html#exr2-2">Exercício 2.2</a>;</li>
 <li>Revisar estrutura do <a href="análise-de-dados-de-uma-variável.html#exr3-5">Exercício 3.5</a>;</li>
 <li>Complementar a análise do <a href="análise-de-dados-de-uma-variável.html#exr3-12">Exercício 3.12</a>;</li>
@@ -479,6 +534,9 @@ div.csl-indent {
 <li><a href="análise-de-dados-de-uma-variável.html#exr3-31">Exercício 3.31</a>;</li>
 <li><a href="análise-de-dados-de-uma-variável.html#exr3-32">Exercício 3.32</a>;</li>
 <li><a href="análise-de-dados-de-uma-variável.html#exr3-33">Exercício 3.33</a>;</li>
+<li>Validar cálculo de <span class="math inline">\(R^2\)</span> no <a href="análise-de-dados-de-duas-variáveis.html#exr4-1">Exercício 4.1</a>;</li>
+<li>Revisar cálculo de conceito de <span class="math inline">\(R^2\)</span> no último item do <a href="análise-de-dados-de-duas-variáveis.html#exr4-1">Exercício</a>;</li>
+<li></li>
 </ul>
 
 </div>

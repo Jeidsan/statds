@@ -303,6 +303,78 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
   Sempre que possível, procuramos também adicionar as referências originais aos conjuntos de dados, com o intuito de facilitar a consulta pelo leitor. Por exemplo, o conjunto de dados \texttt{rehabcardio.xls} é oriundo da pesquisa realizada por \citet{CarvalhoEtAl2007}.
 \end{itemize}
 
+\hypertarget{funuxe7uxf5es-auxiliares}{%
+\section*{Funções auxiliares}\label{funuxe7uxf5es-auxiliares}}
+\addcontentsline{toc}{section}{Funções auxiliares}
+
+Durante a solução dos exercícios, repetiremos muitas vezes algumas ações (como o carregamento de um arquivo, o cálculo de medidas de resumo para uma determinada variável, etc). Para evitar replicar o código para essas ações, vaos criar aqui algumas funções.
+
+A primeira delas visa carregar um arquivo de dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{statds\_read }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(file, }\AttributeTok{type =} \StringTok{"csv"}\NormalTok{, ...) \{}
+\NormalTok{  file }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(data\_dir, file)}
+  
+  \ControlFlowTok{switch}\NormalTok{(}
+\NormalTok{    type,}
+    \StringTok{"csv"} \OtherTok{=}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(file, ...),}
+    \StringTok{"xls"} \OtherTok{=}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(file, ...)}
+\NormalTok{  )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+A nossa segunda função servirá para calcular um resumo de uma coluna de um data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{statds\_summarise }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, x, ...) \{}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{enquo}\NormalTok{(x)}
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{group\_by}\NormalTok{(...) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarize}\NormalTok{(}
+        \StringTok{\textasciigrave{}}\AttributeTok{n}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{n}\NormalTok{(),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Média}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{mean}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }
+        \StringTok{\textasciigrave{}}\AttributeTok{Variância}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{var}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Desvio Padrão}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{sd}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Min.}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{min}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Q1}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{quantile}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+        \StringTok{\textasciigrave{}}\AttributeTok{Mediana}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{median}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+        \StringTok{\textasciigrave{}}\AttributeTok{Q3}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{quantile}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\FunctionTok{c}\NormalTok{(}\FloatTok{0.75}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)[[}\DecValTok{1}\NormalTok{]],}
+        \StringTok{\textasciigrave{}}\AttributeTok{Máx.}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{max}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x),}
+        \StringTok{\textasciigrave{}}\AttributeTok{IQR}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{IQR}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{    )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+A próxima função tem o objetivo de construir a tabela de contingência para duas variáveis categóricas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{statds\_crosstable }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, x, y, }\AttributeTok{totals =} \ConstantTok{TRUE}\NormalTok{) \{}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{enquo}\NormalTok{(x)}
+\NormalTok{  y }\OtherTok{\textless{}{-}} \FunctionTok{enquo}\NormalTok{(y)}
+  
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{x, }\SpecialCharTok{!!}\NormalTok{y) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{count}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{bind\_rows}\NormalTok{(}
+      \FunctionTok{group\_by}\NormalTok{(., }\SpecialCharTok{!!}\NormalTok{x) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{mutate}\NormalTok{(}\AttributeTok{regiao =} \StringTok{\textquotesingle{}Total\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{bind\_rows}\NormalTok{(}
+      \FunctionTok{group\_by}\NormalTok{(., }\SpecialCharTok{!!}\NormalTok{y) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+        \FunctionTok{mutate}\NormalTok{(}\AttributeTok{estado =} \StringTok{\textquotesingle{}Total\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{spread}\NormalTok{(}\SpecialCharTok{!!}\NormalTok{y, n)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{penduxeancias}{%
 \section*{Pendências}\label{penduxeancias}}
 \addcontentsline{toc}{section}{Pendências}
@@ -311,6 +383,10 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
 \tightlist
 \item
   Ajustar títulos do gráfico colocando a parte ``Figura x.y:'' em negrito;
+\item
+  Ajustar capítulos 2 e 3 pra usarem as funções \texttt{statds\_()} definidas acima;
+\item
+  Melhorar os totais da função \texttt{statds\_crosstable()} e utilizá-la nos exercícios;
 \item
   \protect\hyperlink{exr2-2}{Exercício 2.2};
 \item
@@ -331,6 +407,11 @@ Dado um número \(0 < \alpha < 1\), a \textbf{média aparada} de ordem \(\alpha\
   \protect\hyperlink{exr3-32}{Exercício 3.32};
 \item
   \protect\hyperlink{exr3-33}{Exercício 3.33};
+\item
+  Validar cálculo de \(R^2\) no \protect\hyperlink{exr4-1}{Exercício 4.1};
+\item
+  Revisar cálculo de conceito de \(R^2\) no último item do \protect\hyperlink{exr4-1}{Exercício};
+\item
 \end{itemize}
 
 \mainmatter
@@ -1787,7 +1868,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Warning: Removed 6 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-17-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-20-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1811,7 +1892,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Removed 6 rows containing non-finite values (`stat_boxplot()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-18-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-21-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1848,7 +1929,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-19-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-22-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1880,7 +1961,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Warning: Removed 7 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-20-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-23-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1904,7 +1985,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Removed 7 rows containing non-finite values (`stat_boxplot()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-21-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-24-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1921,7 +2002,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-22-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-25-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1953,7 +2034,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Warning: Removed 54 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-23-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-26-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1977,7 +2058,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Removed 54 rows containing non-finite values (`stat_boxplot()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-24-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-27-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1993,7 +2074,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-25-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-28-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2025,7 +2106,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Warning: Removed 65 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-26-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-29-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2049,7 +2130,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Removed 65 rows containing non-finite values (`stat_boxplot()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-27-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-30-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2066,7 +2147,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-28-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-31-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2098,7 +2179,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Warning: Removed 92 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-29-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-32-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2122,7 +2203,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 ## Removed 92 rows containing non-finite values (`stat_boxplot()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-30-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-33-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2139,7 +2220,7 @@ Sem resposta & 11 & 2,89 & 100,00 \\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-31-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-34-1.pdf}
 
 \hypertarget{c-construa-uma-tabela-com-medidas-resumo-para-as-variuxe1veis-continuas}{%
 \subsubsection*{c) Construa uma tabela com medidas resumo para as variáveis continuas}\label{c-construa-uma-tabela-com-medidas-resumo-para-as-variuxe1veis-continuas}}
@@ -2273,7 +2354,7 @@ LDL & 289 & 57,00 & 110,00 & 129,00 & 159,00 & 425,00 & 137,31 & 43,41 & 49,0 \\
 ## Warning: Removed 6 rows containing non-finite values (`stat_qq_line()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-33-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-36-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2298,7 +2379,7 @@ LDL & 289 & 57,00 & 110,00 & 129,00 & 159,00 & 425,00 & 137,31 & 43,41 & 49,0 \\
 ## Warning: Removed 7 rows containing non-finite values (`stat_qq_line()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-34-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-37-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2323,7 +2404,7 @@ LDL & 289 & 57,00 & 110,00 & 129,00 & 159,00 & 425,00 & 137,31 & 43,41 & 49,0 \\
 ## Warning: Removed 54 rows containing non-finite values (`stat_qq_line()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-35-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-38-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2348,7 +2429,7 @@ LDL & 289 & 57,00 & 110,00 & 129,00 & 159,00 & 425,00 & 137,31 & 43,41 & 49,0 \\
 ## Warning: Removed 65 rows containing non-finite values (`stat_qq_line()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-36-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-39-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2373,7 +2454,7 @@ LDL & 289 & 57,00 & 110,00 & 129,00 & 159,00 & 425,00 & 137,31 & 43,41 & 49,0 \\
 ## Warning: Removed 92 rows containing non-finite values (`stat_qq_line()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-37-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-40-1.pdf}
 
 \end{solution}
 
@@ -2520,7 +2601,7 @@ Para a variável \texttt{idade}, temos o seguinte:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-43-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2539,7 +2620,7 @@ Para a variável \texttt{idade}, temos o seguinte:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-44-1.pdf}
 Observando os gráficos, podemos perceber uma leve (muito leve) assimetria à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo (-0.1797772), o que indica a leve assimetria.
 
 Entendemos que não seria necessário nenhuma transformação, uma vez que a assimetria é muito leve, porém se usarmos a transformação de Box-Cox, teremos o seguinte:
@@ -2607,7 +2688,7 @@ Para a variável \texttt{tmunic}, temos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-46-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2625,7 +2706,7 @@ Para a variável \texttt{tmunic}, temos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-47-1.pdf}
 Observando os gráficos, podemos perceber uma leve (muito leve) assimetria à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo (-0.3960939), o que indica a leve assimetria.
 
 Podemos usar uma transformação para corrigir a assimetria dos dados:
@@ -2668,7 +2749,7 @@ Notamos que o melhor valor de \(p\) é \(-1/3\). Com isso, podemos realizar util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-46-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-49-1.pdf}
 Neste caso, a transformação não melhorou a simetria dos dados. Em vez disso, o coeficiente de assimetria saltou de -0.3960939 para -0.9443456.
 
 Para a variável \texttt{htransp}, temos:
@@ -2689,7 +2770,7 @@ Para a variável \texttt{htransp}, temos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-47-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-50-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2707,7 +2788,7 @@ Para a variável \texttt{htransp}, temos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-48-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-51-1.pdf}
 A variável contém uma forte assimetria a direita, conforme atesta também o coeficiente de simetria de Fisher-Pearson ajustado (2.0507871).
 
 Vamos realizar uma transformação:
@@ -2749,7 +2830,7 @@ Para os valores de \(p\), o melhor ajuste se dá quando \(p = 0.9\), vamos utili
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-50-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-53-1.pdf}
 Isso melhora um pouco a simetria dos dados, mas ainda assim não é suficiente. Vamos por exemplo, comparar os valores antes e depois da transformação.
 
 \begin{Shaded}
@@ -2790,7 +2871,7 @@ Vejamos agora a variável \texttt{cargatabag}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2808,7 +2889,7 @@ Vejamos agora a variável \texttt{cargatabag}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 Temos uma distribuição fortemente assimétrica à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado nos indica um grau de assimetria na ordem de 2.0334838.
 
@@ -2834,7 +2915,7 @@ Como a distribuição tem um formato exponencial, apostaremos que a transformaç
 ## Warning: Removed 1196 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-54-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 Continuamos com assimetria, desta vez à esquerda. Vamos realizar outras transformações e avaliar a nossa métrica.
 
@@ -2878,7 +2959,7 @@ Notamos que para \(p = 0.3\), nossa métrica é minimizada.
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 Note que, os valores continuam concentrados no zero, mas os demais, se distribuem de forma mais simétrica do que antes. É importante destacar que, nem sempre será possível tornar simétrica uma distribuição. Neste caso, deveremos procurar técnicas que não dependam da simetria dos dados.
 
@@ -2904,7 +2985,7 @@ Analisemos agora a variável \texttt{antracose}:
 ## Warning: Removed 102 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-57-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-60-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2927,7 +3008,7 @@ Analisemos agora a variável \texttt{antracose}:
 ## Removed 102 rows containing non-finite values (`stat_boxplot()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 Temos uma forte assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é NA. Vamos verificar se podemos usar uma transformação nos dados.
 
@@ -2972,7 +3053,7 @@ O valor \(p = 0.3\) minimiza a nossa medida de avaliação. Vamos agora plotar o
 ## Warning: Removed 102 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-60-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-63-1.pdf}
 
 Parece-nos que os dados se tornaram um pouco mais simétricos, mas nada muito significativo. Talvez valha a pena entender se a concentração dos valores em zero é uma medida real ou se apenas serve para simbolizar, por exemplo, um valor que não pode ser medido devido ao valor de outra variável.
 
@@ -3014,7 +3095,7 @@ Para a variável \texttt{ses}, temos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-65-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3032,7 +3113,7 @@ Para a variável \texttt{ses}, temos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-63-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-66-1.pdf}
 
 Temos uma leve assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é 0.9535379. Vamos verificar se podemos usar uma transformação nos dados.
 
@@ -3085,7 +3166,7 @@ O valor \(p = 0.4\) minimiza a nossa medida de avaliação. Vamos agora plotar o
 ## Warning: Removed 1920 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-65-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 Notamos que o histograma se tornou um pouco mais simétrico. Vamos avaliar os valores dos coeficientes de assimetria.
 
@@ -3129,7 +3210,7 @@ Para a variável \texttt{densid}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-67-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-70-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3147,7 +3228,7 @@ Para a variável \texttt{densid}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-68-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-71-1.pdf}
 
 A distribuição já nos parece bastante adequada, com coeficiente de assimetria -0.4460641.
 
@@ -3188,7 +3269,7 @@ Por fim, vamos à variável \texttt{distmin}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-70-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-73-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3206,7 +3287,7 @@ Por fim, vamos à variável \texttt{distmin}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-71-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 Temos uma forte assimetria à direita. O Coeficiente de Assimetria de Fisher-Pearson Ajustado é 2.9669771. Vamos verificar se podemos usar uma transformação nos dados.
 
@@ -3251,7 +3332,7 @@ O valor \(p = 0.2\) minimiza a nossa medida de avaliação. Vamos agora plotar o
 ## Warning: Removed 102 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-76-1.pdf}
 
 Notamos uma pequena melhora, porém ainda há uma concentração de dados em torno de um valor inicial. Analisemos o coef. de assimetria antes e depois da transformação.
 
@@ -3336,7 +3417,7 @@ Com as funções definidas, podemos construir os histogramas usando essa amplitu
 ## Warning: Removed 5 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-77-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-80-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3358,7 +3439,7 @@ Com as funções definidas, podemos construir os histogramas usando essa amplitu
 ## Warning: Removed 5 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-78-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-81-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3380,7 +3461,7 @@ Com as funções definidas, podemos construir os histogramas usando essa amplitu
 ## Warning: Removed 6 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-79-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-82-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3402,7 +3483,7 @@ Com as funções definidas, podemos construir os histogramas usando essa amplitu
 ## Warning: Removed 6 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-80-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-83-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-4}{%
@@ -3438,7 +3519,7 @@ Esboçaremos um gráfico mostrando a velocidade do vento a cada dia.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-82-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-85-1.pdf}
 
 \hypertarget{medidas-de-posiuxe7uxe3o}{%
 \subsubsection*{Medidas de posição}\label{medidas-de-posiuxe7uxe3o}}
@@ -3619,7 +3700,7 @@ A melhor opção para a transformação é \(p = 0\), logo a transformação é 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-86-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-89-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3643,7 +3724,7 @@ A melhor opção para a transformação é \(p = 0\), logo a transformação é 
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-87-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-90-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-7}{%
@@ -3702,7 +3783,7 @@ Temos 120 observações, sendo que a temperatura é dada pela variável \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-90-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-93-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3722,7 +3803,7 @@ Temos 120 observações, sendo que a temperatura é dada pela variável \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-91-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-94-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3741,7 +3822,7 @@ Temos 120 observações, sendo que a temperatura é dada pela variável \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-92-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-95-1.pdf}
 
 A distribuição tem uma leve assimetria à esquerda. O coeficiente de Assimetria de Fisher-Pearson Ajustado é -0.4253503
 
@@ -3804,7 +3885,7 @@ Notamos que a transformação não melhorou a assimetria do gráfico.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-95-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-98-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-8}{%
@@ -3857,7 +3938,7 @@ Agora vamos visualizar os salários por profissão:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-98-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-101-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3876,7 +3957,7 @@ Agora vamos visualizar os salários por profissão:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-99-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-102-1.pdf}
 
 A média geral dos salários é 28.614,47 e o desvio padrão é 17.974,29.
 
@@ -3903,7 +3984,7 @@ Agora vamos focar apenas nos administradores. A distribuição dos salários por
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-100-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-103-1.pdf}
 
 A média salarial dos administradores é 42.496,33, o desvio padrão é 20.366,78 e a mediana é 42.510.
 \end{solution}
@@ -4023,7 +4104,7 @@ Utilizamos \textbf{ggplot2} para construir o boxplot.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-104-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-107-1.pdf}
 Salvamos o conjunto de dados para futuras análises:
 
 \begin{Shaded}
@@ -4101,7 +4182,7 @@ Agora vamos construir o gráfico que quantis:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-107-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-110-1.pdf}
 
 Para o gráfico de simetria (dispersão), temos o seguinte:
 
@@ -4120,7 +4201,7 @@ Para o gráfico de simetria (dispersão), temos o seguinte:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-108-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-111-1.pdf}
 Os gráficos acima nos dão uma indicação de vele assimetria à direita. O que pode ser verificado com o Coef. de Assimetria de Fisher-Pearson Ajustado 0.8596009.
 \end{solution}
 
@@ -4560,7 +4641,7 @@ Vamos também construir alguns gráficos para visualizar melhor os dados:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-116-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-119-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4582,7 +4663,7 @@ Vamos também construir alguns gráficos para visualizar melhor os dados:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-117-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-120-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4603,7 +4684,7 @@ Vamos também construir alguns gráficos para visualizar melhor os dados:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-118-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-121-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4625,7 +4706,7 @@ Vamos também construir alguns gráficos para visualizar melhor os dados:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-119-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-122-1.pdf}
 
 Notamos com esses dados que a idade das pacientes com endrometriose varia de 20 a 43 anos, com média de 30,71 anos e desvio padrão de 5,98 anos. Já entre o grupo de controle, a variação de idade é menos (entre 26 e 41 anos), com média de 35,13 anos e desvio padrão de 3,80 anos.
 
@@ -4687,7 +4768,7 @@ Vamos também representar graficamente a relação entre os grupos usando um \em
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-121-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-124-1.pdf}
 
 Notamos que o número de gestações entre mulheres com endometriose é muito menor do que entre as mulheres do grupo controle. Uma parte desse efeito poderia ser explicado pela idade das pacientes (a média de idade das pacientes com endometriose é menor do que as do grupo de controle), mas certamente a doença em si é o maior fator pra o menor número de gestações.
 \end{solution}
@@ -4895,7 +4976,7 @@ Agora vamos avaliar a disbtibuição da variável \texttt{vo2} em cada um dos mo
 ## Warning: Removed 9 rows containing non-finite values (`stat_bin()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-127-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-130-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4926,7 +5007,7 @@ Agora vamos avaliar a disbtibuição da variável \texttt{vo2} em cada um dos mo
 ## Removed 9 rows containing non-finite values (`stat_boxplot()`).
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-128-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-131-1.pdf}
 
 Vamos calcular também a média e desvio padrão para o consumo de oxigênio em cada momento:
 
@@ -5172,7 +5253,7 @@ Com os dados organizados podemos construir o histograma:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-133-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-136-1.pdf}
 Para calcular o quantil de ordem \(p\), vamos seguir dois passos:
 
 \begin{enumerate}
@@ -5384,7 +5465,7 @@ Em primeiro lugar, precisamos arrumar os dados em um formato mais tangível.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-137-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-140-1.pdf}
 
 \hypertarget{intervalo-entre-as-chamadas}{%
 \subsubsection*{Intervalo entre as chamadas}\label{intervalo-entre-as-chamadas}}
@@ -5578,7 +5659,7 @@ O gráfico a seguir mostra a distribuição do intervalo entre chamadas:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-141-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-144-1.pdf}
 \#\#\#\# O intervalo entre as chamadas segue alguma tendência normal ou exponencial? \{-\}
 
 Vamos começar plotando o histograma dos intervalos de tempo:
@@ -5602,7 +5683,7 @@ Vamos começar plotando o histograma dos intervalos de tempo:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-142-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-145-1.pdf}
 
 Este gráfico não nos indica nenhuma tendência, vamos então construir o gráfico QQ para cada uma das estradas, primeiro comparando com a distribuição normal:
 
@@ -5622,7 +5703,7 @@ Este gráfico não nos indica nenhuma tendência, vamos então construir o gráf
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-143-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-146-1.pdf}
 
 Como os dados estão muito afastados da reta de referência, não podemos dizer que os seguem a distribuição normal. Vamos tentar agora compará-los a uma distribuição exponencial.
 
@@ -5646,7 +5727,7 @@ Como os dados estão muito afastados da reta de referência, não podemos dizer 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-144-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-147-1.pdf}
 
 Notamos que os dados estão muito mais próximos da distribuição exponencial, exceto por alguns pontos extremos.
 \end{solution}
@@ -5846,7 +5927,7 @@ Avaliando o desvio padrão, e o intervalo interquartil, percebemos que as notas 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-150-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-153-1.pdf}
 \end{solution}
 
 \hypertarget{exr3-17}{%
@@ -6100,7 +6181,7 @@ Para melhor exemplificar, vamos simular uma distribuição com média 7000 e des
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 \end{verbatim}
 
-\includegraphics{statds_files/figure-latex/unnamed-chunk-152-1.pdf}
+\includegraphics{statds_files/figure-latex/unnamed-chunk-155-1.pdf}
 
 Como a dispersão é muito pequena, os valores estão super concentrados ao redor da média, neste caso, a probabilidade de o salário ser menor do que 5000 é quase nula, tornando a emprea B mais atrativa.
 
@@ -6888,17 +6969,301 @@ Embora não se possa calcular o risco relativo de doença em estudos retrospecti
 \subsection*{Exercício 4.1}\label{exr4-1}}
 \addcontentsline{toc}{subsection}{Exercício 4.1}
 
-Considere o conjunto de dados disponível no arquivo \texttt{empresa.xls}.Compare as distribuições de frequências das variáveis \texttt{Estado\ civil}, \texttt{Grau\ de\ Instrução} e \texttt{Salário} para indivíduos com diferentes procedências.
+Considere o conjunto de dados disponível no arquivo \texttt{empresa.xls}. Compare as distribuições de frequências das variáveis \texttt{Estado\ civil}, \texttt{Grau\ de\ Instrução} e \texttt{Salário} para indivíduos com diferentes procedências.
 
 \begin{solution}
-x
+Vamos começar carregando os dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{empresa }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"empresa.xls"}\NormalTok{), }\AttributeTok{skip =} \DecValTok{1}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(empresa) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"id"}\NormalTok{, }\StringTok{"estado"}\NormalTok{, }\StringTok{"instrucao"}\NormalTok{, }\StringTok{"filhos"}\NormalTok{, }\StringTok{"salario"}\NormalTok{, }\StringTok{"anos"}\NormalTok{, }\StringTok{"meses"}\NormalTok{, }\StringTok{"regiao"}\NormalTok{)}
+
+\NormalTok{empresa }\OtherTok{\textless{}{-}}\NormalTok{ empresa }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{mutate}\NormalTok{(}
+                \AttributeTok{estado =} \FunctionTok{parse\_factor}\NormalTok{(estado, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"solteiro"}\NormalTok{, }\StringTok{"casado"}\NormalTok{, }\StringTok{"divorciado"}\NormalTok{, }\StringTok{"viúdo"}\NormalTok{), }\AttributeTok{ordered =} \ConstantTok{FALSE}\NormalTok{),}
+                \AttributeTok{instrucao =} \FunctionTok{parse\_factor}\NormalTok{(instrucao, }\AttributeTok{ordered =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"ensino fundamental"}\NormalTok{, }\StringTok{"ensino médio"}\NormalTok{, }\StringTok{"superior"}\NormalTok{)),}
+                \AttributeTok{regiao =} \FunctionTok{parse\_factor}\NormalTok{(regiao, }\AttributeTok{ordered =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"interior"}\NormalTok{, }\StringTok{"capital"}\NormalTok{, }\StringTok{"outra"}\NormalTok{)),}
+                \AttributeTok{idade =}\NormalTok{ anos }\SpecialCharTok{+}\NormalTok{ (meses }\SpecialCharTok{/} \DecValTok{12}\NormalTok{)}
+\NormalTok{              )}
+
+\FunctionTok{write\_csv}\NormalTok{(empresa, }\FunctionTok{paste0}\NormalTok{(data\_dir, }\StringTok{"empresa.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Com os dados carregados e arrumados, podemos partir para as análises.
+
+\hypertarget{estado-civil-versus-regiuxe3o-de-proceduxeancia}{%
+\subsubsection*{\texorpdfstring{Estado Civil \emph{versus} Região de Procedência}{Estado Civil versus Região de Procedência}}\label{estado-civil-versus-regiuxe3o-de-proceduxeancia}}
+\addcontentsline{toc}{subsubsection}{Estado Civil \emph{versus} Região de Procedência}
+
+Por se tratar de duas variáveis categóricas, vamos analisá-las a partir da tabela de contingência, à estatística qui-quadrado de Pearson e ao coeficiente de contingência de Pearson.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{empresa }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(estado, regiao) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(}
+    \FunctionTok{group\_by}\NormalTok{(., estado) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{mutate}\NormalTok{(}\AttributeTok{regiao =} \StringTok{"Total"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(}
+    \FunctionTok{group\_by}\NormalTok{(., regiao) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{mutate}\NormalTok{(}\AttributeTok{estado =} \StringTok{"Total"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{spread}\NormalTok{(regiao, n) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 4.1:** Distribuição conjunta das variáveis Estado Civil e Região de Procedência"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\caption{\textbf{Tabela 4.1:} Distribuição conjunta das variáveis Estado Civil e Região de Procedência}\tabularnewline
+\toprule\noalign{}
+estado & capital & interior & outra & Total \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+estado & capital & interior & outra & Total \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+casado & 7 & 8 & 5 & 20 \\
+solteiro & 4 & 4 & 8 & 16 \\
+Total & 11 & 12 & 13 & 36 \\
+\end{longtable}
+
+Utilizaremos a função \texttt{chisq.test()} para calcular nossas estatísticas de interesse:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qui\_quadrado }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(empresa}\SpecialCharTok{$}\NormalTok{estado, empresa}\SpecialCharTok{$}\NormalTok{regiao)}\SpecialCharTok{$}\NormalTok{statistic[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(empresa$estado, empresa$regiao): Aproximação do
+## qui-quadrado pode estar incorreta
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(empresa)}
+\NormalTok{c }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(qui\_quadrado }\SpecialCharTok{/}\NormalTok{ (qui\_quadrado }\SpecialCharTok{+}\NormalTok{ n))}
+\end{Highlighting}
+\end{Shaded}
+
+Após os cálculos, constatamos que o valor de \(\chi^2\) é 2.4293706 e o coeficiente \(C\) de contingência de Pearson é de 0.2514289, indicando uma baixa correlação entre as variáveis.
+
+\hypertarget{grau-de-instruuxe7uxe3o-versus-regiuxe3o-de-proceduxeancia}{%
+\subsubsection*{\texorpdfstring{Grau de Instrução \emph{versus} Região de Procedência}{Grau de Instrução versus Região de Procedência}}\label{grau-de-instruuxe7uxe3o-versus-regiuxe3o-de-proceduxeancia}}
+\addcontentsline{toc}{subsubsection}{Grau de Instrução \emph{versus} Região de Procedência}
+
+Novamente usaremos a tabela de contingência, a estatística qui-quadrado de Pearson e o coeficiente de contingência de Pearson.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{empresa }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(instrucao, regiao) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(}
+    \FunctionTok{group\_by}\NormalTok{(., instrucao) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{mutate}\NormalTok{(}\AttributeTok{regiao =} \StringTok{"Total"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(}
+    \FunctionTok{group\_by}\NormalTok{(., regiao) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{mutate}\NormalTok{(}\AttributeTok{instrucao =} \StringTok{"Total"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{spread}\NormalTok{(regiao, n) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 4.2:** Distribuição conjunta das variáveis Grau de Instrução e Região de Procedência"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\caption{\textbf{Tabela 4.2:} Distribuição conjunta das variáveis Grau de Instrução e Região de Procedência}\tabularnewline
+\toprule\noalign{}
+instrucao & capital & interior & outra & Total \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+instrucao & capital & interior & outra & Total \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ensino fundamental & 4 & 3 & 5 & 12 \\
+ensino médio & 5 & 7 & 6 & 18 \\
+superior & 2 & 2 & 2 & 6 \\
+Total & 11 & 12 & 13 & 36 \\
+\end{longtable}
+
+Utilizaremos a função \texttt{chisq.test()} para calcular nossas estatísticas de interesse:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qui\_quadrado }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(empresa}\SpecialCharTok{$}\NormalTok{instrucao, empresa}\SpecialCharTok{$}\NormalTok{regiao)}\SpecialCharTok{$}\NormalTok{statistic[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(empresa$instrucao, empresa$regiao): Aproximação do
+## qui-quadrado pode estar incorreta
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(empresa)}
+\NormalTok{c }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(qui\_quadrado }\SpecialCharTok{/}\NormalTok{ (qui\_quadrado }\SpecialCharTok{+}\NormalTok{ n))}
+\end{Highlighting}
+\end{Shaded}
+
+Após os cálculos, constatamos que o valor de \(\chi^2\) é 0.6614219 e o coeficiente \(C\) de contingência de Pearson é de 0.1343181, indicando uma baixa correlação entre as variáveis.
+
+\hypertarget{saluxe1rio-versus-regiuxe3o-de-proceduxeancia}{%
+\subsubsection*{\texorpdfstring{Salário \emph{versus} Região de Procedência}{Salário versus Região de Procedência}}\label{saluxe1rio-versus-regiuxe3o-de-proceduxeancia}}
+\addcontentsline{toc}{subsubsection}{Salário \emph{versus} Região de Procedência}
+
+Agora temos em mãos uma variável qualitativa e outra quantitativa. Utilizaremos uma tabela de resumo e gráfico de \emph{boxplots} para avaliar a relação, além de calcularmos a estatística \(R^2\).
+
+A Tabela 4.3 a seguir apresenta as medidas de resumo para o salário dos funcionários, conforme a região de procedência do funcionário. A Figura 4.1 apresenta uma comparação gráfica dos salários utilizando \emph{boxplots}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{empresa }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{statds\_summarise}\NormalTok{(salario, regiao) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 4.3:** Medidas de resumo para a variável \textasciigrave{}Salário\textasciigrave{}, conforme \textasciigrave{}Região de procedência\textasciigrave{}"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1136}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0455}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0795}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1705}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1023}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0795}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0795}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}@{}}
+\caption{\textbf{Tabela 4.3:} Medidas de resumo para a variável \texttt{Salário}, conforme \texttt{Região\ de\ procedência}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+regiao
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+regiao
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+interior & 12 & 11,55 & 28,05 & 5,30 & 4,00 & 7,80 & 10,64 & 14,70 & 23,30 & 6,89 \\
+capital & 11 & 11,46 & 29,99 & 5,48 & 4,56 & 7,49 & 9,77 & 16,62 & 19,40 & 9,13 \\
+outra & 13 & 10,45 & 9,89 & 3,15 & 5,73 & 8,74 & 9,80 & 12,79 & 16,22 & 4,05 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{empresa }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(regiao, salario)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{, }
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.1:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Distribuição dos salários conforme região de procedência"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Região de Procedência"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Salário"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-163-1.pdf}
+
+Utilizamos a função \texttt{var()} da base do R para calcular a variância total da variável salário \(Var(salário) = 21.04477\) e os dados da Tabela 4.1 para calcular a média de variação da variável por grupos \(\overline{Var(salário)} = 22.08694\) e chegamos a \(R^2 = -0.0495217\). Como os valores estão inconsistentes, será necessário revisar este item.
 \end{solution}
 
 \hypertarget{exr4-2}{%
 \subsection*{Exercício 4.2}\label{exr4-2}}
 \addcontentsline{toc}{subsection}{Exercício 4.2}
 
-Considere o conjunto de dados disponivel no arquivo \texttt{regioes.xls}. Avalie a relação entre variáveis \texttt{Região} e \texttt{Densidade\ populacional}.
+Considere o conjunto de dados disponível no arquivo \texttt{regioes.xls}. Avalie a relação entre variáveis \texttt{Região} e \texttt{Densidade\ populacional}.
 
 \begin{solution}
 x
