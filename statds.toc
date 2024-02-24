@@ -3,7 +3,7 @@
 \contentsline {chapter}{Prefácio}{ix}{chapter*.1}%
 \contentsline {section}{Notas sobre a edição}{ix}{section*.2}%
 \contentsline {section}{Funções auxiliares}{x}{section*.3}%
-\contentsline {section}{Pendências}{xi}{section*.4}%
+\contentsline {section}{Pendências}{xii}{section*.4}%
 \contentsline {chapter}{\numberline {1}Estatística, Ciência de Dados e Megadados}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Introdução}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Aprendizado com estatística}{1}{section.1.2}%
@@ -138,133 +138,133 @@
 \contentsline {subsubsection}{Grau de Instrução \emph {versus} Região de Procedência}{170}{section*.98}%
 \contentsline {subsubsection}{Salário \emph {versus} Região de Procedência}{171}{section*.99}%
 \contentsline {subsection}{Exercício 4.2}{173}{section*.100}%
-\contentsline {subsection}{Exercício 4.3}{173}{section*.101}%
-\contentsline {subsection}{Exercício 4.4}{174}{section*.102}%
-\contentsline {subsection}{Exercício 4.5}{174}{section*.103}%
-\contentsline {subsection}{Exercício 4.6}{174}{section*.104}%
-\contentsline {subsection}{Exercício 4.7}{174}{section*.105}%
-\contentsline {subsection}{Exercício 4.8}{174}{section*.106}%
-\contentsline {subsection}{Exercício 4.9}{175}{section*.107}%
-\contentsline {subsection}{Exercício 4.10}{175}{section*.108}%
-\contentsline {subsection}{Exercício 4.11}{176}{section*.109}%
-\contentsline {subsection}{Exercício 4.12}{176}{section*.110}%
-\contentsline {subsection}{Exercício 4.13}{176}{section*.111}%
-\contentsline {subsection}{Exercício 4.14}{176}{section*.112}%
-\contentsline {subsection}{Exercício 4.15}{177}{section*.113}%
-\contentsline {subsection}{Exercício 4.16}{177}{section*.114}%
-\contentsline {subsection}{Exercício 4.17}{177}{section*.115}%
-\contentsline {subsection}{Exercício 4.18}{178}{section*.116}%
-\contentsline {subsection}{Exercício 4.19}{179}{section*.117}%
-\contentsline {subsection}{Exercício 4.20}{179}{section*.118}%
-\contentsline {subsection}{Exercício 4.21}{180}{section*.119}%
-\contentsline {subsection}{Exercício 4.22}{180}{section*.120}%
-\contentsline {subsection}{Exercício 4.23}{180}{section*.121}%
-\contentsline {subsection}{Exercício 4.24}{180}{section*.122}%
-\contentsline {subsection}{Exercício 4.25}{181}{section*.123}%
-\contentsline {subsection}{Exercício 4.26}{181}{section*.124}%
-\contentsline {subsection}{Exercício 4.27}{181}{section*.125}%
-\contentsline {subsection}{Exercício 4.28}{181}{section*.126}%
-\contentsline {chapter}{\numberline {5}Análise de dados de várias variáveis}{183}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{183}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Gráficos para três variáveis}{183}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Gráficos para quatro ou mais variáveis}{183}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Medidas resumo multivariadas}{183}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Tabelas de contingência de múltiplas entradas}{183}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Notas de capítulo}{183}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Exercícios}{183}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Análise de Regressão}{185}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introdução}{185}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Regressão linear simples}{185}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Regressão linear múltipla}{185}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Regressão para dados longitudinais}{185}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Regressão logística}{185}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Notas de capítulo}{185}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Exercícios}{185}{section.6.7}%
-\contentsline {chapter}{\numberline {7}Análise de Sobrevivência}{187}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introdução}{187}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Estimação da função de sobrevivência}{187}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Comparação de curvas de sobrevivência}{187}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Regressão para dados de sobrevivência}{187}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Notas de capítulo}{187}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Exercícios}{187}{section.7.6}%
-\contentsline {part}{II\hspace {1em}Aprendizado Supervisionado}{189}{part.2}%
-\contentsline {chapter}{\numberline {8}Regularização e Modelos Aditivos Generalizados}{191}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Introdução}{191}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Regularização}{191}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Modelos aditivos generalizados (GAM)}{191}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Notas de capítulo}{191}{section.8.4}%
-\contentsline {section}{\numberline {8.5}Exercícios}{191}{section.8.5}%
-\contentsline {chapter}{\numberline {9}Classificação por meio de técnicas clássicas}{193}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Introdução}{193}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Classificação por regressão logística}{193}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Análise discriminante linear}{193}{section.9.3}%
-\contentsline {section}{\numberline {9.4}Classificador do vizinho mais próximo}{193}{section.9.4}%
-\contentsline {section}{\numberline {9.5}Algumas extensões}{193}{section.9.5}%
-\contentsline {section}{\numberline {9.6}Notas de capítulo}{193}{section.9.6}%
-\contentsline {section}{\numberline {9.7}Exercícios}{193}{section.9.7}%
-\contentsline {chapter}{\numberline {10}Algoritmos de Suporte Vetorial}{195}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Introdução}{195}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Fundamentação dos algoritmos de suporte vetorial}{195}{section.10.2}%
-\contentsline {section}{\numberline {10.3}Classificador de margem máxima}{195}{section.10.3}%
-\contentsline {section}{\numberline {10.4}Classificador de margem flexível}{195}{section.10.4}%
-\contentsline {section}{\numberline {10.5}Classificador de margem não linear}{195}{section.10.5}%
-\contentsline {section}{\numberline {10.6}Regressão por algoritmos de suporte vetorial}{195}{section.10.6}%
-\contentsline {section}{\numberline {10.7}Notas de capítulo}{195}{section.10.7}%
-\contentsline {section}{\numberline {10.8}Exercícios}{195}{section.10.8}%
-\contentsline {chapter}{\numberline {11}Árvores e Florestas}{197}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Introdução}{197}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Classificação por árvores}{197}{section.11.2}%
-\contentsline {section}{\numberline {11.3}\emph {Bagging}, \emph {boosting} e florestas}{197}{section.11.3}%
-\contentsline {section}{\numberline {11.4}Árvores para regressão}{197}{section.11.4}%
-\contentsline {section}{\numberline {11.5}Notas de capítulo}{197}{section.11.5}%
-\contentsline {section}{\numberline {11.6}Exercícios}{197}{section.11.6}%
-\contentsline {chapter}{\numberline {12}Redes neurais}{199}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Introdução}{199}{section.12.1}%
-\contentsline {section}{\numberline {12.2}\emph {Perceptron}}{199}{section.12.2}%
-\contentsline {section}{\numberline {12.3}Redes com camadas ocultas}{199}{section.12.3}%
-\contentsline {section}{\numberline {12.4}O algoritmo de retropropagação (\emph {backpropagation})}{199}{section.12.4}%
-\contentsline {section}{\numberline {12.5}Aprendizado profundo (\emph {Deep learning})}{199}{section.12.5}%
-\contentsline {section}{\numberline {12.6}Notas de capítulo}{199}{section.12.6}%
-\contentsline {section}{\numberline {12.7}Exercícios}{199}{section.12.7}%
-\contentsline {part}{III\hspace {1em}Aprendizado não Supervisionado}{201}{part.3}%
-\contentsline {chapter}{\numberline {13}Análise de Agrupamentos}{203}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Introdução}{203}{section.13.1}%
-\contentsline {section}{\numberline {13.2}Estratégias de agrupamento}{203}{section.13.2}%
-\contentsline {section}{\numberline {13.3}Algoritmos hierárquicos}{203}{section.13.3}%
-\contentsline {section}{\numberline {13.4}Algoritmos de partição: K-médias}{203}{section.13.4}%
-\contentsline {section}{\numberline {13.5}Notas de capítulo}{203}{section.13.5}%
-\contentsline {section}{\numberline {13.6}Exercícios}{203}{section.13.6}%
-\contentsline {chapter}{\numberline {14}Redução de dimensionalidade}{205}{chapter.14}%
-\contentsline {section}{\numberline {14.1}Introdução}{205}{section.14.1}%
-\contentsline {section}{\numberline {14.2}Análise de Componentes Principais}{205}{section.14.2}%
-\contentsline {section}{\numberline {14.3}Análise fatorial}{205}{section.14.3}%
-\contentsline {section}{\numberline {14.4}Análise de componentes independentes}{205}{section.14.4}%
-\contentsline {section}{\numberline {14.5}Notas de capítulo}{205}{section.14.5}%
-\contentsline {section}{\numberline {14.6}Exercícios}{205}{section.14.6}%
-\contentsline {chapter}{Ap\^endice}{205}{section.14.6}%
-\contentsline {chapter}{\numberline {A}Otimização numérica}{207}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Introdução}{207}{section.A.1}%
-\contentsline {section}{\numberline {A.2}O método de Newton-Raphson}{207}{section.A.2}%
-\contentsline {section}{\numberline {A.3}O método scoring}{207}{section.A.3}%
-\contentsline {section}{\numberline {A.4}O método de Gauss-Newton}{207}{section.A.4}%
-\contentsline {section}{\numberline {A.5}Métodos Quase-Newton}{207}{section.A.5}%
-\contentsline {section}{\numberline {A.6}Aspectos computacionais}{207}{section.A.6}%
-\contentsline {section}{\numberline {A.7}Notas de capítulo}{207}{section.A.7}%
-\contentsline {section}{\numberline {A.8}Exercícios}{207}{section.A.8}%
-\contentsline {chapter}{\numberline {B}Noções de simulação}{209}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Introdução}{209}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Método Monte Carlo}{209}{section.B.2}%
-\contentsline {section}{\numberline {B.3}Simulação de variáveis discretas}{209}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Simulação de variáveis contínuas}{209}{section.B.4}%
-\contentsline {section}{\numberline {B.5}Simulação de vetores aleatórios}{209}{section.B.5}%
-\contentsline {section}{\numberline {B.6}Métodos de reamostragem}{209}{section.B.6}%
-\contentsline {section}{\numberline {B.7}Notas de capítulo}{209}{section.B.7}%
-\contentsline {section}{\numberline {B.8}Exercícios}{209}{section.B.8}%
-\contentsline {chapter}{\numberline {C}Algoritmos para dados aumentados}{211}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Introdução}{211}{section.C.1}%
-\contentsline {section}{\numberline {C.2}O algoritmo EM}{211}{section.C.2}%
-\contentsline {section}{\numberline {C.3}O algoritmo EM Monte Carlo}{211}{section.C.3}%
-\contentsline {section}{\numberline {C.4}Cálculo de erros padrões}{211}{section.C.4}%
-\contentsline {section}{\numberline {C.5}O algoritmo para dados aumentados}{211}{section.C.5}%
-\contentsline {section}{\numberline {C.6}Exercícios}{211}{section.C.6}%
-\contentsline {fm}{Bibliografia}{213}{appendix*.127}%
+\contentsline {subsection}{Exercício 4.3}{175}{section*.101}%
+\contentsline {subsection}{Exercício 4.4}{176}{section*.102}%
+\contentsline {subsection}{Exercício 4.5}{176}{section*.103}%
+\contentsline {subsection}{Exercício 4.6}{176}{section*.104}%
+\contentsline {subsection}{Exercício 4.7}{176}{section*.105}%
+\contentsline {subsection}{Exercício 4.8}{177}{section*.106}%
+\contentsline {subsection}{Exercício 4.9}{177}{section*.107}%
+\contentsline {subsection}{Exercício 4.10}{177}{section*.108}%
+\contentsline {subsection}{Exercício 4.11}{178}{section*.109}%
+\contentsline {subsection}{Exercício 4.12}{178}{section*.110}%
+\contentsline {subsection}{Exercício 4.13}{178}{section*.111}%
+\contentsline {subsection}{Exercício 4.14}{179}{section*.112}%
+\contentsline {subsection}{Exercício 4.15}{179}{section*.113}%
+\contentsline {subsection}{Exercício 4.16}{179}{section*.114}%
+\contentsline {subsection}{Exercício 4.17}{179}{section*.115}%
+\contentsline {subsection}{Exercício 4.18}{180}{section*.116}%
+\contentsline {subsection}{Exercício 4.19}{181}{section*.117}%
+\contentsline {subsection}{Exercício 4.20}{182}{section*.118}%
+\contentsline {subsection}{Exercício 4.21}{182}{section*.119}%
+\contentsline {subsection}{Exercício 4.22}{182}{section*.120}%
+\contentsline {subsection}{Exercício 4.23}{183}{section*.121}%
+\contentsline {subsection}{Exercício 4.24}{183}{section*.122}%
+\contentsline {subsection}{Exercício 4.25}{183}{section*.123}%
+\contentsline {subsection}{Exercício 4.26}{183}{section*.124}%
+\contentsline {subsection}{Exercício 4.27}{183}{section*.125}%
+\contentsline {subsection}{Exercício 4.28}{184}{section*.126}%
+\contentsline {chapter}{\numberline {5}Análise de dados de várias variáveis}{185}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{185}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Gráficos para três variáveis}{185}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Gráficos para quatro ou mais variáveis}{185}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Medidas resumo multivariadas}{185}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Tabelas de contingência de múltiplas entradas}{185}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Notas de capítulo}{185}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Exercícios}{185}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Análise de Regressão}{187}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introdução}{187}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Regressão linear simples}{187}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Regressão linear múltipla}{187}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Regressão para dados longitudinais}{187}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Regressão logística}{187}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Notas de capítulo}{187}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Exercícios}{187}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Análise de Sobrevivência}{189}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introdução}{189}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Estimação da função de sobrevivência}{189}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Comparação de curvas de sobrevivência}{189}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Regressão para dados de sobrevivência}{189}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Notas de capítulo}{189}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Exercícios}{189}{section.7.6}%
+\contentsline {part}{II\hspace {1em}Aprendizado Supervisionado}{191}{part.2}%
+\contentsline {chapter}{\numberline {8}Regularização e Modelos Aditivos Generalizados}{193}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Introdução}{193}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Regularização}{193}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Modelos aditivos generalizados (GAM)}{193}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Notas de capítulo}{193}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Exercícios}{193}{section.8.5}%
+\contentsline {chapter}{\numberline {9}Classificação por meio de técnicas clássicas}{195}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Introdução}{195}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Classificação por regressão logística}{195}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Análise discriminante linear}{195}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Classificador do vizinho mais próximo}{195}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Algumas extensões}{195}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Notas de capítulo}{195}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Exercícios}{195}{section.9.7}%
+\contentsline {chapter}{\numberline {10}Algoritmos de Suporte Vetorial}{197}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Introdução}{197}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Fundamentação dos algoritmos de suporte vetorial}{197}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Classificador de margem máxima}{197}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Classificador de margem flexível}{197}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Classificador de margem não linear}{197}{section.10.5}%
+\contentsline {section}{\numberline {10.6}Regressão por algoritmos de suporte vetorial}{197}{section.10.6}%
+\contentsline {section}{\numberline {10.7}Notas de capítulo}{197}{section.10.7}%
+\contentsline {section}{\numberline {10.8}Exercícios}{197}{section.10.8}%
+\contentsline {chapter}{\numberline {11}Árvores e Florestas}{199}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Introdução}{199}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Classificação por árvores}{199}{section.11.2}%
+\contentsline {section}{\numberline {11.3}\emph {Bagging}, \emph {boosting} e florestas}{199}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Árvores para regressão}{199}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Notas de capítulo}{199}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Exercícios}{199}{section.11.6}%
+\contentsline {chapter}{\numberline {12}Redes neurais}{201}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Introdução}{201}{section.12.1}%
+\contentsline {section}{\numberline {12.2}\emph {Perceptron}}{201}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Redes com camadas ocultas}{201}{section.12.3}%
+\contentsline {section}{\numberline {12.4}O algoritmo de retropropagação (\emph {backpropagation})}{201}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Aprendizado profundo (\emph {Deep learning})}{201}{section.12.5}%
+\contentsline {section}{\numberline {12.6}Notas de capítulo}{201}{section.12.6}%
+\contentsline {section}{\numberline {12.7}Exercícios}{201}{section.12.7}%
+\contentsline {part}{III\hspace {1em}Aprendizado não Supervisionado}{203}{part.3}%
+\contentsline {chapter}{\numberline {13}Análise de Agrupamentos}{205}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Introdução}{205}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Estratégias de agrupamento}{205}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Algoritmos hierárquicos}{205}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Algoritmos de partição: K-médias}{205}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Notas de capítulo}{205}{section.13.5}%
+\contentsline {section}{\numberline {13.6}Exercícios}{205}{section.13.6}%
+\contentsline {chapter}{\numberline {14}Redução de dimensionalidade}{207}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Introdução}{207}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Análise de Componentes Principais}{207}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Análise fatorial}{207}{section.14.3}%
+\contentsline {section}{\numberline {14.4}Análise de componentes independentes}{207}{section.14.4}%
+\contentsline {section}{\numberline {14.5}Notas de capítulo}{207}{section.14.5}%
+\contentsline {section}{\numberline {14.6}Exercícios}{207}{section.14.6}%
+\contentsline {chapter}{Ap\^endice}{207}{section.14.6}%
+\contentsline {chapter}{\numberline {A}Otimização numérica}{209}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Introdução}{209}{section.A.1}%
+\contentsline {section}{\numberline {A.2}O método de Newton-Raphson}{209}{section.A.2}%
+\contentsline {section}{\numberline {A.3}O método scoring}{209}{section.A.3}%
+\contentsline {section}{\numberline {A.4}O método de Gauss-Newton}{209}{section.A.4}%
+\contentsline {section}{\numberline {A.5}Métodos Quase-Newton}{209}{section.A.5}%
+\contentsline {section}{\numberline {A.6}Aspectos computacionais}{209}{section.A.6}%
+\contentsline {section}{\numberline {A.7}Notas de capítulo}{209}{section.A.7}%
+\contentsline {section}{\numberline {A.8}Exercícios}{209}{section.A.8}%
+\contentsline {chapter}{\numberline {B}Noções de simulação}{211}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Introdução}{211}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Método Monte Carlo}{211}{section.B.2}%
+\contentsline {section}{\numberline {B.3}Simulação de variáveis discretas}{211}{section.B.3}%
+\contentsline {section}{\numberline {B.4}Simulação de variáveis contínuas}{211}{section.B.4}%
+\contentsline {section}{\numberline {B.5}Simulação de vetores aleatórios}{211}{section.B.5}%
+\contentsline {section}{\numberline {B.6}Métodos de reamostragem}{211}{section.B.6}%
+\contentsline {section}{\numberline {B.7}Notas de capítulo}{211}{section.B.7}%
+\contentsline {section}{\numberline {B.8}Exercícios}{211}{section.B.8}%
+\contentsline {chapter}{\numberline {C}Algoritmos para dados aumentados}{213}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Introdução}{213}{section.C.1}%
+\contentsline {section}{\numberline {C.2}O algoritmo EM}{213}{section.C.2}%
+\contentsline {section}{\numberline {C.3}O algoritmo EM Monte Carlo}{213}{section.C.3}%
+\contentsline {section}{\numberline {C.4}Cálculo de erros padrões}{213}{section.C.4}%
+\contentsline {section}{\numberline {C.5}O algoritmo para dados aumentados}{213}{section.C.5}%
+\contentsline {section}{\numberline {C.6}Exercícios}{213}{section.C.6}%
+\contentsline {fm}{Bibliografia}{215}{appendix*.127}%

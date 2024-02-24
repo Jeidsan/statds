@@ -1,5 +1,0 @@
-"0","  x <- eval(args$x, data)
-"
-"2","Error in args$x : 
-  objeto de tipo 'closure' não possível dividir em subconjuntos
-"
