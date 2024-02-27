@@ -522,6 +522,26 @@ div.csl-indent {
 <span id="cb4-17"><a href="index.html#cb4-17" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
 <span id="cb4-18"><a href="index.html#cb4-18" tabindex="-1"></a>    <span class="fu">spread</span>(<span class="sc">!!</span>y, n)</span>
 <span id="cb4-19"><a href="index.html#cb4-19" tabindex="-1"></a>}</span></code></pre></div>
+<p>A função a seguir calcula o coeficiente de determinação (ou o ganho de varância) para uma variável quantitativa em relação a outra qualitativa.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a>statds_rsquared <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, y) {</span>
+<span id="cb5-2"><a href="index.html#cb5-2" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">enquo</span>(x)</span>
+<span id="cb5-3"><a href="index.html#cb5-3" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">enquo</span>(y)</span>
+<span id="cb5-4"><a href="index.html#cb5-4" tabindex="-1"></a>  </span>
+<span id="cb5-5"><a href="index.html#cb5-5" tabindex="-1"></a>  total <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="index.html#cb5-6" tabindex="-1"></a>              <span class="fu">select</span>(<span class="sc">!!</span>x)</span>
+<span id="cb5-7"><a href="index.html#cb5-7" tabindex="-1"></a>  </span>
+<span id="cb5-8"><a href="index.html#cb5-8" tabindex="-1"></a>  var_total <span class="ot">&lt;-</span> <span class="fu">var</span>(total)[[<span class="dv">1</span>]]</span>
+<span id="cb5-9"><a href="index.html#cb5-9" tabindex="-1"></a>  </span>
+<span id="cb5-10"><a href="index.html#cb5-10" tabindex="-1"></a>  groups <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="index.html#cb5-11" tabindex="-1"></a>              <span class="fu">group_by</span>(<span class="sc">!!</span>y) <span class="sc">%&gt;%</span></span>
+<span id="cb5-12"><a href="index.html#cb5-12" tabindex="-1"></a>              <span class="fu">summarise</span>(</span>
+<span id="cb5-13"><a href="index.html#cb5-13" tabindex="-1"></a>                <span class="at">var =</span> <span class="fu">var</span>(<span class="sc">!!</span>x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-14"><a href="index.html#cb5-14" tabindex="-1"></a>              )</span>
+<span id="cb5-15"><a href="index.html#cb5-15" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="index.html#cb5-16" tabindex="-1"></a>  var_groups <span class="ot">&lt;-</span> <span class="fu">mean</span>(groups<span class="sc">$</span>var)</span>
+<span id="cb5-17"><a href="index.html#cb5-17" tabindex="-1"></a>  </span>
+<span id="cb5-18"><a href="index.html#cb5-18" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> (var_groups <span class="sc">/</span> var_total)</span>
+<span id="cb5-19"><a href="index.html#cb5-19" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="pendências" class="section level2 unnumbered hasAnchor">
 <h2>Pendências<a href="index.html#pendências" class="anchor-section" aria-label="Anchor link to header"></a></h2>

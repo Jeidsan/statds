@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.9)  23 FEB 2024 22:04
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.9)  27 FEB 2024 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1441,53 +1441,53 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/b/n' will be
 (Font)              scaled to size 6.99997pt on input line 316.
 [10] [11] [12]
-Underfull \vbox (badness 10000) detected at line 431
+Underfull \vbox (badness 10000) detected at line 457
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 431
+Overfull \hbox (336.25pt too wide) detected at line 457
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 431
+Underfull \vbox (badness 10000) detected at line 457
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 431
+Overfull \hbox (336.25pt too wide) detected at line 457
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 431
+Underfull \vbox (badness 10000) detected at line 457
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 431
+Overfull \hbox (336.25pt too wide) detected at line 457
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 431
+Underfull \vbox (badness 10000) detected at line 457
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 431
+Overfull \hbox (336.25pt too wide) detected at line 457
 []
  []
 
 Cap\'{\i }tulo 1.
 LaTeX Font Info:    Font shape `TU/Alegreya(0)/b/n' will be
-(Font)              scaled to size 24.0pt on input line 431.
+(Font)              scaled to size 24.0pt on input line 457.
 LaTeX Font Info:    Font shape `TU/Alegreya(0)/m/n' will be
-(Font)              scaled to size 24.0pt on input line 431.
+(Font)              scaled to size 24.0pt on input line 457.
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 438--438
+Overfull \hbox (30.0pt too wide) in paragraph at lines 464--464
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 445--445
+Overfull \hbox (30.0pt too wide) in paragraph at lines 471--471
 |  
  []
 
@@ -1501,78 +1501,78 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 ]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 449--449
+Overfull \hbox (30.0pt too wide) in paragraph at lines 475--475
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 453--453
+Overfull \hbox (30.0pt too wide) in paragraph at lines 479--479
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 457--457
+Overfull \hbox (30.0pt too wide) in paragraph at lines 483--483
 |  
  []
 
 [2]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 466--466
-|  
- []
-
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 470--470
-|  
- []
-
-[3]
 Overfull \hbox (30.0pt too wide) in paragraph at lines 492--492
 |  
  []
 
 
-Underfull \vbox (badness 10000) detected at line 505
+Overfull \hbox (30.0pt too wide) in paragraph at lines 496--496
+|  
+ []
+
+[3]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 518--518
+|  
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 505
+Underfull \vbox (badness 10000) detected at line 531
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 531
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 505
+Underfull \vbox (badness 10000) detected at line 531
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 505
+Overfull \hbox (336.25pt too wide) detected at line 531
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 505
+Underfull \vbox (badness 10000) detected at line 531
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 505
+Overfull \hbox (336.25pt too wide) detected at line 531
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 505
+Underfull \vbox (badness 10000) detected at line 531
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 505
+Overfull \hbox (336.25pt too wide) detected at line 531
 []
  []
 
 [4]
 LaTeX Font Info:    Font shape `TU/Alegreya(0)/m/n' will be
-(Font)              scaled to size 20.74pt on input line 505.
+(Font)              scaled to size 20.74pt on input line 531.
 LaTeX Font Info:    Font shape `TU/Alegreya(0)/b/n' will be
-(Font)              scaled to size 20.74pt on input line 505.
+(Font)              scaled to size 20.74pt on input line 531.
 LaTeX Font Info:    Font shape `TU/Alegreya(0)/b/n' will be
-(Font)              scaled to size 24.88pt on input line 505.
+(Font)              scaled to size 24.88pt on input line 531.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1650,44 +1650,44 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [6]
-Underfull \vbox (badness 10000) detected at line 508
+Underfull \vbox (badness 10000) detected at line 534
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 508
+Overfull \hbox (336.25pt too wide) detected at line 534
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 508
+Underfull \vbox (badness 10000) detected at line 534
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 508
+Overfull \hbox (336.25pt too wide) detected at line 534
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 508
+Underfull \vbox (badness 10000) detected at line 534
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 508
+Overfull \hbox (336.25pt too wide) detected at line 534
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 508
+Underfull \vbox (badness 10000) detected at line 534
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 508
+Overfull \hbox (336.25pt too wide) detected at line 534
 []
  []
 
 Cap\'{\i }tulo 2.
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 515--515
+Overfull \hbox (30.0pt too wide) in paragraph at lines 541--541
 |  
  []
 
@@ -1701,116 +1701,116 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 ]
 LaTeX Font Info:    Font shape `TU/Alegreya(0)/b/n' will be
-(Font)              scaled to size 11.0pt on input line 541.
+(Font)              scaled to size 11.0pt on input line 567.
 
-Underfull \hbox (badness 10000) detected at line 552
+Underfull \hbox (badness 10000) detected at line 578
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 552
+Underfull \hbox (badness 10000) detected at line 578
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 554
+Underfull \hbox (badness 10000) detected at line 580
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 554
+Underfull \hbox (badness 10000) detected at line 580
 [][][]
  []
 
 LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
-(Font)              scaled to size 5.59998pt on input line 565.
+(Font)              scaled to size 5.59998pt on input line 591.
 
-Overfull \hbox (5.12529pt too wide) in paragraph at lines 597--597
+Overfull \hbox (5.12529pt too wide) in paragraph at lines 623--623
 []|\TU/Alegreya(0)/m/n/10 enfermidade|  
  []
 
 
-Overfull \hbox (13.08528pt too wide) in paragraph at lines 601--601
+Overfull \hbox (13.08528pt too wide) in paragraph at lines 627--627
 []|\TU/Alegreya(0)/m/n/10 medicamentos|  
  []
 
 
-Overfull \hbox (0.98529pt too wide) in paragraph at lines 602--602
+Overfull \hbox (0.98529pt too wide) in paragraph at lines 628--628
 []|\TU/Alegreya(0)/m/n/10 composicao|  
  []
 
 
-Overfull \hbox (6.7853pt too wide) in paragraph at lines 605--605
+Overfull \hbox (6.7853pt too wide) in paragraph at lines 631--631
 []|\TU/Alegreya(0)/m/n/10 concentracao|  
  []
 
 
-Overfull \hbox (0.56529pt too wide) in paragraph at lines 608--608
+Overfull \hbox (0.56529pt too wide) in paragraph at lines 634--634
 []|\TU/Alegreya(0)/m/n/10 vol_desprez|  
  []
 
 
-Overfull \hbox (1.12529pt too wide) in paragraph at lines 614--614
+Overfull \hbox (1.12529pt too wide) in paragraph at lines 640--640
 []|\TU/Alegreya(0)/m/n/10 constipação|  
  []
 
 [8] [9] [10] [11] [12]
-Underfull \hbox (badness 1331) in paragraph at lines 833--834
+Underfull \hbox (badness 1331) in paragraph at lines 859--860
 []\TU/Alegreya(0)/m/n/10 Agora vamos montar uma planilha (fictícia) seguindo a padronização definida
  []
 
 [13] [14]
-Underfull \hbox (badness 10000) detected at line 968
+Underfull \hbox (badness 10000) detected at line 994
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 968
+Underfull \hbox (badness 10000) detected at line 994
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 970
+Underfull \hbox (badness 10000) detected at line 996
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 970
+Underfull \hbox (badness 10000) detected at line 996
 [][][]
  []
 
 [15]
-Underfull \hbox (badness 10000) detected at line 1052
+Underfull \hbox (badness 10000) detected at line 1078
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1052
+Underfull \hbox (badness 10000) detected at line 1078
 [][][]
  []
 
 [16]
-Underfull \hbox (badness 10000) detected at line 1054
+Underfull \hbox (badness 10000) detected at line 1080
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1054
+Underfull \hbox (badness 10000) detected at line 1080
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1056
+Underfull \hbox (badness 10000) detected at line 1082
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1056
+Underfull \hbox (badness 10000) detected at line 1082
 [][][]
  []
 
 
-Overfull \hbox (4193.88046pt too wide) in paragraph at lines 1071--1071
+Overfull \hbox (4193.88046pt too wide) in paragraph at lines 1097--1097
 []\TU/SourceCodePro(0)/m/n/10 ## Error in vroom_(file, delim = delim %||% col_types$delim, col_names = col_names, : cadeia de caracteres com nul incluso: '\xd0\xcf\021\u0871\032\xe1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0;\0\003\0\xfe\xff\t\0\006\0\0\0\0\0\0\0\0\0\0\0\f\0\0\0\x86\005\0\0\0\0\0\0\0\020\0\0\x83\005\0\0\001\0\0\0\xfe\xff\xff\xff\0\0\0\0\0\0\0\0\x80\0\0\0\x81\0\0\0\x82\0\0\0\x83\0\0\0\x84\0\0\0\x85\0\0\0\x86\0\0\0\x87\0\0\0\x88\0\0\0\x89\0\0\0\x8a\0\0\0\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\[] 
  []
 
@@ -1854,104 +1854,104 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [20
 
 ]
-Underfull \vbox (badness 10000) detected at line 1194
+Underfull \vbox (badness 10000) detected at line 1220
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 1194
+Overfull \hbox (336.25pt too wide) detected at line 1220
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1194
+Underfull \vbox (badness 10000) detected at line 1220
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 1194
+Overfull \hbox (336.25pt too wide) detected at line 1220
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1194
+Underfull \vbox (badness 10000) detected at line 1220
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 1194
+Overfull \hbox (336.25pt too wide) detected at line 1220
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1194
+Underfull \vbox (badness 10000) detected at line 1220
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 1194
+Overfull \hbox (336.25pt too wide) detected at line 1220
 []
  []
 
 Cap\'{\i }tulo 3.
 
-Underfull \hbox (badness 10000) detected at line 1206
+Underfull \hbox (badness 10000) detected at line 1232
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1206
+Underfull \hbox (badness 10000) detected at line 1232
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1208
+Underfull \hbox (badness 10000) detected at line 1234
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1208
+Underfull \hbox (badness 10000) detected at line 1234
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1210
+Underfull \hbox (badness 10000) detected at line 1236
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1210
+Underfull \hbox (badness 10000) detected at line 1236
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1212
+Underfull \hbox (badness 10000) detected at line 1238
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1212
+Underfull \hbox (badness 10000) detected at line 1238
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1214
+Underfull \hbox (badness 10000) detected at line 1240
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1214
+Underfull \hbox (badness 10000) detected at line 1240
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1216
+Underfull \hbox (badness 10000) detected at line 1242
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1216
+Underfull \hbox (badness 10000) detected at line 1242
 [][][]
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1220--1220
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1246--1246
 |  
  []
 
@@ -1963,1952 +1963,1952 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [21
 
 ]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1232--1232
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1258--1258
 |  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1245
+Underfull \hbox (badness 10000) detected at line 1271
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1245
+Underfull \hbox (badness 10000) detected at line 1271
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1247
+Underfull \hbox (badness 10000) detected at line 1273
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1247
+Underfull \hbox (badness 10000) detected at line 1273
 [][][]
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1250--1250
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1276--1276
 |  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1259
+Underfull \hbox (badness 10000) detected at line 1285
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1259
+Underfull \hbox (badness 10000) detected at line 1285
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1261
+Underfull \hbox (badness 10000) detected at line 1287
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1261
+Underfull \hbox (badness 10000) detected at line 1287
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1263
+Underfull \hbox (badness 10000) detected at line 1289
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1263
+Underfull \hbox (badness 10000) detected at line 1289
 [][][]
  []
 
 [22]
-Underfull \hbox (badness 10000) detected at line 1265
+Underfull \hbox (badness 10000) detected at line 1291
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1265
+Underfull \hbox (badness 10000) detected at line 1291
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1267
+Underfull \hbox (badness 10000) detected at line 1293
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1267
+Underfull \hbox (badness 10000) detected at line 1293
 [][][]
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1270--1270
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1296--1296
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1274--1274
-|  
- []
-
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1278--1278
-|  
- []
-
-[23]
 Overfull \hbox (30.0pt too wide) in paragraph at lines 1300--1300
 |  
  []
 
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1304--1304
+|  
+ []
+
+[23]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1326--1326
+|  
+ []
+
 [24]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1312--1312
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1338--1338
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1316--1316
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1342--1342
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1320--1320
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1346--1346
 |  
  []
 
 [25]
 Missing character: There is no é ("E9) in font lmmi10!
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1346--1346
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1372--1372
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 1360--1360
+Overfull \hbox (30.0pt too wide) in paragraph at lines 1386--1386
 |  
  []
 
 [26]
-Underfull \hbox (badness 10000) detected at line 1380
+Underfull \hbox (badness 10000) detected at line 1406
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1380
+Underfull \hbox (badness 10000) detected at line 1406
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1382
+Underfull \hbox (badness 10000) detected at line 1408
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1382
+Underfull \hbox (badness 10000) detected at line 1408
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1384
+Underfull \hbox (badness 10000) detected at line 1410
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1384
+Underfull \hbox (badness 10000) detected at line 1410
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1386
+Underfull \hbox (badness 10000) detected at line 1412
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1386
+Underfull \hbox (badness 10000) detected at line 1412
 [][][]
  []
 
 [27] [28] [29] [30] [31] [32] [33] [34]
 LaTeX Font Info:    Font shape `TU/Alegreya(0)/b/it' will be
-(Font)              scaled to size 10.0pt on input line 1841.
+(Font)              scaled to size 10.0pt on input line 1867.
 [35]
-File: statds_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-21-1.pdf>
-[36]
 File: statds_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-22-1.pdf>
-[37] [38]
+[36]
 File: statds_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-23-1.pdf>
-[39]
+[37] [38]
 File: statds_files/figure-latex/unnamed-chunk-24-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-24-1.pdf>
-[40]
+[39]
 File: statds_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-25-1.pdf>
+[40]
 File: statds_files/figure-latex/unnamed-chunk-26-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-26-1.pdf>
-[41]
 File: statds_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-27-1.pdf>
-[42]
+[41]
 File: statds_files/figure-latex/unnamed-chunk-28-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-28-1.pdf>
-[43]
+[42]
 File: statds_files/figure-latex/unnamed-chunk-29-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-29-1.pdf>
-[44]
+[43]
 File: statds_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-30-1.pdf>
-[45]
+[44]
 File: statds_files/figure-latex/unnamed-chunk-31-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-31-1.pdf>
-[46]
+[45]
 File: statds_files/figure-latex/unnamed-chunk-32-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-32-1.pdf>
-[47]
+[46]
 File: statds_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-33-1.pdf>
-[48]
+[47]
 File: statds_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-34-1.pdf>
-[49]
+[48]
 File: statds_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-35-1.pdf>
+[49]
+File: statds_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-36-1.pdf>
 [50] [51]
-Overfull \hbox (13.06956pt too wide) in paragraph at lines 2291--2292
+Overfull \hbox (13.06956pt too wide) in paragraph at lines 2317--2318
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (13.55591pt too wide) in paragraph at lines 2295--2296
+Overfull \hbox (13.55591pt too wide) in paragraph at lines 2321--2322
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (14.17957pt too wide) in paragraph at lines 2299--2300
+Overfull \hbox (14.17957pt too wide) in paragraph at lines 2325--2326
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (5.87956pt too wide) in paragraph at lines 2301--2302
+Overfull \hbox (5.87956pt too wide) in paragraph at lines 2327--2328
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (13.06956pt too wide) in paragraph at lines 2314--2315
+Overfull \hbox (13.06956pt too wide) in paragraph at lines 2340--2341
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (13.55591pt too wide) in paragraph at lines 2318--2319
+Overfull \hbox (13.55591pt too wide) in paragraph at lines 2344--2345
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (14.17957pt too wide) in paragraph at lines 2322--2323
+Overfull \hbox (14.17957pt too wide) in paragraph at lines 2348--2349
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (5.87956pt too wide) in paragraph at lines 2324--2325
+Overfull \hbox (5.87956pt too wide) in paragraph at lines 2350--2351
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (1.2832pt too wide) in paragraph at lines 2334--2334
+Overfull \hbox (1.2832pt too wide) in paragraph at lines 2360--2360
 []|\TU/Alegreya(0)/m/n/10 Peso|  
  []
 
 
-Overfull \hbox (2.52956pt too wide) in paragraph at lines 2334--2334
+Overfull \hbox (2.52956pt too wide) in paragraph at lines 2360--2360
  []|\TU/Alegreya(0)/m/n/10 47,00| 
  []
 
 
-Overfull \hbox (1.49956pt too wide) in paragraph at lines 2334--2334
+Overfull \hbox (1.49956pt too wide) in paragraph at lines 2360--2360
  []|\TU/Alegreya(0)/m/n/10 67,05| 
  []
 
 
-Overfull \hbox (1.26956pt too wide) in paragraph at lines 2334--2334
+Overfull \hbox (1.26956pt too wide) in paragraph at lines 2360--2360
  []|\TU/Alegreya(0)/m/n/10 84,95| 
  []
 
 
-Overfull \hbox (5.50955pt too wide) in paragraph at lines 2334--2334
+Overfull \hbox (5.50955pt too wide) in paragraph at lines 2360--2360
  []|\TU/Alegreya(0)/m/n/10 119,00| 
  []
 
 
-Overfull \hbox (7.9232pt too wide) in paragraph at lines 2335--2335
+Overfull \hbox (7.9232pt too wide) in paragraph at lines 2361--2361
 []|\TU/Alegreya(0)/m/n/10 Altura|  
  []
 
 
-Overfull \hbox (0.56425pt too wide) in paragraph at lines 2335--2335
+Overfull \hbox (0.56425pt too wide) in paragraph at lines 2361--2361
  []|\TU/Alegreya(0)/m/n/10 374| 
  []
 
 
-Overfull \hbox (7.80319pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (7.80319pt too wide) in paragraph at lines 2362--2362
 []|\TU/Alegreya(0)/m/n/10 Coltot|  
  []
 
 
-Overfull \hbox (0.87425pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (0.87425pt too wide) in paragraph at lines 2362--2362
  []|\TU/Alegreya(0)/m/n/10 327| 
  []
 
 
-Overfull \hbox (4.49956pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (4.49956pt too wide) in paragraph at lines 2362--2362
  []|\TU/Alegreya(0)/m/n/10 111,00| 
  []
 
 
-Overfull \hbox (7.59956pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (7.59956pt too wide) in paragraph at lines 2362--2362
  []|\TU/Alegreya(0)/m/n/10 180,00| 
  []
 
 
-Overfull \hbox (6.05591pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (6.05591pt too wide) in paragraph at lines 2362--2362
  []|\TU/Alegreya(0)/m/n/10 206,00| 
  []
 
 
-Overfull \hbox (7.72955pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (7.72955pt too wide) in paragraph at lines 2362--2362
  []|\TU/Alegreya(0)/m/n/10 238,00| 
  []
 
 
-Overfull \hbox (7.17955pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (7.17955pt too wide) in paragraph at lines 2362--2362
  []|\TU/Alegreya(0)/m/n/10 799,00| 
  []
 
 
-Overfull \hbox (4.40956pt too wide) in paragraph at lines 2336--2336
+Overfull \hbox (4.40956pt too wide) in paragraph at lines 2362--2362
  []|\TU/Alegreya(0)/m/n/10 215,43| 
  []
 
 
-Overfull \hbox (2.3832pt too wide) in paragraph at lines 2337--2337
+Overfull \hbox (2.3832pt too wide) in paragraph at lines 2363--2363
 []|\TU/Alegreya(0)/m/n/10 HDL|  
  []
 
 
-Overfull \hbox (1.86955pt too wide) in paragraph at lines 2337--2337
+Overfull \hbox (1.86955pt too wide) in paragraph at lines 2363--2363
  []|\TU/Alegreya(0)/m/n/10 14,00| 
  []
 
 
-Overfull \hbox (2.31956pt too wide) in paragraph at lines 2337--2337
+Overfull \hbox (2.31956pt too wide) in paragraph at lines 2363--2363
  []|\TU/Alegreya(0)/m/n/10 35,00| 
  []
 
 
-Overfull \hbox (1.1959pt too wide) in paragraph at lines 2337--2337
+Overfull \hbox (1.1959pt too wide) in paragraph at lines 2363--2363
  []|\TU/Alegreya(0)/m/n/10 40,00| 
  []
 
 
-Overfull \hbox (2.87956pt too wide) in paragraph at lines 2337--2337
+Overfull \hbox (2.87956pt too wide) in paragraph at lines 2363--2363
  []|\TU/Alegreya(0)/m/n/10 46,00| 
  []
 
 
-Overfull \hbox (9.29956pt too wide) in paragraph at lines 2337--2337
+Overfull \hbox (9.29956pt too wide) in paragraph at lines 2363--2363
  []|\TU/Alegreya(0)/m/n/10 200,00| 
  []
 
 
-Overfull \hbox (1.83426pt too wide) in paragraph at lines 2338--2338
+Overfull \hbox (1.83426pt too wide) in paragraph at lines 2364--2364
  []|\TU/Alegreya(0)/m/n/10 289| 
  []
 
 
-Overfull \hbox (2.27956pt too wide) in paragraph at lines 2338--2338
+Overfull \hbox (2.27956pt too wide) in paragraph at lines 2364--2364
  []|\TU/Alegreya(0)/m/n/10 57,00| 
  []
 
 
-Overfull \hbox (6.28955pt too wide) in paragraph at lines 2338--2338
+Overfull \hbox (6.28955pt too wide) in paragraph at lines 2364--2364
  []|\TU/Alegreya(0)/m/n/10 110,00| 
  []
 
 
-Overfull \hbox (4.2659pt too wide) in paragraph at lines 2338--2338
+Overfull \hbox (4.2659pt too wide) in paragraph at lines 2364--2364
  []|\TU/Alegreya(0)/m/n/10 129,00| 
  []
 
 
-Overfull \hbox (6.16956pt too wide) in paragraph at lines 2338--2338
+Overfull \hbox (6.16956pt too wide) in paragraph at lines 2364--2364
  []|\TU/Alegreya(0)/m/n/10 159,00| 
  []
 
 
-Overfull \hbox (7.28955pt too wide) in paragraph at lines 2338--2338
+Overfull \hbox (7.28955pt too wide) in paragraph at lines 2364--2364
  []|\TU/Alegreya(0)/m/n/10 425,00| 
  []
 
 
-Overfull \hbox (2.97955pt too wide) in paragraph at lines 2338--2338
+Overfull \hbox (2.97955pt too wide) in paragraph at lines 2364--2364
  []|\TU/Alegreya(0)/m/n/10 137,31| 
  []
 
-File: statds_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-37-1.pdf>
-[52]
 File: statds_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-38-1.pdf>
-[53]
+[52]
 File: statds_files/figure-latex/unnamed-chunk-39-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-39-1.pdf>
-[54]
+[53]
 File: statds_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-40-1.pdf>
-[55]
+[54]
 File: statds_files/figure-latex/unnamed-chunk-41-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-41-1.pdf>
+[55]
+File: statds_files/figure-latex/unnamed-chunk-42-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-42-1.pdf>
 [56]
-Underfull \hbox (badness 10000) detected at line 2482
+Underfull \hbox (badness 10000) detected at line 2508
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2482
+Underfull \hbox (badness 10000) detected at line 2508
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2484
+Underfull \hbox (badness 10000) detected at line 2510
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2484
+Underfull \hbox (badness 10000) detected at line 2510
 [][][]
  []
 
 [57]
-Overfull \hbox (14.00612pt too wide) in paragraph at lines 2539--2540
+Overfull \hbox (14.00612pt too wide) in paragraph at lines 2565--2566
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (14.6166pt too wide) in paragraph at lines 2543--2544
+Overfull \hbox (14.6166pt too wide) in paragraph at lines 2569--2570
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.7766pt too wide) in paragraph at lines 2547--2548
+Overfull \hbox (12.7766pt too wide) in paragraph at lines 2573--2574
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (6.81612pt too wide) in paragraph at lines 2549--2550
+Overfull \hbox (6.81612pt too wide) in paragraph at lines 2575--2576
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (14.00612pt too wide) in paragraph at lines 2562--2563
+Overfull \hbox (14.00612pt too wide) in paragraph at lines 2588--2589
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (14.6166pt too wide) in paragraph at lines 2566--2567
+Overfull \hbox (14.6166pt too wide) in paragraph at lines 2592--2593
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.7766pt too wide) in paragraph at lines 2570--2571
+Overfull \hbox (12.7766pt too wide) in paragraph at lines 2596--2597
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (6.81612pt too wide) in paragraph at lines 2572--2573
+Overfull \hbox (6.81612pt too wide) in paragraph at lines 2598--2599
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (4.09525pt too wide) in paragraph at lines 2582--2582
+Overfull \hbox (4.09525pt too wide) in paragraph at lines 2608--2608
  []|\TU/Alegreya(0)/m/n/10 2452| 
  []
 
 
-Overfull \hbox (2.90611pt too wide) in paragraph at lines 2582--2582
+Overfull \hbox (2.90611pt too wide) in paragraph at lines 2608--2608
  []|\TU/Alegreya(0)/m/n/10 19,00| 
  []
 
 
-Overfull \hbox (6.2094pt too wide) in paragraph at lines 2582--2582
+Overfull \hbox (6.2094pt too wide) in paragraph at lines 2608--2608
  []|\TU/Alegreya(0)/m/n/10 58,00| 
  []
 
 
-Overfull \hbox (1.57658pt too wide) in paragraph at lines 2582--2582
+Overfull \hbox (1.57658pt too wide) in paragraph at lines 2608--2608
  []|\TU/Alegreya(0)/m/n/10 69,00| 
  []
 
 
-Overfull \hbox (3.20612pt too wide) in paragraph at lines 2582--2582
+Overfull \hbox (3.20612pt too wide) in paragraph at lines 2608--2608
  []|\TU/Alegreya(0)/m/n/10 81,00| 
  []
 
 
-Overfull \hbox (4.88658pt too wide) in paragraph at lines 2582--2582
+Overfull \hbox (4.88658pt too wide) in paragraph at lines 2608--2608
  []|\TU/Alegreya(0)/m/n/10 110,00| 
  []
 
 
-Overfull \hbox (2.24611pt too wide) in paragraph at lines 2582--2582
+Overfull \hbox (2.24611pt too wide) in paragraph at lines 2608--2608
  []|\TU/Alegreya(0)/m/n/10 68,43| 
  []
 
 
-Overfull \hbox (3.73746pt too wide) in paragraph at lines 2583--2583
+Overfull \hbox (3.73746pt too wide) in paragraph at lines 2609--2609
 []|\TU/Alegreya(0)/m/n/10 tmunic|  
  []
 
 
-Overfull \hbox (4.09525pt too wide) in paragraph at lines 2583--2583
+Overfull \hbox (4.09525pt too wide) in paragraph at lines 2609--2609
  []|\TU/Alegreya(0)/m/n/10 2452| 
  []
 
 
-Overfull \hbox (5.9494pt too wide) in paragraph at lines 2583--2583
+Overfull \hbox (5.9494pt too wide) in paragraph at lines 2609--2609
  []|\TU/Alegreya(0)/m/n/10 39,00| 
  []
 
 
-Overfull \hbox (2.00659pt too wide) in paragraph at lines 2583--2583
+Overfull \hbox (2.00659pt too wide) in paragraph at lines 2609--2609
  []|\TU/Alegreya(0)/m/n/10 50,00| 
  []
 
 
-Overfull \hbox (4.12611pt too wide) in paragraph at lines 2583--2583
+Overfull \hbox (4.12611pt too wide) in paragraph at lines 2609--2609
  []|\TU/Alegreya(0)/m/n/10 62,00| 
  []
 
 
-Overfull \hbox (5.5866pt too wide) in paragraph at lines 2583--2583
+Overfull \hbox (5.5866pt too wide) in paragraph at lines 2609--2609
  []|\TU/Alegreya(0)/m/n/10 103,00| 
  []
 
 
-Overfull \hbox (2.1161pt too wide) in paragraph at lines 2583--2583
+Overfull \hbox (2.1161pt too wide) in paragraph at lines 2609--2609
  []|\TU/Alegreya(0)/m/n/10 49,27| 
  []
 
 
-Overfull \hbox (5.97745pt too wide) in paragraph at lines 2584--2584
+Overfull \hbox (5.97745pt too wide) in paragraph at lines 2610--2610
 []|\TU/Alegreya(0)/m/n/10 htransp|  
  []
 
 
-Overfull \hbox (4.09525pt too wide) in paragraph at lines 2584--2584
+Overfull \hbox (4.09525pt too wide) in paragraph at lines 2610--2610
  []|\TU/Alegreya(0)/m/n/10 2452| 
  []
 
 
-Overfull \hbox (2.48941pt too wide) in paragraph at lines 2584--2584
+Overfull \hbox (2.48941pt too wide) in paragraph at lines 2610--2610
  []|\TU/Alegreya(0)/m/n/10 0,00| 
  []
 
 
-Overfull \hbox (0.77658pt too wide) in paragraph at lines 2584--2584
+Overfull \hbox (0.77658pt too wide) in paragraph at lines 2610--2610
  []|\TU/Alegreya(0)/m/n/10 12,00| 
  []
 
 
-Overfull \hbox (19.04745pt too wide) in paragraph at lines 2585--2585
+Overfull \hbox (19.04745pt too wide) in paragraph at lines 2611--2611
 []|\TU/Alegreya(0)/m/n/10 cargatabag|  
  []
 
 
-Overfull \hbox (4.09525pt too wide) in paragraph at lines 2585--2585
+Overfull \hbox (4.09525pt too wide) in paragraph at lines 2611--2611
  []|\TU/Alegreya(0)/m/n/10 2452| 
  []
 
 
-Overfull \hbox (2.48941pt too wide) in paragraph at lines 2585--2585
+Overfull \hbox (2.48941pt too wide) in paragraph at lines 2611--2611
  []|\TU/Alegreya(0)/m/n/10 0,00| 
  []
 
 
-Overfull \hbox (2.8061pt too wide) in paragraph at lines 2585--2585
+Overfull \hbox (2.8061pt too wide) in paragraph at lines 2611--2611
  []|\TU/Alegreya(0)/m/n/10 41,00| 
  []
 
 
-Overfull \hbox (5.98659pt too wide) in paragraph at lines 2585--2585
+Overfull \hbox (5.98659pt too wide) in paragraph at lines 2611--2611
  []|\TU/Alegreya(0)/m/n/10 256,00| 
  []
 
 
-Overfull \hbox (1.51611pt too wide) in paragraph at lines 2585--2585
+Overfull \hbox (1.51611pt too wide) in paragraph at lines 2611--2611
  []|\TU/Alegreya(0)/m/n/10 25,57| 
  []
 
 
-Overfull \hbox (13.56746pt too wide) in paragraph at lines 2586--2586
+Overfull \hbox (13.56746pt too wide) in paragraph at lines 2612--2612
 []|\TU/Alegreya(0)/m/n/10 antracose|  
  []
 
 
-Overfull \hbox (4.45525pt too wide) in paragraph at lines 2586--2586
+Overfull \hbox (4.45525pt too wide) in paragraph at lines 2612--2612
  []|\TU/Alegreya(0)/m/n/10 2350| 
  []
 
 
-Overfull \hbox (1.3594pt too wide) in paragraph at lines 2586--2586
+Overfull \hbox (1.3594pt too wide) in paragraph at lines 2612--2612
  []|\TU/Alegreya(0)/m/n/10 0,07| 
  []
 
 
-Overfull \hbox (4.09525pt too wide) in paragraph at lines 2587--2587
+Overfull \hbox (4.09525pt too wide) in paragraph at lines 2613--2613
  []|\TU/Alegreya(0)/m/n/10 2452| 
  []
 
 
-Overfull \hbox (1.70746pt too wide) in paragraph at lines 2588--2588
+Overfull \hbox (1.70746pt too wide) in paragraph at lines 2614--2614
 []|\TU/Alegreya(0)/m/n/10 densid|  
  []
 
 
-Overfull \hbox (4.09525pt too wide) in paragraph at lines 2588--2588
+Overfull \hbox (4.09525pt too wide) in paragraph at lines 2614--2614
  []|\TU/Alegreya(0)/m/n/10 2452| 
  []
 
 
-Overfull \hbox (0.6994pt too wide) in paragraph at lines 2588--2588
+Overfull \hbox (0.6994pt too wide) in paragraph at lines 2614--2614
  []|\TU/Alegreya(0)/m/n/10 0,01| 
  []
 
 
-Overfull \hbox (6.29745pt too wide) in paragraph at lines 2589--2589
+Overfull \hbox (6.29745pt too wide) in paragraph at lines 2615--2615
 []|\TU/Alegreya(0)/m/n/10 distmin|  
  []
 
 
-Overfull \hbox (4.09525pt too wide) in paragraph at lines 2589--2589
+Overfull \hbox (4.09525pt too wide) in paragraph at lines 2615--2615
  []|\TU/Alegreya(0)/m/n/10 2452| 
  []
 
 
-Overfull \hbox (4.3594pt too wide) in paragraph at lines 2589--2589
+Overfull \hbox (4.3594pt too wide) in paragraph at lines 2615--2615
  []|\TU/Alegreya(0)/m/n/10 45,24| 
  []
 
 
-Overfull \hbox (1.64659pt too wide) in paragraph at lines 2589--2589
+Overfull \hbox (1.64659pt too wide) in paragraph at lines 2615--2615
  []|\TU/Alegreya(0)/m/n/10 114,12| 
  []
 
 
-Overfull \hbox (6.62611pt too wide) in paragraph at lines 2589--2589
+Overfull \hbox (6.62611pt too wide) in paragraph at lines 2615--2615
  []|\TU/Alegreya(0)/m/n/10 225,95| 
  []
 
 
-Overfull \hbox (8.99658pt too wide) in paragraph at lines 2589--2589
+Overfull \hbox (8.99658pt too wide) in paragraph at lines 2615--2615
  []|\TU/Alegreya(0)/m/n/10 1964,02| 
  []
 
 
-Overfull \hbox (5.9761pt too wide) in paragraph at lines 2589--2589
+Overfull \hbox (5.9761pt too wide) in paragraph at lines 2615--2615
  []|\TU/Alegreya(0)/m/n/10 170,67| 
  []
 
 [58]
-File: statds_files/figure-latex/unnamed-chunk-44-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-44-1.pdf>
 File: statds_files/figure-latex/unnamed-chunk-45-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-45-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-46-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-46-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2634--2636
+Underfull \hbox (badness 10000) in paragraph at lines 2660--2662
 [][][][]
  []
 
 
-Underfull \hbox (badness 3590) in paragraph at lines 2634--2636
+Underfull \hbox (badness 3590) in paragraph at lines 2660--2662
 \TU/Alegreya(0)/m/n/10 Observando os gráficos, podemos perceber uma leve (muito leve) assimetria
  []
 
 
-Underfull \hbox (badness 3128) in paragraph at lines 2634--2636
+Underfull \hbox (badness 3128) in paragraph at lines 2660--2662
 \TU/Alegreya(0)/m/n/10 à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo
  []
 
 [59]
 LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/it' will be
-(Font)              scaled to size 6.99997pt on input line 2641.
+(Font)              scaled to size 6.99997pt on input line 2667.
 [60]
-File: statds_files/figure-latex/unnamed-chunk-47-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-47-1.pdf>
-[61]
 File: statds_files/figure-latex/unnamed-chunk-48-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-48-1.pdf>
+[61]
+File: statds_files/figure-latex/unnamed-chunk-49-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-49-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2720--2722
+Underfull \hbox (badness 10000) in paragraph at lines 2746--2748
 [][][][]
  []
 
 
-Underfull \hbox (badness 3590) in paragraph at lines 2720--2722
+Underfull \hbox (badness 3590) in paragraph at lines 2746--2748
 \TU/Alegreya(0)/m/n/10 Observando os gráficos, podemos perceber uma leve (muito leve) assimetria
  []
 
 
-Underfull \hbox (badness 3128) in paragraph at lines 2720--2722
+Underfull \hbox (badness 3128) in paragraph at lines 2746--2748
 \TU/Alegreya(0)/m/n/10 à esquerda. O coeficiente de simetria de Fisher-Pearson ajustado é negativo
  []
 
 [62] [63]
-File: statds_files/figure-latex/unnamed-chunk-50-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-50-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-51-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-51-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2763--2765
+Underfull \hbox (badness 10000) in paragraph at lines 2789--2791
 [][][][]
  []
 
 [64]
-File: statds_files/figure-latex/unnamed-chunk-51-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-51-1.pdf>
 File: statds_files/figure-latex/unnamed-chunk-52-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-52-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-53-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-53-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2802--2804
+Underfull \hbox (badness 10000) in paragraph at lines 2828--2830
 [][][][]
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 2802--2804
+Underfull \hbox (badness 1748) in paragraph at lines 2828--2830
 \TU/Alegreya(0)/m/n/10 A variável contém uma forte assimetria a direita, conforme atesta também o
  []
 
 [65] [66]
-File: statds_files/figure-latex/unnamed-chunk-54-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-54-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-55-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-55-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 2844--2846
+Underfull \hbox (badness 10000) in paragraph at lines 2870--2872
 [][][][]
  []
 
 [67]
-File: statds_files/figure-latex/unnamed-chunk-56-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-56-1.pdf>
-[68]
 File: statds_files/figure-latex/unnamed-chunk-57-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-57-1.pdf>
+[68]
 File: statds_files/figure-latex/unnamed-chunk-58-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-58-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-59-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-59-1.pdf>
 [69] [70]
-File: statds_files/figure-latex/unnamed-chunk-60-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-60-1.pdf>
-[71]
 File: statds_files/figure-latex/unnamed-chunk-61-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-61-1.pdf>
+[71]
 File: statds_files/figure-latex/unnamed-chunk-62-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-62-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-63-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-63-1.pdf>
 [72] [73]
-File: statds_files/figure-latex/unnamed-chunk-64-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-64-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-65-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-65-1.pdf>
 [74]
-File: statds_files/figure-latex/unnamed-chunk-66-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-66-1.pdf>
-[75]
 File: statds_files/figure-latex/unnamed-chunk-67-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-67-1.pdf>
+[75]
+File: statds_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-68-1.pdf>
 [76]
-File: statds_files/figure-latex/unnamed-chunk-69-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-69-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-70-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-70-1.pdf>
 [77]
-File: statds_files/figure-latex/unnamed-chunk-71-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-71-1.pdf>
-[78]
 File: statds_files/figure-latex/unnamed-chunk-72-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-72-1.pdf>
+[78]
+File: statds_files/figure-latex/unnamed-chunk-73-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-73-1.pdf>
 [79] [80]
-File: statds_files/figure-latex/unnamed-chunk-74-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-74-1.pdf>
 File: statds_files/figure-latex/unnamed-chunk-75-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-75-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-76-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-76-1.pdf>
 [81] [82]
-File: statds_files/figure-latex/unnamed-chunk-77-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-77-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-78-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-78-1.pdf>
 [83] [84]
-File: statds_files/figure-latex/unnamed-chunk-81-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-81-1.pdf>
-[85]
 File: statds_files/figure-latex/unnamed-chunk-82-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-82-1.pdf>
+[85]
 File: statds_files/figure-latex/unnamed-chunk-83-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-83-1.pdf>
-[86]
 File: statds_files/figure-latex/unnamed-chunk-84-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-84-1.pdf>
+[86]
+File: statds_files/figure-latex/unnamed-chunk-85-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-85-1.pdf>
 [87] [88]
-File: statds_files/figure-latex/unnamed-chunk-86-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-86-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-87-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-87-1.pdf>
 [89]
-Overfull \hbox (1.90112pt too wide) in paragraph at lines 3593--3594
+Overfull \hbox (1.90112pt too wide) in paragraph at lines 3619--3620
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (0.98798pt too wide) in paragraph at lines 3597--3598
+Overfull \hbox (0.98798pt too wide) in paragraph at lines 3623--3624
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (3.01112pt too wide) in paragraph at lines 3601--3602
+Overfull \hbox (3.01112pt too wide) in paragraph at lines 3627--3628
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (1.20097pt too wide) in paragraph at lines 3605--3606
+Overfull \hbox (1.20097pt too wide) in paragraph at lines 3631--3632
  []\TU/Alegreya(0)/m/n/10 Desvio.Padrão 
  []
 
 
-Overfull \hbox (1.90112pt too wide) in paragraph at lines 3612--3613
+Overfull \hbox (1.90112pt too wide) in paragraph at lines 3638--3639
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (0.98798pt too wide) in paragraph at lines 3616--3617
+Overfull \hbox (0.98798pt too wide) in paragraph at lines 3642--3643
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (3.01112pt too wide) in paragraph at lines 3620--3621
+Overfull \hbox (3.01112pt too wide) in paragraph at lines 3646--3647
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (1.20097pt too wide) in paragraph at lines 3624--3625
+Overfull \hbox (1.20097pt too wide) in paragraph at lines 3650--3651
  []\TU/Alegreya(0)/m/n/10 Desvio.Padrão 
  []
 
 
-Overfull \hbox (1.32483pt too wide) in paragraph at lines 3632--3632
+Overfull \hbox (1.32483pt too wide) in paragraph at lines 3658--3658
 []|\TU/Alegreya(0)/m/n/10 Diferença|  
  []
 
 [90] [91]
-File: statds_files/figure-latex/unnamed-chunk-90-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-90-1.pdf>
 File: statds_files/figure-latex/unnamed-chunk-91-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-91-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-92-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-92-1.pdf>
 [92] [93]
-File: statds_files/figure-latex/unnamed-chunk-94-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-94-1.pdf>
-[94]
 File: statds_files/figure-latex/unnamed-chunk-95-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-95-1.pdf>
-[95]
+[94]
 File: statds_files/figure-latex/unnamed-chunk-96-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-96-1.pdf>
+[95]
+File: statds_files/figure-latex/unnamed-chunk-97-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-97-1.pdf>
 [96]
-File: statds_files/figure-latex/unnamed-chunk-99-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-99-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-100-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-100-1.pdf>
 [97] [98]
-File: statds_files/figure-latex/unnamed-chunk-102-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-102-1.pdf>
-[99]
 File: statds_files/figure-latex/unnamed-chunk-103-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-103-1.pdf>
-[100]
+[99]
 File: statds_files/figure-latex/unnamed-chunk-104-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-104-1.pdf>
+[100]
+File: statds_files/figure-latex/unnamed-chunk-105-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-105-1.pdf>
 [101] [102]
-File: statds_files/figure-latex/unnamed-chunk-108-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-108-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-109-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-109-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 4118--4120
+Underfull \hbox (badness 10000) in paragraph at lines 4144--4146
 [][][][]
  []
 
 [103] [104]
-File: statds_files/figure-latex/unnamed-chunk-111-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-111-1.pdf>
-[105]
 File: statds_files/figure-latex/unnamed-chunk-112-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-112-1.pdf>
+[105]
+File: statds_files/figure-latex/unnamed-chunk-113-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-113-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 4215--4217
+Underfull \hbox (badness 10000) in paragraph at lines 4241--4243
 [][][][]
  []
 
 [106] [107]
-Underfull \hbox (badness 10000) detected at line 4251
+Underfull \hbox (badness 10000) detected at line 4277
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4251
+Underfull \hbox (badness 10000) detected at line 4277
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4253
+Underfull \hbox (badness 10000) detected at line 4279
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4253
+Underfull \hbox (badness 10000) detected at line 4279
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4255
+Underfull \hbox (badness 10000) detected at line 4281
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4255
+Underfull \hbox (badness 10000) detected at line 4281
 [][][]
  []
 
 [108] [109] [110]
-Overfull \hbox (11.8133pt too wide) in paragraph at lines 4417--4418
+Overfull \hbox (11.8133pt too wide) in paragraph at lines 4443--4444
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (12.14919pt too wide) in paragraph at lines 4421--4422
+Overfull \hbox (12.14919pt too wide) in paragraph at lines 4447--4448
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.9233pt too wide) in paragraph at lines 4425--4426
+Overfull \hbox (12.9233pt too wide) in paragraph at lines 4451--4452
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (7.23738pt too wide) in paragraph at lines 4427--4428
+Overfull \hbox (7.23738pt too wide) in paragraph at lines 4453--4454
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (11.8133pt too wide) in paragraph at lines 4440--4441
+Overfull \hbox (11.8133pt too wide) in paragraph at lines 4466--4467
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (12.14919pt too wide) in paragraph at lines 4444--4445
+Overfull \hbox (12.14919pt too wide) in paragraph at lines 4470--4471
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.9233pt too wide) in paragraph at lines 4448--4449
+Overfull \hbox (12.9233pt too wide) in paragraph at lines 4474--4475
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (7.23738pt too wide) in paragraph at lines 4450--4451
+Overfull \hbox (7.23738pt too wide) in paragraph at lines 4476--4477
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (7.56406pt too wide) in paragraph at lines 4460--4460
+Overfull \hbox (7.56406pt too wide) in paragraph at lines 4486--4486
 []|\TU/Alegreya(0)/m/n/10 Idade|  
  []
 
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 4460--4460
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 4486--4486
  []|\TU/Alegreya(0)/m/n/10 27,00| 
  []
 
 
-Overfull \hbox (0.98405pt too wide) in paragraph at lines 4460--4460
+Overfull \hbox (0.98405pt too wide) in paragraph at lines 4486--4486
  []|\TU/Alegreya(0)/m/n/10 37,0| 
  []
 
 
-Overfull \hbox (3.35738pt too wide) in paragraph at lines 4460--4460
+Overfull \hbox (3.35738pt too wide) in paragraph at lines 4486--4486
  []|\TU/Alegreya(0)/m/n/10 32,04| 
  []
 
 
-Overfull \hbox (6.61404pt too wide) in paragraph at lines 4461--4461
+Overfull \hbox (6.61404pt too wide) in paragraph at lines 4487--4487
 []|\TU/Alegreya(0)/m/n/10 PCRa|  
  []
 
 
-Overfull \hbox (11.12122pt too wide) in paragraph at lines 4502--4503
+Overfull \hbox (11.12122pt too wide) in paragraph at lines 4528--4529
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (11.35931pt too wide) in paragraph at lines 4506--4507
+Overfull \hbox (11.35931pt too wide) in paragraph at lines 4532--4533
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.23122pt too wide) in paragraph at lines 4510--4511
+Overfull \hbox (12.23122pt too wide) in paragraph at lines 4536--4537
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (6.6431pt too wide) in paragraph at lines 4512--4513
+Overfull \hbox (6.6431pt too wide) in paragraph at lines 4538--4539
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (11.12122pt too wide) in paragraph at lines 4525--4526
+Overfull \hbox (11.12122pt too wide) in paragraph at lines 4551--4552
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (11.35931pt too wide) in paragraph at lines 4529--4530
+Overfull \hbox (11.35931pt too wide) in paragraph at lines 4555--4556
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.23122pt too wide) in paragraph at lines 4533--4534
+Overfull \hbox (12.23122pt too wide) in paragraph at lines 4559--4560
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (6.6431pt too wide) in paragraph at lines 4535--4536
+Overfull \hbox (6.6431pt too wide) in paragraph at lines 4561--4562
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (7.045pt too wide) in paragraph at lines 4545--4545
+Overfull \hbox (7.045pt too wide) in paragraph at lines 4571--4571
 []|\TU/Alegreya(0)/m/n/10 Idade|  
  []
 
 
-Overfull \hbox (6.09499pt too wide) in paragraph at lines 4546--4546
+Overfull \hbox (6.09499pt too wide) in paragraph at lines 4572--4572
 []|\TU/Alegreya(0)/m/n/10 PCRa|  
  []
 
 [111]
-Overfull \hbox (11.59137pt too wide) in paragraph at lines 4587--4588
+Overfull \hbox (11.59137pt too wide) in paragraph at lines 4613--4614
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (11.87837pt too wide) in paragraph at lines 4591--4592
+Overfull \hbox (11.87837pt too wide) in paragraph at lines 4617--4618
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.70137pt too wide) in paragraph at lines 4595--4596
+Overfull \hbox (12.70137pt too wide) in paragraph at lines 4621--4622
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (7.03804pt too wide) in paragraph at lines 4597--4598
+Overfull \hbox (7.03804pt too wide) in paragraph at lines 4623--4624
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (11.59137pt too wide) in paragraph at lines 4610--4611
+Overfull \hbox (11.59137pt too wide) in paragraph at lines 4636--4637
  []\TU/Alegreya(0)/m/n/10 Mínimo 
  []
 
 
-Overfull \hbox (11.87837pt too wide) in paragraph at lines 4614--4615
+Overfull \hbox (11.87837pt too wide) in paragraph at lines 4640--4641
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (12.70137pt too wide) in paragraph at lines 4618--4619
+Overfull \hbox (12.70137pt too wide) in paragraph at lines 4644--4645
  []\TU/Alegreya(0)/m/n/10 Máximo 
  []
 
 
-Overfull \hbox (7.03804pt too wide) in paragraph at lines 4620--4621
+Overfull \hbox (7.03804pt too wide) in paragraph at lines 4646--4647
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (7.39104pt too wide) in paragraph at lines 4630--4630
+Overfull \hbox (7.39104pt too wide) in paragraph at lines 4656--4656
 []|\TU/Alegreya(0)/m/n/10 Idade|  
  []
 
 
-Overfull \hbox (0.55103pt too wide) in paragraph at lines 4630--4630
+Overfull \hbox (0.55103pt too wide) in paragraph at lines 4656--4656
  []|\TU/Alegreya(0)/m/n/10 26,5| 
  []
 
 
-Overfull \hbox (1.68803pt too wide) in paragraph at lines 4630--4630
+Overfull \hbox (1.68803pt too wide) in paragraph at lines 4656--4656
  []|\TU/Alegreya(0)/m/n/10 30,71| 
  []
 
 
-Overfull \hbox (6.44102pt too wide) in paragraph at lines 4631--4631
+Overfull \hbox (6.44102pt too wide) in paragraph at lines 4657--4657
 []|\TU/Alegreya(0)/m/n/10 PCRa|  
  []
 
 [112]
-File: statds_files/figure-latex/unnamed-chunk-120-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-120-1.pdf>
-[113]
 File: statds_files/figure-latex/unnamed-chunk-121-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-121-1.pdf>
+[113]
 File: statds_files/figure-latex/unnamed-chunk-122-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-122-1.pdf>
-[114]
 File: statds_files/figure-latex/unnamed-chunk-123-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-123-1.pdf>
+[114]
+File: statds_files/figure-latex/unnamed-chunk-124-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-124-1.pdf>
 [115] [116]
-File: statds_files/figure-latex/unnamed-chunk-125-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-125-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-126-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-126-1.pdf>
 [117]
-Underfull \hbox (badness 10000) detected at line 4797
+Underfull \hbox (badness 10000) detected at line 4823
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4797
+Underfull \hbox (badness 10000) detected at line 4823
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4799
+Underfull \hbox (badness 10000) detected at line 4825
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4799
+Underfull \hbox (badness 10000) detected at line 4825
 [][][]
  []
 
 [118] [119] [120]
-Underfull \hbox (badness 10000) in paragraph at lines 4919--4920
+Underfull \hbox (badness 10000) in paragraph at lines 4945--4946
 []\TU/Alegreya(0)/m/n/10 Com o arquivo organizado, vamos salvá-lo para uso futuro como \TU/SourceCodePro(0)/m/n/10 es-
  []
 
 [121]
-File: statds_files/figure-latex/unnamed-chunk-131-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-131-1.pdf>
-[122]
 File: statds_files/figure-latex/unnamed-chunk-132-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-132-1.pdf>
+[122]
+File: statds_files/figure-latex/unnamed-chunk-133-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-133-1.pdf>
 [123] [124]
-Overfull \hbox (7.13011pt too wide) in paragraph at lines 5076--5077
+Overfull \hbox (7.13011pt too wide) in paragraph at lines 5102--5103
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (11.99591pt too wide) in paragraph at lines 5082--5083
+Overfull \hbox (11.99591pt too wide) in paragraph at lines 5108--5109
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (7.13011pt too wide) in paragraph at lines 5096--5097
+Overfull \hbox (7.13011pt too wide) in paragraph at lines 5122--5123
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (11.99591pt too wide) in paragraph at lines 5102--5103
+Overfull \hbox (11.99591pt too wide) in paragraph at lines 5128--5129
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (9.06676pt too wide) in paragraph at lines 5113--5113
+Overfull \hbox (9.06676pt too wide) in paragraph at lines 5139--5139
  []|\TU/Alegreya(0)/m/n/10 Controle| 
  []
 
 
-Overfull \hbox (1.1201pt too wide) in paragraph at lines 5114--5114
+Overfull \hbox (1.1201pt too wide) in paragraph at lines 5140--5140
  []|\TU/Alegreya(0)/m/n/10 11,03| 
  []
 
 
-Overfull \hbox (9.06676pt too wide) in paragraph at lines 5115--5115
+Overfull \hbox (9.06676pt too wide) in paragraph at lines 5141--5141
  []|\TU/Alegreya(0)/m/n/10 Controle| 
  []
 
 
-Overfull \hbox (0.6501pt too wide) in paragraph at lines 5115--5115
+Overfull \hbox (0.6501pt too wide) in paragraph at lines 5141--5141
  []|\TU/Alegreya(0)/m/n/10 13,77| 
  []
 
 
-Overfull \hbox (1.2501pt too wide) in paragraph at lines 5116--5116
+Overfull \hbox (1.2501pt too wide) in paragraph at lines 5142--5142
  []|\TU/Alegreya(0)/m/n/10 13,32| 
  []
 
 
-Overfull \hbox (3.22011pt too wide) in paragraph at lines 5116--5116
+Overfull \hbox (3.22011pt too wide) in paragraph at lines 5142--5142
  []|\TU/Alegreya(0)/m/n/10 10,60| 
  []
 
 
-Overfull \hbox (1.08011pt too wide) in paragraph at lines 5116--5116
+Overfull \hbox (1.08011pt too wide) in paragraph at lines 5142--5142
  []|\TU/Alegreya(0)/m/n/10 15,10| 
  []
 
 
-Overfull \hbox (9.06676pt too wide) in paragraph at lines 5117--5117
+Overfull \hbox (9.06676pt too wide) in paragraph at lines 5143--5143
  []|\TU/Alegreya(0)/m/n/10 Controle| 
  []
 
 
-Overfull \hbox (1.6101pt too wide) in paragraph at lines 5117--5117
+Overfull \hbox (1.6101pt too wide) in paragraph at lines 5143--5143
  []|\TU/Alegreya(0)/m/n/10 17,68| 
  []
 
 
-Overfull \hbox (1.3401pt too wide) in paragraph at lines 5117--5117
+Overfull \hbox (1.3401pt too wide) in paragraph at lines 5143--5143
  []|\TU/Alegreya(0)/m/n/10 13,83| 
  []
 
 
-Overfull \hbox (2.30011pt too wide) in paragraph at lines 5117--5117
+Overfull \hbox (2.30011pt too wide) in paragraph at lines 5143--5143
  []|\TU/Alegreya(0)/m/n/10 21,50| 
  []
 
 
-Overfull \hbox (1.2601pt too wide) in paragraph at lines 5118--5118
+Overfull \hbox (1.2601pt too wide) in paragraph at lines 5144--5144
  []|\TU/Alegreya(0)/m/n/10 15,78| 
  []
 
 
-Overfull \hbox (0.5101pt too wide) in paragraph at lines 5118--5118
+Overfull \hbox (0.5101pt too wide) in paragraph at lines 5144--5144
  []|\TU/Alegreya(0)/m/n/10 12,15| 
  []
 
 
-Overfull \hbox (1.5101pt too wide) in paragraph at lines 5118--5118
+Overfull \hbox (1.5101pt too wide) in paragraph at lines 5144--5144
  []|\TU/Alegreya(0)/m/n/10 18,45| 
  []
 
 
-Overfull \hbox (9.06676pt too wide) in paragraph at lines 5119--5119
+Overfull \hbox (9.06676pt too wide) in paragraph at lines 5145--5145
  []|\TU/Alegreya(0)/m/n/10 Controle| 
  []
 
 
-Overfull \hbox (4.13011pt too wide) in paragraph at lines 5119--5119
+Overfull \hbox (4.13011pt too wide) in paragraph at lines 5145--5145
  []|\TU/Alegreya(0)/m/n/10 23,00| 
  []
 
 
-Overfull \hbox (2.47011pt too wide) in paragraph at lines 5119--5119
+Overfull \hbox (2.47011pt too wide) in paragraph at lines 5145--5145
  []|\TU/Alegreya(0)/m/n/10 18,28| 
  []
 
 
-Overfull \hbox (2.3901pt too wide) in paragraph at lines 5119--5119
+Overfull \hbox (2.3901pt too wide) in paragraph at lines 5145--5145
  []|\TU/Alegreya(0)/m/n/10 27,72| 
  []
 
 [125]
-Overfull \hbox (35.89838pt too wide) in paragraph at lines 5149--5149
+Overfull \hbox (35.89838pt too wide) in paragraph at lines 5175--5175
 []\TU/SourceCodePro(0)/m/n/10 ## Warning in left_join(., resumo2, by = join_by(Momento == m)): Detected an unexpected many-
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5195
+Underfull \hbox (badness 10000) detected at line 5221
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5195
+Underfull \hbox (badness 10000) detected at line 5221
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5197
+Underfull \hbox (badness 10000) detected at line 5223
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5197
+Underfull \hbox (badness 10000) detected at line 5223
 [][][]
  []
 
 [126] [127]
-File: statds_files/figure-latex/unnamed-chunk-137-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-137-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-138-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-138-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5267--5269
+Underfull \hbox (badness 10000) in paragraph at lines 5293--5295
 [][][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5274
+Underfull \hbox (badness 10000) detected at line 5300
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5276
+Underfull \hbox (badness 10000) detected at line 5302
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5283
+Underfull \hbox (badness 10000) detected at line 5309
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5285
+Underfull \hbox (badness 10000) detected at line 5311
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5287
+Underfull \hbox (badness 10000) detected at line 5313
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5289
+Underfull \hbox (badness 10000) detected at line 5315
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5291
+Underfull \hbox (badness 10000) detected at line 5317
  [][]
  []
 
 [128] [129]
-Underfull \hbox (badness 10000) detected at line 5388
+Underfull \hbox (badness 10000) detected at line 5414
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5388
+Underfull \hbox (badness 10000) detected at line 5414
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5390
+Underfull \hbox (badness 10000) detected at line 5416
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5390
+Underfull \hbox (badness 10000) detected at line 5416
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5392
+Underfull \hbox (badness 10000) detected at line 5418
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5392
+Underfull \hbox (badness 10000) detected at line 5418
 [][][]
  []
 
 [130]
-Underfull \vbox (badness 10000) detected at line 5454
+Underfull \vbox (badness 10000) detected at line 5480
  []
 
 
-Underfull \vbox (badness 10000) detected at line 5454
+Underfull \vbox (badness 10000) detected at line 5480
  []
 
 [131]
-File: statds_files/figure-latex/unnamed-chunk-141-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-141-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-142-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-142-1.pdf>
 [132] [133] [134] [135] [136]
-File: statds_files/figure-latex/unnamed-chunk-145-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-145-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-146-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-146-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5673--5675
+Underfull \hbox (badness 10000) in paragraph at lines 5699--5701
 [][][][]
  []
 
 [137]
-File: statds_files/figure-latex/unnamed-chunk-146-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-146-1.pdf>
-[138]
 File: statds_files/figure-latex/unnamed-chunk-147-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-147-1.pdf>
+[138]
 File: statds_files/figure-latex/unnamed-chunk-148-1.pdf Graphic file (type pdf)
 <use statds_files/figure-latex/unnamed-chunk-148-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-149-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-149-1.pdf>
 [139]
-Underfull \hbox (badness 10000) detected at line 5756
+Underfull \hbox (badness 10000) detected at line 5782
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5756
+Underfull \hbox (badness 10000) detected at line 5782
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5758
+Underfull \hbox (badness 10000) detected at line 5784
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5758
+Underfull \hbox (badness 10000) detected at line 5784
 [][][]
  []
 
 [140] [141] [142]
-File: statds_files/figure-latex/unnamed-chunk-154-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-154-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-155-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-155-1.pdf>
 [143]
-Underfull \hbox (badness 10000) detected at line 5972
+Underfull \hbox (badness 10000) detected at line 5998
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5972
+Underfull \hbox (badness 10000) detected at line 5998
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5974
+Underfull \hbox (badness 10000) detected at line 6000
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5974
+Underfull \hbox (badness 10000) detected at line 6000
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5976
+Underfull \hbox (badness 10000) detected at line 6002
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5976
+Underfull \hbox (badness 10000) detected at line 6002
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5978
+Underfull \hbox (badness 10000) detected at line 6004
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5978
+Underfull \hbox (badness 10000) detected at line 6004
 [][][]
  []
 
 [144]
-Underfull \hbox (badness 10000) detected at line 6029
+Underfull \hbox (badness 10000) detected at line 6055
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6029
+Underfull \hbox (badness 10000) detected at line 6055
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6031
+Underfull \hbox (badness 10000) detected at line 6057
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6031
+Underfull \hbox (badness 10000) detected at line 6057
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6033
+Underfull \hbox (badness 10000) detected at line 6059
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6033
+Underfull \hbox (badness 10000) detected at line 6059
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6035
+Underfull \hbox (badness 10000) detected at line 6061
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6035
+Underfull \hbox (badness 10000) detected at line 6061
 [][][]
  []
 
 [145]
-Underfull \hbox (badness 10000) detected at line 6052
+Underfull \hbox (badness 10000) detected at line 6078
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6052
+Underfull \hbox (badness 10000) detected at line 6078
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6054
+Underfull \hbox (badness 10000) detected at line 6080
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6054
+Underfull \hbox (badness 10000) detected at line 6080
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6056
+Underfull \hbox (badness 10000) detected at line 6082
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6056
+Underfull \hbox (badness 10000) detected at line 6082
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6058
+Underfull \hbox (badness 10000) detected at line 6084
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6058
+Underfull \hbox (badness 10000) detected at line 6084
 [][][]
  []
 
 [146]
-Underfull \hbox (badness 10000) detected at line 6150
+Underfull \hbox (badness 10000) detected at line 6176
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6150
+Underfull \hbox (badness 10000) detected at line 6176
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6152
+Underfull \hbox (badness 10000) detected at line 6178
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6152
+Underfull \hbox (badness 10000) detected at line 6178
 [][][]
  []
 
 [147]
-File: statds_files/figure-latex/unnamed-chunk-156-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-156-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-157-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-157-1.pdf>
 [148]
-Underfull \hbox (badness 10000) detected at line 6211
+Underfull \hbox (badness 10000) detected at line 6237
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6211
+Underfull \hbox (badness 10000) detected at line 6237
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6213
+Underfull \hbox (badness 10000) detected at line 6239
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6213
+Underfull \hbox (badness 10000) detected at line 6239
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6215
+Underfull \hbox (badness 10000) detected at line 6241
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6215
+Underfull \hbox (badness 10000) detected at line 6241
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6217
+Underfull \hbox (badness 10000) detected at line 6243
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6217
+Underfull \hbox (badness 10000) detected at line 6243
 [][][]
  []
 
 [149]
-Underfull \hbox (badness 10000) detected at line 6259
+Underfull \hbox (badness 10000) detected at line 6285
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6259
+Underfull \hbox (badness 10000) detected at line 6285
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6261
+Underfull \hbox (badness 10000) detected at line 6287
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6261
+Underfull \hbox (badness 10000) detected at line 6287
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6263
+Underfull \hbox (badness 10000) detected at line 6289
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6263
+Underfull \hbox (badness 10000) detected at line 6289
 [][][]
  []
 
 [150]
-Underfull \hbox (badness 10000) detected at line 6345
+Underfull \hbox (badness 10000) detected at line 6371
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6345
+Underfull \hbox (badness 10000) detected at line 6371
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6347
+Underfull \hbox (badness 10000) detected at line 6373
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6347
+Underfull \hbox (badness 10000) detected at line 6373
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6349
+Underfull \hbox (badness 10000) detected at line 6375
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6349
+Underfull \hbox (badness 10000) detected at line 6375
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6351
+Underfull \hbox (badness 10000) detected at line 6377
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6351
+Underfull \hbox (badness 10000) detected at line 6377
 [][][]
  []
 
 [151]
-Overfull \hbox (13.02332pt too wide) in paragraph at lines 6387--6388
+Overfull \hbox (13.02332pt too wide) in paragraph at lines 6413--6414
  []\TU/Alegreya(0)/m/n/10 Dependentes 
  []
 
 
-Overfull \hbox (1.12328pt too wide) in paragraph at lines 6389--6390
+Overfull \hbox (1.12328pt too wide) in paragraph at lines 6415--6416
  []\TU/Alegreya(0)/m/n/10 Frequência 
  []
 
 
-Overfull \hbox (13.02332pt too wide) in paragraph at lines 6399--6400
+Overfull \hbox (13.02332pt too wide) in paragraph at lines 6425--6426
  []\TU/Alegreya(0)/m/n/10 Dependentes 
  []
 
 
-Overfull \hbox (1.12328pt too wide) in paragraph at lines 6401--6402
+Overfull \hbox (1.12328pt too wide) in paragraph at lines 6427--6428
  []\TU/Alegreya(0)/m/n/10 Frequência 
  []
 
 [152]
-Underfull \hbox (badness 10000) detected at line 6446
+Underfull \hbox (badness 10000) detected at line 6472
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6446
+Underfull \hbox (badness 10000) detected at line 6472
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6448
+Underfull \hbox (badness 10000) detected at line 6474
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6448
+Underfull \hbox (badness 10000) detected at line 6474
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6450
+Underfull \hbox (badness 10000) detected at line 6476
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6450
+Underfull \hbox (badness 10000) detected at line 6476
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6452
+Underfull \hbox (badness 10000) detected at line 6478
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6452
+Underfull \hbox (badness 10000) detected at line 6478
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6492
+Underfull \hbox (badness 10000) detected at line 6518
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6492
+Underfull \hbox (badness 10000) detected at line 6518
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6494
+Underfull \hbox (badness 10000) detected at line 6520
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6494
+Underfull \hbox (badness 10000) detected at line 6520
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6496
+Underfull \hbox (badness 10000) detected at line 6522
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6496
+Underfull \hbox (badness 10000) detected at line 6522
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6498
+Underfull \hbox (badness 10000) detected at line 6524
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6498
+Underfull \hbox (badness 10000) detected at line 6524
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6500
+Underfull \hbox (badness 10000) detected at line 6526
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6500
+Underfull \hbox (badness 10000) detected at line 6526
 [][][]
  []
 
 
-Overfull \hbox (4.52332pt too wide) in paragraph at lines 6517--6518
+Overfull \hbox (4.52332pt too wide) in paragraph at lines 6543--6544
  []\TU/Alegreya(0)/m/n/10 Frequência 
  []
 
 
-Overfull \hbox (4.52332pt too wide) in paragraph at lines 6529--6530
+Overfull \hbox (4.52332pt too wide) in paragraph at lines 6555--6556
  []\TU/Alegreya(0)/m/n/10 Frequência 
  []
 
 [153]
-Underfull \hbox (badness 10000) detected at line 6584
+Underfull \hbox (badness 10000) detected at line 6610
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6584
+Underfull \hbox (badness 10000) detected at line 6610
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6586
+Underfull \hbox (badness 10000) detected at line 6612
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6586
+Underfull \hbox (badness 10000) detected at line 6612
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6588
+Underfull \hbox (badness 10000) detected at line 6614
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6588
+Underfull \hbox (badness 10000) detected at line 6614
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6590
+Underfull \hbox (badness 10000) detected at line 6616
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6590
+Underfull \hbox (badness 10000) detected at line 6616
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6592
+Underfull \hbox (badness 10000) detected at line 6618
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6592
+Underfull \hbox (badness 10000) detected at line 6618
 [][][]
  []
 
 [154]
-Underfull \hbox (badness 10000) detected at line 6658
+Underfull \hbox (badness 10000) detected at line 6684
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6658
+Underfull \hbox (badness 10000) detected at line 6684
 [][][]
  []
 
 [155]
-Underfull \hbox (badness 10000) detected at line 6660
+Underfull \hbox (badness 10000) detected at line 6686
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6660
+Underfull \hbox (badness 10000) detected at line 6686
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6662
+Underfull \hbox (badness 10000) detected at line 6688
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6662
+Underfull \hbox (badness 10000) detected at line 6688
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6664
+Underfull \hbox (badness 10000) detected at line 6690
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6664
+Underfull \hbox (badness 10000) detected at line 6690
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6666
+Underfull \hbox (badness 10000) detected at line 6692
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6666
+Underfull \hbox (badness 10000) detected at line 6692
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6708
+Underfull \hbox (badness 10000) detected at line 6734
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6708
+Underfull \hbox (badness 10000) detected at line 6734
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6710
+Underfull \hbox (badness 10000) detected at line 6736
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6710
+Underfull \hbox (badness 10000) detected at line 6736
 [][][]
  []
 
 [156] [157] [158] [159]
-Underfull \hbox (badness 10000) detected at line 6850
+Underfull \hbox (badness 10000) detected at line 6876
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6850
+Underfull \hbox (badness 10000) detected at line 6876
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6852
+Underfull \hbox (badness 10000) detected at line 6878
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6852
+Underfull \hbox (badness 10000) detected at line 6878
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6854
+Underfull \hbox (badness 10000) detected at line 6880
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6854
+Underfull \hbox (badness 10000) detected at line 6880
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6873
+Underfull \hbox (badness 10000) detected at line 6899
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6873
+Underfull \hbox (badness 10000) detected at line 6899
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6875
+Underfull \hbox (badness 10000) detected at line 6901
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6875
+Underfull \hbox (badness 10000) detected at line 6901
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6877
+Underfull \hbox (badness 10000) detected at line 6903
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6877
+Underfull \hbox (badness 10000) detected at line 6903
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6879
+Underfull \hbox (badness 10000) detected at line 6905
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6879
+Underfull \hbox (badness 10000) detected at line 6905
 [][][]
  []
 
@@ -3952,49 +3952,49 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [162
 
 ]
-Underfull \vbox (badness 10000) detected at line 6887
+Underfull \vbox (badness 10000) detected at line 6913
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6887
+Overfull \hbox (336.25pt too wide) detected at line 6913
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6887
+Underfull \vbox (badness 10000) detected at line 6913
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6887
+Overfull \hbox (336.25pt too wide) detected at line 6913
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6887
+Underfull \vbox (badness 10000) detected at line 6913
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6887
+Overfull \hbox (336.25pt too wide) detected at line 6913
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 6887
+Underfull \vbox (badness 10000) detected at line 6913
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 6887
+Overfull \hbox (336.25pt too wide) detected at line 6913
 []
  []
 
 Cap\'{\i }tulo 4.
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6894--6894
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6920--6920
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6901--6901
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6927--6927
 |  
  []
 
@@ -4006,111 +4006,81 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [163
 
 ]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6905--6905
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6931--6931
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6909--6909
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6935--6935
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6913--6913
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6939--6939
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6917--6917
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6943--6943
 |  
  []
 
 [164]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6921--6921
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6947--6947
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6925--6925
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6951--6951
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6929--6929
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6955--6955
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6933--6933
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6959--6959
 |  
  []
 
 [165]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6940--6940
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6966--6966
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6944--6944
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6970--6970
 |  
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6948--6948
-|  
- []
-
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6952--6952
-|  
- []
-
-[166]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6961--6961
-|  
- []
-
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 6965--6965
-|  
- []
-
-[167]
 Overfull \hbox (30.0pt too wide) in paragraph at lines 6974--6974
 |  
  []
 
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6978--6978
+|  
+ []
+
+[166]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6987--6987
+|  
+ []
+
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 6991--6991
+|  
+ []
+
+[167]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 7000--7000
+|  
+ []
+
 [168] [169] [170]
-Overfull \hbox (6.79866pt too wide) in paragraph at lines 7194--7195
- []\TU/Alegreya(0)/m/n/10 Média 
- []
-
-
-Overfull \hbox (8.9075pt too wide) in paragraph at lines 7196--7197
- []\TU/Alegreya(0)/m/n/10 Variância 
- []
-
-
-Overfull \hbox (3.5891pt too wide) in paragraph at lines 7200--7201
- []\TU/Alegreya(0)/m/n/10 Min. 
- []
-
-
-Overfull \hbox (11.54726pt too wide) in paragraph at lines 7204--7205
- []\TU/Alegreya(0)/m/n/10 Mediana 
- []
-
-
-Overfull \hbox (2.02866pt too wide) in paragraph at lines 7208--7209
- []\TU/Alegreya(0)/m/n/10 Máx. 
- []
-
-
-Overfull \hbox (0.5591pt too wide) in paragraph at lines 7210--7211
- []\TU/Alegreya(0)/m/n/10 IQR 
- []
-
-
 Overfull \hbox (6.79866pt too wide) in paragraph at lines 7220--7221
  []\TU/Alegreya(0)/m/n/10 Média 
  []
@@ -4141,97 +4111,102 @@ Overfull \hbox (0.5591pt too wide) in paragraph at lines 7236--7237
  []
 
 
-Overfull \hbox (4.67322pt too wide) in paragraph at lines 7242--7242
- []|\TU/Alegreya(0)/m/n/10 interior| 
- []
-
-
-Overfull \hbox (1.9191pt too wide) in paragraph at lines 7242--7242
- []|\TU/Alegreya(0)/m/n/10 4,00| 
- []
-
-
-Overfull \hbox (1.1891pt too wide) in paragraph at lines 7242--7242
- []|\TU/Alegreya(0)/m/n/10 7,80| 
- []
-
-
-Overfull \hbox (1.65866pt too wide) in paragraph at lines 7242--7242
- []|\TU/Alegreya(0)/m/n/10 14,70| 
- []
-
-
-Overfull \hbox (2.70865pt too wide) in paragraph at lines 7242--7242
- []|\TU/Alegreya(0)/m/n/10 23,30| 
- []
-
-
-Overfull \hbox (0.7591pt too wide) in paragraph at lines 7242--7243
- []|\TU/Alegreya(0)/m/n/10 6,89| 
- []
-
-
-Overfull \hbox (1.53865pt too wide) in paragraph at lines 7243--7243
- []|\TU/Alegreya(0)/m/n/10 16,62| 
- []
-
-
-Overfull \hbox (2.00865pt too wide) in paragraph at lines 7243--7243
- []|\TU/Alegreya(0)/m/n/10 19,40| 
- []
-
-
-Overfull \hbox (1.65866pt too wide) in paragraph at lines 7244--7244
- []|\TU/Alegreya(0)/m/n/10 10,45| 
- []
-
-
-Overfull \hbox (1.18866pt too wide) in paragraph at lines 7244--7244
- []|\TU/Alegreya(0)/m/n/10 12,79| 
- []
-
-
-Overfull \hbox (1.74866pt too wide) in paragraph at lines 7244--7244
- []|\TU/Alegreya(0)/m/n/10 16,22| 
- []
-
-
-Overfull \hbox (0.7891pt too wide) in paragraph at lines 7244--7245
- []|\TU/Alegreya(0)/m/n/10 4,05| 
- []
-
-[171]
-File: statds_files/figure-latex/unnamed-chunk-164-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-164-1.pdf>
-[172]
-Missing character: There is no á ("E1) in font lmmi10!
-Missing character: There is no á ("E1) in font lmmi10!
-[173]
-Overfull \hbox (6.30066pt too wide) in paragraph at lines 7347--7348
+Overfull \hbox (6.79866pt too wide) in paragraph at lines 7246--7247
  []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Overfull \hbox (11.93521pt too wide) in paragraph at lines 7349--7350
+Overfull \hbox (8.9075pt too wide) in paragraph at lines 7248--7249
  []\TU/Alegreya(0)/m/n/10 Variância 
  []
 
 
-Overfull \hbox (2.83488pt too wide) in paragraph at lines 7353--7354
+Overfull \hbox (3.5891pt too wide) in paragraph at lines 7252--7253
  []\TU/Alegreya(0)/m/n/10 Min. 
  []
 
 
-Overfull \hbox (14.03004pt too wide) in paragraph at lines 7357--7358
+Overfull \hbox (11.54726pt too wide) in paragraph at lines 7256--7257
  []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Overfull \hbox (1.53065pt too wide) in paragraph at lines 7361--7362
+Overfull \hbox (2.02866pt too wide) in paragraph at lines 7260--7261
  []\TU/Alegreya(0)/m/n/10 Máx. 
  []
 
 
+Overfull \hbox (0.5591pt too wide) in paragraph at lines 7262--7263
+ []\TU/Alegreya(0)/m/n/10 IQR 
+ []
+
+
+Overfull \hbox (4.67322pt too wide) in paragraph at lines 7268--7268
+ []|\TU/Alegreya(0)/m/n/10 interior| 
+ []
+
+
+Overfull \hbox (1.9191pt too wide) in paragraph at lines 7268--7268
+ []|\TU/Alegreya(0)/m/n/10 4,00| 
+ []
+
+
+Overfull \hbox (1.1891pt too wide) in paragraph at lines 7268--7268
+ []|\TU/Alegreya(0)/m/n/10 7,80| 
+ []
+
+
+Overfull \hbox (1.65866pt too wide) in paragraph at lines 7268--7268
+ []|\TU/Alegreya(0)/m/n/10 14,70| 
+ []
+
+
+Overfull \hbox (2.70865pt too wide) in paragraph at lines 7268--7268
+ []|\TU/Alegreya(0)/m/n/10 23,30| 
+ []
+
+
+Overfull \hbox (0.7591pt too wide) in paragraph at lines 7268--7269
+ []|\TU/Alegreya(0)/m/n/10 6,89| 
+ []
+
+
+Overfull \hbox (1.53865pt too wide) in paragraph at lines 7269--7269
+ []|\TU/Alegreya(0)/m/n/10 16,62| 
+ []
+
+
+Overfull \hbox (2.00865pt too wide) in paragraph at lines 7269--7269
+ []|\TU/Alegreya(0)/m/n/10 19,40| 
+ []
+
+
+Overfull \hbox (1.65866pt too wide) in paragraph at lines 7270--7270
+ []|\TU/Alegreya(0)/m/n/10 10,45| 
+ []
+
+
+Overfull \hbox (1.18866pt too wide) in paragraph at lines 7270--7270
+ []|\TU/Alegreya(0)/m/n/10 12,79| 
+ []
+
+
+Overfull \hbox (1.74866pt too wide) in paragraph at lines 7270--7270
+ []|\TU/Alegreya(0)/m/n/10 16,22| 
+ []
+
+
+Overfull \hbox (0.7891pt too wide) in paragraph at lines 7270--7271
+ []|\TU/Alegreya(0)/m/n/10 4,05| 
+ []
+
+[171]
+File: statds_files/figure-latex/unnamed-chunk-165-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-165-1.pdf>
+[172]
+Missing character: There is no á ("E1) in font lmmi10!
+Missing character: There is no á ("E1) in font lmmi10!
+[173]
 Overfull \hbox (6.30066pt too wide) in paragraph at lines 7373--7374
  []\TU/Alegreya(0)/m/n/10 Média 
  []
@@ -4257,662 +4232,774 @@ Overfull \hbox (1.53065pt too wide) in paragraph at lines 7387--7388
  []
 
 
-Overfull \hbox (3.5545pt too wide) in paragraph at lines 7396--7396
+Overfull \hbox (6.30066pt too wide) in paragraph at lines 7399--7400
+ []\TU/Alegreya(0)/m/n/10 Média 
+ []
+
+
+Overfull \hbox (11.93521pt too wide) in paragraph at lines 7401--7402
+ []\TU/Alegreya(0)/m/n/10 Variância 
+ []
+
+
+Overfull \hbox (2.83488pt too wide) in paragraph at lines 7405--7406
+ []\TU/Alegreya(0)/m/n/10 Min. 
+ []
+
+
+Overfull \hbox (14.03004pt too wide) in paragraph at lines 7409--7410
+ []\TU/Alegreya(0)/m/n/10 Mediana 
+ []
+
+
+Overfull \hbox (1.53065pt too wide) in paragraph at lines 7413--7414
+ []\TU/Alegreya(0)/m/n/10 Máx. 
+ []
+
+
+Overfull \hbox (3.5545pt too wide) in paragraph at lines 7422--7422
  []|\TU/Alegreya(0)/m/n/10 Nordeste| 
  []
 
 
-Overfull \hbox (0.83066pt too wide) in paragraph at lines 7396--7396
+Overfull \hbox (0.83066pt too wide) in paragraph at lines 7422--7422
  []|\TU/Alegreya(0)/m/n/10 57,36| 
  []
 
 
-Overfull \hbox (2.18521pt too wide) in paragraph at lines 7396--7396
+Overfull \hbox (2.18521pt too wide) in paragraph at lines 7422--7422
  []|\TU/Alegreya(0)/m/n/10 1148,98| 
  []
 
 
-Overfull \hbox (4.23488pt too wide) in paragraph at lines 7396--7396
+Overfull \hbox (4.23488pt too wide) in paragraph at lines 7422--7422
  []|\TU/Alegreya(0)/m/n/10 12,06| 
  []
 
 
-Overfull \hbox (4.26488pt too wide) in paragraph at lines 7396--7396
+Overfull \hbox (4.26488pt too wide) in paragraph at lines 7422--7422
  []|\TU/Alegreya(0)/m/n/10 24,94| 
  []
 
 
-Overfull \hbox (2.04065pt too wide) in paragraph at lines 7396--7396
+Overfull \hbox (2.04065pt too wide) in paragraph at lines 7422--7422
  []|\TU/Alegreya(0)/m/n/10 86,32| 
  []
 
 
-Overfull \hbox (6.15065pt too wide) in paragraph at lines 7396--7396
+Overfull \hbox (6.15065pt too wide) in paragraph at lines 7422--7422
  []|\TU/Alegreya(0)/m/n/10 109,38| 
  []
 
 
-Overfull \hbox (0.52066pt too wide) in paragraph at lines 7396--7397
+Overfull \hbox (0.52066pt too wide) in paragraph at lines 7422--7423
  []|\TU/Alegreya(0)/m/n/10 61,39| 
  []
 
 
-Overfull \hbox (4.48065pt too wide) in paragraph at lines 7397--7397
+Overfull \hbox (4.48065pt too wide) in paragraph at lines 7423--7423
  []|\TU/Alegreya(0)/m/n/10 154,74| 
  []
 
 
-Overfull \hbox (9.00522pt too wide) in paragraph at lines 7397--7397
+Overfull \hbox (9.00522pt too wide) in paragraph at lines 7423--7423
  []|\TU/Alegreya(0)/m/n/10 20293,27| 
  []
 
 
-Overfull \hbox (4.45488pt too wide) in paragraph at lines 7397--7397
+Overfull \hbox (4.45488pt too wide) in paragraph at lines 7423--7423
  []|\TU/Alegreya(0)/m/n/10 32,86| 
  []
 
 
-Overfull \hbox (3.76488pt too wide) in paragraph at lines 7397--7397
+Overfull \hbox (3.76488pt too wide) in paragraph at lines 7423--7423
  []|\TU/Alegreya(0)/m/n/10 62,77| 
  []
 
 
-Overfull \hbox (2.74004pt too wide) in paragraph at lines 7397--7397
+Overfull \hbox (2.74004pt too wide) in paragraph at lines 7423--7423
  []|\TU/Alegreya(0)/m/n/10 116,60| 
  []
 
 
-Overfull \hbox (6.98065pt too wide) in paragraph at lines 7397--7397
+Overfull \hbox (6.98065pt too wide) in paragraph at lines 7423--7423
  []|\TU/Alegreya(0)/m/n/10 208,57| 
  []
 
 
-Overfull \hbox (6.72066pt too wide) in paragraph at lines 7397--7397
+Overfull \hbox (6.72066pt too wide) in paragraph at lines 7423--7423
  []|\TU/Alegreya(0)/m/n/10 352,90| 
  []
 
 
-Overfull \hbox (6.01065pt too wide) in paragraph at lines 7397--7398
+Overfull \hbox (6.01065pt too wide) in paragraph at lines 7423--7424
  []|\TU/Alegreya(0)/m/n/10 145,80| 
  []
 
 
-Overfull \hbox (2.17065pt too wide) in paragraph at lines 7398--7398
+Overfull \hbox (2.17065pt too wide) in paragraph at lines 7424--7424
  []|\TU/Alegreya(0)/m/n/10 50,23| 
  []
 
 
-Overfull \hbox (3.24489pt too wide) in paragraph at lines 7398--7398
+Overfull \hbox (3.24489pt too wide) in paragraph at lines 7424--7424
  []|\TU/Alegreya(0)/m/n/10 37,56| 
  []
 
 
-Overfull \hbox (4.00488pt too wide) in paragraph at lines 7398--7398
+Overfull \hbox (4.00488pt too wide) in paragraph at lines 7424--7424
  []|\TU/Alegreya(0)/m/n/10 44,58| 
  []
 
 
-Overfull \hbox (1.14066pt too wide) in paragraph at lines 7398--7398
+Overfull \hbox (1.14066pt too wide) in paragraph at lines 7424--7424
  []|\TU/Alegreya(0)/m/n/10 56,56| 
  []
 
 
-Overfull \hbox (3.92065pt too wide) in paragraph at lines 7399--7399
+Overfull \hbox (3.92065pt too wide) in paragraph at lines 7425--7425
  []|\TU/Alegreya(0)/m/n/10 112,35| 
  []
 
 
-Overfull \hbox (8.95522pt too wide) in paragraph at lines 7399--7399
+Overfull \hbox (8.95522pt too wide) in paragraph at lines 7425--7425
  []|\TU/Alegreya(0)/m/n/10 43003,52| 
  []
 
 
-Overfull \hbox (5.18065pt too wide) in paragraph at lines 7399--7399
+Overfull \hbox (5.18065pt too wide) in paragraph at lines 7425--7425
  []|\TU/Alegreya(0)/m/n/10 118,28| 
  []
 
 
-Overfull \hbox (6.40065pt too wide) in paragraph at lines 7399--7399
+Overfull \hbox (6.40065pt too wide) in paragraph at lines 7425--7425
  []|\TU/Alegreya(0)/m/n/10 423,29| 
  []
 
 
-Overfull \hbox (3.92065pt too wide) in paragraph at lines 7399--7400
+Overfull \hbox (3.92065pt too wide) in paragraph at lines 7425--7426
  []|\TU/Alegreya(0)/m/n/10 112,73| 
  []
 
 [174]
-File: statds_files/figure-latex/unnamed-chunk-167-1.pdf Graphic file (type pdf)
-<use statds_files/figure-latex/unnamed-chunk-167-1.pdf>
+File: statds_files/figure-latex/unnamed-chunk-168-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-168-1.pdf>
 
-Underfull \hbox (badness 10000) detected at line 7438
+Underfull \hbox (badness 10000) detected at line 7464
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7438
+Underfull \hbox (badness 10000) detected at line 7464
 [][][]
  []
 
 [175]
-Underfull \hbox (badness 10000) detected at line 7440
+Underfull \hbox (badness 10000) detected at line 7466
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7440
+Underfull \hbox (badness 10000) detected at line 7466
 [][][]
  []
 
-
-Underfull \hbox (badness 10000) detected at line 7477
- [][]
+File: statds_files/figure-latex/unnamed-chunk-170-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-170-1.pdf>
+[176] [177]
+Overfull \hbox (4.10297pt too wide) in paragraph at lines 7579--7580
+ []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7477
-[][][]
+Overfull \hbox (14.81856pt too wide) in paragraph at lines 7581--7582
+ []\TU/Alegreya(0)/m/n/10 Variância 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7479
- [][]
+Overfull \hbox (4.67892pt too wide) in paragraph at lines 7585--7586
+ []\TU/Alegreya(0)/m/n/10 Min. 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7479
-[][][]
+Overfull \hbox (16.39375pt too wide) in paragraph at lines 7589--7590
+ []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7487
- [][]
+Overfull \hbox (5.78893pt too wide) in paragraph at lines 7593--7594
+ []\TU/Alegreya(0)/m/n/10 Máx. 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7487
-[][][]
- []
-
-[176]
-Underfull \hbox (badness 10000) detected at line 7524
- [][]
+Overfull \hbox (4.10297pt too wide) in paragraph at lines 7605--7606
+ []\TU/Alegreya(0)/m/n/10 Média 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7524
-[][][]
+Overfull \hbox (14.81856pt too wide) in paragraph at lines 7607--7608
+ []\TU/Alegreya(0)/m/n/10 Variância 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7526
- [][]
+Overfull \hbox (4.67892pt too wide) in paragraph at lines 7611--7612
+ []\TU/Alegreya(0)/m/n/10 Min. 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7526
-[][][]
+Overfull \hbox (16.39375pt too wide) in paragraph at lines 7615--7616
+ []\TU/Alegreya(0)/m/n/10 Mediana 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7528
- [][]
+Overfull \hbox (5.78893pt too wide) in paragraph at lines 7619--7620
+ []\TU/Alegreya(0)/m/n/10 Máx. 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7528
-[][][]
- []
-
-[177]
-Underfull \hbox (badness 10000) detected at line 7592
- [][]
+Overfull \hbox (17.18297pt too wide) in paragraph at lines 7627--7627
+ []|\TU/Alegreya(0)/m/n/10 30800,00| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7592
-[][][]
+Overfull \hbox (7.12856pt too wide) in paragraph at lines 7627--7627
+ []|\TU/Alegreya(0)/m/n/10 5475750| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7594
- [][]
+Overfull \hbox (8.81892pt too wide) in paragraph at lines 7627--7627
+ []|\TU/Alegreya(0)/m/n/10 27300| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7594
-[][][]
+Overfull \hbox (11.69296pt too wide) in paragraph at lines 7627--7627
+ []|\TU/Alegreya(0)/m/n/10 29531,25| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7596
- [][]
+Overfull \hbox (11.44376pt too wide) in paragraph at lines 7627--7627
+ []|\TU/Alegreya(0)/m/n/10 30975,0| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7596
-[][][]
+Overfull \hbox (11.68297pt too wide) in paragraph at lines 7627--7627
+ []|\TU/Alegreya(0)/m/n/10 32418,75| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7598
- [][]
+Overfull \hbox (8.64893pt too wide) in paragraph at lines 7627--7627
+ []|\TU/Alegreya(0)/m/n/10 33600| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7598
-[][][]
+Overfull \hbox (6.45375pt too wide) in paragraph at lines 7627--7628
+ []|\TU/Alegreya(0)/m/n/10 2887,5| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7600
- [][]
+Overfull \hbox (8.02296pt too wide) in paragraph at lines 7628--7628
+ []|\TU/Alegreya(0)/m/n/10 7612,50| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7600
-[][][]
+Overfull \hbox (8.65855pt too wide) in paragraph at lines 7628--7628
+ []|\TU/Alegreya(0)/m/n/10 6256688| 
+ []
+
+
+Overfull \hbox (2.56892pt too wide) in paragraph at lines 7628--7628
+ []|\TU/Alegreya(0)/m/n/10 4725| 
+ []
+
+
+Overfull \hbox (9.29297pt too wide) in paragraph at lines 7628--7628
+ []|\TU/Alegreya(0)/m/n/10 6037,50| 
+ []
+
+
+Overfull \hbox (6.37375pt too wide) in paragraph at lines 7628--7628
+ []|\TU/Alegreya(0)/m/n/10 7087,5| 
+ []
+
+
+Overfull \hbox (10.46297pt too wide) in paragraph at lines 7628--7628
+ []|\TU/Alegreya(0)/m/n/10 8925,00| 
+ []
+
+
+Overfull \hbox (5.76892pt too wide) in paragraph at lines 7628--7628
+ []|\TU/Alegreya(0)/m/n/10 11550| 
+ []
+
+
+Overfull \hbox (6.45375pt too wide) in paragraph at lines 7628--7629
+ []|\TU/Alegreya(0)/m/n/10 2887,5| 
+ []
+
+
+Overfull \hbox (12.04297pt too wide) in paragraph at lines 7629--7629
+ []|\TU/Alegreya(0)/m/n/10 27467,73| 
+ []
+
+
+Overfull \hbox (16.68855pt too wide) in paragraph at lines 7629--7629
+ []|\TU/Alegreya(0)/m/n/10 232152607| 
+ []
+
+
+Overfull \hbox (6.32892pt too wide) in paragraph at lines 7629--7629
+ []|\TU/Alegreya(0)/m/n/10 11025| 
+ []
+
+
+Overfull \hbox (11.70296pt too wide) in paragraph at lines 7629--7629
+ []|\TU/Alegreya(0)/m/n/10 16537,50| 
+ []
+
+
+Overfull \hbox (11.20375pt too wide) in paragraph at lines 7629--7629
+ []|\TU/Alegreya(0)/m/n/10 24150,0| 
+ []
+
+
+Overfull \hbox (14.74297pt too wide) in paragraph at lines 7629--7629
+ []|\TU/Alegreya(0)/m/n/10 31500,00| 
+ []
+
+
+Overfull \hbox (8.56892pt too wide) in paragraph at lines 7629--7629
+ []|\TU/Alegreya(0)/m/n/10 56700| 
+ []
+
+
+Overfull \hbox (9.64375pt too wide) in paragraph at lines 7629--7630
+ []|\TU/Alegreya(0)/m/n/10 14962,5| 
+ []
+
+
+Overfull \hbox (13.29297pt too wide) in paragraph at lines 7630--7630
+ []|\TU/Alegreya(0)/m/n/10 13425,00| 
+ []
+
+
+Overfull \hbox (19.77856pt too wide) in paragraph at lines 7630--7630
+ []|\TU/Alegreya(0)/m/n/10 128520000| 
+ []
+
+
+Overfull \hbox (3.91893pt too wide) in paragraph at lines 7630--7630
+ []|\TU/Alegreya(0)/m/n/10 2100| 
+ []
+
+
+Overfull \hbox (11.55296pt too wide) in paragraph at lines 7630--7630
+ []|\TU/Alegreya(0)/m/n/10 6300,00| 
+ []
+
+
+Overfull \hbox (7.28375pt too wide) in paragraph at lines 7630--7630
+ []|\TU/Alegreya(0)/m/n/10 8925,0| 
+ []
+
+
+Overfull \hbox (14.27296pt too wide) in paragraph at lines 7630--7630
+ []|\TU/Alegreya(0)/m/n/10 19950,00| 
+ []
+
+
+Overfull \hbox (8.50893pt too wide) in paragraph at lines 7630--7630
+ []|\TU/Alegreya(0)/m/n/10 30450| 
+ []
+
+
+Overfull \hbox (10.78375pt too wide) in paragraph at lines 7630--7631
+ []|\TU/Alegreya(0)/m/n/10 13650,0| 
  []
 
 [178]
-Underfull \hbox (badness 10000) detected at line 7673
+File: statds_files/figure-latex/unnamed-chunk-174-1.pdf Graphic file (type pdf)
+<use statds_files/figure-latex/unnamed-chunk-174-1.pdf>
+
+Underfull \hbox (badness 10000) detected at line 7687
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7673
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7675
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7675
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7677
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7677
+Underfull \hbox (badness 10000) detected at line 7687
 [][][]
  []
 
 [179]
-Underfull \hbox (badness 10000) detected at line 7699
+Underfull \hbox (badness 10000) detected at line 7689
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7699
+Underfull \hbox (badness 10000) detected at line 7689
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7701
+Underfull \hbox (badness 10000) detected at line 7697
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7701
+Underfull \hbox (badness 10000) detected at line 7697
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7703
+Underfull \hbox (badness 10000) detected at line 7734
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7703
+Underfull \hbox (badness 10000) detected at line 7734
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7705
+Underfull \hbox (badness 10000) detected at line 7736
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7705
+Underfull \hbox (badness 10000) detected at line 7736
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7770
+Underfull \hbox (badness 10000) detected at line 7738
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7770
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7772
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7772
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7774
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 7774
+Underfull \hbox (badness 10000) detected at line 7738
 [][][]
  []
 
 [180]
-Underfull \hbox (badness 10000) detected at line 7776
+Underfull \hbox (badness 10000) detected at line 7802
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7776
+Underfull \hbox (badness 10000) detected at line 7802
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7778
+Underfull \hbox (badness 10000) detected at line 7804
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7778
+Underfull \hbox (badness 10000) detected at line 7804
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7780
+Underfull \hbox (badness 10000) detected at line 7806
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7780
+Underfull \hbox (badness 10000) detected at line 7806
 [][][]
  []
 
 
-Overfull \hbox (4.66107pt too wide) in paragraph at lines 7821--7821
+Underfull \hbox (badness 10000) detected at line 7808
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7808
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7810
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7810
+[][][]
+ []
+
+[181] [182]
+Underfull \hbox (badness 10000) detected at line 7883
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7883
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7885
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7885
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7887
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7887
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7909
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7909
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7911
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7911
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7913
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7913
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7915
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7915
+[][][]
+ []
+
+[183]
+Underfull \hbox (badness 10000) detected at line 7980
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7980
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7982
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7982
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7984
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7984
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7986
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7986
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7988
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7988
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7990
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 7990
+[][][]
+ []
+
+
+Overfull \hbox (4.66107pt too wide) in paragraph at lines 8031--8031
  []|\TU/Alegreya(0)/m/n/10 Presente| 
  []
 
 
-Overfull \hbox (2.09106pt too wide) in paragraph at lines 7822--7822
+Overfull \hbox (2.09106pt too wide) in paragraph at lines 8032--8032
  []|\TU/Alegreya(0)/m/n/10 Ausente| 
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7832
+Underfull \hbox (badness 10000) detected at line 8042
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7832
+Underfull \hbox (badness 10000) detected at line 8042
 [][][]
  []
 
-
-Underfull \hbox (badness 10000) detected at line 7834
+[184]
+Underfull \hbox (badness 10000) detected at line 8044
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7834
+Underfull \hbox (badness 10000) detected at line 8044
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7836
+Underfull \hbox (badness 10000) detected at line 8046
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7836
+Underfull \hbox (badness 10000) detected at line 8046
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7838
+Underfull \hbox (badness 10000) detected at line 8048
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7838
+Underfull \hbox (badness 10000) detected at line 8048
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7840
+Underfull \hbox (badness 10000) detected at line 8050
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7840
+Underfull \hbox (badness 10000) detected at line 8050
 [][][]
  []
 
-[181]
-Underfull \hbox (badness 10000) detected at line 7861
+
+Underfull \hbox (badness 10000) detected at line 8071
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7861
+Underfull \hbox (badness 10000) detected at line 8071
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7863
+Underfull \hbox (badness 10000) detected at line 8073
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7863
+Underfull \hbox (badness 10000) detected at line 8073
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7865
+Underfull \hbox (badness 10000) detected at line 8075
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7865
+Underfull \hbox (badness 10000) detected at line 8075
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7867
+Underfull \hbox (badness 10000) detected at line 8077
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7867
+Underfull \hbox (badness 10000) detected at line 8077
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7869
+Underfull \hbox (badness 10000) detected at line 8079
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7869
+Underfull \hbox (badness 10000) detected at line 8079
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7886
+Underfull \hbox (badness 10000) detected at line 8096
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7886
+Underfull \hbox (badness 10000) detected at line 8096
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7888
+Underfull \hbox (badness 10000) detected at line 8098
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7888
+Underfull \hbox (badness 10000) detected at line 8098
 [][][]
  []
 
-
-Underfull \hbox (badness 10000) detected at line 7890
+[185]
+Underfull \hbox (badness 10000) detected at line 8100
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 7890
+Underfull \hbox (badness 10000) detected at line 8100
 [][][]
  []
 
-[182] [183] [184]
-Underfull \vbox (badness 10000) detected at line 7976
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 7976
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 7976
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 7976
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 7976
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 7976
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 7976
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 7976
-[]
- []
-
-Cap\'{\i }tulo 5.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[185
-
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[186
-
-]
-Underfull \vbox (badness 10000) detected at line 8000
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8000
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8000
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8000
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8000
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8000
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8000
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8000
-[]
- []
-
-Cap\'{\i }tulo 6.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[187
-
-]
+[186] [187]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4952,78 +5039,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [188
 
 ]
-Underfull \vbox (badness 10000) detected at line 8024
+Underfull \vbox (badness 10000) detected at line 8186
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8024
+Overfull \hbox (336.25pt too wide) detected at line 8186
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8024
+Underfull \vbox (badness 10000) detected at line 8186
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8024
+Overfull \hbox (336.25pt too wide) detected at line 8186
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8024
+Underfull \vbox (badness 10000) detected at line 8186
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8024
+Overfull \hbox (336.25pt too wide) detected at line 8186
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8024
+Underfull \vbox (badness 10000) detected at line 8186
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8024
+Overfull \hbox (336.25pt too wide) detected at line 8186
 []
  []
 
-Cap\'{\i }tulo 7.
-
-Underfull \vbox (badness 10000) detected at line 8045
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8045
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8045
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8045
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8045
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8045
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8045
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8045
-[]
- []
-
+Cap\'{\i }tulo 5.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -5071,6 +5122,50 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [190
 
 ]
+Underfull \vbox (badness 10000) detected at line 8210
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8210
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8210
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8210
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8210
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8210
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8210
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8210
+[]
+ []
+
+Cap\'{\i }tulo 6.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[191
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -5107,87 +5202,87 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[191]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[192
+
+]
+Underfull \vbox (badness 10000) detected at line 8234
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8234
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 8234
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8234
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 8234
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8234
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 8234
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8234
+[]
+ []
+
+Cap\'{\i }tulo 7.
+
+Underfull \vbox (badness 10000) detected at line 8255
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8255
 []
  []
 
 
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[192]
-Underfull \vbox (badness 10000) detected at line 8048
+Underfull \vbox (badness 10000) detected at line 8255
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8048
+Overfull \hbox (336.25pt too wide) detected at line 8255
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8048
+Underfull \vbox (badness 10000) detected at line 8255
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8048
+Overfull \hbox (336.25pt too wide) detected at line 8255
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8048
+Underfull \vbox (badness 10000) detected at line 8255
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8048
+Overfull \hbox (336.25pt too wide) detected at line 8255
 []
  []
 
-
-Underfull \vbox (badness 10000) detected at line 8048
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8048
-[]
- []
-
-Cap\'{\i }tulo 8.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
 [193
-
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -5229,50 +5324,6 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [194
 
 ]
-Underfull \vbox (badness 10000) detected at line 8066
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8066
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8066
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8066
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8066
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8066
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8066
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8066
-[]
- []
-
-Cap\'{\i }tulo 9.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[195
-
-]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -5309,51 +5360,87 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[196
-
-]
-Underfull \vbox (badness 10000) detected at line 8090
- []
+[195]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8090
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8090
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8090
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8090
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8090
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8090
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8090
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
-Cap\'{\i }tulo 10.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[196]
+Underfull \vbox (badness 10000) detected at line 8258
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8258
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8258
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8258
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8258
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8258
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8258
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8258
+[]
+ []
+
+Cap\'{\i }tulo 8.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
 [197
+
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -5395,42 +5482,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [198
 
 ]
-Underfull \vbox (badness 10000) detected at line 8117
+Underfull \vbox (badness 10000) detected at line 8276
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8117
+Overfull \hbox (336.25pt too wide) detected at line 8276
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8117
+Underfull \vbox (badness 10000) detected at line 8276
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8117
+Overfull \hbox (336.25pt too wide) detected at line 8276
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8117
+Underfull \vbox (badness 10000) detected at line 8276
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8117
+Overfull \hbox (336.25pt too wide) detected at line 8276
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8117
+Underfull \vbox (badness 10000) detected at line 8276
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8117
+Overfull \hbox (336.25pt too wide) detected at line 8276
 []
  []
 
-Cap\'{\i }tulo 11.
+Cap\'{\i }tulo 9.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -5478,78 +5565,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [200
 
 ]
-Underfull \vbox (badness 10000) detected at line 8138
+Underfull \vbox (badness 10000) detected at line 8300
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8138
+Overfull \hbox (336.25pt too wide) detected at line 8300
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8138
+Underfull \vbox (badness 10000) detected at line 8300
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8138
+Overfull \hbox (336.25pt too wide) detected at line 8300
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8138
+Underfull \vbox (badness 10000) detected at line 8300
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8138
+Overfull \hbox (336.25pt too wide) detected at line 8300
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8138
+Underfull \vbox (badness 10000) detected at line 8300
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8138
+Overfull \hbox (336.25pt too wide) detected at line 8300
 []
  []
 
-Cap\'{\i }tulo 12.
-
-Underfull \vbox (badness 10000) detected at line 8162
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8162
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8162
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8162
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8162
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8162
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8162
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8162
-[]
- []
-
+Cap\'{\i }tulo 10.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -5597,6 +5648,50 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [202
 
 ]
+Underfull \vbox (badness 10000) detected at line 8327
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8327
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8327
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8327
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8327
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8327
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8327
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8327
+[]
+ []
+
+Cap\'{\i }tulo 11.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[203
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -5633,87 +5728,87 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[203]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[204
+
+]
+Underfull \vbox (badness 10000) detected at line 8348
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8348
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 8348
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8348
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 8348
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8348
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 8348
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 8348
+[]
+ []
+
+Cap\'{\i }tulo 12.
+
+Underfull \vbox (badness 10000) detected at line 8372
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8372
 []
  []
 
 
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[204]
-Underfull \vbox (badness 10000) detected at line 8165
+Underfull \vbox (badness 10000) detected at line 8372
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8165
+Overfull \hbox (336.25pt too wide) detected at line 8372
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8165
+Underfull \vbox (badness 10000) detected at line 8372
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8165
+Overfull \hbox (336.25pt too wide) detected at line 8372
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8165
+Underfull \vbox (badness 10000) detected at line 8372
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8165
+Overfull \hbox (336.25pt too wide) detected at line 8372
 []
  []
 
-
-Underfull \vbox (badness 10000) detected at line 8165
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8165
-[]
- []
-
-Cap\'{\i }tulo 13.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
 [205
-
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -5755,50 +5850,6 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [206
 
 ]
-Underfull \vbox (badness 10000) detected at line 8186
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8186
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8186
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8186
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8186
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8186
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 8186
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 8186
-[]
- []
-
-Cap\'{\i }tulo 14.
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[207
-
-]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -5835,51 +5886,87 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[208
-
-]
-Underfull \vbox (badness 10000) detected at line 8211
- []
+[207]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8211
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8211
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8211
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8211
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8211
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8211
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8211
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
 []
  []
 
-Ap\^endice A.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[208]
+Underfull \vbox (badness 10000) detected at line 8375
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8375
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8375
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8375
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8375
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8375
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8375
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8375
+[]
+ []
+
+Cap\'{\i }tulo 13.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
 [209
+
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -5921,42 +6008,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [210
 
 ]
-Underfull \vbox (badness 10000) detected at line 8238
+Underfull \vbox (badness 10000) detected at line 8396
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8238
+Overfull \hbox (336.25pt too wide) detected at line 8396
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8238
+Underfull \vbox (badness 10000) detected at line 8396
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8238
+Overfull \hbox (336.25pt too wide) detected at line 8396
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8238
+Underfull \vbox (badness 10000) detected at line 8396
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8238
+Overfull \hbox (336.25pt too wide) detected at line 8396
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8238
+Underfull \vbox (badness 10000) detected at line 8396
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8238
+Overfull \hbox (336.25pt too wide) detected at line 8396
 []
  []
 
-Ap\^endice B.
+Cap\'{\i }tulo 14.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -6004,42 +6091,42 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [212
 
 ]
-Underfull \vbox (badness 10000) detected at line 8265
+Underfull \vbox (badness 10000) detected at line 8421
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8265
+Overfull \hbox (336.25pt too wide) detected at line 8421
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8265
+Underfull \vbox (badness 10000) detected at line 8421
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8265
+Overfull \hbox (336.25pt too wide) detected at line 8421
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8265
+Underfull \vbox (badness 10000) detected at line 8421
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8265
+Overfull \hbox (336.25pt too wide) detected at line 8421
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 8265
+Underfull \vbox (badness 10000) detected at line 8421
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 8265
+Overfull \hbox (336.25pt too wide) detected at line 8421
 []
  []
 
-Ap\^endice C.
+Ap\^endice A.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -6085,6 +6172,172 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [214
+
+]
+Underfull \vbox (badness 10000) detected at line 8448
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8448
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8448
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8448
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8448
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8448
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8448
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8448
+[]
+ []
+
+Ap\^endice B.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[215
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[216
+
+]
+Underfull \vbox (badness 10000) detected at line 8475
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8475
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8475
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8475
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8475
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8475
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 8475
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 8475
+[]
+ []
+
+Ap\^endice C.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[217
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[218
 
 ] (./statds.bbl
 Underfull \vbox (badness 10000) detected at line 1
@@ -6134,7 +6387,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[215
+[219
 
 
 ] (./statds.aux)
@@ -6143,15 +6396,15 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `statds.out' has not changed.
-(rerunfilecheck)             Checksum: DF04424BCC7C74BDCCC395678178386A;25720.
+(rerunfilecheck)             Checksum: A2681F5016D4D18BDB498A1AD53DDFA5;25720.
  ) 
 Here is how much of TeX's memory you used:
- 22274 strings out of 476861
- 443595 string characters out of 5802361
+ 22294 strings out of 476861
+ 444627 string characters out of 5802361
  1948630 words of memory out of 5000000
- 43764 multiletter control sequences out of 15000+600000
+ 43782 multiletter control sequences out of 15000+600000
  563975 words of font info for 135 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 90i,17n,115p,1098b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,17n,115p,1242b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on statds.pdf (227 pages).
+Output written on statds.pdf (231 pages).

@@ -273,7 +273,43 @@ b. Calcule o coeficiente de correlação de Pearson e o coeficiente de correlaç
 :::
 
 :::{.solution}
-x
+Carregando os dados:
+
+```{r}
+salarios <- statds_read("salarios.xls", "xls", skip = 4)
+colnames(salarios) <- c("cidade", "prof_sec", "mecanico","administrador","eng_eletr")
+```
+
+#### Comparando os salários a partir de um gráfico QQ {-}
+
+Como a função `geom_qq()` trabalha apenas com uma variável (comparando os seus quantis com os quantis teóricos), precisaremos construir o gráfico manualmente.
+
+```{r}
+quantiles <- seq(0, 1, 0.1)
+quantiles_prof_sec <- quantile(salarios$prof_sec, quantiles)
+quantiles_administrador <- quantile(salarios$administrador, quantiles)
+
+ggplot(
+  mapping = aes(
+              x = quantiles_prof_sec, 
+              y = quantiles_administrador,
+              slope = 1, 
+              intercept = 0
+            )
+) +
+  geom_point() +
+  geom_abline(linetype = 2) +
+  labs(
+    title = bquote(bold("Figura 4.3:")~"Quantis entre o salário de professores secundaristas e administradores"),
+    x = "Prof. Sec.",
+    y = "Administrador"
+  ) +
+  tema +
+  coord_cartesian(xlim = c(0,80000), ylim = c(0,80000))
+```
+
+O gráfico sugere que os salários de administradores são bastante superiores aos salários dos professores secundaristas.
+
 :::
 
 ### Exercício 4.4 {- #exr4-4}
@@ -283,7 +319,65 @@ Para os dados do arquivo `salarios.xls`, considere a variável `Região`, com as
 :::
 
 :::{.solution}
-x
+Iniciamos com a carga dos dados:
+
+```{r}
+salarios <- statds_read("salarios.xls", "xls", skip = 3)
+```
+
+Agora vamos adicionar uma nova variável contendo a região. Começamos criando um vetor com os fatores que utilizaremos.
+
+```{r}
+continente <- c("América do Norte", "América Latina", "Europa", "Outros")
+
+regioes <- c("Europa", "Europa", "América Latina", "Europa", "América Latina", "América Latina", "América do Norte", "América Latina", "Europa", "Europa", "Europa", "Outros", "Outros", "Europa", "América do Norte", "Europa", "Outros", "Europa", "América do Norte", "América do Norte", "Europa", "América Latina", "América do Norte", "América Latina", "Outros", "Outros", "Outros", "Outros", "América do Norte", "Europa")
+
+salarios$`Região` <- parse_factor(regioes, levels = continente)
+```
+
+Como trata-se de uma variável contínua e outra categorica, vamos construir uma tabela resumindo os salários por continente e também exibir um diagrama de *boxplots*.
+
+```{r}
+salarios %>%
+  statds_summarise(`Prof. Sec.`, `Região`) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.5:** Medidas de resumo para a variável `Salário de Professor Secundarista` conforme `Região`",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+```{r}
+salarios %>%
+  ggplot(aes(`Região`, `Prof. Sec.`)) +
+    stat_boxplot(
+      geom = "errorbar",
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+  labs(
+    title = bquote(bold("Figura 4.4:")~"Salário de professor secundarista por região"),
+    y = "Salário",
+    x = "Região"
+  ) +
+  tema
+  
+```
+
+O cálculo de $R^2$ é dado por 
+
+```{r}
+r2 <- statds_rsquared(salarios, `Prof. Sec.`, `Região`)
+```
+
+Concluímos que o ganho de variância dado pela adição da variável `Região` é `r r2`, ou seja, aproximadamente `r round(r2 * 100, digits = 2)`% da variação dos salários dos professores secundaristas é explicada pela região.
+
 :::
 
 ### Exercício 4.5 {- #exr4-5}

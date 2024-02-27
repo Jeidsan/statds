@@ -139,6 +139,30 @@ statds_crosstable <- function(data, x, y, totals = TRUE) {
 }
 ```
 
+A função a seguir calcula o coeficiente de determinação (ou o ganho de varância) para uma variável quantitativa em relação a outra qualitativa.
+
+```{r}
+statds_rsquared <- function(data, x, y) {
+  x <- enquo(x)
+  y <- enquo(y)
+  
+  total <- data %>%
+              select(!!x)
+  
+  var_total <- var(total)[[1]]
+  
+  groups <- data %>%
+              group_by(!!y) %>%
+              summarise(
+                var = var(!!x, na.rm = TRUE)
+              )
+  
+  var_groups <- mean(groups$var)
+  
+  1 - (var_groups / var_total)
+}
+```
+
 
 ## Pendências {-}
 
