@@ -1114,13 +1114,102 @@ div.csl-indent {
 <p>Analise a variável <code>Preço de veículos</code> segundo as categorias <code>N</code> (nacional) e <code>I</code> (importado) para o conjunto de dados disponível no arquivo <code>veiculos.xls</code>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-47" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-47" class="solution"><em>Solução</em>. </span>Iniciaremos carregando os dados:</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="análise-de-dados-de-duas-variáveis.html#cb281-1" tabindex="-1"></a>veiculos <span class="ot">&lt;-</span> <span class="fu">statds_read</span>(<span class="st">&quot;veiculos.xls&quot;</span>, <span class="st">&quot;xls&quot;</span>)</span></code></pre></div>
+<p>Novamente, utilizaremos uma tabela resumo, um gráfico de <em>boxplots</em> e o ganho de variância para avaliar visualmente a relação entre as variáveis.</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="análise-de-dados-de-duas-variáveis.html#cb282-1" tabindex="-1"></a>veiculos <span class="sc">%&gt;%</span></span>
+<span id="cb282-2"><a href="análise-de-dados-de-duas-variáveis.html#cb282-2" tabindex="-1"></a>  <span class="fu">statds_summarise</span>(preco, proc) <span class="sc">%&gt;%</span></span>
+<span id="cb282-3"><a href="análise-de-dados-de-duas-variáveis.html#cb282-3" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb282-4"><a href="análise-de-dados-de-duas-variáveis.html#cb282-4" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb282-5"><a href="análise-de-dados-de-duas-variáveis.html#cb282-5" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 4.6:** Medidas de resumo para a variável `Preço do veículo` conforme a `Procedência`&quot;</span>,</span>
+<span id="cb282-6"><a href="análise-de-dados-de-duas-variáveis.html#cb282-6" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb282-7"><a href="análise-de-dados-de-duas-variáveis.html#cb282-7" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb282-8"><a href="análise-de-dados-de-duas-variáveis.html#cb282-8" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb282-9"><a href="análise-de-dados-de-duas-variáveis.html#cb282-9" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb282-10"><a href="análise-de-dados-de-duas-variáveis.html#cb282-10" tabindex="-1"></a>  )</span></code></pre></div>
+<table style="width:100%;">
+<caption><strong>Tabela 4.6:</strong> Medidas de resumo para a variável <code>Preço do veículo</code> conforme a <code>Procedência</code></caption>
+<colgroup>
+<col width="10%" />
+<col width="3%" />
+<col width="9%" />
+<col width="10%" />
+<col width="14%" />
+<col width="5%" />
+<col width="9%" />
+<col width="8%" />
+<col width="9%" />
+<col width="6%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">proc</th>
+<th align="center">n</th>
+<th align="center">Média</th>
+<th align="center">Variância</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Min.</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
+<th align="center">Máx.</th>
+<th align="center">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Importado</td>
+<td align="center">12</td>
+<td align="center">19028,58</td>
+<td align="center">110250194</td>
+<td align="center">10500,01</td>
+<td align="center">7780</td>
+<td align="center">11705,25</td>
+<td align="center">13770</td>
+<td align="center">24560,00</td>
+<td align="center">38850</td>
+<td align="center">12854,75</td>
+</tr>
+<tr class="even">
+<td align="center">Nacional</td>
+<td align="center">18</td>
+<td align="center">10574,44</td>
+<td align="center">25604052</td>
+<td align="center">5060,04</td>
+<td align="center">5257</td>
+<td align="center">6322,00</td>
+<td align="center">9916</td>
+<td align="center">13085,75</td>
+<td align="center">24632</td>
+<td align="center">6763,75</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="análise-de-dados-de-duas-variáveis.html#cb283-1" tabindex="-1"></a>veiculos <span class="sc">%&gt;%</span></span>
+<span id="cb283-2"><a href="análise-de-dados-de-duas-variáveis.html#cb283-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(proc, preco)) <span class="sc">+</span></span>
+<span id="cb283-3"><a href="análise-de-dados-de-duas-variáveis.html#cb283-3" tabindex="-1"></a>    <span class="fu">stat_boxplot</span>(</span>
+<span id="cb283-4"><a href="análise-de-dados-de-duas-variáveis.html#cb283-4" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>,</span>
+<span id="cb283-5"><a href="análise-de-dados-de-duas-variáveis.html#cb283-5" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span></span>
+<span id="cb283-6"><a href="análise-de-dados-de-duas-variáveis.html#cb283-6" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb283-7"><a href="análise-de-dados-de-duas-variáveis.html#cb283-7" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(</span>
+<span id="cb283-8"><a href="análise-de-dados-de-duas-variáveis.html#cb283-8" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, </span>
+<span id="cb283-9"><a href="análise-de-dados-de-duas-variáveis.html#cb283-9" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span></span>
+<span id="cb283-10"><a href="análise-de-dados-de-duas-variáveis.html#cb283-10" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb283-11"><a href="análise-de-dados-de-duas-variáveis.html#cb283-11" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb283-12"><a href="análise-de-dados-de-duas-variáveis.html#cb283-12" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.5:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Preço dos veículos conforme a procedência&quot;</span>),</span>
+<span id="cb283-13"><a href="análise-de-dados-de-duas-variáveis.html#cb283-13" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Preço&quot;</span>,</span>
+<span id="cb283-14"><a href="análise-de-dados-de-duas-variáveis.html#cb283-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Procedência&quot;</span></span>
+<span id="cb283-15"><a href="análise-de-dados-de-duas-variáveis.html#cb283-15" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb283-16"><a href="análise-de-dados-de-duas-variáveis.html#cb283-16" tabindex="-1"></a>  tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<p>Apesar de termos uma diferença nos preços, não podemos afirmar que há uma relação entre as variáveis. O coeficiente de determinação <span class="math inline">\(R^{2}\)</span> é 0.0891215, indicando que apenas aproximadamente 9% da variação de preço pode ser explicada pela procedência do veículo.</p>
 </div>
 </div>
 <div id="exr4-6" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 4.6<a href="análise-de-dados-de-duas-variáveis.html#exr4-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Considere o conjunto de dados disponível no arquivo <code>coronarias.xls</code>.</p>
+<p>Considere o conjunto de dados disponível no arquivo <code>coronarias.xls</code> <span class="citation">(<a href="#ref-SingerIkeda1996">SINGER; IKEDA, 1996</a>)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Construa gráficos QQ para comparar a distribuição da variável <code>COL</code> de pacientes masculinos (= 1) com aquela de femininos (= 0). Repita a análise para a variável <code>IMC</code> e discuta os resultados.</li>
 <li>Calcule o coeficiente de correlação de Pearson e o coeficiente de correlação de Spearman entre as variáveis <code>ALTURA</code> e <code>PESO</code>.</li>
@@ -1130,7 +1219,210 @@ div.csl-indent {
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-48" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-48" class="solution"><em>Solução</em>. </span>Iniciaremos carregando os dados.</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="análise-de-dados-de-duas-variáveis.html#cb284-1" tabindex="-1"></a>coronarias <span class="ot">&lt;-</span> <span class="fu">statds_read</span>(<span class="st">&quot;coronarias.xls&quot;</span>, <span class="st">&quot;xls&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;dados&quot;</span>)</span>
+<span id="cb284-2"><a href="análise-de-dados-de-duas-variáveis.html#cb284-2" tabindex="-1"></a>coronarias <span class="ot">&lt;-</span> coronarias <span class="sc">%&gt;%</span> </span>
+<span id="cb284-3"><a href="análise-de-dados-de-duas-variáveis.html#cb284-3" tabindex="-1"></a>                <span class="fu">mutate</span>(</span>
+<span id="cb284-4"><a href="análise-de-dados-de-duas-variáveis.html#cb284-4" tabindex="-1"></a>                  <span class="at">IMC =</span> <span class="fu">parse_double</span>(IMC),</span>
+<span id="cb284-5"><a href="análise-de-dados-de-duas-variáveis.html#cb284-5" tabindex="-1"></a>                  <span class="at">PESO =</span> <span class="fu">parse_double</span>(PESO),</span>
+<span id="cb284-6"><a href="análise-de-dados-de-duas-variáveis.html#cb284-6" tabindex="-1"></a>                  <span class="at">ALTURA =</span> <span class="fu">parse_double</span>(ALTURA),</span>
+<span id="cb284-7"><a href="análise-de-dados-de-duas-variáveis.html#cb284-7" tabindex="-1"></a>                  <span class="at">ARTER =</span> <span class="fu">as.factor</span>(ARTER),</span>
+<span id="cb284-8"><a href="análise-de-dados-de-duas-variáveis.html#cb284-8" tabindex="-1"></a>                  <span class="at">TABAG4 =</span> <span class="fu">as.factor</span>(TABAG4)</span>
+<span id="cb284-9"><a href="análise-de-dados-de-duas-variáveis.html#cb284-9" tabindex="-1"></a>                )</span>
+<span id="cb284-10"><a href="análise-de-dados-de-duas-variáveis.html#cb284-10" tabindex="-1"></a></span>
+<span id="cb284-11"><a href="análise-de-dados-de-duas-variáveis.html#cb284-11" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(coronarias))</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 70
+##   IDENT    HA   COL   HDL   LDL  VLDL  TRIG  DIAB  GLIC    AH TABAG TABAG4
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt; 
+## 1     1     1   202    NA    NA    NA   171     0    99     1     0 0     
+## 2     2     0   225    49   142    NA   167     1   317     0     1 3     
+## 3     3     1    NA    NA    NA    NA    NA    NA    NA     2     1 1     
+## 4     4     0   213    31   168    14   136     0    75     0    NA &lt;NA&gt;  
+## 5     5     0   258    40   200    18    92     0    78     2     0 0     
+## 6     6     0   184    NA    NA    NA   110     0    92     0     0 0     
+## # ℹ 58 more variables: IDADE_M &lt;dbl&gt;, ALTURA &lt;dbl&gt;, PESO &lt;dbl&gt;, IMC &lt;dbl&gt;,
+## #   ASS &lt;dbl&gt;, ANGEST &lt;dbl&gt;, ANGINS &lt;dbl&gt;, IMP &lt;dbl&gt;, ICC &lt;dbl&gt;, IMA &lt;dbl&gt;,
+## #   ARRIT &lt;dbl&gt;, ARTER &lt;fct&gt;, CAT &lt;dbl&gt;, CD &lt;dbl&gt;, DA &lt;dbl&gt;, DI &lt;dbl&gt;,
+## #   CX &lt;dbl&gt;, NUMAL &lt;dbl&gt;, PLAQ &lt;dbl&gt;, TE &lt;dbl&gt;, FIB &lt;dbl&gt;, IDADE1 &lt;dbl&gt;,
+## #   SEXO &lt;dbl&gt;, M_PA &lt;dbl&gt;, M_C &lt;dbl&gt;, PSR &lt;dbl&gt;, PDR &lt;dbl&gt;, IDA55 &lt;dbl&gt;,
+## #   SEID &lt;dbl&gt;, LO3 &lt;dbl&gt;, OBESO &lt;dbl&gt;, IDREAL &lt;dbl&gt;, SELO &lt;dbl&gt;, AH2 &lt;dbl&gt;,
+## #   AH3 &lt;dbl&gt;, `C/H` &lt;dbl&gt;, `L/H` &lt;dbl&gt;, IDA60 &lt;dbl&gt;, SEID6 &lt;dbl&gt;, …</code></pre>
+<div id="colesterol-de-pacientes-conforme-o-sexo" class="section level4 unnumbered hasAnchor">
+<h4>Colesterol de pacientes conforme o sexo<a href="análise-de-dados-de-duas-variáveis.html#colesterol-de-pacientes-conforme-o-sexo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A figura a seguir mostra o gráfico QQ comparando os níveis de colesterol entre homens e mulheres.</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="análise-de-dados-de-duas-variáveis.html#cb286-1" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.01</span>)</span>
+<span id="cb286-2"><a href="análise-de-dados-de-duas-variáveis.html#cb286-2" tabindex="-1"></a>homens <span class="ot">&lt;-</span> coronarias <span class="sc">%&gt;%</span> <span class="fu">filter</span>(SEXO <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb286-3"><a href="análise-de-dados-de-duas-variáveis.html#cb286-3" tabindex="-1"></a>mulheres <span class="ot">&lt;-</span> coronarias <span class="sc">%&gt;%</span> <span class="fu">filter</span>(SEXO <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb286-4"><a href="análise-de-dados-de-duas-variáveis.html#cb286-4" tabindex="-1"></a></span>
+<span id="cb286-5"><a href="análise-de-dados-de-duas-variáveis.html#cb286-5" tabindex="-1"></a>q_col_homens <span class="ot">&lt;-</span> <span class="fu">quantile</span>(homens<span class="sc">$</span>COL, quantiles, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb286-6"><a href="análise-de-dados-de-duas-variáveis.html#cb286-6" tabindex="-1"></a>q_col_mulheres <span class="ot">&lt;-</span> <span class="fu">quantile</span>(mulheres<span class="sc">$</span>COL, quantiles, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb286-7"><a href="análise-de-dados-de-duas-variáveis.html#cb286-7" tabindex="-1"></a></span>
+<span id="cb286-8"><a href="análise-de-dados-de-duas-variáveis.html#cb286-8" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb286-9"><a href="análise-de-dados-de-duas-variáveis.html#cb286-9" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb286-10"><a href="análise-de-dados-de-duas-variáveis.html#cb286-10" tabindex="-1"></a>              <span class="at">x =</span> q_col_homens, </span>
+<span id="cb286-11"><a href="análise-de-dados-de-duas-variáveis.html#cb286-11" tabindex="-1"></a>              <span class="at">y =</span> q_col_mulheres,</span>
+<span id="cb286-12"><a href="análise-de-dados-de-duas-variáveis.html#cb286-12" tabindex="-1"></a>              <span class="at">slope =</span> <span class="dv">1</span>, </span>
+<span id="cb286-13"><a href="análise-de-dados-de-duas-variáveis.html#cb286-13" tabindex="-1"></a>              <span class="at">intercept =</span> <span class="dv">0</span></span>
+<span id="cb286-14"><a href="análise-de-dados-de-duas-variáveis.html#cb286-14" tabindex="-1"></a>            )</span>
+<span id="cb286-15"><a href="análise-de-dados-de-duas-variáveis.html#cb286-15" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb286-16"><a href="análise-de-dados-de-duas-variáveis.html#cb286-16" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb286-17"><a href="análise-de-dados-de-duas-variáveis.html#cb286-17" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb286-18"><a href="análise-de-dados-de-duas-variáveis.html#cb286-18" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb286-19"><a href="análise-de-dados-de-duas-variáveis.html#cb286-19" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.6:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Quantis dos níveis de colesterol entre homens e mulheres&quot;</span>),</span>
+<span id="cb286-20"><a href="análise-de-dados-de-duas-variáveis.html#cb286-20" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Homens&quot;</span>,</span>
+<span id="cb286-21"><a href="análise-de-dados-de-duas-variáveis.html#cb286-21" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Mulheres&quot;</span></span>
+<span id="cb286-22"><a href="análise-de-dados-de-duas-variáveis.html#cb286-22" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb286-23"><a href="análise-de-dados-de-duas-variáveis.html#cb286-23" tabindex="-1"></a>  tema <span class="sc">+</span></span>
+<span id="cb286-24"><a href="análise-de-dados-de-duas-variáveis.html#cb286-24" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">620</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">450</span>))</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<p>Como os pontos estão muito próximos da reta <span class="math inline">\(y = x\)</span>, o gráfico sugere que há pouca diferença entre os níveis de colesterol dos dois grupos. O mesmo comportamento pode ser visto no gráfico de médias e diferenças a seguir.</p>
+</div>
+<div id="imc-de-pacientes-conforme-o-sexo" class="section level4 unnumbered hasAnchor">
+<h4>IMc de pacientes conforme o sexo<a href="análise-de-dados-de-duas-variáveis.html#imc-de-pacientes-conforme-o-sexo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A figura a seguir mostra o gráfico QQ comparando o IMC entre homens e mulheres.</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="análise-de-dados-de-duas-variáveis.html#cb287-1" tabindex="-1"></a>q_imc_homens <span class="ot">&lt;-</span> <span class="fu">quantile</span>(homens<span class="sc">$</span>IMC, quantiles, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb287-2"><a href="análise-de-dados-de-duas-variáveis.html#cb287-2" tabindex="-1"></a>q_imc_mulheres <span class="ot">&lt;-</span> <span class="fu">quantile</span>(mulheres<span class="sc">$</span>IMC, quantiles, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb287-3"><a href="análise-de-dados-de-duas-variáveis.html#cb287-3" tabindex="-1"></a></span>
+<span id="cb287-4"><a href="análise-de-dados-de-duas-variáveis.html#cb287-4" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb287-5"><a href="análise-de-dados-de-duas-variáveis.html#cb287-5" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb287-6"><a href="análise-de-dados-de-duas-variáveis.html#cb287-6" tabindex="-1"></a>              <span class="at">x =</span> q_imc_homens, </span>
+<span id="cb287-7"><a href="análise-de-dados-de-duas-variáveis.html#cb287-7" tabindex="-1"></a>              <span class="at">y =</span> q_imc_mulheres,</span>
+<span id="cb287-8"><a href="análise-de-dados-de-duas-variáveis.html#cb287-8" tabindex="-1"></a>              <span class="at">slope =</span> <span class="dv">1</span>, </span>
+<span id="cb287-9"><a href="análise-de-dados-de-duas-variáveis.html#cb287-9" tabindex="-1"></a>              <span class="at">intercept =</span> <span class="dv">0</span></span>
+<span id="cb287-10"><a href="análise-de-dados-de-duas-variáveis.html#cb287-10" tabindex="-1"></a>            )</span>
+<span id="cb287-11"><a href="análise-de-dados-de-duas-variáveis.html#cb287-11" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb287-12"><a href="análise-de-dados-de-duas-variáveis.html#cb287-12" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb287-13"><a href="análise-de-dados-de-duas-variáveis.html#cb287-13" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb287-14"><a href="análise-de-dados-de-duas-variáveis.html#cb287-14" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb287-15"><a href="análise-de-dados-de-duas-variáveis.html#cb287-15" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.7:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Quantis das medidas de IMC entre homens e mulheres&quot;</span>),</span>
+<span id="cb287-16"><a href="análise-de-dados-de-duas-variáveis.html#cb287-16" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Homens&quot;</span>,</span>
+<span id="cb287-17"><a href="análise-de-dados-de-duas-variáveis.html#cb287-17" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Mulheres&quot;</span></span>
+<span id="cb287-18"><a href="análise-de-dados-de-duas-variáveis.html#cb287-18" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb287-19"><a href="análise-de-dados-de-duas-variáveis.html#cb287-19" tabindex="-1"></a>  tema </span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<p>O gráfico sugere que temos pouca diferença entre o IMC de homens de o de mulheres.</p>
+</div>
+<div id="correlação-entre-altura-e-peso" class="section level4 unnumbered hasAnchor">
+<h4>Correlação entre altura e peso<a href="análise-de-dados-de-duas-variáveis.html#correlação-entre-altura-e-peso" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para cálculo do coeficiente de correlação utilizaremos a função <code>cor()</code> do pacote base do R.</p>
+<p>A expressão <code>cor(coronarias$ALTURA, coronarias$PESO, method = "pearson", use = "complete.obs")</code> calcula o coeficiente de correlação de Pearson e nos resulta o valor 0.5484947.</p>
+<p>A expressão <code>cor(coronarias$ALTURA, coronarias$PESO, method = "spearman", use = "complete.obs")</code> calcula o coeficiente de correlação de Spearman e nos resulta o valor 0.559371.</p>
+</div>
+<div id="relação-entre-as-variáveis-tabag4-e-arter" class="section level4 unnumbered hasAnchor">
+<h4>Relação entre as variáveis <code>TABAG4</code> e <code>ARTER</code><a href="análise-de-dados-de-duas-variáveis.html#relação-entre-as-variáveis-tabag4-e-arter" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="análise-de-dados-de-duas-variáveis.html#cb288-1" tabindex="-1"></a>coronarias <span class="sc">%&gt;%</span></span>
+<span id="cb288-2"><a href="análise-de-dados-de-duas-variáveis.html#cb288-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(TABAG4)) <span class="sc">%&gt;%</span></span>
+<span id="cb288-3"><a href="análise-de-dados-de-duas-variáveis.html#cb288-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ARTER)) <span class="sc">%&gt;%</span></span>
+<span id="cb288-4"><a href="análise-de-dados-de-duas-variáveis.html#cb288-4" tabindex="-1"></a>  <span class="fu">group_by</span>(TABAG4, ARTER) <span class="sc">%&gt;%</span></span>
+<span id="cb288-5"><a href="análise-de-dados-de-duas-variáveis.html#cb288-5" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb288-6"><a href="análise-de-dados-de-duas-variáveis.html#cb288-6" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb288-7"><a href="análise-de-dados-de-duas-variáveis.html#cb288-7" tabindex="-1"></a>    <span class="fu">group_by</span>(., TABAG4) <span class="sc">%&gt;%</span></span>
+<span id="cb288-8"><a href="análise-de-dados-de-duas-variáveis.html#cb288-8" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb288-9"><a href="análise-de-dados-de-duas-variáveis.html#cb288-9" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">ARTER =</span> <span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb288-10"><a href="análise-de-dados-de-duas-variáveis.html#cb288-10" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb288-11"><a href="análise-de-dados-de-duas-variáveis.html#cb288-11" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb288-12"><a href="análise-de-dados-de-duas-variáveis.html#cb288-12" tabindex="-1"></a>    <span class="fu">group_by</span>(., ARTER) <span class="sc">%&gt;%</span></span>
+<span id="cb288-13"><a href="análise-de-dados-de-duas-variáveis.html#cb288-13" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb288-14"><a href="análise-de-dados-de-duas-variáveis.html#cb288-14" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">TABAG4 =</span> <span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb288-15"><a href="análise-de-dados-de-duas-variáveis.html#cb288-15" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb288-16"><a href="análise-de-dados-de-duas-variáveis.html#cb288-16" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb288-17"><a href="análise-de-dados-de-duas-variáveis.html#cb288-17" tabindex="-1"></a>    <span class="at">names_from =</span> ARTER,</span>
+<span id="cb288-18"><a href="análise-de-dados-de-duas-variáveis.html#cb288-18" tabindex="-1"></a>    <span class="at">values_from =</span> n,</span>
+<span id="cb288-19"><a href="análise-de-dados-de-duas-variáveis.html#cb288-19" tabindex="-1"></a>    <span class="at">values_fill =</span> <span class="dv">0</span></span>
+<span id="cb288-20"><a href="análise-de-dados-de-duas-variáveis.html#cb288-20" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb288-21"><a href="análise-de-dados-de-duas-variáveis.html#cb288-21" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb288-22"><a href="análise-de-dados-de-duas-variáveis.html#cb288-22" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb288-23"><a href="análise-de-dados-de-duas-variáveis.html#cb288-23" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 4.7:** Frequência de artereopatia entre quatro categorias de tabagismo&quot;</span>,</span>
+<span id="cb288-24"><a href="análise-de-dados-de-duas-variáveis.html#cb288-24" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb288-25"><a href="análise-de-dados-de-duas-variáveis.html#cb288-25" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb288-26"><a href="análise-de-dados-de-duas-variáveis.html#cb288-26" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb288-27"><a href="análise-de-dados-de-duas-variáveis.html#cb288-27" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb288-28"><a href="análise-de-dados-de-duas-variáveis.html#cb288-28" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 4.7:</strong> Frequência de artereopatia entre quatro categorias de tabagismo</caption>
+<thead>
+<tr class="header">
+<th align="center">TABAG4</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">457</td>
+<td align="center">43</td>
+<td align="center">27</td>
+<td align="center">2</td>
+<td align="center">529</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">210</td>
+<td align="center">11</td>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">237</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">259</td>
+<td align="center">19</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">285</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">257</td>
+<td align="center">15</td>
+<td align="center">15</td>
+<td align="center">3</td>
+<td align="center">290</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">1193</td>
+<td align="center">88</td>
+<td align="center">63</td>
+<td align="center">8</td>
+<td align="center">1352</td>
+</tr>
+</tbody>
+</table>
+<p>O trecho de código a seguir calcula as nossas estatísticas de interesse.</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="análise-de-dados-de-duas-variáveis.html#cb289-1" tabindex="-1"></a>chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(coronarias<span class="sc">$</span>TABAG4, coronarias<span class="sc">$</span>ARTER)</span></code></pre></div>
+<pre><code>## Warning in chisq.test(coronarias$TABAG4, coronarias$ARTER): Aproximação do
+## qui-quadrado pode estar incorreta</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="análise-de-dados-de-duas-variáveis.html#cb291-1" tabindex="-1"></a>chisq <span class="ot">&lt;-</span> chisq<span class="sc">$</span>statistic[[<span class="dv">1</span>]]</span>
+<span id="cb291-2"><a href="análise-de-dados-de-duas-variáveis.html#cb291-2" tabindex="-1"></a></span>
+<span id="cb291-3"><a href="análise-de-dados-de-duas-variáveis.html#cb291-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(coronarias)</span>
+<span id="cb291-4"><a href="análise-de-dados-de-duas-variáveis.html#cb291-4" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb291-5"><a href="análise-de-dados-de-duas-variáveis.html#cb291-5" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb291-6"><a href="análise-de-dados-de-duas-variáveis.html#cb291-6" tabindex="-1"></a></span>
+<span id="cb291-7"><a href="análise-de-dados-de-duas-variáveis.html#cb291-7" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(chisq <span class="sc">/</span> (chisq <span class="sc">+</span> n))</span>
+<span id="cb291-8"><a href="análise-de-dados-de-duas-variáveis.html#cb291-8" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((chisq <span class="sc">/</span> n) <span class="sc">/</span> ((r<span class="dv">-1</span>) <span class="sc">*</span> (c<span class="dv">-1</span>)))</span></code></pre></div>
+<p>A estatística de Pearson é 14.8672858, o coeficiente de contingência de Pearson é 0.0990669 e o coeficiente de Tschuprov é 0.0257054. Todas essas estatísticas nos sugerem que a associação entre as variáveis é muito fraca ou inexistente.</p>
+</div>
 </div>
 </div>
 <div id="exr4-7" class="section level3 unnumbered hasAnchor">
@@ -1634,6 +1926,9 @@ Y | 1 | 2 | 4 | 4 | 5 | 7 | 8 | 9 |</div>
 <div id="refs" class="references csl-bib-body" entry-spacing="1">
 <div id="ref-MorettinSinger2022" class="csl-entry">
 MORETTIN, P. A.; SINGER, J. DA M. <strong>Estatística e Ciência de Dados</strong>. Rio de Janeiro: LTC, 2022.
+</div>
+<div id="ref-SingerIkeda1996" class="csl-entry">
+SINGER, J. DA M.; IKEDA, K. <strong>Relatório de análise estatística sobre o projeto "Fatores de risco na doença aterosclerótica coronariana"</strong>. São Paulo: IME-USP, 1996. Disponível em: &lt;<a href="https://repositorio.usp.br/directbitstream/1c00ad75-fdc7-4281-9f3c-cd777c12515b/963591%20-%20Relat%C3%B3rio%20de%20an%C3%A1lise%20estat%C3%ADstica%20sobre%20o%20projeto%20fatores%20de%20risco%20na%20doen%C3%A7a%20ateroscler%C3%B3tica%20coronariana.pdf">https://repositorio.usp.br/directbitstream/1c00ad75-fdc7-4281-9f3c-cd777c12515b/963591%20-%20Relat%C3%B3rio%20de%20an%C3%A1lise%20estat%C3%ADstica%20sobre%20o%20projeto%20fatores%20de%20risco%20na%20doen%C3%A7a%20ateroscler%C3%B3tica%20coronariana.pdf</a>&gt;.
 </div>
 </div>
             </section>

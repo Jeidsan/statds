@@ -387,13 +387,55 @@ Analise a variável `Preço de veículos` segundo as categorias `N` (nacional) e
 :::
 
 :::{.solution}
-x
+Iniciaremos carregando os dados:
+
+```{r}
+veiculos <- statds_read("veiculos.xls", "xls")
+```
+
+Novamente, utilizaremos uma tabela resumo, um gráfico de *boxplots* e o ganho de variância para avaliar visualmente a relação entre as variáveis.
+
+```{r}
+veiculos %>%
+  statds_summarise(preco, proc) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.6:** Medidas de resumo para a variável `Preço do veículo` conforme a `Procedência`",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+
+```{r}
+veiculos %>%
+  ggplot(aes(proc, preco)) +
+    stat_boxplot(
+      geom = "errorbar",
+      width = 0.2
+    ) +
+    geom_boxplot(
+      fill = "grey", 
+      color = "grey30"
+    ) +
+  labs(
+    title = bquote(bold("Figura 4.5:")~"Preço dos veículos conforme a procedência"),
+    y = "Preço",
+    x = "Procedência"
+  ) +
+  tema
+```
+
+Apesar de termos uma diferença nos preços, não podemos afirmar que há uma relação entre as variáveis. O coeficiente de determinação $R^{2}$ é `r statds_rsquared(veiculos, preco, proc)`, indicando que apenas aproximadamente 9% da variação de preço pode ser explicada pela procedência do veículo.
+
 :::
 
 ### Exercício 4.6 {- #exr4-6}
 
 ::: {.enunciado}
-Considere o conjunto de dados disponível no arquivo `coronarias.xls`.
+Considere o conjunto de dados disponível no arquivo `coronarias.xls` [@SingerIkeda1996].
 
 a. Construa gráficos QQ para comparar a distribuição da variável `COL` de pacientes masculinos (= 1) com aquela de femininos (= 0). Repita a análise para a variável `IMC` e discuta os resultados. 
 b. Calcule o coeficiente de correlação de Pearson e o coeficiente de correlação de Spearman entre as variáveis `ALTURA` e `PESO`.
@@ -401,7 +443,141 @@ c) Construa uma tabela de contingência para avaliar a distribuição conjunta d
 :::
 
 :::{.solution}
-x
+Iniciaremos carregando os dados.
+
+```{r}
+coronarias <- statds_read("coronarias.xls", "xls", sheet = "dados")
+coronarias <- coronarias %>% 
+                mutate(
+                  IMC = parse_double(IMC),
+                  PESO = parse_double(PESO),
+                  ALTURA = parse_double(ALTURA),
+                  ARTER = as.factor(ARTER),
+                  TABAG4 = as.factor(TABAG4)
+                )
+
+print(head(coronarias))
+```
+
+
+#### Colesterol de pacientes conforme o sexo {-}
+
+A figura a seguir mostra o gráfico QQ comparando os níveis de colesterol entre homens e mulheres.
+
+```{r}
+quantiles <- seq(0, 1, 0.01)
+homens <- coronarias %>% filter(SEXO == 1)
+mulheres <- coronarias %>% filter(SEXO == 0)
+
+q_col_homens <- quantile(homens$COL, quantiles, na.rm = TRUE)
+q_col_mulheres <- quantile(mulheres$COL, quantiles, na.rm = TRUE)
+
+ggplot(
+  mapping = aes(
+              x = q_col_homens, 
+              y = q_col_mulheres,
+              slope = 1, 
+              intercept = 0
+            )
+) +
+  geom_point() +
+  geom_abline(linetype = 2) +
+  labs(
+    title = bquote(bold("Figura 4.6:")~"Quantis dos níveis de colesterol entre homens e mulheres"),
+    x = "Homens",
+    y = "Mulheres"
+  ) +
+  tema +
+  coord_cartesian(xlim = c(50,620), ylim = c(50,450))
+```
+
+Como os pontos estão muito próximos da reta $y = x$, o gráfico sugere que há pouca diferença entre os níveis de colesterol dos dois grupos. O mesmo comportamento pode ser visto no gráfico de médias e diferenças a seguir.
+
+#### IMc de pacientes conforme o sexo {-}
+
+A figura a seguir mostra o gráfico QQ comparando o IMC entre homens e mulheres.
+
+```{r}
+q_imc_homens <- quantile(homens$IMC, quantiles, na.rm = TRUE)
+q_imc_mulheres <- quantile(mulheres$IMC, quantiles, na.rm = TRUE)
+
+ggplot(
+  mapping = aes(
+              x = q_imc_homens, 
+              y = q_imc_mulheres,
+              slope = 1, 
+              intercept = 0
+            )
+) +
+  geom_point() +
+  geom_abline(linetype = 2) +
+  labs(
+    title = bquote(bold("Figura 4.7:")~"Quantis das medidas de IMC entre homens e mulheres"),
+    x = "Homens",
+    y = "Mulheres"
+  ) +
+  tema 
+```
+
+O gráfico sugere que temos pouca diferença entre o IMC de homens de o de mulheres.
+
+#### Correlação entre altura e peso {-}
+
+Para cálculo do coeficiente de correlação utilizaremos a função `cor()` do pacote base do R. 
+
+A expressão `cor(coronarias$ALTURA, coronarias$PESO, method = "pearson", use = "complete.obs")` calcula o coeficiente de correlação de Pearson e nos resulta o valor `r cor(coronarias$ALTURA, coronarias$PESO, method = "pearson", use = "complete.obs")`.
+
+A expressão `cor(coronarias$ALTURA, coronarias$PESO, method = "spearman", use = "complete.obs")` calcula o coeficiente de correlação de Spearman e nos resulta o valor `r cor(coronarias$ALTURA, coronarias$PESO, method = "spearman", use = "complete.obs")`.
+
+#### Relação entre as variáveis `TABAG4` e `ARTER` {-}
+
+```{r}
+coronarias %>%
+  filter(!is.na(TABAG4)) %>%
+  filter(!is.na(ARTER)) %>%
+  group_by(TABAG4, ARTER) %>%
+  count() %>%
+  bind_rows(
+    group_by(., TABAG4) %>%
+      summarise(n = sum(n)) %>%
+      mutate(ARTER = "Total")
+  ) %>%
+  bind_rows(
+    group_by(., ARTER) %>%
+      summarise(n = sum(n)) %>%
+      mutate(TABAG4 = "Total")
+  ) %>%
+  pivot_wider(
+    names_from = ARTER,
+    values_from = n,
+    values_fill = 0
+  ) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.7:** Frequência de artereopatia entre quatro categorias de tabagismo",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+O trecho de código a seguir calcula as nossas estatísticas de interesse.
+
+```{r}
+chisq <- chisq.test(coronarias$TABAG4, coronarias$ARTER)
+chisq <- chisq$statistic[[1]]
+
+n <- nrow(coronarias)
+r <- 6
+c <- 4
+
+C <- sqrt(chisq / (chisq + n))
+t <- sqrt((chisq / n) / ((r-1) * (c-1)))
+```
+
+A estatística de Pearson é `r chisq`, o coeficiente de contingência de Pearson é `r C` e o coeficiente de Tschuprov é `r t`. Todas essas estatísticas nos sugerem que a associação entre as variáveis é muito fraca ou inexistente.
+
 :::
 
 ### Exercício 4.7 {- #exr4-7}

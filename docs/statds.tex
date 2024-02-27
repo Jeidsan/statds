@@ -7671,14 +7671,133 @@ Concluímos que o ganho de variância dado pela adição da variável \texttt{Re
 Analise a variável \texttt{Preço\ de\ veículos} segundo as categorias \texttt{N} (nacional) e \texttt{I} (importado) para o conjunto de dados disponível no arquivo \texttt{veiculos.xls}.
 
 \begin{solution}
-x
+Iniciaremos carregando os dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{veiculos }\OtherTok{\textless{}{-}} \FunctionTok{statds\_read}\NormalTok{(}\StringTok{"veiculos.xls"}\NormalTok{, }\StringTok{"xls"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Novamente, utilizaremos uma tabela resumo, um gráfico de \emph{boxplots} e o ganho de variância para avaliar visualmente a relação entre as variáveis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{veiculos }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{statds\_summarise}\NormalTok{(preco, proc) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 4.6:** Medidas de resumo para a variável \textasciigrave{}Preço do veículo\textasciigrave{} conforme a \textasciigrave{}Procedência\textasciigrave{}"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1068}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0388}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0971}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1068}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1456}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0583}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0971}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0874}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0971}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0680}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0971}}@{}}
+\caption{\textbf{Tabela 4.6:} Medidas de resumo para a variável \texttt{Preço\ do\ veículo} conforme a \texttt{Procedência}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+proc
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+proc
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Importado & 12 & 19028,58 & 110250194 & 10500,01 & 7780 & 11705,25 & 13770 & 24560,00 & 38850 & 12854,75 \\
+Nacional & 18 & 10574,44 & 25604052 & 5060,04 & 5257 & 6322,00 & 9916 & 13085,75 & 24632 & 6763,75 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{veiculos }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(proc, preco)) }\SpecialCharTok{+}
+    \FunctionTok{stat\_boxplot}\NormalTok{(}
+      \AttributeTok{geom =} \StringTok{"errorbar"}\NormalTok{,}
+      \AttributeTok{width =} \FloatTok{0.2}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}
+      \AttributeTok{fill =} \StringTok{"grey"}\NormalTok{, }
+      \AttributeTok{color =} \StringTok{"grey30"}
+\NormalTok{    ) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.5:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Preço dos veículos conforme a procedência"}\NormalTok{),}
+    \AttributeTok{y =} \StringTok{"Preço"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Procedência"}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-178-1.pdf}
+
+Apesar de termos uma diferença nos preços, não podemos afirmar que há uma relação entre as variáveis. O coeficiente de determinação \(R^{2}\) é 0.0891215, indicando que apenas aproximadamente 9\% da variação de preço pode ser explicada pela procedência do veículo.
 \end{solution}
 
 \hypertarget{exr4-6}{%
 \subsection*{Exercício 4.6}\label{exr4-6}}
 \addcontentsline{toc}{subsection}{Exercício 4.6}
 
-Considere o conjunto de dados disponível no arquivo \texttt{coronarias.xls}.
+Considere o conjunto de dados disponível no arquivo \texttt{coronarias.xls} \citep{SingerIkeda1996}.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -7698,7 +7817,211 @@ Considere o conjunto de dados disponível no arquivo \texttt{coronarias.xls}.
 \end{enumerate}
 
 \begin{solution}
-x
+Iniciaremos carregando os dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coronarias }\OtherTok{\textless{}{-}} \FunctionTok{statds\_read}\NormalTok{(}\StringTok{"coronarias.xls"}\NormalTok{, }\StringTok{"xls"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"dados"}\NormalTok{)}
+\NormalTok{coronarias }\OtherTok{\textless{}{-}}\NormalTok{ coronarias }\SpecialCharTok{\%\textgreater{}\%} 
+                \FunctionTok{mutate}\NormalTok{(}
+                  \AttributeTok{IMC =} \FunctionTok{parse\_double}\NormalTok{(IMC),}
+                  \AttributeTok{PESO =} \FunctionTok{parse\_double}\NormalTok{(PESO),}
+                  \AttributeTok{ALTURA =} \FunctionTok{parse\_double}\NormalTok{(ALTURA),}
+                  \AttributeTok{ARTER =} \FunctionTok{as.factor}\NormalTok{(ARTER),}
+                  \AttributeTok{TABAG4 =} \FunctionTok{as.factor}\NormalTok{(TABAG4)}
+\NormalTok{                )}
+
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(coronarias))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 70
+##   IDENT    HA   COL   HDL   LDL  VLDL  TRIG  DIAB  GLIC    AH TABAG TABAG4
+##   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <fct> 
+## 1     1     1   202    NA    NA    NA   171     0    99     1     0 0     
+## 2     2     0   225    49   142    NA   167     1   317     0     1 3     
+## 3     3     1    NA    NA    NA    NA    NA    NA    NA     2     1 1     
+## 4     4     0   213    31   168    14   136     0    75     0    NA <NA>  
+## 5     5     0   258    40   200    18    92     0    78     2     0 0     
+## 6     6     0   184    NA    NA    NA   110     0    92     0     0 0     
+## # i 58 more variables: IDADE_M <dbl>, ALTURA <dbl>, PESO <dbl>, IMC <dbl>,
+## #   ASS <dbl>, ANGEST <dbl>, ANGINS <dbl>, IMP <dbl>, ICC <dbl>, IMA <dbl>,
+## #   ARRIT <dbl>, ARTER <fct>, CAT <dbl>, CD <dbl>, DA <dbl>, DI <dbl>,
+## #   CX <dbl>, NUMAL <dbl>, PLAQ <dbl>, TE <dbl>, FIB <dbl>, IDADE1 <dbl>,
+## #   SEXO <dbl>, M_PA <dbl>, M_C <dbl>, PSR <dbl>, PDR <dbl>, IDA55 <dbl>,
+## #   SEID <dbl>, LO3 <dbl>, OBESO <dbl>, IDREAL <dbl>, SELO <dbl>, AH2 <dbl>,
+## #   AH3 <dbl>, `C/H` <dbl>, `L/H` <dbl>, IDA60 <dbl>, SEID6 <dbl>, ...
+\end{verbatim}
+
+\hypertarget{colesterol-de-pacientes-conforme-o-sexo}{%
+\subsubsection*{Colesterol de pacientes conforme o sexo}\label{colesterol-de-pacientes-conforme-o-sexo}}
+\addcontentsline{toc}{subsubsection}{Colesterol de pacientes conforme o sexo}
+
+A figura a seguir mostra o gráfico QQ comparando os níveis de colesterol entre homens e mulheres.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{quantiles }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.01}\NormalTok{)}
+\NormalTok{homens }\OtherTok{\textless{}{-}}\NormalTok{ coronarias }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(SEXO }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{mulheres }\OtherTok{\textless{}{-}}\NormalTok{ coronarias }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(SEXO }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)}
+
+\NormalTok{q\_col\_homens }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(homens}\SpecialCharTok{$}\NormalTok{COL, quantiles, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{q\_col\_mulheres }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(mulheres}\SpecialCharTok{$}\NormalTok{COL, quantiles, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(}
+  \AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}
+              \AttributeTok{x =}\NormalTok{ q\_col\_homens, }
+              \AttributeTok{y =}\NormalTok{ q\_col\_mulheres,}
+              \AttributeTok{slope =} \DecValTok{1}\NormalTok{, }
+              \AttributeTok{intercept =} \DecValTok{0}
+\NormalTok{            )}
+\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.6:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Quantis dos níveis de colesterol entre homens e mulheres"}\NormalTok{),}
+    \AttributeTok{x =} \StringTok{"Homens"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Mulheres"}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  tema }\SpecialCharTok{+}
+  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{,}\DecValTok{620}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{,}\DecValTok{450}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-180-1.pdf}
+
+Como os pontos estão muito próximos da reta \(y = x\), o gráfico sugere que há pouca diferença entre os níveis de colesterol dos dois grupos. O mesmo comportamento pode ser visto no gráfico de médias e diferenças a seguir.
+
+\hypertarget{imc-de-pacientes-conforme-o-sexo}{%
+\subsubsection*{IMc de pacientes conforme o sexo}\label{imc-de-pacientes-conforme-o-sexo}}
+\addcontentsline{toc}{subsubsection}{IMc de pacientes conforme o sexo}
+
+A figura a seguir mostra o gráfico QQ comparando o IMC entre homens e mulheres.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_imc\_homens }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(homens}\SpecialCharTok{$}\NormalTok{IMC, quantiles, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{q\_imc\_mulheres }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(mulheres}\SpecialCharTok{$}\NormalTok{IMC, quantiles, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(}
+  \AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}
+              \AttributeTok{x =}\NormalTok{ q\_imc\_homens, }
+              \AttributeTok{y =}\NormalTok{ q\_imc\_mulheres,}
+              \AttributeTok{slope =} \DecValTok{1}\NormalTok{, }
+              \AttributeTok{intercept =} \DecValTok{0}
+\NormalTok{            )}
+\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.7:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Quantis das medidas de IMC entre homens e mulheres"}\NormalTok{),}
+    \AttributeTok{x =} \StringTok{"Homens"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Mulheres"}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  tema }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-181-1.pdf}
+
+O gráfico sugere que temos pouca diferença entre o IMC de homens de o de mulheres.
+
+\hypertarget{correlauxe7uxe3o-entre-altura-e-peso}{%
+\subsubsection*{Correlação entre altura e peso}\label{correlauxe7uxe3o-entre-altura-e-peso}}
+\addcontentsline{toc}{subsubsection}{Correlação entre altura e peso}
+
+Para cálculo do coeficiente de correlação utilizaremos a função \texttt{cor()} do pacote base do R.
+
+A expressão \texttt{cor(coronarias\$ALTURA,\ coronarias\$PESO,\ method\ =\ "pearson",\ use\ =\ "complete.obs")} calcula o coeficiente de correlação de Pearson e nos resulta o valor 0.5484947.
+
+A expressão \texttt{cor(coronarias\$ALTURA,\ coronarias\$PESO,\ method\ =\ "spearman",\ use\ =\ "complete.obs")} calcula o coeficiente de correlação de Spearman e nos resulta o valor 0.559371.
+
+\hypertarget{relauxe7uxe3o-entre-as-variuxe1veis-tabag4-e-arter}{%
+\subsubsection*{\texorpdfstring{Relação entre as variáveis \texttt{TABAG4} e \texttt{ARTER}}{Relação entre as variáveis TABAG4 e ARTER}}\label{relauxe7uxe3o-entre-as-variuxe1veis-tabag4-e-arter}}
+\addcontentsline{toc}{subsubsection}{Relação entre as variáveis \texttt{TABAG4} e \texttt{ARTER}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coronarias }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(TABAG4)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(ARTER)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(TABAG4, ARTER) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(}
+    \FunctionTok{group\_by}\NormalTok{(., TABAG4) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ARTER =} \StringTok{"Total"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(}
+    \FunctionTok{group\_by}\NormalTok{(., ARTER) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{mutate}\NormalTok{(}\AttributeTok{TABAG4 =} \StringTok{"Total"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}
+    \AttributeTok{names\_from =}\NormalTok{ ARTER,}
+    \AttributeTok{values\_from =}\NormalTok{ n,}
+    \AttributeTok{values\_fill =} \DecValTok{0}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 4.7:** Frequência de artereopatia entre quatro categorias de tabagismo"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\caption{\textbf{Tabela 4.7:} Frequência de artereopatia entre quatro categorias de tabagismo}\tabularnewline
+\toprule\noalign{}
+TABAG4 & 0 & 1 & 2 & 3 & Total \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+TABAG4 & 0 & 1 & 2 & 3 & Total \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 457 & 43 & 27 & 2 & 529 \\
+1 & 210 & 11 & 15 & 1 & 237 \\
+2 & 259 & 19 & 5 & 2 & 285 \\
+3 & 257 & 15 & 15 & 3 & 290 \\
+4 & 8 & 0 & 1 & 0 & 9 \\
+5 & 2 & 0 & 0 & 0 & 2 \\
+Total & 1193 & 88 & 63 & 8 & 1352 \\
+\end{longtable}
+
+O trecho de código a seguir calcula as nossas estatísticas de interesse.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chisq }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(coronarias}\SpecialCharTok{$}\NormalTok{TABAG4, coronarias}\SpecialCharTok{$}\NormalTok{ARTER)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(coronarias$TABAG4, coronarias$ARTER): Aproximação do
+## qui-quadrado pode estar incorreta
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chisq }\OtherTok{\textless{}{-}}\NormalTok{ chisq}\SpecialCharTok{$}\NormalTok{statistic[[}\DecValTok{1}\NormalTok{]]}
+
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(coronarias)}
+\NormalTok{r }\OtherTok{\textless{}{-}} \DecValTok{6}
+\NormalTok{c }\OtherTok{\textless{}{-}} \DecValTok{4}
+
+\NormalTok{C }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(chisq }\SpecialCharTok{/}\NormalTok{ (chisq }\SpecialCharTok{+}\NormalTok{ n))}
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{((chisq }\SpecialCharTok{/}\NormalTok{ n) }\SpecialCharTok{/}\NormalTok{ ((r}\DecValTok{{-}1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ (c}\DecValTok{{-}1}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+A estatística de Pearson é 14.8672858, o coeficiente de contingência de Pearson é 0.0990669 e o coeficiente de Tschuprov é 0.0257054. Todas essas estatísticas nos sugerem que a associação entre as variáveis é muito fraca ou inexistente.
 \end{solution}
 
 \hypertarget{exr4-7}{%
