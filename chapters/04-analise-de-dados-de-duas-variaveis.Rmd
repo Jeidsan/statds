@@ -694,7 +694,7 @@ A Figura 4.10 nos mostra que a medida do peso obtida por via ultrassonográfica 
 ### Exercício 4.9 {- #exr4-9}
 
 ::: {.enunciado}
-Considere o conjunto de dados disponível no arquivo `esforco.xls`.
+Considere o conjunto de dados disponível no arquivo `esforco.xls` [@Braga1996].
 
 a. Compare as distribuições de frequências da variável `V02` em repouso e no pico do exercício para pacientes classificados em cada um dos níveis da variável `Etiologia` por meio de gráficos QQ e de medidas resumo. Comente os resultados. 
 b. Repita o item (a) utilizando gráficos de Bland-Altman.
@@ -702,7 +702,97 @@ c. Utilize *boxplots* e gráficos de perfis médios para comparar as distribuiç
 :::
 
 :::{.solution}
-x
+#### Carregamento dos dados {-}
+
+```{r}
+esforco <- statds_read("esforco_completo.csv")
+```
+#### Gráfico QQ para o consumo de oxigênio
+
+As tabelas abaixo apresentam medidas de resumo para o consumo de oxigênio por grupo.
+
+```{r}
+esforco %>%
+  statds_summarise(vo2_rep, etiologia) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.8:** Medidas de resumo para o consumo de oxigênio em repouso",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+```{r}
+esforco %>%
+  statds_summarise(vo2_w, etiologia) %>%
+  kable(
+    format = "pipe",
+    caption = "**Tabela 4.9:** Medidas de resumo para o consumo de oxigênio no pico do exercício",
+    label = NA,
+    digits = 2,
+    align = "c",
+    format.args = list(decimal.mark = ",")
+  )
+```
+
+Para construção dos gráficos, vamos precisar fazer algumas adaptações:
+
+```{r}
+quantiles <- seq(0, 1, 1/24)
+
+qq_rep <- function(x) quantile(x$vo2_rep, quantiles)
+qq_w <- function(x) quantile(x$vo2_w, quantiles)
+
+qq_esforco <- esforco %>%
+                select(etiologia, vo2_rep, vo2_w) %>%
+                mutate(
+                  qq_media = (vo2_w + vo2_rep) / 2,
+                  qq_diff = vo2_w - vo2_rep
+                ) %>%
+                group_by(etiologia) %>%
+                nest() %>%
+                mutate(
+                  qq_rep = map(data, qq_rep),
+                  qq_w = map(data, qq_w),
+                )
+
+qq_esforco %>%
+  unnest(qq_rep, qq_w) %>%
+  ggplot(aes(qq_rep, qq_w, slope = 1, intercept = 0)) +
+    geom_point() +
+    geom_abline(linetype = 2) +
+    facet_wrap(~etiologia) +
+    labs(
+      title = bquote(bold("Figura 4.12:")~"Quantis do consumo de oxigênio em repouso"~italic("vs.")~"pico do exercício"),
+      x = "Consumo de oxigênio em repouso",
+      y = "Consumo de oxigênio no pico do exercício"
+    ) +
+    tema
+```
+
+O gráfico nos mostra uma grande diferença entre os dados, sugerindo que o consumo de oxigênio no pico do exercício é substancialmente maior do que quando em repouso.
+
+#### Gráfico de Bland-Altman para o consumo de oxigênio {-}
+
+```{r}
+qq_esforco %>%
+  unnest(data) %>%
+  ggplot(aes(qq_media, qq_diff)) +
+    geom_point() +
+    geom_hline(yintercept = 0, linetype = 2) +
+    facet_wrap(~etiologia) +
+    labs(
+      title = bquote(bold("Figura 4.13:")~"Média do consumo de oxigênio"~italic("vs.")~"diferença entre os estágios"),
+      x = "Média do consumo de oxigênio nos dois estágios",
+      y = "Diferença de consumo entre os dois estágios"
+    ) +
+    tema
+```
+
+Avaliar melhor.
+
 :::
 
 ### Exercício 4.10 {- #exr4-10}

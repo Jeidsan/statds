@@ -449,6 +449,7 @@ A função a seguir calcula o coeficiente de determinação (ou o ganho de varâ
 \item
   Revisar cálculo de conceito de \(R^2\) no último item do \protect\hyperlink{exr4-1}{Exercício};
 \item
+  Reavaliar e interpretar resultados do \protect\hyperlink{exr4-9}{Exercício 4.9};
 \end{itemize}
 
 \mainmatter
@@ -8181,7 +8182,7 @@ A Figura 4.10 nos mostra que a medida do peso obtida por via ultrassonográfica 
 \subsection*{Exercício 4.9}\label{exr4-9}}
 \addcontentsline{toc}{subsection}{Exercício 4.9}
 
-Considere o conjunto de dados disponível no arquivo \texttt{esforco.xls}.
+Considere o conjunto de dados disponível no arquivo \texttt{esforco.xls} \citep{Braga1996}.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -8195,7 +8196,282 @@ Considere o conjunto de dados disponível no arquivo \texttt{esforco.xls}.
 \end{enumerate}
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{carregamento-dos-dados-1}{%
+\subsubsection*{Carregamento dos dados}\label{carregamento-dos-dados-1}}
+\addcontentsline{toc}{subsubsection}{Carregamento dos dados}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esforco }\OtherTok{\textless{}{-}} \FunctionTok{statds\_read}\NormalTok{(}\StringTok{"esforco\_completo.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 127 Columns: 61
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr   (7): iniciais, etiologia, sexo, weber, teste_maximo_rep, cirurgia, grupo
+## dbl  (51): id_grupo, idade, altura, peso, superficie_corporal, imc, nyha, fc...
+## date  (3): data_espirometrico, data_obito, data_ultima_obs
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\hypertarget{gruxe1fico-qq-para-o-consumo-de-oxiguxeanio}{%
+\subsubsection{Gráfico QQ para o consumo de oxigênio}\label{gruxe1fico-qq-para-o-consumo-de-oxiguxeanio}}
+
+As tabelas abaixo apresentam medidas de resumo para o consumo de oxigênio por grupo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esforco }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{statds\_summarise}\NormalTok{(vo2\_rep, etiologia) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 4.8:** Medidas de resumo para o consumo de oxigênio em repouso"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1364}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0455}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0795}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1705}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1023}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0682}}@{}}
+\caption{\textbf{Tabela 4.8:} Medidas de resumo para o consumo de oxigênio em repouso}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+etiologia
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+etiologia
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Chagasíaco & 26 & 3,75 & 0,91 & 0,96 & 2,6 & 3,02 & 3,45 & 4,32 & 5,9 & 1,30 \\
+Controle & 40 & 3,50 & 0,36 & 0,60 & 2,4 & 3,00 & 3,45 & 3,85 & 5,1 & 0,85 \\
+Idiopático & 31 & 3,66 & 1,00 & 1,00 & 2,4 & 3,10 & 3,50 & 3,90 & 6,4 & 0,80 \\
+Isquêmico & 30 & 3,35 & 0,54 & 0,73 & 1,7 & 3,00 & 3,25 & 3,88 & 4,9 & 0,88 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{esforco }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{statds\_summarise}\NormalTok{(vo2\_w, etiologia) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"pipe"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"**Tabela 4.9:** Medidas de resumo para o consumo de oxigênio no pico do exercício"}\NormalTok{,}
+    \AttributeTok{label =} \ConstantTok{NA}\NormalTok{,}
+    \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{align =} \StringTok{"c"}\NormalTok{,}
+    \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1333}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0444}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0778}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1222}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0667}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0778}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1000}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0778}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0667}}
+  >{\centering\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0667}}@{}}
+\caption{\textbf{Tabela 4.9:} Medidas de resumo para o consumo de oxigênio no pico do exercício}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+etiologia
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+etiologia
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+n
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Média
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Variância
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Desvio Padrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mediana
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Máx.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+IQR
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Chagasíaco & 26 & 18,27 & 42,66 & 6,53 & 10,1 & 13,93 & 16,80 & 20,85 & 41,0 & 6,93 \\
+Controle & 40 & 23,00 & 33,89 & 5,82 & 14,0 & 18,28 & 22,75 & 27,72 & 34,9 & 9,45 \\
+Idiopático & 31 & 15,13 & 13,41 & 3,66 & 9,5 & 12,35 & 14,46 & 18,45 & 21,5 & 6,10 \\
+Isquêmico & 30 & 14,30 & 28,50 & 5,34 & 5,2 & 10,20 & 13,65 & 17,38 & 29,0 & 7,18 \\
+\end{longtable}
+
+Para construção dos gráficos, vamos precisar fazer algumas adaptações:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{quantiles }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{24}\NormalTok{)}
+
+\NormalTok{qq\_rep }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{quantile}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{vo2\_rep, quantiles)}
+\NormalTok{qq\_w }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{quantile}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{vo2\_w, quantiles)}
+
+\NormalTok{qq\_esforco }\OtherTok{\textless{}{-}}\NormalTok{ esforco }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{select}\NormalTok{(etiologia, vo2\_rep, vo2\_w) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{mutate}\NormalTok{(}
+                  \AttributeTok{qq\_media =}\NormalTok{ (vo2\_w }\SpecialCharTok{+}\NormalTok{ vo2\_rep) }\SpecialCharTok{/} \DecValTok{2}\NormalTok{,}
+                  \AttributeTok{qq\_diff =}\NormalTok{ vo2\_w }\SpecialCharTok{{-}}\NormalTok{ vo2\_rep}
+\NormalTok{                ) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{group\_by}\NormalTok{(etiologia) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{nest}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{mutate}\NormalTok{(}
+                  \AttributeTok{qq\_rep =} \FunctionTok{map}\NormalTok{(data, qq\_rep),}
+                  \AttributeTok{qq\_w =} \FunctionTok{map}\NormalTok{(data, qq\_w),}
+\NormalTok{                )}
+
+\NormalTok{qq\_esforco }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{unnest}\NormalTok{(qq\_rep, qq\_w) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(qq\_rep, qq\_w, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }\AttributeTok{intercept =} \DecValTok{0}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{etiologia) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.12:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Quantis do consumo de oxigênio em repouso"}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"vs."}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"pico do exercício"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Consumo de oxigênio em repouso"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Consumo de oxigênio no pico do exercício"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: `unnest()` has a new interface. See `?unnest` for details.
+## i Try `df %>% unnest(c(qq_rep, qq_w))`, with `mutate()` if needed.
+\end{verbatim}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-193-1.pdf}
+
+O gráfico nos mostra uma grande diferença entre os dados, sugerindo que o consumo de oxigênio no pico do exercício é substancialmente maior do que quando em repouso.
+
+\hypertarget{gruxe1fico-de-bland-altman-para-o-consumo-de-oxiguxeanio}{%
+\subsubsection*{Gráfico de Bland-Altman para o consumo de oxigênio}\label{gruxe1fico-de-bland-altman-para-o-consumo-de-oxiguxeanio}}
+\addcontentsline{toc}{subsubsection}{Gráfico de Bland-Altman para o consumo de oxigênio}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qq\_esforco }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{unnest}\NormalTok{(data) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(qq\_media, qq\_diff)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{etiologia) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.13:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Média do consumo de oxigênio"}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"vs."}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"diferença entre os estágios"}\NormalTok{),}
+      \AttributeTok{x =} \StringTok{"Média do consumo de oxigênio nos dois estágios"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Diferença de consumo entre os dois estágios"}
+\NormalTok{    ) }\SpecialCharTok{+}
+\NormalTok{    tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-194-1.pdf}
+
+Avaliar melhor.
+
 \end{solution}
 
 \hypertarget{exr4-10}{%

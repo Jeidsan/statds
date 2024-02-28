@@ -35,6 +35,7 @@ duas-variáveis-quantitativas
 uma-variável-qualitativa-e-outra-quantitativa
 notas-de-capítulo-2
 exercícios-2
+gráfico-qq-para-o-consumo-de-oxigênio
 análise-de-dados-de-várias-variáveis
 introdução-3
 gráficos-para-três-variáveis

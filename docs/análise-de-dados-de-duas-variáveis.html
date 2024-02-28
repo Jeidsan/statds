@@ -1532,7 +1532,7 @@ div.csl-indent {
 <div id="exr4-9" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 4.9<a href="análise-de-dados-de-duas-variáveis.html#exr4-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Considere o conjunto de dados disponível no arquivo <code>esforco.xls</code>.</p>
+<p>Considere o conjunto de dados disponível no arquivo <code>esforco.xls</code> <span class="citation">(<a href="#ref-Braga1996"><strong>Braga1996?</strong></a>)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Compare as distribuições de frequências da variável <code>V02</code> em repouso e no pico do exercício para pacientes classificados em cada um dos níveis da variável <code>Etiologia</code> por meio de gráficos QQ e de medidas resumo. Comente os resultados.</li>
 <li>Repita o item (a) utilizando gráficos de Bland-Altman.</li>
@@ -1540,7 +1540,266 @@ div.csl-indent {
 </ol>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-51" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-51" class="solution"><em>Solução</em>. </span></p>
+<div id="carregamento-dos-dados-1" class="section level4 unnumbered hasAnchor">
+<h4>Carregamento dos dados<a href="análise-de-dados-de-duas-variáveis.html#carregamento-dos-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="análise-de-dados-de-duas-variáveis.html#cb299-1" tabindex="-1"></a>esforco <span class="ot">&lt;-</span> <span class="fu">statds_read</span>(<span class="st">&quot;esforco_completo.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 127 Columns: 61
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr   (7): iniciais, etiologia, sexo, weber, teste_maximo_rep, cirurgia, grupo
+## dbl  (51): id_grupo, idade, altura, peso, superficie_corporal, imc, nyha, fc...
+## date  (3): data_espirometrico, data_obito, data_ultima_obs
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div id="gráfico-qq-para-o-consumo-de-oxigênio" class="section level4 hasAnchor" number="4.6.0.1">
+<h4><span class="header-section-number">4.6.0.1</span> Gráfico QQ para o consumo de oxigênio<a href="análise-de-dados-de-duas-variáveis.html#gráfico-qq-para-o-consumo-de-oxigênio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As tabelas abaixo apresentam medidas de resumo para o consumo de oxigênio por grupo.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="análise-de-dados-de-duas-variáveis.html#cb301-1" tabindex="-1"></a>esforco <span class="sc">%&gt;%</span></span>
+<span id="cb301-2"><a href="análise-de-dados-de-duas-variáveis.html#cb301-2" tabindex="-1"></a>  <span class="fu">statds_summarise</span>(vo2_rep, etiologia) <span class="sc">%&gt;%</span></span>
+<span id="cb301-3"><a href="análise-de-dados-de-duas-variáveis.html#cb301-3" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb301-4"><a href="análise-de-dados-de-duas-variáveis.html#cb301-4" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb301-5"><a href="análise-de-dados-de-duas-variáveis.html#cb301-5" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 4.8:** Medidas de resumo para o consumo de oxigênio em repouso&quot;</span>,</span>
+<span id="cb301-6"><a href="análise-de-dados-de-duas-variáveis.html#cb301-6" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb301-7"><a href="análise-de-dados-de-duas-variáveis.html#cb301-7" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb301-8"><a href="análise-de-dados-de-duas-variáveis.html#cb301-8" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb301-9"><a href="análise-de-dados-de-duas-variáveis.html#cb301-9" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb301-10"><a href="análise-de-dados-de-duas-variáveis.html#cb301-10" tabindex="-1"></a>  )</span></code></pre></div>
+<table style="width:100%;">
+<caption><strong>Tabela 4.8:</strong> Medidas de resumo para o consumo de oxigênio em repouso</caption>
+<colgroup>
+<col width="13%" />
+<col width="4%" />
+<col width="7%" />
+<col width="12%" />
+<col width="17%" />
+<col width="6%" />
+<col width="6%" />
+<col width="10%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">etiologia</th>
+<th align="center">n</th>
+<th align="center">Média</th>
+<th align="center">Variância</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Min.</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
+<th align="center">Máx.</th>
+<th align="center">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Chagasíaco</td>
+<td align="center">26</td>
+<td align="center">3,75</td>
+<td align="center">0,91</td>
+<td align="center">0,96</td>
+<td align="center">2,6</td>
+<td align="center">3,02</td>
+<td align="center">3,45</td>
+<td align="center">4,32</td>
+<td align="center">5,9</td>
+<td align="center">1,30</td>
+</tr>
+<tr class="even">
+<td align="center">Controle</td>
+<td align="center">40</td>
+<td align="center">3,50</td>
+<td align="center">0,36</td>
+<td align="center">0,60</td>
+<td align="center">2,4</td>
+<td align="center">3,00</td>
+<td align="center">3,45</td>
+<td align="center">3,85</td>
+<td align="center">5,1</td>
+<td align="center">0,85</td>
+</tr>
+<tr class="odd">
+<td align="center">Idiopático</td>
+<td align="center">31</td>
+<td align="center">3,66</td>
+<td align="center">1,00</td>
+<td align="center">1,00</td>
+<td align="center">2,4</td>
+<td align="center">3,10</td>
+<td align="center">3,50</td>
+<td align="center">3,90</td>
+<td align="center">6,4</td>
+<td align="center">0,80</td>
+</tr>
+<tr class="even">
+<td align="center">Isquêmico</td>
+<td align="center">30</td>
+<td align="center">3,35</td>
+<td align="center">0,54</td>
+<td align="center">0,73</td>
+<td align="center">1,7</td>
+<td align="center">3,00</td>
+<td align="center">3,25</td>
+<td align="center">3,88</td>
+<td align="center">4,9</td>
+<td align="center">0,88</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="análise-de-dados-de-duas-variáveis.html#cb302-1" tabindex="-1"></a>esforco <span class="sc">%&gt;%</span></span>
+<span id="cb302-2"><a href="análise-de-dados-de-duas-variáveis.html#cb302-2" tabindex="-1"></a>  <span class="fu">statds_summarise</span>(vo2_w, etiologia) <span class="sc">%&gt;%</span></span>
+<span id="cb302-3"><a href="análise-de-dados-de-duas-variáveis.html#cb302-3" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb302-4"><a href="análise-de-dados-de-duas-variáveis.html#cb302-4" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>,</span>
+<span id="cb302-5"><a href="análise-de-dados-de-duas-variáveis.html#cb302-5" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;**Tabela 4.9:** Medidas de resumo para o consumo de oxigênio no pico do exercício&quot;</span>,</span>
+<span id="cb302-6"><a href="análise-de-dados-de-duas-variáveis.html#cb302-6" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>,</span>
+<span id="cb302-7"><a href="análise-de-dados-de-duas-variáveis.html#cb302-7" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb302-8"><a href="análise-de-dados-de-duas-variáveis.html#cb302-8" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb302-9"><a href="análise-de-dados-de-duas-variáveis.html#cb302-9" tabindex="-1"></a>    <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb302-10"><a href="análise-de-dados-de-duas-variáveis.html#cb302-10" tabindex="-1"></a>  )</span></code></pre></div>
+<table>
+<caption><strong>Tabela 4.9:</strong> Medidas de resumo para o consumo de oxigênio no pico do exercício</caption>
+<colgroup>
+<col width="13%" />
+<col width="4%" />
+<col width="7%" />
+<col width="12%" />
+<col width="16%" />
+<col width="6%" />
+<col width="7%" />
+<col width="10%" />
+<col width="7%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">etiologia</th>
+<th align="center">n</th>
+<th align="center">Média</th>
+<th align="center">Variância</th>
+<th align="center">Desvio Padrão</th>
+<th align="center">Min.</th>
+<th align="center">Q1</th>
+<th align="center">Mediana</th>
+<th align="center">Q3</th>
+<th align="center">Máx.</th>
+<th align="center">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Chagasíaco</td>
+<td align="center">26</td>
+<td align="center">18,27</td>
+<td align="center">42,66</td>
+<td align="center">6,53</td>
+<td align="center">10,1</td>
+<td align="center">13,93</td>
+<td align="center">16,80</td>
+<td align="center">20,85</td>
+<td align="center">41,0</td>
+<td align="center">6,93</td>
+</tr>
+<tr class="even">
+<td align="center">Controle</td>
+<td align="center">40</td>
+<td align="center">23,00</td>
+<td align="center">33,89</td>
+<td align="center">5,82</td>
+<td align="center">14,0</td>
+<td align="center">18,28</td>
+<td align="center">22,75</td>
+<td align="center">27,72</td>
+<td align="center">34,9</td>
+<td align="center">9,45</td>
+</tr>
+<tr class="odd">
+<td align="center">Idiopático</td>
+<td align="center">31</td>
+<td align="center">15,13</td>
+<td align="center">13,41</td>
+<td align="center">3,66</td>
+<td align="center">9,5</td>
+<td align="center">12,35</td>
+<td align="center">14,46</td>
+<td align="center">18,45</td>
+<td align="center">21,5</td>
+<td align="center">6,10</td>
+</tr>
+<tr class="even">
+<td align="center">Isquêmico</td>
+<td align="center">30</td>
+<td align="center">14,30</td>
+<td align="center">28,50</td>
+<td align="center">5,34</td>
+<td align="center">5,2</td>
+<td align="center">10,20</td>
+<td align="center">13,65</td>
+<td align="center">17,38</td>
+<td align="center">29,0</td>
+<td align="center">7,18</td>
+</tr>
+</tbody>
+</table>
+<p>Para construção dos gráficos, vamos precisar fazer algumas adaptações:</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="análise-de-dados-de-duas-variáveis.html#cb303-1" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">24</span>)</span>
+<span id="cb303-2"><a href="análise-de-dados-de-duas-variáveis.html#cb303-2" tabindex="-1"></a></span>
+<span id="cb303-3"><a href="análise-de-dados-de-duas-variáveis.html#cb303-3" tabindex="-1"></a>qq_rep <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">quantile</span>(x<span class="sc">$</span>vo2_rep, quantiles)</span>
+<span id="cb303-4"><a href="análise-de-dados-de-duas-variáveis.html#cb303-4" tabindex="-1"></a>qq_w <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">quantile</span>(x<span class="sc">$</span>vo2_w, quantiles)</span>
+<span id="cb303-5"><a href="análise-de-dados-de-duas-variáveis.html#cb303-5" tabindex="-1"></a></span>
+<span id="cb303-6"><a href="análise-de-dados-de-duas-variáveis.html#cb303-6" tabindex="-1"></a>qq_esforco <span class="ot">&lt;-</span> esforco <span class="sc">%&gt;%</span></span>
+<span id="cb303-7"><a href="análise-de-dados-de-duas-variáveis.html#cb303-7" tabindex="-1"></a>                <span class="fu">select</span>(etiologia, vo2_rep, vo2_w) <span class="sc">%&gt;%</span></span>
+<span id="cb303-8"><a href="análise-de-dados-de-duas-variáveis.html#cb303-8" tabindex="-1"></a>                <span class="fu">mutate</span>(</span>
+<span id="cb303-9"><a href="análise-de-dados-de-duas-variáveis.html#cb303-9" tabindex="-1"></a>                  <span class="at">qq_media =</span> (vo2_w <span class="sc">+</span> vo2_rep) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb303-10"><a href="análise-de-dados-de-duas-variáveis.html#cb303-10" tabindex="-1"></a>                  <span class="at">qq_diff =</span> vo2_w <span class="sc">-</span> vo2_rep</span>
+<span id="cb303-11"><a href="análise-de-dados-de-duas-variáveis.html#cb303-11" tabindex="-1"></a>                ) <span class="sc">%&gt;%</span></span>
+<span id="cb303-12"><a href="análise-de-dados-de-duas-variáveis.html#cb303-12" tabindex="-1"></a>                <span class="fu">group_by</span>(etiologia) <span class="sc">%&gt;%</span></span>
+<span id="cb303-13"><a href="análise-de-dados-de-duas-variáveis.html#cb303-13" tabindex="-1"></a>                <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb303-14"><a href="análise-de-dados-de-duas-variáveis.html#cb303-14" tabindex="-1"></a>                <span class="fu">mutate</span>(</span>
+<span id="cb303-15"><a href="análise-de-dados-de-duas-variáveis.html#cb303-15" tabindex="-1"></a>                  <span class="at">qq_rep =</span> <span class="fu">map</span>(data, qq_rep),</span>
+<span id="cb303-16"><a href="análise-de-dados-de-duas-variáveis.html#cb303-16" tabindex="-1"></a>                  <span class="at">qq_w =</span> <span class="fu">map</span>(data, qq_w),</span>
+<span id="cb303-17"><a href="análise-de-dados-de-duas-variáveis.html#cb303-17" tabindex="-1"></a>                )</span>
+<span id="cb303-18"><a href="análise-de-dados-de-duas-variáveis.html#cb303-18" tabindex="-1"></a></span>
+<span id="cb303-19"><a href="análise-de-dados-de-duas-variáveis.html#cb303-19" tabindex="-1"></a>qq_esforco <span class="sc">%&gt;%</span></span>
+<span id="cb303-20"><a href="análise-de-dados-de-duas-variáveis.html#cb303-20" tabindex="-1"></a>  <span class="fu">unnest</span>(qq_rep, qq_w) <span class="sc">%&gt;%</span></span>
+<span id="cb303-21"><a href="análise-de-dados-de-duas-variáveis.html#cb303-21" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(qq_rep, qq_w, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb303-22"><a href="análise-de-dados-de-duas-variáveis.html#cb303-22" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb303-23"><a href="análise-de-dados-de-duas-variáveis.html#cb303-23" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb303-24"><a href="análise-de-dados-de-duas-variáveis.html#cb303-24" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>etiologia) <span class="sc">+</span></span>
+<span id="cb303-25"><a href="análise-de-dados-de-duas-variáveis.html#cb303-25" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb303-26"><a href="análise-de-dados-de-duas-variáveis.html#cb303-26" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.12:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Quantis do consumo de oxigênio em repouso&quot;</span><span class="sc">~</span><span class="fu">italic</span>(<span class="st">&quot;vs.&quot;</span>)<span class="sc">~</span><span class="st">&quot;pico do exercício&quot;</span>),</span>
+<span id="cb303-27"><a href="análise-de-dados-de-duas-variáveis.html#cb303-27" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Consumo de oxigênio em repouso&quot;</span>,</span>
+<span id="cb303-28"><a href="análise-de-dados-de-duas-variáveis.html#cb303-28" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Consumo de oxigênio no pico do exercício&quot;</span></span>
+<span id="cb303-29"><a href="análise-de-dados-de-duas-variáveis.html#cb303-29" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb303-30"><a href="análise-de-dados-de-duas-variáveis.html#cb303-30" tabindex="-1"></a>    tema</span></code></pre></div>
+<pre><code>## Warning: `unnest()` has a new interface. See `?unnest` for details.
+## ℹ Try `df %&gt;% unnest(c(qq_rep, qq_w))`, with `mutate()` if needed.</code></pre>
+<p><img src="statds_files/figure-html/unnamed-chunk-193-1.png" width="672" /></p>
+<p>O gráfico nos mostra uma grande diferença entre os dados, sugerindo que o consumo de oxigênio no pico do exercício é substancialmente maior do que quando em repouso.</p>
+</div>
+<div id="gráfico-de-bland-altman-para-o-consumo-de-oxigênio" class="section level4 unnumbered hasAnchor">
+<h4>Gráfico de Bland-Altman para o consumo de oxigênio<a href="análise-de-dados-de-duas-variáveis.html#gráfico-de-bland-altman-para-o-consumo-de-oxigênio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="análise-de-dados-de-duas-variáveis.html#cb305-1" tabindex="-1"></a>qq_esforco <span class="sc">%&gt;%</span></span>
+<span id="cb305-2"><a href="análise-de-dados-de-duas-variáveis.html#cb305-2" tabindex="-1"></a>  <span class="fu">unnest</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb305-3"><a href="análise-de-dados-de-duas-variáveis.html#cb305-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(qq_media, qq_diff)) <span class="sc">+</span></span>
+<span id="cb305-4"><a href="análise-de-dados-de-duas-variáveis.html#cb305-4" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb305-5"><a href="análise-de-dados-de-duas-variáveis.html#cb305-5" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb305-6"><a href="análise-de-dados-de-duas-variáveis.html#cb305-6" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>etiologia) <span class="sc">+</span></span>
+<span id="cb305-7"><a href="análise-de-dados-de-duas-variáveis.html#cb305-7" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb305-8"><a href="análise-de-dados-de-duas-variáveis.html#cb305-8" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.13:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Média do consumo de oxigênio&quot;</span><span class="sc">~</span><span class="fu">italic</span>(<span class="st">&quot;vs.&quot;</span>)<span class="sc">~</span><span class="st">&quot;diferença entre os estágios&quot;</span>),</span>
+<span id="cb305-9"><a href="análise-de-dados-de-duas-variáveis.html#cb305-9" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Média do consumo de oxigênio nos dois estágios&quot;</span>,</span>
+<span id="cb305-10"><a href="análise-de-dados-de-duas-variáveis.html#cb305-10" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Diferença de consumo entre os dois estágios&quot;</span></span>
+<span id="cb305-11"><a href="análise-de-dados-de-duas-variáveis.html#cb305-11" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb305-12"><a href="análise-de-dados-de-duas-variáveis.html#cb305-12" tabindex="-1"></a>    tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
+<p>Avaliar melhor.</p>
+</div>
 </div>
 </div>
 <div id="exr4-10" class="section level3 unnumbered hasAnchor">

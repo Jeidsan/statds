@@ -6,9 +6,10 @@ Database file #1: latex/book.bib
 Warning--entry type for "SingerIkeda1996" isn't style-file defined
 --line 95 of file latex/book.bib
 Database file #2: latex/packages.bib
+Warning--I didn't find a database entry for "Braga1996"
 You've used 5 entries,
             2773 wiz_defined-function locations,
-            641 strings with 6630 characters,
+            643 strings with 6648 characters,
 and the built_in function-call counts, 2440 in all, are:
 = -- 214
 > -- 166
@@ -47,4 +48,4 @@ warning$ -- 0
 while$ -- 17
 width$ -- 0
 write$ -- 86
-(There was 1 warning)
+(There were 2 warnings)

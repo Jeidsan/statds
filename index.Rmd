@@ -181,4 +181,4 @@ statds_rsquared <- function(data, x, y) {
 - [Exercício 3.33](#exr3-33);
 - Validar cálculo de $R^2$ no [Exercício 4.1](#exr4-1);
 - Revisar cálculo de conceito de $R^2$ no último item do [Exercício](#exr4-1);
--
+- Reavaliar e interpretar resultados do [Exercício 4.9](#exr4-9);
