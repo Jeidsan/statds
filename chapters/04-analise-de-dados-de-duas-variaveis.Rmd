@@ -583,11 +583,58 @@ A estatística de Pearson é `r chisq`, o coeficiente de contingência de Pearso
 ### Exercício 4.7 {- #exr4-7}
 
 ::: {.enunciado}
-Considere os dados do arquivo `endometriose.xls`. Construa um gráfico QQ para comparar as distribuições da variável `Idade` de pacientes dos grupos `Controle` e `Doente`.
+Considere os dados do arquivo `endometriose.xls` [@AbraoEtAl1997]. Construa um gráfico QQ para comparar as distribuições da variável `Idade` de pacientes dos grupos `Controle` e `Doente`.
 :::
 
 :::{.solution}
-x
+No [Exercício 3.12](#exr3-12), já havíamos tratado os dados deste conjunto. Vamos carregar o arquivo final que geramos, que já contem os dados ajustados.
+
+```{r}
+endometriose <- statds_read("endometriose.csv")
+```
+Com os dados carregados, vamos contruir o gráfico QQ:
+
+```{r}
+controle <- (endometriose %>% filter(Grupo == "Controle"))$Idade
+doente <- (endometriose %>% filter(Grupo == "Doente"))$Idade
+
+quantiles <- seq(0, 1, 1/15)
+q_controle <- quantile(controle, quantiles)
+q_doente <- quantile(doente, quantiles)
+
+ggplot() +
+  geom_point(aes(q_controle, q_doente)) +
+  geom_abline(aes(slope = 1,intercept = 0), linetype = 2) +
+  labs(
+    title = bquote(bold("Figura 4.8:")~"Quantis das idades dos pacientes dos grupos Caso e Controle"),
+    x = "Controle",
+    y = "Casos"
+  ) +
+  tema +
+  coord_cartesian(
+    xlim = c(20,45),
+    ylim = c(20,45)
+  )
+```
+
+
+```{r}
+q_media <- (q_controle + q_doente) / 2
+q_diferenca <- q_controle - q_doente
+
+ggplot() +
+  geom_point(aes(q_media, q_diferenca)) +
+  geom_hline(yintercept = 0, linetype = 2) +
+  labs(
+    title = bquote(bold("Figura 4.9:")~"Médias"~italic("versus")~"diferenças entre os quantis das idades das pacientes"),
+    x = "Médias",
+    y = "Diferenças"
+  ) +
+  tema
+```
+
+O gráfico da Figura 4.8 nos mostra que existe uma diferença entre as idades das pacientes, sendo as do grupo controle mais jovens do que as do grupo de casos. A Figura 4.9, por sua vez, nos dá uma visão mais clara da magnitude dessa diferença (diferença média de `r mean(q_diferenca)` anos e desvio padrão de `r sd(q_diferenca)` anos).
+
 :::
 
 ### Exercício 4.8 {- #exr4-8}

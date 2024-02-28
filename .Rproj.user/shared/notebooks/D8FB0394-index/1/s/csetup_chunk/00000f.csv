@@ -9,6 +9,20 @@
 [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
 [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
 [36mℹ[39m Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors"
+"2","Warning messages:
+"
+"2","1: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," linha final incompleta encontrada em 'D://GitHub/1. Livros/Estatística e Ciência de Dados/statds/index.Rmd'
+"
+"2","2: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," linha final incompleta encontrada em 'D://GitHub/1. Livros/Estatística e Ciência de Dados/statds/index.Rmd'
+"
 "0","library(knitr)"
 "0","library(e1071)"
 "2","Warning: package ‘e1071’ was built under R version 4.3.2"

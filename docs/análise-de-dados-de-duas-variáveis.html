@@ -1428,10 +1428,55 @@ div.csl-indent {
 <div id="exr4-7" class="section level3 unnumbered hasAnchor">
 <h3>Exercício 4.7<a href="análise-de-dados-de-duas-variáveis.html#exr4-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="enunciado">
-<p>Considere os dados do arquivo <code>endometriose.xls</code>. Construa um gráfico QQ para comparar as distribuições da variável <code>Idade</code> de pacientes dos grupos <code>Controle</code> e <code>Doente</code>.</p>
+<p>Considere os dados do arquivo <code>endometriose.xls</code> <span class="citation">(<a href="#ref-AbraoEtAl1997">ABRÃO et al., 1997</a>)</span>. Construa um gráfico QQ para comparar as distribuições da variável <code>Idade</code> de pacientes dos grupos <code>Controle</code> e <code>Doente</code>.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-49" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-49" class="solution"><em>Solução</em>. </span>No <a href="análise-de-dados-de-uma-variável.html#exr3-12">Exercício 3.12</a>, já havíamos tratado os dados deste conjunto. Vamos carregar o arquivo final que geramos, que já contem os dados ajustados.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="análise-de-dados-de-duas-variáveis.html#cb292-1" tabindex="-1"></a>endometriose <span class="ot">&lt;-</span> <span class="fu">statds_read</span>(<span class="st">&quot;endometriose.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 50 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (3): Grupo, Dismenorréia, Dispareunia
+## dbl (10): Paciente, Idade, Gestação, Partos, Abortos, AFSr, CA125/A, CA125/B...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>COm os dados carregados, vamos contruir o gráfico QQ:</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="análise-de-dados-de-duas-variáveis.html#cb294-1" tabindex="-1"></a>controle <span class="ot">&lt;-</span> (endometriose <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Grupo <span class="sc">==</span> <span class="st">&quot;Controle&quot;</span>))<span class="sc">$</span>Idade</span>
+<span id="cb294-2"><a href="análise-de-dados-de-duas-variáveis.html#cb294-2" tabindex="-1"></a>doente <span class="ot">&lt;-</span> (endometriose <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Grupo <span class="sc">==</span> <span class="st">&quot;Doente&quot;</span>))<span class="sc">$</span>Idade</span>
+<span id="cb294-3"><a href="análise-de-dados-de-duas-variáveis.html#cb294-3" tabindex="-1"></a></span>
+<span id="cb294-4"><a href="análise-de-dados-de-duas-variáveis.html#cb294-4" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>)</span>
+<span id="cb294-5"><a href="análise-de-dados-de-duas-variáveis.html#cb294-5" tabindex="-1"></a>q_controle <span class="ot">&lt;-</span> <span class="fu">quantile</span>(controle, quantiles)</span>
+<span id="cb294-6"><a href="análise-de-dados-de-duas-variáveis.html#cb294-6" tabindex="-1"></a>q_doente <span class="ot">&lt;-</span> <span class="fu">quantile</span>(doente, quantiles)</span>
+<span id="cb294-7"><a href="análise-de-dados-de-duas-variáveis.html#cb294-7" tabindex="-1"></a></span>
+<span id="cb294-8"><a href="análise-de-dados-de-duas-variáveis.html#cb294-8" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb294-9"><a href="análise-de-dados-de-duas-variáveis.html#cb294-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(q_controle, q_doente)) <span class="sc">+</span></span>
+<span id="cb294-10"><a href="análise-de-dados-de-duas-variáveis.html#cb294-10" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> <span class="dv">1</span>,<span class="at">intercept =</span> <span class="dv">0</span>), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb294-11"><a href="análise-de-dados-de-duas-variáveis.html#cb294-11" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb294-12"><a href="análise-de-dados-de-duas-variáveis.html#cb294-12" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.8:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Quantis das idades dos pacientes dos grupos Caso e Controle&quot;</span>),</span>
+<span id="cb294-13"><a href="análise-de-dados-de-duas-variáveis.html#cb294-13" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Controle&quot;</span>,</span>
+<span id="cb294-14"><a href="análise-de-dados-de-duas-variáveis.html#cb294-14" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Casos&quot;</span></span>
+<span id="cb294-15"><a href="análise-de-dados-de-duas-variáveis.html#cb294-15" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb294-16"><a href="análise-de-dados-de-duas-variáveis.html#cb294-16" tabindex="-1"></a>  tema <span class="sc">+</span></span>
+<span id="cb294-17"><a href="análise-de-dados-de-duas-variáveis.html#cb294-17" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(</span>
+<span id="cb294-18"><a href="análise-de-dados-de-duas-variáveis.html#cb294-18" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">45</span>),</span>
+<span id="cb294-19"><a href="análise-de-dados-de-duas-variáveis.html#cb294-19" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">45</span>)</span>
+<span id="cb294-20"><a href="análise-de-dados-de-duas-variáveis.html#cb294-20" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="análise-de-dados-de-duas-variáveis.html#cb295-1" tabindex="-1"></a>q_media <span class="ot">&lt;-</span> (q_controle <span class="sc">+</span> q_doente) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb295-2"><a href="análise-de-dados-de-duas-variáveis.html#cb295-2" tabindex="-1"></a>q_diferenca <span class="ot">&lt;-</span> q_controle <span class="sc">-</span> q_doente</span>
+<span id="cb295-3"><a href="análise-de-dados-de-duas-variáveis.html#cb295-3" tabindex="-1"></a></span>
+<span id="cb295-4"><a href="análise-de-dados-de-duas-variáveis.html#cb295-4" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb295-5"><a href="análise-de-dados-de-duas-variáveis.html#cb295-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(q_media, q_diferenca)) <span class="sc">+</span></span>
+<span id="cb295-6"><a href="análise-de-dados-de-duas-variáveis.html#cb295-6" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb295-7"><a href="análise-de-dados-de-duas-variáveis.html#cb295-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb295-8"><a href="análise-de-dados-de-duas-variáveis.html#cb295-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.9:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Médias&quot;</span><span class="sc">~</span><span class="fu">italic</span>(<span class="st">&quot;versus&quot;</span>)<span class="sc">~</span><span class="st">&quot;diferenças entre os quantis das idades das pacientes&quot;</span>),</span>
+<span id="cb295-9"><a href="análise-de-dados-de-duas-variáveis.html#cb295-9" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Médias&quot;</span>,</span>
+<span id="cb295-10"><a href="análise-de-dados-de-duas-variáveis.html#cb295-10" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Diferenças&quot;</span></span>
+<span id="cb295-11"><a href="análise-de-dados-de-duas-variáveis.html#cb295-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb295-12"><a href="análise-de-dados-de-duas-variáveis.html#cb295-12" tabindex="-1"></a>  tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
+<p>O gráfico da Figura 4.8 nos mostra que existe uma diferença entre as idades das pacientes, sendo as do grupo controle mais jovens do que as do grupo de casos. A Figura 4.9, por sua vez, nos dá uma visão mais clara da magnitude dessa diferença (diferença média de 4.325 anos e desvio padrão de 3.2725005 anos).</p>
 </div>
 </div>
 <div id="exr4-8" class="section level3 unnumbered hasAnchor">
@@ -1924,6 +1969,9 @@ Y | 1 | 2 | 4 | 4 | 5 | 7 | 8 | 9 |</div>
 </div>
 <h3>Referências<a href="referências.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-AbraoEtAl1997" class="csl-entry">
+ABRÃO, M. S. et al. <a href="https://doi.org/10.1093/humrep/12.11.2523">The use of biochemical markers in the diagnosis of pelvic endometriosis</a>. <strong>Human Reproduction</strong>, v. 12, n. 11, p. 2523–2527, nov. 1997.
+</div>
 <div id="ref-MorettinSinger2022" class="csl-entry">
 MORETTIN, P. A.; SINGER, J. DA M. <strong>Estatística e Ciência de Dados</strong>. Rio de Janeiro: LTC, 2022.
 </div>

@@ -4352,6 +4352,8 @@ Vamos transformar em fator as variáveis \texttt{Grupo}, \texttt{Dismenorréia} 
                     \AttributeTok{Abortos =} \FunctionTok{as.integer}\NormalTok{(Abortos),}
                     \AttributeTok{AFSr =} \FunctionTok{as.integer}\NormalTok{(AFSr)}
 \NormalTok{                  )}
+
+\FunctionTok{statds\_write}\NormalTok{(endometriose, }\StringTok{"endometriose.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8028,10 +8030,77 @@ A estatística de Pearson é 14.8672858, o coeficiente de contingência de Pears
 \subsection*{Exercício 4.7}\label{exr4-7}}
 \addcontentsline{toc}{subsection}{Exercício 4.7}
 
-Considere os dados do arquivo \texttt{endometriose.xls}. Construa um gráfico QQ para comparar as distribuições da variável \texttt{Idade} de pacientes dos grupos \texttt{Controle} e \texttt{Doente}.
+Considere os dados do arquivo \texttt{endometriose.xls} \citep{AbraoEtAl1997}. Construa um gráfico QQ para comparar as distribuições da variável \texttt{Idade} de pacientes dos grupos \texttt{Controle} e \texttt{Doente}.
 
 \begin{solution}
-x
+No \protect\hyperlink{exr3-12}{Exercício 3.12}, já havíamos tratado os dados deste conjunto. Vamos carregar o arquivo final que geramos, que já contem os dados ajustados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{endometriose }\OtherTok{\textless{}{-}} \FunctionTok{statds\_read}\NormalTok{(}\StringTok{"endometriose.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 50 Columns: 13
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (3): Grupo, Dismenorréia, Dispareunia
+## dbl (10): Paciente, Idade, Gestação, Partos, Abortos, AFSr, CA125/A, CA125/B...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+COm os dados carregados, vamos contruir o gráfico QQ:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{controle }\OtherTok{\textless{}{-}}\NormalTok{ (endometriose }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Grupo }\SpecialCharTok{==} \StringTok{"Controle"}\NormalTok{))}\SpecialCharTok{$}\NormalTok{Idade}
+\NormalTok{doente }\OtherTok{\textless{}{-}}\NormalTok{ (endometriose }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Grupo }\SpecialCharTok{==} \StringTok{"Doente"}\NormalTok{))}\SpecialCharTok{$}\NormalTok{Idade}
+
+\NormalTok{quantiles }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{15}\NormalTok{)}
+\NormalTok{q\_controle }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(controle, quantiles)}
+\NormalTok{q\_doente }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(doente, quantiles)}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(q\_controle, q\_doente)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{slope =} \DecValTok{1}\NormalTok{,}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{), }\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.8:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Quantis das idades dos pacientes dos grupos Caso e Controle"}\NormalTok{),}
+    \AttributeTok{x =} \StringTok{"Controle"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Casos"}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  tema }\SpecialCharTok{+}
+  \FunctionTok{coord\_cartesian}\NormalTok{(}
+    \AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{45}\NormalTok{),}
+    \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{45}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-185-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_media }\OtherTok{\textless{}{-}}\NormalTok{ (q\_controle }\SpecialCharTok{+}\NormalTok{ q\_doente) }\SpecialCharTok{/} \DecValTok{2}
+\NormalTok{q\_diferenca }\OtherTok{\textless{}{-}}\NormalTok{ q\_controle }\SpecialCharTok{{-}}\NormalTok{ q\_doente}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(q\_media, q\_diferenca)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.9:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Médias"}\SpecialCharTok{\textasciitilde{}}\FunctionTok{italic}\NormalTok{(}\StringTok{"versus"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"diferenças entre os quantis das idades das pacientes"}\NormalTok{),}
+    \AttributeTok{x =} \StringTok{"Médias"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Diferenças"}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-186-1.pdf}
+
+O gráfico da Figura 4.8 nos mostra que existe uma diferença entre as idades das pacientes, sendo as do grupo controle mais jovens do que as do grupo de casos. A Figura 4.9, por sua vez, nos dá uma visão mais clara da magnitude dessa diferença (diferença média de 4.325 anos e desvio padrão de 3.2725005 anos).
 \end{solution}
 
 \hypertarget{exr4-8}{%

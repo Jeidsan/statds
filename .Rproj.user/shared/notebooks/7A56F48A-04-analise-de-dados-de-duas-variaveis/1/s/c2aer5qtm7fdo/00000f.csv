@@ -1,3 +1,4 @@
-"0","qui_quadrado <- chisq.test(empresa$instrucao, empresa$regiao)$statistic[[1]]
-"
+"0","qui_quadrado <- chisq.test(empresa$instrucao, empresa$regiao)$statistic[[1]]"
 "2","Warning: Aproximação do qui-quadrado pode estar incorreta"
+"0","n <- nrow(empresa)"
+"0","c <- sqrt(qui_quadrado / (qui_quadrado + n))"

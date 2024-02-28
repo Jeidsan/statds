@@ -1888,6 +1888,8 @@ endometriose <- endometriose %>%
                     AFSr = as.integer(AFSr)
                   )
 
+statds_write(endometriose, "endometriose.csv")
+
 ```
 
 
