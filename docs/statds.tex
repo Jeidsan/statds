@@ -8052,7 +8052,7 @@ No \protect\hyperlink{exr3-12}{Exercício 3.12}, já havíamos tratado os dados 
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
-COm os dados carregados, vamos contruir o gráfico QQ:
+Com os dados carregados, vamos contruir o gráfico QQ:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8110,7 +8110,71 @@ O gráfico da Figura 4.8 nos mostra que existe uma diferença entre as idades da
 Considere os dados do arquivo \texttt{neonatos.xls} contendo pesos de recém nascidos medidos por via ultrassonográfica (antes do parto) e ao nascer. Construa gráficos QQ e gráficos Bland-Altman para avaliar a concordância entre as duas distribuições. Comente os resultados.
 
 \begin{solution}
-x
+\leavevmode
+
+\hypertarget{carregamento-dos-dados}{%
+\subsubsection*{Carregamento dos dados}\label{carregamento-dos-dados}}
+\addcontentsline{toc}{subsubsection}{Carregamento dos dados}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{neonatos }\OtherTok{\textless{}{-}} \FunctionTok{statds\_read}\NormalTok{(}\StringTok{"neonatos.xls"}\NormalTok{, }\StringTok{"xls"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{gruxe1fico-qq}{%
+\subsubsection*{Gráfico QQ}\label{gruxe1fico-qq}}
+\addcontentsline{toc}{subsubsection}{Gráfico QQ}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{quantiles }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{68}\NormalTok{)}
+\NormalTok{q\_peso1 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(neonatos}\SpecialCharTok{$}\NormalTok{peso1, quantiles)}
+\NormalTok{q\_peso2 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(neonatos}\SpecialCharTok{$}\NormalTok{peso2, quantiles)}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(q\_peso1, q\_peso2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }\AttributeTok{intercept =} \DecValTok{0}\NormalTok{), }\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.10:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Quantis dos pesos de recém nascidos"}\NormalTok{),}
+    \AttributeTok{x =} \StringTok{"Peso obtido ultrassonograficamente (g)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Peso ao nascer (g)"}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-188-1.pdf}
+
+\hypertarget{gruxe1fico-bland-altman}{%
+\subsubsection*{Gráfico Bland-Altman}\label{gruxe1fico-bland-altman}}
+\addcontentsline{toc}{subsubsection}{Gráfico Bland-Altman}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_media }\OtherTok{\textless{}{-}}\NormalTok{ (neonatos}\SpecialCharTok{$}\NormalTok{peso2 }\SpecialCharTok{+}\NormalTok{ neonatos}\SpecialCharTok{$}\NormalTok{peso1) }\SpecialCharTok{/} \DecValTok{2}
+\NormalTok{q\_diferenca }\OtherTok{\textless{}{-}}\NormalTok{ (neonatos}\SpecialCharTok{$}\NormalTok{peso2 }\SpecialCharTok{{-}}\NormalTok{ neonatos}\SpecialCharTok{$}\NormalTok{peso1)}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(q\_media, q\_diferenca)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{bquote}\NormalTok{(}\FunctionTok{bold}\NormalTok{(}\StringTok{"Figura 4.11:"}\NormalTok{)}\SpecialCharTok{\textasciitilde{}}\StringTok{"Diferença entre as medidas do peso dos recém nascidos"}\NormalTok{),}
+    \AttributeTok{x =} \StringTok{"Média das medidas (g)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Diferença entre as medidas (g)"}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  tema}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{statds_files/figure-latex/unnamed-chunk-189-1.pdf}
+
+\hypertarget{comentuxe1rios}{%
+\subsubsection*{Comentários}\label{comentuxe1rios}}
+\addcontentsline{toc}{subsubsection}{Comentários}
+
+A Figura 4.10 nos mostra que a medida do peso obtida por via ultrassonográfica é levemente menor do que aquela obtida ao nascer. A Figura 4.11 nos dá uma melhor visão dessa diferença (média: 131.8970588g, desvio padrão: 227.9162677g, mediana: 91g). A média das diferenças corresponde a um percentual de 5.27 em relação ao peso real aferido ao nascer.
+
 \end{solution}
 
 \hypertarget{exr4-9}{%

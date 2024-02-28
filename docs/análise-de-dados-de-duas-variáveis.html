@@ -1441,7 +1441,7 @@ div.csl-indent {
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<p>COm os dados carregados, vamos contruir o gráfico QQ:</p>
+<p>Com os dados carregados, vamos contruir o gráfico QQ:</p>
 <div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="análise-de-dados-de-duas-variáveis.html#cb294-1" tabindex="-1"></a>controle <span class="ot">&lt;-</span> (endometriose <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Grupo <span class="sc">==</span> <span class="st">&quot;Controle&quot;</span>))<span class="sc">$</span>Idade</span>
 <span id="cb294-2"><a href="análise-de-dados-de-duas-variáveis.html#cb294-2" tabindex="-1"></a>doente <span class="ot">&lt;-</span> (endometriose <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Grupo <span class="sc">==</span> <span class="st">&quot;Doente&quot;</span>))<span class="sc">$</span>Idade</span>
 <span id="cb294-3"><a href="análise-de-dados-de-duas-variáveis.html#cb294-3" tabindex="-1"></a></span>
@@ -1485,7 +1485,48 @@ div.csl-indent {
 <p>Considere os dados do arquivo <code>neonatos.xls</code> contendo pesos de recém nascidos medidos por via ultrassonográfica (antes do parto) e ao nascer. Construa gráficos QQ e gráficos Bland-Altman para avaliar a concordância entre as duas distribuições. Comente os resultados.</p>
 </div>
 <div class="solution">
-<p><span id="unlabeled-div-50" class="solution"><em>Solução</em>. </span>x</p>
+<p><span id="unlabeled-div-50" class="solution"><em>Solução</em>. </span></p>
+<div id="carregamento-dos-dados" class="section level4 unnumbered hasAnchor">
+<h4>Carregamento dos dados<a href="análise-de-dados-de-duas-variáveis.html#carregamento-dos-dados" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="análise-de-dados-de-duas-variáveis.html#cb296-1" tabindex="-1"></a>neonatos <span class="ot">&lt;-</span> <span class="fu">statds_read</span>(<span class="st">&quot;neonatos.xls&quot;</span>, <span class="st">&quot;xls&quot;</span>)</span></code></pre></div>
+</div>
+<div id="gráfico-qq" class="section level4 unnumbered hasAnchor">
+<h4>Gráfico QQ<a href="análise-de-dados-de-duas-variáveis.html#gráfico-qq" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="análise-de-dados-de-duas-variáveis.html#cb297-1" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">68</span>)</span>
+<span id="cb297-2"><a href="análise-de-dados-de-duas-variáveis.html#cb297-2" tabindex="-1"></a>q_peso1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(neonatos<span class="sc">$</span>peso1, quantiles)</span>
+<span id="cb297-3"><a href="análise-de-dados-de-duas-variáveis.html#cb297-3" tabindex="-1"></a>q_peso2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(neonatos<span class="sc">$</span>peso2, quantiles)</span>
+<span id="cb297-4"><a href="análise-de-dados-de-duas-variáveis.html#cb297-4" tabindex="-1"></a></span>
+<span id="cb297-5"><a href="análise-de-dados-de-duas-variáveis.html#cb297-5" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb297-6"><a href="análise-de-dados-de-duas-variáveis.html#cb297-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(q_peso1, q_peso2)) <span class="sc">+</span></span>
+<span id="cb297-7"><a href="análise-de-dados-de-duas-variáveis.html#cb297-7" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb297-8"><a href="análise-de-dados-de-duas-variáveis.html#cb297-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb297-9"><a href="análise-de-dados-de-duas-variáveis.html#cb297-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.10:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Quantis dos pesos de recém nascidos&quot;</span>),</span>
+<span id="cb297-10"><a href="análise-de-dados-de-duas-variáveis.html#cb297-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Peso obtido ultrassonograficamente (g)&quot;</span>,</span>
+<span id="cb297-11"><a href="análise-de-dados-de-duas-variáveis.html#cb297-11" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Peso ao nascer (g)&quot;</span></span>
+<span id="cb297-12"><a href="análise-de-dados-de-duas-variáveis.html#cb297-12" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb297-13"><a href="análise-de-dados-de-duas-variáveis.html#cb297-13" tabindex="-1"></a>  tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
+</div>
+<div id="gráfico-bland-altman" class="section level4 unnumbered hasAnchor">
+<h4>Gráfico Bland-Altman<a href="análise-de-dados-de-duas-variáveis.html#gráfico-bland-altman" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="análise-de-dados-de-duas-variáveis.html#cb298-1" tabindex="-1"></a>q_media <span class="ot">&lt;-</span> (neonatos<span class="sc">$</span>peso2 <span class="sc">+</span> neonatos<span class="sc">$</span>peso1) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb298-2"><a href="análise-de-dados-de-duas-variáveis.html#cb298-2" tabindex="-1"></a>q_diferenca <span class="ot">&lt;-</span> (neonatos<span class="sc">$</span>peso2 <span class="sc">-</span> neonatos<span class="sc">$</span>peso1)</span>
+<span id="cb298-3"><a href="análise-de-dados-de-duas-variáveis.html#cb298-3" tabindex="-1"></a></span>
+<span id="cb298-4"><a href="análise-de-dados-de-duas-variáveis.html#cb298-4" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb298-5"><a href="análise-de-dados-de-duas-variáveis.html#cb298-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(q_media, q_diferenca)) <span class="sc">+</span></span>
+<span id="cb298-6"><a href="análise-de-dados-de-duas-variáveis.html#cb298-6" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb298-7"><a href="análise-de-dados-de-duas-variáveis.html#cb298-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb298-8"><a href="análise-de-dados-de-duas-variáveis.html#cb298-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(<span class="st">&quot;Figura 4.11:&quot;</span>)<span class="sc">~</span><span class="st">&quot;Diferença entre as medidas do peso dos recém nascidos&quot;</span>),</span>
+<span id="cb298-9"><a href="análise-de-dados-de-duas-variáveis.html#cb298-9" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Média das medidas (g)&quot;</span>,</span>
+<span id="cb298-10"><a href="análise-de-dados-de-duas-variáveis.html#cb298-10" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Diferença entre as medidas (g)&quot;</span></span>
+<span id="cb298-11"><a href="análise-de-dados-de-duas-variáveis.html#cb298-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb298-12"><a href="análise-de-dados-de-duas-variáveis.html#cb298-12" tabindex="-1"></a>  tema</span></code></pre></div>
+<p><img src="statds_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
+</div>
+<div id="comentários" class="section level4 unnumbered hasAnchor">
+<h4>Comentários<a href="análise-de-dados-de-duas-variáveis.html#comentários" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A Figura 4.10 nos mostra que a medida do peso obtida por via ultrassonográfica é levemente menor do que aquela obtida ao nascer. A Figura 4.11 nos dá uma melhor visão dessa diferença (média: 131.8970588g, desvio padrão: 227.9162677g, mediana: 91g). A média das diferenças corresponde a um percentual de 5.27 em relação ao peso real aferido ao nascer.</p>
+</div>
 </div>
 </div>
 <div id="exr4-9" class="section level3 unnumbered hasAnchor">

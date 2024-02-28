@@ -644,7 +644,51 @@ Considere os dados do arquivo `neonatos.xls` contendo pesos de recém nascidos m
 :::
 
 :::{.solution}
-x
+#### Carregamento dos dados {-}
+
+```{r}
+neonatos <- statds_read("neonatos.xls", "xls")
+```
+
+#### Gráfico QQ {-}
+
+```{r}
+quantiles <- seq(0, 1, 1/68)
+q_peso1 <- quantile(neonatos$peso1, quantiles)
+q_peso2 <- quantile(neonatos$peso2, quantiles)
+
+ggplot() +
+  geom_point(aes(q_peso1, q_peso2)) +
+  geom_abline(aes(slope = 1, intercept = 0), linetype = 2) +
+  labs(
+    title = bquote(bold("Figura 4.10:")~"Quantis dos pesos de recém nascidos"),
+    x = "Peso obtido ultrassonograficamente (g)",
+    y = "Peso ao nascer (g)"
+  ) +
+  tema
+```
+
+#### Gráfico Bland-Altman {-}
+
+```{r}
+q_media <- (neonatos$peso2 + neonatos$peso1) / 2
+q_diferenca <- (neonatos$peso2 - neonatos$peso1)
+
+ggplot() +
+  geom_point(aes(q_media, q_diferenca)) +
+  geom_hline(yintercept = 0, linetype = 2) +
+  labs(
+    title = bquote(bold("Figura 4.11:")~"Diferença entre as medidas do peso dos recém nascidos"),
+    x = "Média das medidas (g)",
+    y = "Diferença entre as medidas (g)"
+  ) +
+  tema
+```
+
+#### Comentários {-}
+
+A Figura 4.10 nos mostra que a medida do peso obtida por via ultrassonográfica é levemente menor do que aquela obtida ao nascer. A Figura 4.11 nos dá uma melhor visão dessa diferença (média: `r mean(q_diferenca)`g, desvio padrão: `r sd(q_diferenca)`g, mediana: `r median(q_diferenca)`g). A média das diferenças corresponde a um percentual de `r round((mean(q_diferenca) / mean(neonatos$peso2)) * 100, digits = 2)` em relação ao peso real aferido ao nascer.
+
 :::
 
 ### Exercício 4.9 {- #exr4-9}
